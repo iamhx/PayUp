@@ -22,8 +22,11 @@ class CustomCell : UITableViewCell {
 
 class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+	
+	@IBOutlet weak var lblTotal: UILabel!
 	@IBOutlet weak var billTableView: UITableView!
 	var structArray:[Person] = []
+	var totalBeforeTax:Double = 0.00
 	
 	@IBOutlet weak var switchSvcCharge: UISwitch!
 	@IBOutlet weak var switchGST: UISwitch!
@@ -109,17 +112,21 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate {
 				
 			else {
 				
-				guard let wrappedInput = Double(inputAmt.text!) else {
+				guard let unwrappedInput = Double(inputAmt.text!) else {
 					self.valError(promptInputAgain: inputPerson)
 					return
 				}
 				
-				let newPerson = Person(name: inputName.text!, amount: wrappedInput)
-				
+				let newPerson = Person(name: inputName.text!, amount: unwrappedInput)
 				self.structArray.append(newPerson)
+				
+				self.totalBeforeTax += self.structArray[self.structArray.count - 1].amount
+				
 				self.billTableView.beginUpdates()
 				self.billTableView.insertRows(at: [IndexPath(row: self.structArray.count - 1, section: 0)], with: .automatic)
 				self.billTableView.endUpdates()
+				
+				self.updateTotalLabel(label: self.lblTotal, amount: self.totalBeforeTax)
 			}
 		})
 		
@@ -151,6 +158,8 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate {
 		
 		billTableView.delegate = self
 		billTableView.dataSource = self
+		
+		updateTotalLabel(label: lblTotal, amount: totalBeforeTax)
     }
 
     override func didReceiveMemoryWarning() {
@@ -176,13 +185,14 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate {
 		cell.lblPerson?.text = "\(structArray[indexPath.row].name)"
 		
 		if (structArray[indexPath.row].amount.truncatingRemainder(dividingBy: 1) == 0) {
+			
 			cell.lblAmount?.text = String(format: "$%.2f", structArray[indexPath.row].amount)
 		}
 		else {
-			
-			cell.lblAmount?.text = "$\(structArray[indexPath.row].amount)"
-		}
 		
+			cell.lblAmount?.text = String(format: "$%.2f", (structArray[indexPath.row].amount / 100) * 100)
+		}
+
 		return cell
 	}
 
@@ -196,13 +206,57 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 		
 		if (editingStyle == .delete) {
+			
 			// Delete the row from the data source
+			
+			self.totalBeforeTax -= structArray[indexPath.row].amount
+			
 			billTableView.beginUpdates()
 			let rowIndex = IndexPath(row: indexPath.row, section: 0)
 			structArray.remove(at: indexPath.row)
 			billTableView.deleteRows(at: [rowIndex], with: .fade)
 			billTableView.endUpdates()
+			
+			self.updateTotalLabel(label: lblTotal, amount: totalBeforeTax)
 		}
+	}
+	
+	func attributedString(from string: String, nonBoldRange: NSRange?) -> NSAttributedString {
+		
+		let fontSize = lblTotal.font.pointSize
+		
+		let attrs = [
+			NSFontAttributeName: UIFont.systemFont(ofSize: fontSize, weight: UIFontWeightSemibold),
+			NSForegroundColorAttributeName: UIColor.black
+		]
+		
+		let nonBoldAttribute = [
+			NSFontAttributeName: UIFont.systemFont(ofSize: fontSize),
+			]
+		let attrStr = NSMutableAttributedString(string: string, attributes: attrs)
+		
+		if let range = nonBoldRange {
+			attrStr.setAttributes(nonBoldAttribute, range: range)
+		}
+		
+		return attrStr
+	}
+	
+	func updateTotalLabel(label: UILabel, amount: Double) {
+		
+		var targetString = ""
+		
+		if (amount.truncatingRemainder(dividingBy: 1) == 0) {
+			
+			targetString = String(format: "Total: $%.2f", amount)
+		}
+		else {
+			
+			targetString = String(format: "Total: $%.2f", (amount / 100) * 100)
+		}
+		
+		let range = NSMakeRange(0, 7)
+		label.attributedText = attributedString(from: targetString, nonBoldRange: range)
 	}
 
     /*

@@ -13,7 +13,7 @@
         <!--Your Bill-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="BillForm" customModule="BillSplit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BillForm" customModule="PayUp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -63,14 +63,14 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yo0-Cl-2Fl">
-                                <rect key="frame" x="0.0" y="64" width="375" height="480"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="450"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newPerson" id="0iY-If-qON" customClass="CustomCell" customModule="BillSplit" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newPerson" id="0iY-If-qON" customClass="CustomCell" customModule="PayUp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0iY-If-qON" id="34P-eP-ATC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRg-pt-Gd5">
@@ -100,15 +100,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: $0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHH-uR-TwR">
+                                <rect key="frame" x="16" y="523" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="PCy-U6-91B" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="0Gf-Vy-rB7"/>
-                            <constraint firstItem="pjM-2G-91W" firstAttribute="top" secondItem="Yo0-Cl-2Fl" secondAttribute="bottom" constant="8" id="29M-IJ-wYa"/>
+                            <constraint firstItem="pjM-2G-91W" firstAttribute="top" secondItem="Yo0-Cl-2Fl" secondAttribute="bottom" constant="38" id="29M-IJ-wYa"/>
                             <constraint firstItem="dkk-Fd-ghx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="28" id="9mC-VX-IQl"/>
-                            <constraint firstItem="yMh-Af-WKj" firstAttribute="top" secondItem="Yo0-Cl-2Fl" secondAttribute="bottom" constant="8" id="Arc-c8-QH7"/>
+                            <constraint firstItem="PHH-uR-TwR" firstAttribute="top" secondItem="Yo0-Cl-2Fl" secondAttribute="bottom" constant="9" id="AUN-Xq-iSd"/>
+                            <constraint firstItem="yMh-Af-WKj" firstAttribute="top" secondItem="Yo0-Cl-2Fl" secondAttribute="bottom" constant="38" id="Arc-c8-QH7"/>
+                            <constraint firstItem="PHH-uR-TwR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="GlC-XQ-IPm"/>
                             <constraint firstItem="Yo0-Cl-2Fl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jsf-Bj-8vk"/>
                             <constraint firstItem="PCy-U6-91B" firstAttribute="top" secondItem="eFX-mo-YBJ" secondAttribute="bottom" constant="8" id="LmH-Ip-W0I"/>
+                            <constraint firstItem="PHH-uR-TwR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SKW-Gd-SVF"/>
                             <constraint firstItem="pjM-2G-91W" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="72" id="UWA-ox-zCr"/>
                             <constraint firstItem="eFX-mo-YBJ" firstAttribute="top" secondItem="yMh-Af-WKj" secondAttribute="bottom" constant="8" id="ZfA-1I-1Vh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PCy-U6-91B" secondAttribute="bottom" id="b7m-Cj-nt7"/>
@@ -132,6 +141,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="billTableView" destination="Yo0-Cl-2Fl" id="P8B-B6-ucu"/>
+                        <outlet property="lblTotal" destination="PHH-uR-TwR" id="Hbj-35-2kz"/>
                         <outlet property="switchGST" destination="yMh-Af-WKj" id="dU8-Vz-hHV"/>
                         <outlet property="switchSvcCharge" destination="pjM-2G-91W" id="xJU-9r-DKA"/>
                         <segue destination="Nn4-gW-qcB" kind="show" id="7rT-UN-gwl"/>
@@ -144,7 +154,7 @@
         <!--Bill Summary-->
         <scene sceneID="m4m-VZ-Zuk">
             <objects>
-                <viewController id="Nn4-gW-qcB" customClass="BillSummary" customModule="BillSplit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Nn4-gW-qcB" customClass="BillSummary" customModule="PayUp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jD7-Nm-LUM"/>
                         <viewControllerLayoutGuide type="bottom" id="rUu-n1-gXs"/>
