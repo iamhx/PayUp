@@ -20,7 +20,7 @@ class CustomCell : UITableViewCell {
 	@IBOutlet weak var lblAmount: UILabel!
 }
 
-class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
 	
 	@IBOutlet weak var lblTotal: UILabel!
@@ -84,6 +84,25 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate {
 		}
 	}
 	
+	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		
+		var maxLength:Int
+		
+		if (textField.tag == 0) {
+			
+			maxLength = 15
+		}
+		else {
+			
+			maxLength = 13
+		}
+		
+		let currentString:NSString = textField.text! as NSString
+		let newString = currentString.replacingCharacters(in: range, with: string) as NSString
+		
+		return newString.length <= maxLength
+	}
+	
 	@IBAction func addPerson(_ sender: UIBarButtonItem) {
 		
 		let inputPerson = UIAlertController(title: "Add Person", message: "Enter person's name and amount.", preferredStyle: .alert)
@@ -92,12 +111,16 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate {
 			textField.placeholder = "Name"
 			textField.textAlignment = .left
 			textField.keyboardType = .default
+			textField.delegate = self
+			textField.tag = 0
 		})
 		
 		inputPerson.addTextField(configurationHandler: { (textField) -> Void in
 			textField.placeholder = "Amount"
 			textField.textAlignment = .left
 			textField.keyboardType = .decimalPad
+			textField.delegate = self
+			textField.tag = 1
 		})
 		
 		let actionAddPerson = UIAlertAction(title: "Add", style: .default, handler: { alert -> Void in
@@ -252,7 +275,13 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate {
 		}
 		else {
 			
-			targetString = String(format: "Total: $%.2f", (amount / 100) * 100)
+			if (amount == 0.00) {
+				
+				targetString = "$Total: $0.00"
+			}
+			else {
+				targetString = String(format: "Total: $%.2f", (amount / 100) * 100)
+			}
 		}
 		
 		let range = NSMakeRange(0, 7)
