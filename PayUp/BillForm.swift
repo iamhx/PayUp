@@ -61,7 +61,6 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		}
 	}
 	
-	
 	@IBAction func btnSvcCharge(_ sender: UISwitch) {
 		
 		if (switchSvcCharge.isOn) {
@@ -173,17 +172,17 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		
 		self.present(errorAlert, animated: true, completion: nil)
 	}
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		// Do any additional setup after loading the view.
 		
 		billTableView.delegate = self
 		billTableView.dataSource = self
 		
 		updateTotalLabel(label: lblTotal, amount: totalBeforeTax)
-    }
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -206,15 +205,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		let cell = tableView.dequeueReusableCell(withIdentifier: "newPerson") as! CustomCell
 		
 		cell.lblPerson?.text = "\(structArray[indexPath.row].name)"
-		
-		if (structArray[indexPath.row].amount.truncatingRemainder(dividingBy: 1) == 0) {
-			
-			cell.lblAmount?.text = String(format: "$%.2f", structArray[indexPath.row].amount)
-		}
-		else {
-		
-			cell.lblAmount?.text = String(format: "$%.2f", (structArray[indexPath.row].amount / 100) * 100)
-		}
+		cell.lblAmount?.text = SplitBill().formatCurrency(amount: structArray[indexPath.row].amount)
 
 		return cell
 	}
@@ -275,11 +266,12 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		}
 		else {
 			
-			if (amount == 0.00) {
+			if (amount <= 0.00) {
 				
 				targetString = "$Total: $0.00"
 			}
 			else {
+				
 				targetString = String(format: "Total: $%.2f", (amount / 100) * 100)
 			}
 		}

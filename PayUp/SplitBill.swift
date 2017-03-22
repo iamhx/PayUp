@@ -56,4 +56,20 @@ class SplitBill: NSObject {
 		
 		return taxCost
 	}
+	
+	func formatCurrency(amount: Double) -> String {
+		
+		var string = ""
+		
+		if (amount.truncatingRemainder(dividingBy: 1) == 0) {
+			
+			string = String(format: "$%.2f", amount)
+		}
+		else {
+			
+			string = String(format: "$%.2f", (amount / 100) * 100)
+		}
+		
+		return string
+	}
 }
