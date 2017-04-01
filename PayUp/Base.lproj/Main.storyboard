@@ -66,11 +66,11 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="450"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newPerson" id="0iY-If-qON" customClass="CustomCell" customModule="PayUp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newPerson" id="0iY-If-qON" customClass="cellPerson" customModule="PayUp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0iY-If-qON" id="34P-eP-ATC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRg-pt-Gd5">
@@ -133,6 +133,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Your Bill" id="41B-Wb-WDT">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="ucI-rj-FMS"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fRv-IK-Ojy">
                             <connections>
                                 <action selector="addPerson:" destination="BYZ-38-t0r" id="ALw-nU-hSh"/>
@@ -151,10 +152,10 @@
             </objects>
             <point key="canvasLocation" x="2778.4000000000001" y="176.76161919040482"/>
         </scene>
-        <!--Bill Summary-->
+        <!--Summary-->
         <scene sceneID="m4m-VZ-Zuk">
             <objects>
-                <viewController id="Nn4-gW-qcB" customClass="BillSummary" customModule="PayUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Summary" id="Nn4-gW-qcB" customClass="BillSummary" customModule="PayUp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jD7-Nm-LUM"/>
                         <viewControllerLayoutGuide type="bottom" id="rUu-n1-gXs"/>
@@ -163,45 +164,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The total bill is $200 inclusive of service charges and GST." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsh-By-BDH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The total bill is Amount inclusive of service charges and GST." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsh-By-BDH">
                                 <rect key="frame" x="16" y="72" width="343" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j2y-t4-geX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j2y-t4-geX">
                                 <rect key="frame" x="0.0" y="146" width="375" height="375"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="personBill" id="hHp-8R-0qw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="personBill" id="hHp-8R-0qw" customClass="cellSummary" customModule="PayUp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hHp-8R-0qw" id="2Vv-Lo-naC">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="hx needs to pay blah" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEd-Kq-cg7">
-                                                    <rect key="frame" x="24" y="11" width="159" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person needs to pay Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEd-Kq-cg7">
+                                                    <rect key="frame" x="8" y="8" width="359" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="MEd-Kq-cg7" firstAttribute="top" secondItem="2Vv-Lo-naC" secondAttribute="topMargin" id="LNi-hg-p4d"/>
+                                                <constraint firstItem="MEd-Kq-cg7" firstAttribute="leading" secondItem="2Vv-Lo-naC" secondAttribute="leadingMargin" id="SgG-tw-NZM"/>
+                                                <constraint firstItem="MEd-Kq-cg7" firstAttribute="centerY" secondItem="2Vv-Lo-naC" secondAttribute="centerY" id="hT5-zd-iud"/>
+                                                <constraint firstItem="MEd-Kq-cg7" firstAttribute="trailing" secondItem="2Vv-Lo-naC" secondAttribute="trailingMargin" id="qYU-mB-2IU"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="lblPerson" destination="MEd-Kq-cg7" id="0XI-Vr-h26"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="j2y-t4-geX" firstAttribute="leading" secondItem="UIc-I3-dSz" secondAttribute="leading" id="78H-fd-g8H"/>
+                            <constraint firstItem="lsh-By-BDH" firstAttribute="leading" secondItem="UIc-I3-dSz" secondAttribute="leadingMargin" id="ETc-8G-oGC"/>
+                            <constraint firstAttribute="trailing" secondItem="j2y-t4-geX" secondAttribute="trailing" id="Eg0-Ih-oG4"/>
+                            <constraint firstItem="lsh-By-BDH" firstAttribute="top" secondItem="jD7-Nm-LUM" secondAttribute="bottom" constant="8" symbolic="YES" id="FZF-ki-7Xg"/>
+                            <constraint firstItem="rUu-n1-gXs" firstAttribute="top" secondItem="j2y-t4-geX" secondAttribute="bottom" constant="146" id="IbZ-jb-tQj"/>
+                            <constraint firstItem="j2y-t4-geX" firstAttribute="centerY" secondItem="UIc-I3-dSz" secondAttribute="centerY" id="Jg7-p1-amW"/>
+                            <constraint firstItem="lsh-By-BDH" firstAttribute="centerX" secondItem="j2y-t4-geX" secondAttribute="centerX" id="RnX-1N-6fn"/>
+                            <constraint firstItem="j2y-t4-geX" firstAttribute="top" secondItem="lsh-By-BDH" secondAttribute="bottom" constant="8" symbolic="YES" id="jtb-lc-VDM"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="finalBill" destination="j2y-t4-geX" id="fNB-az-ygu"/>
+                        <outlet property="lblSummary" destination="lsh-By-BDH" id="uiK-th-mCs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efF-Bf-OEe" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -8,9 +8,20 @@
 
 import UIKit
 
+class cellSummary : UITableViewCell {
+	
+	@IBOutlet weak var lblPerson: UILabel!
+}
+
 class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 	@IBOutlet weak var finalBill: UITableView!
+	@IBOutlet weak var lblSummary: UILabel!
+	
+	var billArray:[Person]?
+	var totalAmount:Decimal?
+	var boolSvcCharge:Bool?
+	var boolGST:Bool?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,13 +30,16 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 		
 		finalBill.dataSource = self
 		finalBill.delegate = self
+		finalBill.separatorInset = .zero
+		finalBill.layoutMargins = .zero
+
+		self.updateSummaryLabel(label: lblSummary, amount: NSDecimalNumber(decimal: totalAmount!), svcCharge: boolSvcCharge!, GST: boolGST!)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-	
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		// #warning Incomplete implementation, return the number of sections
@@ -35,14 +49,90 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		// #warning Incomplete implementation, return the number of rows
-		return 10
+		return billArray!.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let cell = tableView.dequeueReusableCell(withIdentifier: "personBill")
+		var name = billArray![indexPath.row].name
+		let amount = billArray![indexPath.row].amount
 		
-		return cell!
+		let formatter = NumberFormatter()
+		let usLocale = NSLocale.init(localeIdentifier: "en_US")
+		formatter.minimumIntegerDigits = 1
+		formatter.minimumFractionDigits = 2
+		formatter.maximumFractionDigits = 2
+		formatter.roundingMode = .down
+		formatter.locale = usLocale as Locale!
+
+		let cell = tableView.dequeueReusableCell(withIdentifier: "personBill") as! cellSummary
+		
+		if ((formatter.string(from: NSDecimalNumber(decimal: amount))?.characters.count)! >= 7) {
+			
+			if (name.characters.count >= 10) {
+			
+				name.characters.removeLast(8)
+				name.append("...")
+			}
+		}
+		
+		let text = String(format: "%@ needs to pay $%@.", name, formatter.string(from: NSDecimalNumber(decimal: amount))!)
+		
+		let range = NSMakeRange(name.characters.count + 14, formatter.string(from: NSDecimalNumber(decimal: amount))!.characters.count + 1)
+		cell.lblPerson.attributedText = attributedString(from: text, nonBoldRange: range)
+
+		return cell
+	}
+	
+	func updateSummaryLabel(label: UILabel, amount: NSDecimalNumber, svcCharge: Bool, GST: Bool) {
+		
+		var targetString = ""
+		let formatter = NumberFormatter()
+		let usLocale = NSLocale.init(localeIdentifier: "en_US")
+		formatter.minimumIntegerDigits = 1
+		formatter.maximumFractionDigits = 2
+		formatter.roundingMode = .down
+		formatter.locale = usLocale as Locale!
+	
+		if (svcCharge && GST) {
+			
+			targetString = " inclusive of service charges and GST."
+		}
+		else if (!svcCharge && GST) {
+	
+			targetString = " inclusive of GST."
+		}
+		else {
+			
+			targetString = "."
+		}
+		
+		let text = String(format: "The total bill is $%@%@", formatter.string(from: amount)!, targetString)
+		
+		let range = NSMakeRange(18, formatter.string(from: amount)!.characters.count + 1)
+		print(formatter.string(from: amount)!.characters.count)
+		label.attributedText = attributedString(from: text, nonBoldRange: range)
+	}
+	
+	func attributedString(from string: String, nonBoldRange: NSRange?) -> NSAttributedString {
+		
+		let fontSize = lblSummary.font.pointSize
+		
+		let attrs = [
+			NSFontAttributeName: UIFont.systemFont(ofSize: fontSize, weight: UIFontWeightSemibold),
+			NSForegroundColorAttributeName: UIColor.black
+		]
+		
+		let nonBoldAttribute = [
+			NSFontAttributeName: UIFont.systemFont(ofSize: fontSize),
+			]
+		let attrStr = NSMutableAttributedString(string: string, attributes: nonBoldAttribute)
+		
+		if let range = nonBoldRange {
+			attrStr.setAttributes(attrs, range: range)
+		}
+		
+		return attrStr
 	}
 
     /*

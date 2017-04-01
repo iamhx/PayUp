@@ -20,7 +20,7 @@ struct Person {
 	var amount : Decimal
 }
 
-class CustomCell : UITableViewCell {
+class cellPerson : UITableViewCell {
 	
 	@IBOutlet weak var lblPerson: UILabel!
 	@IBOutlet weak var lblAmount: UILabel!
@@ -63,13 +63,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 			
 		else {
 			
-			let result = SplitBill().calculateBill(numOfPax: structArray, svcCharge: switchSvcCharge.isOn, GST: switchGST.isOn)
-			
-			for this in result.splitByPerson {
-				print("\(this.name), \(this.amount)")
-			}
-			
-			//self.performSegue(withIdentifier: "segueSummary", sender: self)
+			self.performSegue(withIdentifier: "segueSummary", sender: self)
 		}
 	}
 	
@@ -105,7 +99,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		}
 		else {
 			
-			maxLength = 13
+			maxLength = 10
 		}
 		
 		let currentString:NSString = textField.text! as NSString
@@ -211,6 +205,8 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		
 		billTableView.delegate = self
 		billTableView.dataSource = self
+		billTableView.separatorInset = .zero
+		billTableView.layoutMargins = .zero
 		
 		//updateTotalLabel(label: lblTotal, amount: totalBeforeTax)
 		updateTotalLabel(label: lblTotal, amount: NSDecimalNumber(decimal: totalBeforeTax))
@@ -235,7 +231,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let cell = tableView.dequeueReusableCell(withIdentifier: "newPerson") as! CustomCell
+		let cell = tableView.dequeueReusableCell(withIdentifier: "newPerson") as! cellPerson
 		
 //		cell.lblPerson?.text = "\(structArray[indexPath.row].name)"
 //		cell.lblAmount?.text = SplitBill().formatCurrency(amount: structArray[indexPath.row].amount)
@@ -250,7 +246,6 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		// Return false if you do not want the specified item to be editable.
 		return true
 	}
-	
 	
 	// Override to support editing the table view.
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -341,15 +336,24 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		label.attributedText = attributedString(from: targetString, nonBoldRange: range)
 	}
 	
-
-    /*
+	
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+		
+		if (segue.identifier == "segueSummary") {
+			
+			let result = SplitBill().calculateBill(numOfPax: structArray, svcCharge: switchSvcCharge.isOn, GST: switchGST.isOn)
+			let destination = segue.destination as! BillSummary
+			destination.billArray = result.splitByPerson
+			destination.totalAmount = result.totalAmount
+			destination.boolSvcCharge = switchSvcCharge.isOn
+			destination.boolGST = switchGST.isOn
+		}
     }
-    */
+	
 
 }
