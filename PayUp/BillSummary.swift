@@ -110,7 +110,6 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 		let text = String(format: "The total bill is $%@%@", formatter.string(from: amount)!, targetString)
 		
 		let range = NSMakeRange(18, formatter.string(from: amount)!.characters.count + 1)
-		print(formatter.string(from: amount)!.characters.count)
 		label.attributedText = attributedString(from: text, nonBoldRange: range)
 	}
 	
