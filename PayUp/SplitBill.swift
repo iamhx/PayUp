@@ -16,38 +16,38 @@ class SplitBill: NSObject {
 	func calculateBill(numOfPax: [Person], svcCharge: Bool, GST: Bool) -> (totalAmount: Decimal, splitByPerson: [Person]) {
 		
 		var totalCost:Decimal = 0.00
-		var finalBill:[Person] = numOfPax
+		var totalTax:Decimal = 0.00
+		var bill:[Person] = numOfPax
 		
 		for person in numOfPax {
 			
 			totalCost += person.amount //Find the total amount before taxes
 		}
 		
-		let taxCost = findTaxCost(totalAmt: totalCost, serviceCharge: svcCharge, goodsServiceTax: GST)
-		let taxByPerson = taxCost / Decimal(finalBill.count)
-		
-		for i in 0..<finalBill.count {
+		for i in 0..<bill.count {
 			
-			finalBill[i].amount += taxByPerson //Split tax to each person
+			let tax = findTaxCost(individualAmt: bill[i].amount, serviceCharge: svcCharge, goodsServiceTax: GST)
+			bill[i].amount += tax
+			totalTax += tax
 		}
 		
-		totalCost += taxCost //Calculate the total amount after taxes
+		totalCost += totalTax
 		
-		return (totalCost, finalBill)
+		return (totalCost, bill)
 	}
 	
-	func findTaxCost(totalAmt: Decimal, serviceCharge: Bool, goodsServiceTax: Bool) -> Decimal {
+	func findTaxCost(individualAmt: Decimal, serviceCharge: Bool, goodsServiceTax: Bool) -> Decimal {
 		
 		var taxCost:Decimal = 0.00
 
 		if (serviceCharge && goodsServiceTax) {
 			
-			taxCost = totalAmt * SERVICE_CHARGE
-			taxCost = taxCost + ((totalAmt + taxCost) * GOODS_SERVICE_TAX)
+			taxCost = individualAmt * SERVICE_CHARGE
+			taxCost = taxCost + ((individualAmt + taxCost) * GOODS_SERVICE_TAX)
 		}
 		else if (!serviceCharge && goodsServiceTax) {
 			
-			taxCost = totalAmt * GOODS_SERVICE_TAX //add GST
+			taxCost = individualAmt * GOODS_SERVICE_TAX //add GST
 		}
 		else {
 			
@@ -56,22 +56,6 @@ class SplitBill: NSObject {
 		
 		return taxCost
 	}
-	
-//	func formatCurrency(amount: Double) -> String {
-//		
-//		var string = ""
-//		
-//		if (amount.truncatingRemainder(dividingBy: 1) == 0) {
-//			
-//			string = String(format: "$%.2f", amount)
-//		}
-//		else {
-//			
-//			string = String(format: "$%.2f", (amount / 100) * 100)
-//		}
-//		
-//		return string
-//	}
 	
 	func formatCurrency(amount: NSDecimalNumber) -> String {
 		

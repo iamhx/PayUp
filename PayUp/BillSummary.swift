@@ -42,7 +42,6 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "personBill")
 		
-		
 		return cell!
 	}
 

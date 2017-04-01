@@ -68,6 +68,8 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 			for this in result.splitByPerson {
 				print("\(this.name), \(this.amount)")
 			}
+			
+			//self.performSegue(withIdentifier: "segueSummary", sender: self)
 		}
 	}
 	
