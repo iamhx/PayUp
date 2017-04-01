@@ -10,12 +10,12 @@ import UIKit
 
 class SplitBill: NSObject {
 	
-	let SERVICE_CHARGE:Double = 0.10
-	let GOODS_SERVICE_TAX:Double = 0.07
+	let SERVICE_CHARGE:Decimal = 0.10
+	let GOODS_SERVICE_TAX:Decimal = 0.07
 	
-	func calculateBill(numOfPax: [Person], svcCharge: Bool, GST: Bool) -> (totalAmount: Double, splitByPerson: [Person]) {
+	func calculateBill(numOfPax: [Person], svcCharge: Bool, GST: Bool) -> (totalAmount: Decimal, splitByPerson: [Person]) {
 		
-		var totalCost:Double = 0.00
+		var totalCost:Decimal = 0.00
 		var finalBill:[Person] = numOfPax
 		
 		for person in numOfPax {
@@ -24,7 +24,7 @@ class SplitBill: NSObject {
 		}
 		
 		let taxCost = findTaxCost(totalAmt: totalCost, serviceCharge: svcCharge, goodsServiceTax: GST)
-		let taxByPerson = taxCost / Double(finalBill.count)
+		let taxByPerson = taxCost / Decimal(finalBill.count)
 		
 		for i in 0..<finalBill.count {
 			
@@ -36,9 +36,9 @@ class SplitBill: NSObject {
 		return (totalCost, finalBill)
 	}
 	
-	func findTaxCost(totalAmt: Double, serviceCharge: Bool, goodsServiceTax: Bool) -> Double {
+	func findTaxCost(totalAmt: Decimal, serviceCharge: Bool, goodsServiceTax: Bool) -> Decimal {
 		
-		var taxCost:Double = 0.00
+		var taxCost:Decimal = 0.00
 
 		if (serviceCharge && goodsServiceTax) {
 			
