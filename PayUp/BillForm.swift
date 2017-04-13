@@ -52,14 +52,14 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 			self.present(promptEmpty, animated: true, completion: nil)
 		}
 			
-		else if (structArray.count <= 1 || billTableView.numberOfRows(inSection: 0) <= 1) {
+		/*else if (structArray.count <= 1 || billTableView.numberOfRows(inSection: 0) <= 1) {
 			
 			let promptOnePerson = UIAlertController(title: "Error", message: "You can't split the bill with only one person.", preferredStyle: .alert)
 			let actionOK = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
 			promptOnePerson.addAction(actionOK)
 			
 			self.present(promptOnePerson, animated: true, completion: nil)
-		}
+		}*/
 			
 		else {
 			
@@ -99,7 +99,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		}
 		else {
 			
-			maxLength = 10
+			maxLength = 13
 		}
 		
 		let currentString:NSString = textField.text! as NSString

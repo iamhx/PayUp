@@ -11,6 +11,7 @@ import UIKit
 class cellSummary : UITableViewCell {
 	
 	@IBOutlet weak var lblPerson: UILabel!
+	@IBOutlet weak var lblAmount: UILabel!
 }
 
 class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -54,7 +55,7 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		var name = billArray![indexPath.row].name
+		let name = billArray![indexPath.row].name
 		let amount = billArray![indexPath.row].amount
 		
 		let formatter = NumberFormatter()
@@ -67,19 +68,8 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 
 		let cell = tableView.dequeueReusableCell(withIdentifier: "personBill") as! cellSummary
 		
-		if ((formatter.string(from: NSDecimalNumber(decimal: amount))?.characters.count)! >= 7) {
-			
-			if (name.characters.count >= 10) {
-			
-				name.characters.removeLast(8)
-				name.append("...")
-			}
-		}
-		
-		let text = String(format: "%@ needs to pay $%@.", name, formatter.string(from: NSDecimalNumber(decimal: amount))!)
-		
-		let range = NSMakeRange(name.characters.count + 14, formatter.string(from: NSDecimalNumber(decimal: amount))!.characters.count + 1)
-		cell.lblPerson.attributedText = attributedString(from: text, nonBoldRange: range)
+		cell.lblPerson.text = name
+		cell.lblAmount.text = String(format: "$%@", formatter.string(from: NSDecimalNumber(decimal: amount))!)
 
 		return cell
 	}
@@ -90,6 +80,7 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 		let formatter = NumberFormatter()
 		let usLocale = NSLocale.init(localeIdentifier: "en_US")
 		formatter.minimumIntegerDigits = 1
+		formatter.minimumFractionDigits = 2
 		formatter.maximumFractionDigits = 2
 		formatter.roundingMode = .down
 		formatter.locale = usLocale as Locale!

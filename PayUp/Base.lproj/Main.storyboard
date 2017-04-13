@@ -70,7 +70,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0iY-If-qON" id="34P-eP-ATC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRg-pt-Gd5">
@@ -179,26 +179,33 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hHp-8R-0qw" id="2Vv-Lo-naC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person needs to pay Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEd-Kq-cg7">
-                                                    <rect key="frame" x="8" y="8" width="359" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vyd-2C-fll">
+                                                    <rect key="frame" x="8" y="12" width="54" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMv-Ya-zgD">
+                                                    <rect key="frame" x="303" y="12" width="64" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="MEd-Kq-cg7" firstAttribute="top" secondItem="2Vv-Lo-naC" secondAttribute="topMargin" id="LNi-hg-p4d"/>
-                                                <constraint firstItem="MEd-Kq-cg7" firstAttribute="leading" secondItem="2Vv-Lo-naC" secondAttribute="leadingMargin" id="SgG-tw-NZM"/>
-                                                <constraint firstItem="MEd-Kq-cg7" firstAttribute="centerY" secondItem="2Vv-Lo-naC" secondAttribute="centerY" id="hT5-zd-iud"/>
-                                                <constraint firstItem="MEd-Kq-cg7" firstAttribute="trailing" secondItem="2Vv-Lo-naC" secondAttribute="trailingMargin" id="qYU-mB-2IU"/>
+                                                <constraint firstItem="Vyd-2C-fll" firstAttribute="baseline" secondItem="IMv-Ya-zgD" secondAttribute="baseline" id="fiA-gb-hpr"/>
+                                                <constraint firstItem="Vyd-2C-fll" firstAttribute="leading" secondItem="2Vv-Lo-naC" secondAttribute="leadingMargin" id="gbk-u2-HJr"/>
+                                                <constraint firstItem="Vyd-2C-fll" firstAttribute="top" secondItem="2Vv-Lo-naC" secondAttribute="topMargin" constant="4" id="ni9-ij-dXv"/>
+                                                <constraint firstItem="IMv-Ya-zgD" firstAttribute="trailing" secondItem="2Vv-Lo-naC" secondAttribute="trailingMargin" id="uy5-zw-JJC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="lblPerson" destination="MEd-Kq-cg7" id="0XI-Vr-h26"/>
+                                            <outlet property="lblAmount" destination="IMv-Ya-zgD" id="ntn-HN-E81"/>
+                                            <outlet property="lblPerson" destination="Vyd-2C-fll" id="DAH-7F-4Pa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -207,14 +214,14 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="j2y-t4-geX" firstAttribute="leading" secondItem="UIc-I3-dSz" secondAttribute="leading" id="78H-fd-g8H"/>
-                            <constraint firstItem="lsh-By-BDH" firstAttribute="leading" secondItem="UIc-I3-dSz" secondAttribute="leadingMargin" id="ETc-8G-oGC"/>
-                            <constraint firstAttribute="trailing" secondItem="j2y-t4-geX" secondAttribute="trailing" id="Eg0-Ih-oG4"/>
-                            <constraint firstItem="lsh-By-BDH" firstAttribute="top" secondItem="jD7-Nm-LUM" secondAttribute="bottom" constant="8" symbolic="YES" id="FZF-ki-7Xg"/>
-                            <constraint firstItem="rUu-n1-gXs" firstAttribute="top" secondItem="j2y-t4-geX" secondAttribute="bottom" constant="146" id="IbZ-jb-tQj"/>
-                            <constraint firstItem="j2y-t4-geX" firstAttribute="centerY" secondItem="UIc-I3-dSz" secondAttribute="centerY" id="Jg7-p1-amW"/>
-                            <constraint firstItem="lsh-By-BDH" firstAttribute="centerX" secondItem="j2y-t4-geX" secondAttribute="centerX" id="RnX-1N-6fn"/>
-                            <constraint firstItem="j2y-t4-geX" firstAttribute="top" secondItem="lsh-By-BDH" secondAttribute="bottom" constant="8" symbolic="YES" id="jtb-lc-VDM"/>
+                            <constraint firstItem="rUu-n1-gXs" firstAttribute="top" secondItem="j2y-t4-geX" secondAttribute="bottom" constant="146" id="32w-J4-j3W"/>
+                            <constraint firstAttribute="trailing" secondItem="j2y-t4-geX" secondAttribute="trailing" id="BZ0-cU-Q0Q"/>
+                            <constraint firstItem="j2y-t4-geX" firstAttribute="top" secondItem="lsh-By-BDH" secondAttribute="bottom" constant="8" symbolic="YES" id="BZ1-wn-m9I"/>
+                            <constraint firstItem="j2y-t4-geX" firstAttribute="leading" secondItem="UIc-I3-dSz" secondAttribute="leading" id="Eiq-ML-Avy"/>
+                            <constraint firstItem="j2y-t4-geX" firstAttribute="centerY" secondItem="UIc-I3-dSz" secondAttribute="centerY" id="RMq-u1-zhk"/>
+                            <constraint firstItem="lsh-By-BDH" firstAttribute="top" secondItem="jD7-Nm-LUM" secondAttribute="bottom" constant="8" symbolic="YES" id="Tx8-dL-V2D"/>
+                            <constraint firstItem="lsh-By-BDH" firstAttribute="centerX" secondItem="j2y-t4-geX" secondAttribute="centerX" id="d4F-KQ-4od"/>
+                            <constraint firstItem="lsh-By-BDH" firstAttribute="leading" secondItem="UIc-I3-dSz" secondAttribute="leadingMargin" id="pOK-cB-g5e"/>
                         </constraints>
                     </view>
                     <connections>
