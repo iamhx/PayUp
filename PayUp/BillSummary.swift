@@ -26,8 +26,8 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 	
 	@IBAction func btnRestart(_ sender: UIButton) {
 		
-		let promptAlert = UIAlertController(title: "Start Over", message: "Do you want to start over?", preferredStyle: .alert)
-		let yesAction = UIAlertAction(title: "Yes", style: .default) { action in
+		let promptAlert = UIAlertController(title: "", message: "Are you sure you want to start over?", preferredStyle: .actionSheet)
+		let yesAction = UIAlertAction(title: "Start Over", style: .destructive) { action in
 			
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
 			let rootVC = storyboard.instantiateViewController(withIdentifier: "billRootViewController")
@@ -42,6 +42,23 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 		self.present(promptAlert, animated: true, completion: nil)
 	}
 	
+	@IBAction func btnMainMenu(_ sender: Any) {
+		
+		let promptAlert = UIAlertController(title: "", message: "Are you sure you want to return to the main menu?", preferredStyle: .actionSheet)
+		let yesAction = UIAlertAction(title: "Return to main menu", style: .destructive) { action in
+			
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let rootVC = storyboard.instantiateViewController(withIdentifier: "mainRootViewController")
+			self.present(rootVC, animated: true, completion: nil)
+		}
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		
+		promptAlert.addAction(yesAction)
+		promptAlert.addAction(cancelAction)
+		
+		self.present(promptAlert, animated: true, completion: nil)
+	}
     override func viewDidLoad() {
         super.viewDidLoad()
 

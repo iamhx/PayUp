@@ -229,6 +229,24 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		return structArray.count
 	}
 	
+	@IBAction func btnMainMenu(_ sender: UIBarButtonItem) {
+		
+		let promptAlert = UIAlertController(title: "", message: "Are you sure you want to return to the main menu? All changes made will not be saved.", preferredStyle: .actionSheet)
+		let yesAction = UIAlertAction(title: "Return to main menu", style: .destructive) { action in
+			
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let rootVC = storyboard.instantiateViewController(withIdentifier: "mainRootViewController")
+			self.present(rootVC, animated: true, completion: nil)
+		}
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		
+		promptAlert.addAction(yesAction)
+		promptAlert.addAction(cancelAction)
+		
+		self.present(promptAlert, animated: true, completion: nil)
+	}
+	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "newPerson") as! cellPerson
