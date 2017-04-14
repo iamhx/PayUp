@@ -99,7 +99,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		}
 		else {
 			
-			maxLength = 13
+			maxLength = 11
 		}
 		
 		let currentString:NSString = textField.text! as NSString
