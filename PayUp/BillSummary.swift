@@ -24,6 +24,24 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 	var boolSvcCharge:Bool?
 	var boolGST:Bool?
 	
+	@IBAction func btnRestart(_ sender: UIButton) {
+		
+		let promptAlert = UIAlertController(title: "Start Over", message: "Do you want to start over?", preferredStyle: .alert)
+		let yesAction = UIAlertAction(title: "Yes", style: .default) { action in
+			
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let rootVC = storyboard.instantiateViewController(withIdentifier: "billRootViewController")
+			self.present(rootVC, animated: true, completion: nil)
+		}
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		
+		promptAlert.addAction(yesAction)
+		promptAlert.addAction(cancelAction)
+		
+		self.present(promptAlert, animated: true, completion: nil)
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -134,5 +152,4 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
         // Pass the selected object to the new view controller.
     }
     */
-
 }
