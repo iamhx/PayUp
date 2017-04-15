@@ -15,10 +15,11 @@ class StartMenu: UIViewController {
 
         // Do any additional setup after loading the view.
 
-		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-		self.navigationController?.navigationBar.shadowImage = UIImage()
-		self.navigationController?.navigationBar.isTranslucent = true
-		self.navigationController?.view.backgroundColor = UIColor.clear
+		//self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+		//self.navigationController?.navigationBar.shadowImage = UIImage()
+		//self.navigationController?.view.backgroundColor = UIColor.clear
+		self.navigationController?.navigationBar.isTranslucent = false
+		self.navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 147.0/255.0, blue: 44.0/255.0, alpha: 1.0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +33,7 @@ class StartMenu: UIViewController {
 		let rootVC = storyboard.instantiateViewController(withIdentifier: "billRootViewController")
 		self.present(rootVC, animated: true, completion: nil)
 	}
-
+	
     /*
     // MARK: - Navigation
 

@@ -140,7 +140,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Your Bill" id="41B-Wb-WDT">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="ucI-rj-FMS"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="ucI-rj-FMS"/>
                         <barButtonItem key="leftBarButtonItem" image="home" id="H8V-mv-Cm8">
                             <connections>
                                 <action selector="btnMainMenu:" destination="BYZ-38-t0r" id="9jO-kB-fGB"/>
@@ -177,16 +177,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u64-Xp-mg6">
-                                <rect key="frame" x="148.5" y="617" width="78" height="30"/>
+                                <rect key="frame" x="148.5" y="570" width="78" height="30"/>
                                 <state key="normal" title="Need help?">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPb-1Y-hh3">
-                                <rect key="frame" x="11" y="493" width="344" height="55"/>
+                                <rect key="frame" x="16" y="465" width="343" height="55"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="SPb-1Y-hh3" secondAttribute="height" multiplier="344:55" id="AgD-wZ-Dff"/>
+                                    <constraint firstAttribute="width" secondItem="SPb-1Y-hh3" secondAttribute="height" multiplier="344:55" constant="-1" id="TuB-mu-Eee"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="Split a Bill">
@@ -204,15 +204,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="u64-Xp-mg6" firstAttribute="top" secondItem="SPb-1Y-hh3" secondAttribute="bottom" constant="69" id="4Bt-zA-uLH"/>
-                            <constraint firstItem="u64-Xp-mg6" firstAttribute="centerX" secondItem="iwF-L1-JMp" secondAttribute="centerX" id="7Pi-tl-hbv"/>
-                            <constraint firstItem="SPb-1Y-hh3" firstAttribute="centerX" secondItem="iwF-L1-JMp" secondAttribute="centerX" constant="-4.5" id="HzM-r1-k1x"/>
-                            <constraint firstItem="tUH-zg-2hn" firstAttribute="top" secondItem="SPb-1Y-hh3" secondAttribute="bottom" constant="119" id="RMS-h7-DG6"/>
-                            <constraint firstItem="SPb-1Y-hh3" firstAttribute="leading" secondItem="iwF-L1-JMp" secondAttribute="leadingMargin" constant="-5" id="cHg-dz-nfF"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="SPb-1Y-hh3" secondAttribute="leading" id="4uX-0F-dLe"/>
+                            <constraint firstItem="tUH-zg-2hn" firstAttribute="top" secondItem="SPb-1Y-hh3" secondAttribute="bottom" constant="147" id="5Zc-Lc-FIJ"/>
+                            <constraint firstItem="u64-Xp-mg6" firstAttribute="top" secondItem="SPb-1Y-hh3" secondAttribute="bottom" constant="50" id="B1u-WN-p5m"/>
+                            <constraint firstItem="u64-Xp-mg6" firstAttribute="centerX" secondItem="iwF-L1-JMp" secondAttribute="centerX" id="RqD-xA-Fq6"/>
+                            <constraint firstItem="SPb-1Y-hh3" firstAttribute="centerX" secondItem="iwF-L1-JMp" secondAttribute="centerX" id="wY3-F0-mbh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KdZ-YJ-uEf">
-                        <barButtonItem key="backBarButtonItem" title=" " id="bea-hn-pkk"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="xVN-is-Ur5"/>
                         <barButtonItem key="rightBarButtonItem" image="gear" id="6Gv-VF-uVQ">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -229,17 +229,54 @@
         <scene sceneID="TSW-UM-EgA">
             <objects>
                 <tableViewController title="Settings" id="4f3-SH-rxd" customClass="Settings" customModule="PayUp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="219-e6-GD7">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="219-e6-GD7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2017 SR Softworks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SbA-tJ-esx">
-                            <rect key="frame" x="0.0" y="219" width="375" height="44"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="J9T-iM-1ci">
+                            <rect key="frame" x="0.0" y="219" width="375" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2017 SR Softworks" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xo9-rE-pbm">
+                                    <rect key="frame" x="79" y="42" width="217" height="22"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cq2-dq-5kD">
+                                    <rect key="frame" x="146" y="2" width="35" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="35" id="oO3-a1-Jj8"/>
+                                    </constraints>
+                                    <state key="normal" image="facebook"/>
+                                    <connections>
+                                        <action selector="btnFacebook:" destination="4f3-SH-rxd" eventType="touchUpInside" id="RwZ-hW-j4E"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3f-gC-8Z6">
+                                    <rect key="frame" x="194" y="3" width="32" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="32" id="r8I-Vm-qVa"/>
+                                    </constraints>
+                                    <state key="normal" image="twitter"/>
+                                    <connections>
+                                        <action selector="btnTwitter:" destination="4f3-SH-rxd" eventType="touchUpInside" id="RGi-K3-j1e"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="cq2-dq-5kD" firstAttribute="centerX" secondItem="J9T-iM-1ci" secondAttribute="centerX" constant="-24" id="03l-qF-w3D"/>
+                                <constraint firstItem="xo9-rE-pbm" firstAttribute="bottom" secondItem="J9T-iM-1ci" secondAttribute="bottomMargin" constant="-28" id="3T8-KU-36S"/>
+                                <constraint firstItem="B3f-gC-8Z6" firstAttribute="bottom" secondItem="cq2-dq-5kD" secondAttribute="bottom" constant="-2" id="7bc-Ps-3aI"/>
+                                <constraint firstItem="B3f-gC-8Z6" firstAttribute="leading" secondItem="cq2-dq-5kD" secondAttribute="trailing" constant="13" id="BJa-vZ-RDk"/>
+                                <constraint firstItem="cq2-dq-5kD" firstAttribute="centerY" secondItem="J9T-iM-1ci" secondAttribute="centerY" constant="-30.5" id="CBQ-Nc-9xn"/>
+                                <constraint firstItem="cq2-dq-5kD" firstAttribute="top" secondItem="J9T-iM-1ci" secondAttribute="top" constant="2" id="Lz7-Fo-BKW"/>
+                                <constraint firstItem="B3f-gC-8Z6" firstAttribute="top" secondItem="cq2-dq-5kD" secondAttribute="top" constant="1" id="NFK-6t-IaI"/>
+                                <constraint firstItem="xo9-rE-pbm" firstAttribute="top" secondItem="cq2-dq-5kD" secondAttribute="bottom" constant="5" id="doL-9w-5N4"/>
+                                <constraint firstItem="cq2-dq-5kD" firstAttribute="centerX" secondItem="xo9-rE-pbm" secondAttribute="centerX" constant="-24" id="r19-FR-I52"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection headerTitle="Support" id="eM3-0y-Med">
                                 <cells>
@@ -308,7 +345,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hC-6m-pt4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4353" y="891"/>
+            <point key="canvasLocation" x="4352.8000000000002" y="890.10494752623697"/>
         </scene>
         <!--Summary-->
         <scene sceneID="m4m-VZ-Zuk">
@@ -466,7 +503,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="facebook" width="256" height="256"/>
         <image name="gear" width="22" height="22"/>
         <image name="home" width="22" height="22"/>
+        <image name="twitter" width="128" height="128"/>
     </resources>
 </document>

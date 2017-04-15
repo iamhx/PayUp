@@ -9,7 +9,48 @@
 import UIKit
 
 class Settings: UITableViewController {
+	
+	@IBAction func btnFacebook(_ sender: UIButton) {
+		
+		guard let facebookURL = URL(string: "fb://page/?id=1896250340630689") else {
+			return
+		}
+		
+		if (UIApplication.shared.canOpenURL(facebookURL)) {
+			
+			UIApplication.shared.open(facebookURL, options: [:], completionHandler: nil)
+		}
+		else {
+			
+			guard let webpageURL = URL(string: "http://facebook.com/SRSoftworks/") else {
+				return
+			}
+			
+			UIApplication.shared.open(webpageURL, options: [:], completionHandler: nil)
+		}
+	}
 
+	@IBAction func btnTwitter(_ sender: UIButton) {
+		
+		guard let twitterURL = URL(string: "twitter://user?screen_name=srsoftworks") else {
+			
+			return
+		}
+		
+		if (UIApplication.shared.canOpenURL(twitterURL)) {
+			
+			UIApplication.shared.open(twitterURL, options: [:], completionHandler: nil)
+		}
+		else {
+			
+			guard let webpageURL = URL(string: "http://twitter.com/srsoftworks/") else {
+				return
+			}
+			
+			UIApplication.shared.open(webpageURL, options: [:], completionHandler: nil)
+		}
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,10 +60,9 @@ class Settings: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 		
-		self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 		self.navigationController?.navigationBar.tintColor = .black
     }
-
+	
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
