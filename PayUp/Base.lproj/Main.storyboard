@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -175,17 +176,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u64-Xp-mg6">
-                                <rect key="frame" x="148" y="617" width="78" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u64-Xp-mg6">
+                                <rect key="frame" x="148.5" y="617" width="78" height="30"/>
                                 <state key="normal" title="Need help?">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPb-1Y-hh3">
-                                <rect key="frame" x="16" y="493" width="343" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPb-1Y-hh3">
+                                <rect key="frame" x="11" y="493" width="344" height="55"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SPb-1Y-hh3" secondAttribute="height" multiplier="344:55" id="AgD-wZ-Dff"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="Split a Bill">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -201,6 +203,13 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="u64-Xp-mg6" firstAttribute="top" secondItem="SPb-1Y-hh3" secondAttribute="bottom" constant="69" id="4Bt-zA-uLH"/>
+                            <constraint firstItem="u64-Xp-mg6" firstAttribute="centerX" secondItem="iwF-L1-JMp" secondAttribute="centerX" id="7Pi-tl-hbv"/>
+                            <constraint firstItem="SPb-1Y-hh3" firstAttribute="centerX" secondItem="iwF-L1-JMp" secondAttribute="centerX" constant="-4.5" id="HzM-r1-k1x"/>
+                            <constraint firstItem="tUH-zg-2hn" firstAttribute="top" secondItem="SPb-1Y-hh3" secondAttribute="bottom" constant="119" id="RMS-h7-DG6"/>
+                            <constraint firstItem="SPb-1Y-hh3" firstAttribute="leading" secondItem="iwF-L1-JMp" secondAttribute="leadingMargin" constant="-5" id="cHg-dz-nfF"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KdZ-YJ-uEf">
                         <barButtonItem key="backBarButtonItem" title=" " id="bea-hn-pkk"/>
