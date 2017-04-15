@@ -26,7 +26,7 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 	
 	@IBAction func btnRestart(_ sender: UIButton) {
 		
-		let promptAlert = UIAlertController(title: "", message: "Are you sure you want to start over?", preferredStyle: .actionSheet)
+		let promptAlert = UIAlertController(title: "", message: "Do you want to start over?", preferredStyle: .actionSheet)
 		let yesAction = UIAlertAction(title: "Start Over", style: .destructive) { action in
 			
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -44,7 +44,7 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 	
 	@IBAction func btnMainMenu(_ sender: Any) {
 		
-		let promptAlert = UIAlertController(title: "", message: "Are you sure you want to return to the main menu?", preferredStyle: .actionSheet)
+		let promptAlert = UIAlertController(title: "", message: "Do you want to return back to the main menu?", preferredStyle: .actionSheet)
 		let yesAction = UIAlertAction(title: "Return to main menu", style: .destructive) { action in
 			
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)

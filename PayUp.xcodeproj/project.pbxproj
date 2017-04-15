@@ -15,6 +15,7 @@
 		E55F44E01E80753500F0BFEF /* BillSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F44DF1E80753500F0BFEF /* BillSummary.swift */; };
 		E56EAAC61EA122C80018EB04 /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56EAAC51EA122C80018EB04 /* StartMenu.swift */; };
 		E5B0BAD11E7F0DE5005C299F /* BillForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B0BAD01E7F0DE5005C299F /* BillForm.swift */; };
+		E5D940EC1EA2467200984019 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D940EB1EA2467200984019 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		E55F44DF1E80753500F0BFEF /* BillSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillSummary.swift; sourceTree = "<group>"; };
 		E56EAAC51EA122C80018EB04 /* StartMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = "<group>"; };
 		E5B0BAD01E7F0DE5005C299F /* BillForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillForm.swift; sourceTree = "<group>"; };
+		E5D940EB1EA2467200984019 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				E55F44DD1E80491B00F0BFEF /* SplitBill.swift */,
 				E55F44DF1E80753500F0BFEF /* BillSummary.swift */,
 				E56EAAC51EA122C80018EB04 /* StartMenu.swift */,
+				E5D940EB1EA2467200984019 /* Settings.swift */,
 			);
 			path = PayUp;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5D940EC1EA2467200984019 /* Settings.swift in Sources */,
 				E5B0BAD11E7F0DE5005C299F /* BillForm.swift in Sources */,
 				E56EAAC61EA122C80018EB04 /* StartMenu.swift in Sources */,
 				E55F44E01E80753500F0BFEF /* BillSummary.swift in Sources */,

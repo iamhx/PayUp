@@ -231,7 +231,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 	
 	@IBAction func btnMainMenu(_ sender: UIBarButtonItem) {
 		
-		let promptAlert = UIAlertController(title: "", message: "Are you sure you want to return to the main menu? All changes made will not be saved.", preferredStyle: .actionSheet)
+		let promptAlert = UIAlertController(title: "", message: "Do you want to return back to the main menu? All changes made will not be saved.", preferredStyle: .actionSheet)
 		let yesAction = UIAlertAction(title: "Return to main menu", style: .destructive) { action in
 			
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
