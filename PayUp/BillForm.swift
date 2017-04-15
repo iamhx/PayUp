@@ -51,16 +51,6 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 			
 			self.present(promptEmpty, animated: true, completion: nil)
 		}
-			
-		/*else if (structArray.count <= 1 || billTableView.numberOfRows(inSection: 0) <= 1) {
-			
-			let promptOnePerson = UIAlertController(title: "Error", message: "You can't split the bill with only one person.", preferredStyle: .alert)
-			let actionOK = UIAlertAction(title: "Try Again", style: .cancel, handler: nil)
-			promptOnePerson.addAction(actionOK)
-			
-			self.present(promptOnePerson, animated: true, completion: nil)
-		}*/
-			
 		else {
 			
 			self.performSegue(withIdentifier: "segueSummary", sender: self)
@@ -137,25 +127,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 				
 				self.valError(promptInputAgain: inputPerson)
 			}
-				
 			else {
-				
-				/*guard let unwrappedInput = Double(inputAmt.text!) else {
-					self.valError(promptInputAgain: inputPerson)
-					return
-				}*/
-				
-				/*
-				let newPerson = Person(name: inputName.text!, amount: unwrappedInput)
-				self.structArray.append(newPerson)
-				
-				self.totalBeforeTax += self.structArray[self.structArray.count - 1].amount
-				
-				self.billTableView.beginUpdates()
-				self.billTableView.insertRows(at: [IndexPath(row: self.structArray.count - 1, section: 0)], with: .automatic)
-				self.billTableView.endUpdates()
-				
-				self.updateTotalLabel(label: self.lblTotal, amount: self.totalBeforeTax)*/
 				
 				let unwrappedInput = NSDecimalNumber.init(string: inputAmt.text!)
 				
@@ -203,7 +175,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		
 		// Do any additional setup after loading the view.
 		
-		self.navigationController?.navigationBar.isTranslucent = false
+		//self.navigationController?.navigationBar.isTranslucent = false
 		self.navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 147.0/255.0, blue: 44.0/255.0, alpha: 1.0)
 		
 		billTableView.delegate = self
@@ -211,7 +183,6 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		billTableView.separatorInset = .zero
 		billTableView.layoutMargins = .zero
 		
-		//updateTotalLabel(label: lblTotal, amount: totalBeforeTax)
 		updateTotalLabel(label: lblTotal, amount: NSDecimalNumber(decimal: totalBeforeTax))
 	}
 
@@ -254,9 +225,6 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "newPerson") as! cellPerson
 		
-//		cell.lblPerson?.text = "\(structArray[indexPath.row].name)"
-//		cell.lblAmount?.text = SplitBill().formatCurrency(amount: structArray[indexPath.row].amount)
-		
 		cell.lblPerson?.text = "\(structArray[indexPath.row].name)"
 		cell.lblAmount?.text = SplitBill().formatCurrency(amount: NSDecimalNumber(decimal: structArray[indexPath.row].amount))
 
@@ -283,7 +251,6 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 			billTableView.deleteRows(at: [rowIndex], with: .fade)
 			billTableView.endUpdates()
 			
-			//self.updateTotalLabel(label: lblTotal, amount: totalBeforeTax)
 			self.updateTotalLabel(label: lblTotal, amount: NSDecimalNumber(decimal: totalBeforeTax))
 		}
 	}
@@ -308,30 +275,6 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		
 		return attrStr
 	}
-	
-	/*func updateTotalLabel(label: UILabel, amount: Double) {
-		
-		var targetString = ""
-		
-		if (amount.truncatingRemainder(dividingBy: 1) == 0) {
-			
-			targetString = String(format: "Total: $%.2f", amount)
-		}
-		else {
-			
-			if (amount <= 0.00) {
-				
-				targetString = "$Total: $0.00"
-			}
-			else {
-				
-				targetString = String(format: "Total: $%.2f", (amount / 100) * 100)
-			}
-		}
-		
-		let range = NSMakeRange(0, 7)
-		label.attributedText = attributedString(from: targetString, nonBoldRange: range)
-	}*/
 	
 	func updateTotalLabel(label: UILabel, amount: NSDecimalNumber) {
 		
@@ -375,6 +318,4 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 			destination.boolGST = switchGST.isOn
 		}
     }
-	
-
 }

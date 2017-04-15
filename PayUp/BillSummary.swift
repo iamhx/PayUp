@@ -59,6 +59,7 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 		
 		self.present(promptAlert, animated: true, completion: nil)
 	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 

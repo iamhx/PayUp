@@ -177,7 +177,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u64-Xp-mg6">
-                                <rect key="frame" x="148.5" y="570" width="78" height="30"/>
+                                <rect key="frame" x="148.5" y="585" width="78" height="30"/>
                                 <state key="normal" title="Need help?">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -206,7 +206,7 @@
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="SPb-1Y-hh3" secondAttribute="leading" id="4uX-0F-dLe"/>
                             <constraint firstItem="tUH-zg-2hn" firstAttribute="top" secondItem="SPb-1Y-hh3" secondAttribute="bottom" constant="147" id="5Zc-Lc-FIJ"/>
-                            <constraint firstItem="u64-Xp-mg6" firstAttribute="top" secondItem="SPb-1Y-hh3" secondAttribute="bottom" constant="50" id="B1u-WN-p5m"/>
+                            <constraint firstItem="u64-Xp-mg6" firstAttribute="top" secondItem="SPb-1Y-hh3" secondAttribute="bottom" constant="65" id="B1u-WN-p5m"/>
                             <constraint firstItem="u64-Xp-mg6" firstAttribute="centerX" secondItem="iwF-L1-JMp" secondAttribute="centerX" id="RqD-xA-Fq6"/>
                             <constraint firstItem="SPb-1Y-hh3" firstAttribute="centerX" secondItem="iwF-L1-JMp" secondAttribute="centerX" id="wY3-F0-mbh"/>
                         </constraints>
