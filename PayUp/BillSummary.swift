@@ -23,10 +23,11 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 	var totalAmount:Decimal?
 	var boolSvcCharge:Bool?
 	var boolGST:Bool?
+	var controllerStyle:UIAlertControllerStyle?
 	
 	@IBAction func btnRestart(_ sender: UIButton) {
 		
-		let promptAlert = UIAlertController(title: "", message: "Do you want to start over?", preferredStyle: .actionSheet)
+		let promptAlert = UIAlertController(title: "", message: "Do you want to start over?", preferredStyle: controllerStyle!)
 		let yesAction = UIAlertAction(title: "Start Over", style: .destructive) { action in
 			
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -44,7 +45,7 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 	
 	@IBAction func btnMainMenu(_ sender: Any) {
 		
-		let promptAlert = UIAlertController(title: "", message: "Do you want to return back to the main menu?", preferredStyle: .actionSheet)
+		let promptAlert = UIAlertController(title: "", message: "Do you want to return back to the main menu?", preferredStyle: controllerStyle!)
 		let yesAction = UIAlertAction(title: "Return to main menu", style: .destructive) { action in
 			
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -64,6 +65,14 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		
+		if ( UI_USER_INTERFACE_IDIOM() == .pad )
+		{
+			controllerStyle = .alert
+		}
+		else {
+			controllerStyle = .actionSheet
+		}
 		
 		finalBill.dataSource = self
 		finalBill.delegate = self

@@ -31,12 +31,10 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 	
 	@IBOutlet weak var lblTotal: UILabel!
 	@IBOutlet weak var billTableView: UITableView!
-	
-	//var structArray:[Person] = []
-	//var totalBeforeTax:Double = 0.00
 
 	var structArray:[Person] = []
 	var totalBeforeTax:Decimal = 0.00
+	var controllerStyle : UIAlertControllerStyle?
 	
 	@IBOutlet weak var switchSvcCharge: UISwitch!
 	@IBOutlet weak var switchGST: UISwitch!
@@ -178,6 +176,14 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		//self.navigationController?.navigationBar.isTranslucent = false
 		//self.navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 147.0/255.0, blue: 44.0/255.0, alpha: 1.0)
 		
+		if ( UI_USER_INTERFACE_IDIOM() == .pad )
+		{
+			controllerStyle = .alert
+		}
+		else {
+			controllerStyle = .actionSheet
+		}
+		
 		billTableView.delegate = self
 		billTableView.dataSource = self
 		billTableView.separatorInset = .zero
@@ -205,7 +211,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 	
 	@IBAction func btnMainMenu(_ sender: UIBarButtonItem) {
 		
-		let promptAlert = UIAlertController(title: "", message: "Do you want to return back to the main menu? All changes made will not be saved.", preferredStyle: .actionSheet)
+		let promptAlert = UIAlertController(title: "", message: "Do you want to return back to the main menu? All changes made will not be saved.", preferredStyle: controllerStyle!)
 		let yesAction = UIAlertAction(title: "Return to main menu", style: .destructive) { action in
 			
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
