@@ -176,7 +176,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		// Do any additional setup after loading the view.
 		
 		//self.navigationController?.navigationBar.isTranslucent = false
-		self.navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 147.0/255.0, blue: 44.0/255.0, alpha: 1.0)
+		//self.navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 147.0/255.0, blue: 44.0/255.0, alpha: 1.0)
 		
 		billTableView.delegate = self
 		billTableView.dataSource = self

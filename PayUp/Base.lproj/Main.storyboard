@@ -186,7 +186,7 @@
                                 <rect key="frame" x="16" y="465" width="343" height="55"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="SPb-1Y-hh3" secondAttribute="height" multiplier="344:55" constant="-1" id="TuB-mu-Eee"/>
+                                    <constraint firstAttribute="width" secondItem="SPb-1Y-hh3" secondAttribute="height" multiplier="343:55" id="R2Z-w8-etV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="Split a Bill">
@@ -201,14 +201,23 @@
                                     <action selector="btnNewSplit:" destination="sPZ-wm-GEj" eventType="touchUpInside" id="9Q6-fC-BqW"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="MKY-gX-P1F">
+                                <rect key="frame" x="0.0" y="72" width="375" height="262"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="MKY-gX-P1F" secondAttribute="height" multiplier="375:262" id="7rh-0b-61L"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="SPb-1Y-hh3" secondAttribute="leading" id="4uX-0F-dLe"/>
-                            <constraint firstItem="tUH-zg-2hn" firstAttribute="top" secondItem="SPb-1Y-hh3" secondAttribute="bottom" constant="147" id="5Zc-Lc-FIJ"/>
-                            <constraint firstItem="u64-Xp-mg6" firstAttribute="top" secondItem="SPb-1Y-hh3" secondAttribute="bottom" constant="65" id="B1u-WN-p5m"/>
-                            <constraint firstItem="u64-Xp-mg6" firstAttribute="centerX" secondItem="iwF-L1-JMp" secondAttribute="centerX" id="RqD-xA-Fq6"/>
-                            <constraint firstItem="SPb-1Y-hh3" firstAttribute="centerX" secondItem="iwF-L1-JMp" secondAttribute="centerX" id="wY3-F0-mbh"/>
+                            <constraint firstAttribute="trailing" secondItem="MKY-gX-P1F" secondAttribute="trailing" id="5y6-L0-R4D"/>
+                            <constraint firstItem="u64-Xp-mg6" firstAttribute="top" secondItem="SPb-1Y-hh3" secondAttribute="bottom" constant="65" id="Mu9-j0-Yfq"/>
+                            <constraint firstItem="tUH-zg-2hn" firstAttribute="top" secondItem="u64-Xp-mg6" secondAttribute="bottom" constant="52" id="Ucz-bW-92Q"/>
+                            <constraint firstItem="MKY-gX-P1F" firstAttribute="leading" secondItem="iwF-L1-JMp" secondAttribute="leading" id="VAG-Qx-NDD"/>
+                            <constraint firstItem="SPb-1Y-hh3" firstAttribute="leading" secondItem="iwF-L1-JMp" secondAttribute="leadingMargin" id="ZwG-yK-pMX"/>
+                            <constraint firstItem="u64-Xp-mg6" firstAttribute="centerX" secondItem="iwF-L1-JMp" secondAttribute="centerX" id="hf8-gv-ZnJ"/>
+                            <constraint firstItem="MKY-gX-P1F" firstAttribute="top" secondItem="t3N-SU-eio" secondAttribute="bottom" constant="8" id="rqM-LL-0r3"/>
+                            <constraint firstItem="SPb-1Y-hh3" firstAttribute="trailing" secondItem="iwF-L1-JMp" secondAttribute="trailingMargin" id="zXb-fZ-THT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KdZ-YJ-uEf">
@@ -473,6 +482,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Vh-GP-NxJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -491,6 +501,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JRj-ys-PfM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -506,6 +517,7 @@
         <image name="facebook" width="256" height="256"/>
         <image name="gear" width="22" height="22"/>
         <image name="home" width="22" height="22"/>
+        <image name="logo_transparent" width="3000" height="2096"/>
         <image name="twitter" width="128" height="128"/>
     </resources>
 </document>
