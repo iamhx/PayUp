@@ -36,6 +36,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 	
 	var pickerViewRow: Int = 0
 	let pickerPerson = UIPickerView()
+	let pickPerson = UIAlertController(title: "Choose Person", message: "Choose the person to add the item to.", preferredStyle: .alert)
 	var structArray2: [Person2] = []
 	var totalBeforeTax: Decimal = 0.00
 	var controllerStyle: UIAlertControllerStyle?
@@ -94,7 +95,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		
 		var maxLength:Int
 		
-		if (textField.tag == 0) {
+		if (textField.tag == 0 || textField.tag == 2) {
 			
 			maxLength = 15
 		}
@@ -124,6 +125,8 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		
 		pickerViewRow = row
+		let myTextField = pickPerson.view.viewWithTag(2) as! UITextField
+		myTextField.text = structArray2[row].name
 		print(pickerViewRow)
 	}
 	
@@ -220,9 +223,9 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		
 		let chooseAddItem = UIAlertAction(title: "Add Item", style: .default, handler: { action in
 
-			let pickPerson = UIAlertController(title: "Choose Person", message: "Choose the person to add the item to.", preferredStyle: .alert)
+//			let pickPerson = UIAlertController(title: "Choose Person", message: "Choose the person to add the item to.", preferredStyle: .alert)
 			
-			pickPerson.addTextField(configurationHandler: { (textField) -> Void in
+			self.pickPerson.addTextField(configurationHandler: { (textField) -> Void in
 				textField.placeholder = "Choose a Person"
 				textField.textAlignment = .left
 				textField.inputView = self.pickerPerson
@@ -286,9 +289,9 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 				self.present(inputItem, animated: true, completion: nil)
 			})
 			
-			pickPerson.addAction(choosePerson)
-			pickPerson.addAction(actionCancel)
-			self.present(pickPerson, animated: true, completion: nil)
+			self.pickPerson.addAction(choosePerson)
+			self.pickPerson.addAction(actionCancel)
+			self.present(self.pickPerson, animated: true, completion: nil)
 		})
 		
 		//inputPerson.addAction(actionAddPerson)
