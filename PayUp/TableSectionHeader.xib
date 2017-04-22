@@ -40,17 +40,28 @@
                     <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="yPn-NM-S4E" secondAttribute="trailing" constant="8" id="E1M-Wx-5Wo"/>
-                        <constraint firstItem="Oak-sC-R6a" firstAttribute="centerY" secondItem="Ej6-XX-Eo5" secondAttribute="centerY" id="Q92-H6-1Re"/>
+                        <constraint firstItem="Oak-sC-R6a" firstAttribute="centerY" secondItem="Ej6-XX-Eo5" secondAttribute="centerY" constant="-0.5" id="Q92-H6-1Re"/>
                         <constraint firstItem="Oak-sC-R6a" firstAttribute="leading" secondItem="Ej6-XX-Eo5" secondAttribute="leading" constant="8" id="Spo-5g-Nri"/>
                         <constraint firstAttribute="bottom" secondItem="Oak-sC-R6a" secondAttribute="bottom" constant="12" id="ZSJ-MY-yhh"/>
                         <constraint firstAttribute="bottom" secondItem="yPn-NM-S4E" secondAttribute="bottom" constant="11" id="uq0-fc-Qpy"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmh-Of-0Qc">
+                    <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="TTv-8Q-0jy"/>
                     </constraints>
                 </view>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="Ej6-XX-Eo5" secondAttribute="trailing" id="Fd2-Jr-IEz"/>
                 <constraint firstItem="Ej6-XX-Eo5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="JmV-vP-1CD"/>
+                <constraint firstItem="bmh-Of-0Qc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KXl-0G-jcE"/>
                 <constraint firstItem="Ej6-XX-Eo5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Sv1-ur-lga"/>
+                <constraint firstAttribute="trailing" secondItem="bmh-Of-0Qc" secondAttribute="trailing" id="gap-MI-j6z"/>
+                <constraint firstItem="bmh-Of-0Qc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="43" id="qhB-CH-dFd"/>
+                <constraint firstItem="bmh-Of-0Qc" firstAttribute="bottom" secondItem="Ej6-XX-Eo5" secondAttribute="bottom" id="yFJ-dK-uyM"/>
             </constraints>
             <connections>
                 <outlet property="lblPerson" destination="Oak-sC-R6a" id="QAc-1a-w4l"/>

@@ -40,7 +40,6 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 
 	var structArray:[Person] = []
 	
-	var pickerViewRow: Int = 0
 	let pickerPerson = UIPickerView()
 	var pickPersonRef: UIAlertController?
 	var structArray2: [Person2] = []
@@ -132,7 +131,6 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 	
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		
-		pickerViewRow = row
 		let myTextField = pickPersonRef?.view.viewWithTag(2) as! UITextField
 		myTextField.text = structArray2[row].name
 	}
@@ -253,24 +251,23 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 			
 				var individualTotal: Decimal = 0.00
 				
-				for i in 0..<self.structArray2[self.pickerViewRow].item.count {
+				for i in 0..<self.structArray2[self.pickerPerson.selectedRow(inComponent: 0)].item.count {
 					
-					individualTotal += self.structArray2[self.pickerViewRow].item[i].price
+					individualTotal += self.structArray2[self.pickerPerson.selectedRow(inComponent: 0)].item[i].price
 				}
 				
-				for i in (0..<self.structArray2[self.pickerViewRow].item.count).reversed() {
+				for i in (0..<self.structArray2[self.pickerPerson.selectedRow(inComponent: 0)].item.count).reversed() {
 					
-					let rowIndex = IndexPath(row: i, section: self.pickerViewRow)
-					self.structArray2[self.pickerViewRow].item.remove(at: i)
+					let rowIndex = IndexPath(row: i, section: self.pickerPerson.selectedRow(inComponent: 0))
+					self.structArray2[self.pickerPerson.selectedRow(inComponent: 0)].item.remove(at: i)
 					self.billTableView.deleteRows(at: [rowIndex], with: .right)
 				}
 				
 				self.totalBeforeTax -= individualTotal
 				self.updateTotalLabel(label: self.lblTotal, amount: NSDecimalNumber(decimal: self.totalBeforeTax))
-				self.structArray2.remove(at: self.pickerViewRow)
-				self.billTableView.deleteSections(IndexSet(integer: self.pickerViewRow), with: .right)
-				self.pickerViewRow = self.pickerPerson.selectedRow(inComponent: 0)
-				print(self.structArray2)
+				self.structArray2.remove(at: self.pickerPerson.selectedRow(inComponent: 0))
+				self.billTableView.deleteSections(IndexSet(integer: self.pickerPerson.selectedRow(inComponent: 0)), with: .right)
+				self.pickerPerson.reloadAllComponents()
 			})
 			
 			pickPerson.addAction(choosePerson)
@@ -330,13 +327,13 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 						}
 						else {
 							
-							self.structArray2[self.pickerViewRow].item.append((itemName: inputItemName.text!, price: unwrappedInput.decimalValue))
+							self.structArray2[self.pickerPerson.selectedRow(inComponent: 0)].item.append((itemName: inputItemName.text!, price: unwrappedInput.decimalValue))
 							
 							//self.totalBeforeTax += self.structArray2[self.pickerViewRow!].item[self.pickerViewRow!].price!
 							self.totalBeforeTax += unwrappedInput.decimalValue
-							self.billTableView.insertRows(at: [IndexPath(row: self.structArray2[self.pickerViewRow].item.count - 1, section: self.pickerViewRow)], with: .automatic)
-							let header = self.billTableView.headerView(forSection: self.pickerViewRow) as! TableSectionHeader
-							header.lblTotal.text = "\(SplitBill().individualTotal(person: self.structArray2, section: self.pickerViewRow))"
+							self.billTableView.insertRows(at: [IndexPath(row: self.structArray2[self.pickerPerson.selectedRow(inComponent: 0)].item.count - 1, section: self.pickerPerson.selectedRow(inComponent: 0))], with: .automatic)
+							let header = self.billTableView.headerView(forSection: self.pickerPerson.selectedRow(inComponent: 0)) as! TableSectionHeader
+							header.lblTotal.text = "\(SplitBill().individualTotal(person: self.structArray2, section: self.pickerPerson.selectedRow(inComponent: 0)))"
 							
 							self.updateTotalLabel(label: self.lblTotal, amount: NSDecimalNumber(decimal: self.totalBeforeTax))
 						}
@@ -457,9 +454,9 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		let cell = tableView.dequeueReusableCell(withIdentifier: "newPersonItem") as! cellPersonItem
 		
 		//cell.lblPerson?.text = "\(structArray[indexPath.row].name)"
-		cell.lblItem?.text = "\(structArray2[pickerViewRow].item[indexPath.row].itemName)"
+		cell.lblItem?.text = "\(structArray2[indexPath.section].item[indexPath.row].itemName)"
 		//cell.lblAmount?.text = SplitBill().formatCurrency(amount: NSDecimalNumber(decimal: structArray[indexPath.row].amount))
-		cell.lblPrice?.text = SplitBill().formatCurrency(amount: NSDecimalNumber(decimal: structArray2[pickerViewRow].item[indexPath.row].price))
+		cell.lblPrice?.text = SplitBill().formatCurrency(amount: NSDecimalNumber(decimal: structArray2[indexPath.section].item[indexPath.row].price))
 		
 		return cell
 	}
@@ -473,10 +470,19 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		
 		let cell = billTableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeader")
 		let header = cell as! TableSectionHeader
+		
 		header.lblPerson.text = structArray2[section].name
-		header.lblTotal.text = "$0.00"
+		header.lblTotal.text = SplitBill().individualTotal(person: structArray2, section: section)
 		return cell
 	}
+	
+	/*func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+		
+		let separatorFrame = CGRect(x: 0, y: view.frame.size.height - 1, width: tableView.bounds.size.width, height: 1)
+		let separatorView = UIView(frame:separatorFrame)
+		separatorView.backgroundColor = UIColor.red
+		view.addSubview(separatorView)
+	}*/
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		
