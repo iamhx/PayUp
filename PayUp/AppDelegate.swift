@@ -20,7 +20,6 @@ extension UIViewController {
 	}
 }
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	

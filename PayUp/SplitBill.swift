@@ -10,44 +10,47 @@ import UIKit
 
 class SplitBill: NSObject {
 	
-	let SERVICE_CHARGE:Double = 0.10
-	let GOODS_SERVICE_TAX:Double = 0.07
+	let SERVICE_CHARGE:Decimal = 0.10
+	let GOODS_SERVICE_TAX:Decimal = 0.07
 	
-	func calculateBill(numOfPax: [Person], svcCharge: Bool, GST: Bool) -> (totalAmount: Double, splitByPerson: [Person]) {
+	func calculateBill(numOfPax: [Person], svcCharge: Bool, GST: Bool) -> (totalAmount: Decimal, splitByPerson: [Person]) {
 		
-		var totalCost:Double = 0.00
-		var finalBill:[Person] = numOfPax
+		var totalCost:Decimal = 0.00
+		var totalTax:Decimal = 0.00
+		var bill:[Person] = numOfPax
 		
-		for person in numOfPax {
+		for i in 0..<bill.count {
 			
-			totalCost += person.amount //Find the total amount before taxes
+			for j in 0..<bill[i].item.count {
+				
+				totalCost += bill[i].item[j].price //Find the total amount before taxes
+				let tax = findTaxCost(individualAmt: bill[i].item[j].price, serviceCharge: svcCharge, goodsServiceTax: GST)
+				bill[i].item[j].price += tax
+				totalTax += tax
+			}
 		}
 		
-		let taxCost = findTaxCost(totalAmt: totalCost, serviceCharge: svcCharge, goodsServiceTax: GST)
-		let taxByPerson = taxCost / Double(finalBill.count)
+		totalCost += totalTax
 		
-		for i in 0..<finalBill.count {
-			
-			finalBill[i].amount += taxByPerson //Split tax to each person
-		}
-		
-		totalCost += taxCost //Calculate the total amount after taxes
-		
-		return (totalCost, finalBill)
+		return (totalCost, bill)
 	}
-	
-	func findTaxCost(totalAmt: Double, serviceCharge: Bool, goodsServiceTax: Bool) -> Double {
+
+	func findTaxCost(individualAmt: Decimal, serviceCharge: Bool, goodsServiceTax: Bool) -> Decimal {
 		
-		var taxCost:Double = 0.00
+		var taxCost:Decimal = 0.00
 
 		if (serviceCharge && goodsServiceTax) {
 			
-			taxCost = totalAmt * SERVICE_CHARGE
-			taxCost = taxCost + ((totalAmt + taxCost) * GOODS_SERVICE_TAX)
+			taxCost = individualAmt * SERVICE_CHARGE
+			taxCost = taxCost + ((individualAmt + taxCost) * GOODS_SERVICE_TAX)
 		}
 		else if (!serviceCharge && goodsServiceTax) {
 			
-			taxCost = totalAmt * GOODS_SERVICE_TAX //add GST
+			taxCost = individualAmt * GOODS_SERVICE_TAX //add GST
+		}
+		else if (serviceCharge && !goodsServiceTax) {
+			
+			taxCost = individualAmt * SERVICE_CHARGE
 		}
 		else {
 			
@@ -55,5 +58,45 @@ class SplitBill: NSObject {
 		}
 		
 		return taxCost
+	}
+	
+	func formatCurrency(amount: NSDecimalNumber) -> String {
+		
+		var string = ""
+		
+		let formatter = NumberFormatter()
+		let usLocale = NSLocale.init(localeIdentifier: "en_US")
+		formatter.minimumIntegerDigits = 1
+		formatter.minimumFractionDigits = 2
+		formatter.maximumFractionDigits = 3
+		formatter.roundingMode = .down
+		formatter.locale = usLocale as Locale!
+		
+		string = String(format: "$%@", formatter.string(from: amount)!)
+		
+		return string
+	}
+	
+	func displayIndividualTotal(person: [Person], section: Int) -> String {
+		
+		var total: Decimal = 0.00
+		var string: String = ""
+		
+		for i in 0..<person[section].item.count {
+			
+			total += person[section].item[i].price
+		}
+		
+		let formatter = NumberFormatter()
+		let usLocale = NSLocale.init(localeIdentifier: "en_US")
+		formatter.minimumIntegerDigits = 1
+		formatter.minimumFractionDigits = 2
+		formatter.maximumFractionDigits = 3
+		formatter.roundingMode = .down
+		formatter.locale = usLocale as Locale!
+		
+		string = String(format: "$%@", formatter.string(from: NSDecimalNumber(decimal: total))!)
+		
+		return string
 	}
 }

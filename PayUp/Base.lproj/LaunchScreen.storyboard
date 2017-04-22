@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="2fq-rz-pFV">
+    <device id="retina3_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,14 +19,60 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="clI-q6-yJN">
+                                <rect key="frame" x="0.0" y="72" width="320" height="223.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="clI-q6-yJN" secondAttribute="height" multiplier="375:262" id="U6P-D7-YNP"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppBanner" translatesAutoresizingMaskIntoConstraints="NO" id="d7a-bO-S3p">
+                                <rect key="frame" x="37" y="267" width="244" height="121.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="d7a-bO-S3p" secondAttribute="height" multiplier="299:149" id="N5b-4E-yYn"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="clI-q6-yJN" secondAttribute="trailing" id="6SZ-eU-mHE"/>
+                            <constraint firstItem="clI-q6-yJN" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" id="6lB-h4-o91"/>
+                            <constraint firstAttribute="trailing" secondItem="d7a-bO-S3p" secondAttribute="trailing" constant="39" id="TGe-0n-Rvd"/>
+                            <constraint firstItem="clI-q6-yJN" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="mhX-Zp-y9T"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="d7a-bO-S3p" secondAttribute="bottom" constant="91.5" id="qrZ-Qe-8ah"/>
+                            <constraint firstItem="d7a-bO-S3p" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="37" id="zOp-wW-Eue"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Bnc-Sx-0oP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="991.20000000000005" y="374.66266866566718"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Qoh-6v-xa3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2fq-rz-pFV" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="A8c-Xs-l1y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="01J-lp-oVM" kind="relationship" relationship="rootViewController" id="KoV-el-yeg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ou2-xZ-pGC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AppBanner" width="800" height="400"/>
+        <image name="logo_transparent" width="3000" height="2096"/>
+    </resources>
 </document>
