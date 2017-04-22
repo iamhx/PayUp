@@ -19,23 +19,22 @@ class SplitBill: NSObject {
 		var totalTax:Decimal = 0.00
 		var bill:[Person] = numOfPax
 		
-		for person in numOfPax {
-			
-			totalCost += person.amount //Find the total amount before taxes
-		}
-		
 		for i in 0..<bill.count {
 			
-			let tax = findTaxCost(individualAmt: bill[i].amount, serviceCharge: svcCharge, goodsServiceTax: GST)
-			bill[i].amount += tax
-			totalTax += tax
+			for j in 0..<bill[i].item.count {
+				
+				totalCost += bill[i].item[j].price //Find the total amount before taxes
+				let tax = findTaxCost(individualAmt: bill[i].item[j].price, serviceCharge: svcCharge, goodsServiceTax: GST)
+				bill[i].item[j].price += tax
+				totalTax += tax
+			}
 		}
 		
 		totalCost += totalTax
 		
 		return (totalCost, bill)
 	}
-	
+
 	func findTaxCost(individualAmt: Decimal, serviceCharge: Bool, goodsServiceTax: Bool) -> Decimal {
 		
 		var taxCost:Decimal = 0.00
@@ -48,6 +47,10 @@ class SplitBill: NSObject {
 		else if (!serviceCharge && goodsServiceTax) {
 			
 			taxCost = individualAmt * GOODS_SERVICE_TAX //add GST
+		}
+		else if (serviceCharge && !goodsServiceTax) {
+			
+			taxCost = individualAmt * SERVICE_CHARGE
 		}
 		else {
 			
@@ -74,7 +77,7 @@ class SplitBill: NSObject {
 		return string
 	}
 	
-	func individualTotal(person: [Person2], section: Int) -> String {
+	func displayIndividualTotal(person: [Person], section: Int) -> String {
 		
 		var total: Decimal = 0.00
 		var string: String = ""
@@ -92,16 +95,7 @@ class SplitBill: NSObject {
 		formatter.roundingMode = .down
 		formatter.locale = usLocale as Locale!
 		
-		let cTotal = NSDecimalNumber(decimal: total)
-		
-		if (cTotal.decimalValue <= 0.00) {
-			
-			string = "$0.00"
-		}
-		else {
-			
-			string = String(format: "$%@", formatter.string(from: cTotal)!)
-		}
+		string = String(format: "$%@", formatter.string(from: NSDecimalNumber(decimal: total))!)
 		
 		return string
 	}

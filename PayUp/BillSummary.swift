@@ -101,7 +101,12 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		let name = billArray![indexPath.row].name
-		let amount = billArray![indexPath.row].amount
+		var amount: Decimal = 0.00
+		
+		for i in 0..<billArray![indexPath.row].item.count {
+			
+			amount += billArray![indexPath.row].item[i].price
+		}
 		
 		let formatter = NumberFormatter()
 		let usLocale = NSLocale.init(localeIdentifier: "en_US")
@@ -132,11 +137,15 @@ class BillSummary: UIViewController, UITableViewDataSource, UITableViewDelegate 
 	
 		if (svcCharge && GST) {
 			
-			targetString = " inclusive of service charges and GST."
+			targetString = " inclusive of service charge and GST."
 		}
 		else if (!svcCharge && GST) {
 	
 			targetString = " inclusive of GST."
+		}
+		else if (svcCharge && !GST) {
+			
+			targetString = " inclusive of service charge."
 		}
 		else {
 			
