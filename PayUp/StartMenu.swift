@@ -13,6 +13,7 @@ class StartMenu: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+		
         // Do any additional setup after loading the view.
 
 		//self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -20,6 +21,13 @@ class StartMenu: UIViewController {
 		//self.navigationController?.view.backgroundColor = UIColor.clear
 		//self.navigationController?.navigationBar.isTranslucent = true
 		//self.navigationController?.navigationBar.barTintColor = UIColor(red: 255.0/255.0, green: 147.0/255.0, blue: 44.0/255.0, alpha: 1.0)
+		
+		let image : UIImage = UIImage(named: "AppTitle")!
+		let imageView = UIImageView(frame:CGRect(x: 0, y: 0, width: 80, height: 40))
+		imageView.contentMode = .scaleAspectFit
+		imageView.image = image
+		
+		self.navigationItem.titleView = imageView
     }
 
     override func didReceiveMemoryWarning() {
