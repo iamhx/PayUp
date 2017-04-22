@@ -73,4 +73,36 @@ class SplitBill: NSObject {
 		
 		return string
 	}
+	
+	func individualTotal(person: [Person2], section: Int) -> String {
+		
+		var total: Decimal = 0.00
+		var string: String = ""
+		
+		for i in 0..<person[section].item.count {
+			
+			total += person[section].item[i].price
+		}
+		
+		let formatter = NumberFormatter()
+		let usLocale = NSLocale.init(localeIdentifier: "en_US")
+		formatter.minimumIntegerDigits = 1
+		formatter.minimumFractionDigits = 2
+		formatter.maximumFractionDigits = 3
+		formatter.roundingMode = .down
+		formatter.locale = usLocale as Locale!
+		
+		let cTotal = NSDecimalNumber(decimal: total)
+		
+		if (cTotal.decimalValue <= 0.00) {
+			
+			string = "$0.00"
+		}
+		else {
+			
+			string = String(format: "$%@", formatter.string(from: cTotal)!)
+		}
+		
+		return string
+	}
 }
