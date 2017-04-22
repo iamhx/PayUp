@@ -71,15 +71,6 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to add Service Charge and/or GST" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LO0-su-gRq">
-                            <rect key="frame" x="40" y="415" width="295" height="27"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="27" id="ARN-Sm-w8H"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -91,14 +82,12 @@
                         <constraint firstItem="YfX-sU-4bO" firstAttribute="top" secondItem="pMa-4d-XH2" secondAttribute="top" id="Cjx-xo-VLr"/>
                         <constraint firstAttribute="trailing" secondItem="pMa-4d-XH2" secondAttribute="trailing" constant="18" id="HA9-gZ-7fN"/>
                         <constraint firstItem="a4Z-Kg-u34" firstAttribute="top" secondItem="oMs-li-A6a" secondAttribute="top" constant="40" id="Idv-5D-9b3"/>
-                        <constraint firstItem="LO0-su-gRq" firstAttribute="centerX" secondItem="oMs-li-A6a" secondAttribute="centerX" id="Klu-ZX-0U5"/>
                         <constraint firstItem="YfX-sU-4bO" firstAttribute="bottom" secondItem="dbJ-s3-lVJ" secondAttribute="bottom" id="LDl-fW-v2l"/>
                         <constraint firstItem="dbJ-s3-lVJ" firstAttribute="top" secondItem="oMs-li-A6a" secondAttribute="top" constant="20" id="Ve3-Dh-Uwt"/>
                         <constraint firstItem="oc2-3q-C3O" firstAttribute="top" secondItem="oMs-li-A6a" secondAttribute="top" constant="25" id="YH2-ya-Uc4"/>
                         <constraint firstItem="pMa-4d-XH2" firstAttribute="leading" secondItem="dbJ-s3-lVJ" secondAttribute="trailing" constant="2" id="fF7-iY-gw6"/>
                         <constraint firstItem="YfX-sU-4bO" firstAttribute="leading" secondItem="oc2-3q-C3O" secondAttribute="trailing" constant="5" id="hqE-J2-H3l"/>
                         <constraint firstItem="E0b-rd-FHn" firstAttribute="leading" secondItem="oMs-li-A6a" secondAttribute="leadingMargin" id="nTc-Jw-2GN"/>
-                        <constraint firstItem="LO0-su-gRq" firstAttribute="bottom" secondItem="oMs-li-A6a" secondAttribute="bottomMargin" id="ogk-Qo-mwW"/>
                     </constraints>
                 </view>
             </subviews>

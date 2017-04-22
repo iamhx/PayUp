@@ -8,10 +8,42 @@
 
 import UIKit
 
+protocol CollapsibleTableViewHeaderDelegate {
+	
+	func toggleSection(_ header: TableSectionHeader, section: Int)
+}
+
+extension BillForm: CollapsibleTableViewHeaderDelegate {
+	
+	func toggleSection(_ header: TableSectionHeader, section: Int) {
+		
+		let collapsed = !structArray[section].collapsed
+		
+		// Toggle collapse
+		structArray[section].collapsed = collapsed
+		
+		// Adjust the height of the rows inside the section
+		billTableView.beginUpdates()
+		for i in 0 ..< structArray[section].item.count {
+			
+			billTableView.reloadRows(at: [IndexPath(row: i, section: section)], with: .automatic)
+		}
+		
+		billTableView.endUpdates()
+	}
+}
+
 struct Person {
 	
 	let name: String
 	var item: [(itemName: String, price: Decimal)]
+	var collapsed: Bool!
+	
+	init(name: String, item: [(itemName: String, price: Decimal)], collapsed: Bool = false) {
+		self.name = name
+		self.item = item
+		self.collapsed = collapsed
+	}
 }
 
 class cellPersonItem : UITableViewCell {
@@ -22,8 +54,20 @@ class cellPersonItem : UITableViewCell {
 
 class TableSectionHeader : UITableViewHeaderFooterView {
 	
+	var delegate: CollapsibleTableViewHeaderDelegate?
+	var section: Int = 0
+	
 	@IBOutlet weak var lblPerson: UILabel!
 	@IBOutlet weak var lblTotal: UILabel!
+	
+	func tapHeader(_ gestureRecognizer: UITapGestureRecognizer) {
+		
+		guard let cell = gestureRecognizer.view as? TableSectionHeader else {
+			return
+		}
+		
+		delegate?.toggleSection(self, section: cell.section)
+	}
 }
 
 class HelpView: UIView {
@@ -289,6 +333,12 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 				self.updateTotalLabel(label: self.lblTotal, amount: NSDecimalNumber(decimal: self.totalBeforeTax))
 				self.structArray.remove(at: self.pickerPerson.selectedRow(inComponent: 0))
 				self.billTableView.deleteSections(IndexSet(integer: self.pickerPerson.selectedRow(inComponent: 0)), with: .right)
+				
+				if (self.structArray.count > 0) {
+				
+					let indexSet = IndexSet(integer: self.structArray.count - 1)
+					self.billTableView.reloadSections(indexSet, with: .automatic)
+				}
 				self.pickerPerson.reloadAllComponents()
 			})
 			
@@ -416,12 +466,21 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
+
 		let cell = billTableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeader")
 		let header = cell as! TableSectionHeader
 		
+		header.section = section
+		header.delegate = self
 		header.lblPerson.text = structArray[section].name
 		header.lblTotal.text = SplitBill().displayIndividualTotal(person: structArray, section: section)
+		header.addGestureRecognizer(UITapGestureRecognizer(target: header.self, action: #selector(header.tapHeader(_:))))
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		
+		return structArray[indexPath.section].collapsed! ? 0 : 44.0
 	}
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -493,7 +552,6 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		let range = NSMakeRange(0, 7)
 		label.attributedText = attributedString(from: targetString, nonBoldRange: range)
 	}
-	
 	
     // MARK: - Navigation
 
