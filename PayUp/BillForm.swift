@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 struct Person {
 	
 	let name: String
@@ -33,6 +32,10 @@ class TableSectionHeader : UITableViewHeaderFooterView {
 	@IBOutlet weak var lblTotal: UILabel!
 }
 
+class HelpView: UIView {
+	
+}
+
 class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
 	@IBOutlet weak var lblTotal: UILabel!
@@ -40,6 +43,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 
 	var structArray:[Person] = []
 	
+	var myCustomView: HelpView?
 	let pickerPerson = UIPickerView()
 	var pickPersonRef: UIAlertController?
 	var structArray2: [Person2] = []
@@ -222,6 +226,9 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 				}
 				else {
 					
+					let helpView = self.view.viewWithTag(4)
+					helpView?.removeFromSuperview()
+					
 					let newPerson = Person2(name: inputName.text!, item: [])
 					
 					self.structArray2.append(newPerson)
@@ -234,48 +241,6 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 			inputPerson.addAction(actionCancel)
 			self.present(inputPerson, animated: true, completion: nil)
 		})
-		
-		let chooseRemovePerson = UIAlertAction(title: "Remove Person", style: .destructive, handler: { action in
-		
-			let pickPerson = UIAlertController(title: "Choose Person", message: "Choose the person to remove.", preferredStyle: .alert)
-			
-			pickPerson.addTextField(configurationHandler: { (textField) -> Void in
-				textField.placeholder = "Choose a Person"
-				textField.textAlignment = .left
-				textField.inputView = self.pickerPerson
-				textField.delegate = self
-				textField.tag = 2
-			})
-			
-			let choosePerson = UIAlertAction(title: "Remove", style: .destructive, handler: { action in
-			
-				var individualTotal: Decimal = 0.00
-				
-				for i in 0..<self.structArray2[self.pickerPerson.selectedRow(inComponent: 0)].item.count {
-					
-					individualTotal += self.structArray2[self.pickerPerson.selectedRow(inComponent: 0)].item[i].price
-				}
-				
-				for i in (0..<self.structArray2[self.pickerPerson.selectedRow(inComponent: 0)].item.count).reversed() {
-					
-					let rowIndex = IndexPath(row: i, section: self.pickerPerson.selectedRow(inComponent: 0))
-					self.structArray2[self.pickerPerson.selectedRow(inComponent: 0)].item.remove(at: i)
-					self.billTableView.deleteRows(at: [rowIndex], with: .right)
-				}
-				
-				self.totalBeforeTax -= individualTotal
-				self.updateTotalLabel(label: self.lblTotal, amount: NSDecimalNumber(decimal: self.totalBeforeTax))
-				self.structArray2.remove(at: self.pickerPerson.selectedRow(inComponent: 0))
-				self.billTableView.deleteSections(IndexSet(integer: self.pickerPerson.selectedRow(inComponent: 0)), with: .right)
-				self.pickerPerson.reloadAllComponents()
-			})
-			
-			pickPerson.addAction(choosePerson)
-			pickPerson.addAction(actionCancel)
-			self.pickPersonRef = pickPerson
-			self.present(pickPerson, animated: true, completion: nil)
-		})
-
 		
 		let chooseAddItem = UIAlertAction(title: "Add Item", style: .default, handler: { action in
 
@@ -351,6 +316,47 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 			self.present(pickPerson, animated: true, completion: nil)
 		})
 		
+		let chooseRemovePerson = UIAlertAction(title: "Remove Person", style: .destructive, handler: { action in
+			
+			let pickPerson = UIAlertController(title: "Choose Person", message: "Choose the person to remove.", preferredStyle: .alert)
+			
+			pickPerson.addTextField(configurationHandler: { (textField) -> Void in
+				textField.placeholder = "Choose a Person"
+				textField.textAlignment = .left
+				textField.inputView = self.pickerPerson
+				textField.delegate = self
+				textField.tag = 2
+			})
+			
+			let choosePerson = UIAlertAction(title: "Remove", style: .destructive, handler: { action in
+				
+				var individualTotal: Decimal = 0.00
+				
+				for i in 0..<self.structArray2[self.pickerPerson.selectedRow(inComponent: 0)].item.count {
+					
+					individualTotal += self.structArray2[self.pickerPerson.selectedRow(inComponent: 0)].item[i].price
+				}
+				
+				for i in (0..<self.structArray2[self.pickerPerson.selectedRow(inComponent: 0)].item.count).reversed() {
+					
+					let rowIndex = IndexPath(row: i, section: self.pickerPerson.selectedRow(inComponent: 0))
+					self.structArray2[self.pickerPerson.selectedRow(inComponent: 0)].item.remove(at: i)
+					self.billTableView.deleteRows(at: [rowIndex], with: .right)
+				}
+				
+				self.totalBeforeTax -= individualTotal
+				self.updateTotalLabel(label: self.lblTotal, amount: NSDecimalNumber(decimal: self.totalBeforeTax))
+				self.structArray2.remove(at: self.pickerPerson.selectedRow(inComponent: 0))
+				self.billTableView.deleteSections(IndexSet(integer: self.pickerPerson.selectedRow(inComponent: 0)), with: .right)
+				self.pickerPerson.reloadAllComponents()
+			})
+			
+			pickPerson.addAction(choosePerson)
+			pickPerson.addAction(actionCancel)
+			self.pickPersonRef = pickPerson
+			self.present(pickPerson, animated: true, completion: nil)
+		})
+		
 		//inputPerson.addAction(actionAddPerson)
 		//inputPerson.addAction(actionCancel)
 		//inputPerson.preferredAction = actionAddPerson
@@ -412,6 +418,16 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		billTableView.layoutMargins = .zero
 		
 		updateTotalLabel(label: lblTotal, amount: NSDecimalNumber(decimal: totalBeforeTax))
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		
+		if (myCustomView == nil) {
+			
+			myCustomView = Bundle.main.loadNibNamed("Help", owner: self, options: nil)?.first as? HelpView
+			self.view.addSubview(myCustomView!)
+		}
 	}
 
     override func didReceiveMemoryWarning() {

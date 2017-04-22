@@ -15,6 +15,7 @@
 		E55F44E01E80753500F0BFEF /* BillSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55F44DF1E80753500F0BFEF /* BillSummary.swift */; };
 		E56EAAC61EA122C80018EB04 /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56EAAC51EA122C80018EB04 /* StartMenu.swift */; };
 		E588777A1EAA753900B1C4EE /* TableSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E58877791EAA753900B1C4EE /* TableSectionHeader.xib */; };
+		E59D482E1EAB44DA00FB8913 /* Help.xib in Resources */ = {isa = PBXBuildFile; fileRef = E59D482D1EAB44DA00FB8913 /* Help.xib */; };
 		E5B0BAD11E7F0DE5005C299F /* BillForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B0BAD01E7F0DE5005C299F /* BillForm.swift */; };
 		E5D940EC1EA2467200984019 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D940EB1EA2467200984019 /* Settings.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		E55F44DF1E80753500F0BFEF /* BillSummary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillSummary.swift; sourceTree = "<group>"; };
 		E56EAAC51EA122C80018EB04 /* StartMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = "<group>"; };
 		E58877791EAA753900B1C4EE /* TableSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableSectionHeader.xib; sourceTree = "<group>"; };
+		E59D482D1EAB44DA00FB8913 /* Help.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Help.xib; sourceTree = "<group>"; };
 		E5B0BAD01E7F0DE5005C299F /* BillForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillForm.swift; sourceTree = "<group>"; };
 		E5D940EB1EA2467200984019 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +77,7 @@
 				E56EAAC51EA122C80018EB04 /* StartMenu.swift */,
 				E5D940EB1EA2467200984019 /* Settings.swift */,
 				E58877791EAA753900B1C4EE /* TableSectionHeader.xib */,
+				E59D482D1EAB44DA00FB8913 /* Help.xib */,
 			);
 			path = PayUp;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E54549AE1E7E548700519E27 /* LaunchScreen.storyboard in Resources */,
+				E59D482E1EAB44DA00FB8913 /* Help.xib in Resources */,
 				E588777A1EAA753900B1C4EE /* TableSectionHeader.xib in Resources */,
 				E54549AB1E7E548700519E27 /* Assets.xcassets in Resources */,
 				E54549A91E7E548700519E27 /* Main.storyboard in Resources */,
