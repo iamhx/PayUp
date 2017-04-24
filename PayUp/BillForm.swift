@@ -138,13 +138,13 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		
 		var maxLength:Int
 		
-		if (textField.tag == 0 || textField.tag == 2) {
-			
-			maxLength = 15
+		if (textField.tag == 5) {
+	
+			maxLength = 11
 		}
 		else {
 			
-			maxLength = 11
+			maxLength = 50
 		}
 		
 		let currentString:NSString = textField.text! as NSString
@@ -199,7 +199,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 				textField.textAlignment = .left
 				textField.keyboardType = .default
 				textField.delegate = self
-				textField.tag = 0
+				textField.tag = 1
 			})
 			
 			let actionAddPerson = UIAlertAction(title: "Add", style: .default, handler: { action in
@@ -249,7 +249,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 					textField.textAlignment = .left
 					textField.keyboardType = .default
 					textField.delegate = self
-					textField.tag = 0
+					textField.tag = 3
 				})
 				
 				inputItem.addTextField(configurationHandler: { (textField) -> Void in
@@ -257,7 +257,7 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 					textField.textAlignment = .left
 					textField.keyboardType = .decimalPad
 					textField.delegate = self
-					textField.tag = 1
+					textField.tag = 5
 				})
 				
 				let actionAddItem = UIAlertAction(title: "Add", style: .default, handler: { action in
