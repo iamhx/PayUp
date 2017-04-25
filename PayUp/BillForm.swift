@@ -388,6 +388,17 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 			controllerStyle = .actionSheet
 		}
 		
+		if (launchOnce == false) {
+			
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let HelpVC = storyboard.instantiateViewController(withIdentifier: "HelpID")
+			self.addChildViewController(HelpVC)
+			HelpVC.view.frame = self.view.bounds
+			self.view.addSubview(HelpVC.view)
+			HelpVC.didMove(toParentViewController: self)
+			launchOnce = true
+		}
+		
 		let nib = UINib(nibName: "TableSectionHeader", bundle: nil)
 		billTableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeader")
 		
@@ -399,21 +410,6 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		billTableView.layoutMargins = .zero
 		
 		updateTotalLabel(label: lblTotal, amount: NSDecimalNumber(decimal: totalBeforeTax))
-	}
-	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		
-		if (launchOnce == false) {
-			
-			let storyboard = UIStoryboard(name: "Main", bundle: nil)
-			let HelpVC = storyboard.instantiateViewController(withIdentifier: "HelpID")
-			self.addChildViewController(HelpVC)
-			HelpVC.view.frame = self.view.bounds
-			self.view.addSubview(HelpVC.view)
-			HelpVC.didMove(toParentViewController: self)
-			launchOnce = true
-		}
 	}
 
     override func didReceiveMemoryWarning() {
