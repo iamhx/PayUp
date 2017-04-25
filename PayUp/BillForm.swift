@@ -70,15 +70,12 @@ class TableSectionHeader : UITableViewHeaderFooterView {
 	}
 }
 
-class HelpView: UIView {
-}
-
 class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
 	@IBOutlet weak var lblTotal: UILabel!
 	@IBOutlet weak var billTableView: UITableView!
 	
-	var myCustomView: HelpView?
+	var launchOnce : Bool = false
 	let pickerPerson = UIPickerView()
 	var pickPersonRef: UIAlertController?
 	var structArray: [Person] = []
@@ -404,13 +401,18 @@ class BillForm: UIViewController, UITableViewDataSource, UITableViewDelegate, UI
 		updateTotalLabel(label: lblTotal, amount: NSDecimalNumber(decimal: totalBeforeTax))
 	}
 	
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
 		
-		if (myCustomView == nil) {
+		if (launchOnce == false) {
 			
-			myCustomView = Bundle.main.loadNibNamed("Help", owner: self, options: nil)?.first as? HelpView
-			self.view.addSubview(myCustomView!)
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let HelpVC = storyboard.instantiateViewController(withIdentifier: "HelpID")
+			self.addChildViewController(HelpVC)
+			HelpVC.view.frame = self.view.bounds
+			self.view.addSubview(HelpVC.view)
+			HelpVC.didMove(toParentViewController: self)
+			launchOnce = true
 		}
 	}
 
