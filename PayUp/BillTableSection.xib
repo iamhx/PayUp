@@ -19,15 +19,23 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ej6-XX-Eo5">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISb-4W-doC">
+                            <rect key="frame" x="188" y="12" width="150" height="21"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHE-P1-vmn">
                             <rect key="frame" x="345" y="11" width="22" height="22"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="22" id="3gi-Ai-IF4"/>
+                                <constraint firstAttribute="width" constant="22" id="rwD-Lj-bLa"/>
                             </constraints>
                         </button>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="TBQ-2i-7af">
-                            <rect key="frame" x="8" y="12" width="150" height="21"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <rect key="frame" x="8" y="7" width="150" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="W6p-Sw-67I"/>
+                            </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                             <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -35,24 +43,17 @@
                                 <action selector="updatePersonName:" destination="iN0-l3-epB" eventType="editingDidEnd" id="W5m-dv-IVj"/>
                             </connections>
                         </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISb-4W-doC">
-                            <rect key="frame" x="187" y="12" width="150" height="21"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="TBQ-2i-7af" firstAttribute="width" secondItem="ISb-4W-doC" secondAttribute="width" id="Ewe-zu-V55"/>
-                        <constraint firstItem="TBQ-2i-7af" firstAttribute="leading" secondItem="Ej6-XX-Eo5" secondAttribute="leadingMargin" id="K9T-OF-SxB"/>
-                        <constraint firstItem="rHE-P1-vmn" firstAttribute="leading" secondItem="ISb-4W-doC" secondAttribute="trailing" constant="8" symbolic="YES" id="VaC-jU-RyA"/>
-                        <constraint firstItem="rHE-P1-vmn" firstAttribute="trailing" secondItem="Ej6-XX-Eo5" secondAttribute="trailingMargin" id="ai8-Bi-RWP"/>
-                        <constraint firstItem="ISb-4W-doC" firstAttribute="leading" secondItem="TBQ-2i-7af" secondAttribute="trailing" constant="29" id="d8R-dR-4rs"/>
-                        <constraint firstItem="TBQ-2i-7af" firstAttribute="centerY" secondItem="Ej6-XX-Eo5" secondAttribute="centerY" id="deW-Vb-CRL"/>
-                        <constraint firstItem="TBQ-2i-7af" firstAttribute="height" secondItem="ISb-4W-doC" secondAttribute="height" id="gjO-fb-fj3"/>
-                        <constraint firstItem="TBQ-2i-7af" firstAttribute="baseline" secondItem="ISb-4W-doC" secondAttribute="baseline" id="jU7-r3-RkY"/>
-                        <constraint firstItem="ISb-4W-doC" firstAttribute="bottom" secondItem="rHE-P1-vmn" secondAttribute="bottom" id="kjK-Mt-3RO"/>
+                        <constraint firstItem="rHE-P1-vmn" firstAttribute="trailing" secondItem="Ej6-XX-Eo5" secondAttribute="trailingMargin" id="2fL-vd-GPB"/>
+                        <constraint firstItem="TBQ-2i-7af" firstAttribute="width" secondItem="ISb-4W-doC" secondAttribute="width" id="8mK-XJ-ULv"/>
+                        <constraint firstItem="ISb-4W-doC" firstAttribute="bottom" secondItem="rHE-P1-vmn" secondAttribute="bottom" id="HmP-Km-SaQ"/>
+                        <constraint firstItem="TBQ-2i-7af" firstAttribute="leading" secondItem="Ej6-XX-Eo5" secondAttribute="leadingMargin" id="Uz5-gQ-CWh"/>
+                        <constraint firstItem="TBQ-2i-7af" firstAttribute="centerY" secondItem="Ej6-XX-Eo5" secondAttribute="centerY" id="W9f-V5-diQ"/>
+                        <constraint firstItem="TBQ-2i-7af" firstAttribute="centerY" secondItem="ISb-4W-doC" secondAttribute="centerY" id="dVi-fr-xpC"/>
+                        <constraint firstItem="rHE-P1-vmn" firstAttribute="leading" secondItem="ISb-4W-doC" secondAttribute="trailing" constant="7" id="l7k-cq-RnS"/>
+                        <constraint firstItem="ISb-4W-doC" firstAttribute="leading" secondItem="TBQ-2i-7af" secondAttribute="trailing" constant="30" id="uUV-04-cEM"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmh-Of-0Qc">
