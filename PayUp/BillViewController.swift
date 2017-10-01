@@ -46,7 +46,6 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardDidShow, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardDidHide, object: nil)
-		
     }
 
     override func didReceiveMemoryWarning() {
@@ -132,6 +131,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	func updateItemPrice(_ cell: BillTableCell) {
 		
 		let indexPath = cell.indexPath!
+		let header = billTableView.headerView(forSection: indexPath.section) as! BillTableSection
 		
 		if (cell.txtPrice.text!.isEmpty) {
 			
@@ -142,8 +142,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			cell.txtPrice.text = ""
 			bill[indexPath.section].items[indexPath.row].itemPrice = 0.00
-			let header = billTableView.headerView(forSection: indexPath.section) as! BillTableSection
-			header.lblPrice.text = displayIndividualTotal(section: indexPath.section)
+			header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
+			self.title = formatCurrency(displayTotalPrice())
 
 			let errorAlert = UIAlertController(title: "Error", message: "Please enter a valid price.", preferredStyle: .alert)
 			errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -154,8 +154,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		}
 		
 		bill[indexPath.section].items[indexPath.row].itemPrice = price
-		let header = billTableView.headerView(forSection: indexPath.section) as! BillTableSection
-		header.lblPrice.text = displayIndividualTotal(section: indexPath.section)
+		header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
+		self.title = formatCurrency(displayTotalPrice())
 		cell.txtPrice.text = formatCurrency(price)
 		
 		resetPriceFieldIfZero(cell.txtPrice)
@@ -242,7 +242,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		return string
 	}
 	
-	func displayIndividualTotal(section: Int) -> String {
+	func displayIndividualTotal(section: Int) -> Decimal {
 		
 		var total: Decimal = 0.00
 		
@@ -251,7 +251,19 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			total += bill[section].items[i].itemPrice
 		}
 		
-		return formatCurrency(total)
+		return total
+	}
+	
+	func displayTotalPrice() -> Decimal {
+		
+		var total : Decimal = 0.00
+		
+		for i in 0..<bill.count {
+			
+			total += displayIndividualTotal(section: i)
+		}
+		
+		return total
 	}
 
 	// MARK: - TextField Delegates
@@ -274,7 +286,6 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 		return true
 	}
-	
 	
 	// MARK: - NotificationCenter Observers
 	
