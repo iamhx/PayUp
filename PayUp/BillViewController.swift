@@ -68,12 +68,18 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! BillTableCell
 		cell.txtName.delegate = self
 		cell.txtPrice.delegate = self
+		cell.txtPrice.tag = 2
 		
 		cell.delegate = self
 		cell.indexPath = indexPath
 		
 		cell.txtName.text = bill[indexPath.section].items[indexPath.row].itemName
 		cell.txtPrice.text = formatCurrency(bill[indexPath.section].items[indexPath.row].itemPrice)
+		
+		if (cell.txtPrice.text == "$0.00") {
+			
+			cell.txtPrice.text = ""
+		}
 		
 		return cell
 	}
@@ -120,6 +126,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	func updateItemPrice(_ cell: BillTableCell) {
 		
+		let indexPath = cell.indexPath!
+		
 		if (cell.txtPrice.text!.isEmpty) {
 			
 			cell.txtPrice.text! = "0.00"
@@ -127,7 +135,10 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		guard let price = Decimal(string: cell.txtPrice.text!) else {
 			
-			cell.txtPrice.text = "$0.00"
+			cell.txtPrice.text = ""
+			bill[indexPath.section].items[indexPath.row].itemPrice = 0.00
+			let header = billTableView.headerView(forSection: indexPath.section) as! BillTableSection
+			header.lblPrice.text = displayIndividualTotal(section: indexPath.section)
 
 			let errorAlert = UIAlertController(title: "Error", message: "Please enter a valid price.", preferredStyle: .alert)
 			errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -137,11 +148,16 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			return
 		}
 		
-		let indexPath = cell.indexPath!
 		bill[indexPath.section].items[indexPath.row].itemPrice = price
 		let header = billTableView.headerView(forSection: indexPath.section) as! BillTableSection
 		header.lblPrice.text = displayIndividualTotal(section: indexPath.section)
 		cell.txtPrice.text = formatCurrency(price)
+		
+		if (cell.txtPrice.text == "$0.00") {
+			
+			cell.txtPrice.text = ""
+		}
+
 	}
 	
 	func toggleSection(_ header: BillTableSection, section: Int) {
@@ -163,6 +179,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	}
 	
 	// MARK: - Actions
+	
 	
 	@IBAction func addPerson(_ sender: Any) {
 		
@@ -233,6 +250,11 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
 		
 		textField.inputAccessoryView = txtFieldToolBar
+		
+		if (textField.tag == 2 && !textField.text!.isEmpty) {
+			
+			textField.text?.remove(at: (textField.text?.startIndex)!)
+		}
 		
 		return true
 	}
