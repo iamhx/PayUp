@@ -76,10 +76,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		cell.txtName.text = bill[indexPath.section].items[indexPath.row].itemName
 		cell.txtPrice.text = formatCurrency(bill[indexPath.section].items[indexPath.row].itemPrice)
 		
-		if (cell.txtPrice.text == "$0.00") {
-			
-			cell.txtPrice.text = ""
-		}
+		resetPriceFieldIfZero(cell.txtPrice)
 		
 		return cell
 	}
@@ -153,11 +150,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		header.lblPrice.text = displayIndividualTotal(section: indexPath.section)
 		cell.txtPrice.text = formatCurrency(price)
 		
-		if (cell.txtPrice.text == "$0.00") {
-			
-			cell.txtPrice.text = ""
-		}
-
+		resetPriceFieldIfZero(cell.txtPrice)
 	}
 	
 	func toggleSection(_ header: BillTableSection, section: Int) {
@@ -180,6 +173,14 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	// MARK: - Actions
 	
+	
+	func resetPriceFieldIfZero(_ cell: UITextField) {
+		
+		if (cell.text == "$0.00") {
+			
+			cell.text = ""
+		}
+	}
 	
 	@IBAction func addPerson(_ sender: Any) {
 		
