@@ -13,7 +13,6 @@ protocol BillTableSectionDelegate {
 	
 	func toggleSection(_ header: BillTableSection, section: Int)
 	func updatePersonName(_ header: BillTableSection)
-	
 }
 
 class BillTableSection: UITableViewHeaderFooterView {

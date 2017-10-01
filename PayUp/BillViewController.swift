@@ -139,8 +139,9 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		let indexPath = cell.indexPath!
 		bill[indexPath.section].items[indexPath.row].itemPrice = price
+		let header = billTableView.headerView(forSection: indexPath.section) as! BillTableSection
+		header.lblPrice.text = displayIndividualTotal(section: indexPath.section)
 		cell.txtPrice.text = formatCurrency(price)
-		print(bill[indexPath.section].items[indexPath.row].itemPrice)
 	}
 	
 	func toggleSection(_ header: BillTableSection, section: Int) {
@@ -215,6 +216,18 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		return string
 	}
 	
+	func displayIndividualTotal(section: Int) -> String {
+		
+		var total: Decimal = 0.00
+		
+		for i in 0..<bill[section].items.count {
+			
+			total += bill[section].items[i].itemPrice
+		}
+		
+		return formatCurrency(total)
+	}
+
 	// MARK: - TextField Delegates
 	
 	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

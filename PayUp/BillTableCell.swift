@@ -15,6 +15,7 @@ protocol BillTableCellDelegate {
 }
 
 class BillTableCell: UITableViewCell {
+	
 
 	@IBOutlet weak var txtName: UITextField!
 	@IBOutlet weak var txtPrice: UITextField!
