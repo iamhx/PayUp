@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="paW-dc-2d6">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--$0.00-->
+        <scene sceneID="6U8-bz-giq">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="5jE-Mr-6nk" customClass="BillViewController" customModule="PayUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YCr-5l-k1k"/>
+                        <viewControllerLayoutGuide type="bottom" id="oMF-6p-AxW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Fd9-UG-Fhb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S5j-9i-a6c">
+                                <rect key="frame" x="0.0" y="94" width="375" height="529"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="itemCell" id="Qgn-M3-xnQ" customClass="BillTableCell" customModule="PayUp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qgn-M3-xnQ" id="r70-Qs-YNg">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item Name" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="RNW-at-J8b">
+                                                    <rect key="frame" x="8" y="12" width="150" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="BSn-bH-b3x"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="updateItemName:" destination="Qgn-M3-xnQ" eventType="editingDidEnd" id="ZDZ-C1-9Rf"/>
+                                                    </connections>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="right" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="dOt-v8-UKE">
+                                                    <rect key="frame" x="217" y="12" width="150" height="21"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                </textField>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Rc-8Y-tuc">
+                                                    <rect key="frame" x="187" y="0.0" width="1" height="44"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="RNW-at-J8b" firstAttribute="leading" secondItem="r70-Qs-YNg" secondAttribute="leadingMargin" id="4ae-Pj-XxP"/>
+                                                <constraint firstItem="RNW-at-J8b" firstAttribute="baseline" secondItem="dOt-v8-UKE" secondAttribute="baseline" id="6Pe-Au-Dt5"/>
+                                                <constraint firstItem="RNW-at-J8b" firstAttribute="centerY" secondItem="r70-Qs-YNg" secondAttribute="centerY" id="Tr4-gS-Pc6"/>
+                                                <constraint firstItem="5Rc-8Y-tuc" firstAttribute="centerY" secondItem="dOt-v8-UKE" secondAttribute="centerY" id="fTE-Bs-nyn"/>
+                                                <constraint firstItem="dOt-v8-UKE" firstAttribute="trailing" secondItem="r70-Qs-YNg" secondAttribute="trailingMargin" id="gBk-co-SLT"/>
+                                                <constraint firstItem="RNW-at-J8b" firstAttribute="width" secondItem="dOt-v8-UKE" secondAttribute="width" id="r6H-J4-4Yc"/>
+                                                <constraint firstItem="dOt-v8-UKE" firstAttribute="leading" secondItem="5Rc-8Y-tuc" secondAttribute="trailing" constant="29" id="sZc-5r-4rN"/>
+                                                <constraint firstItem="RNW-at-J8b" firstAttribute="height" secondItem="dOt-v8-UKE" secondAttribute="height" id="vpI-EK-QHj"/>
+                                                <constraint firstItem="5Rc-8Y-tuc" firstAttribute="centerX" secondItem="r70-Qs-YNg" secondAttribute="centerX" id="wPD-P6-8p6"/>
+                                                <constraint firstItem="5Rc-8Y-tuc" firstAttribute="top" secondItem="r70-Qs-YNg" secondAttribute="top" id="yMo-1q-iTH"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="txtName" destination="RNW-at-J8b" id="ZAq-hC-Pbw"/>
+                                            <outlet property="txtPrice" destination="dOt-v8-UKE" id="hQ6-lK-1Xp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5jE-Mr-6nk" id="DGc-Uh-KuF"/>
+                                    <outlet property="delegate" destination="5jE-Mr-6nk" id="7OO-B2-7q3"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6TW-ZO-KCW">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="edit" id="z84-BU-aWY"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="qrP-Wj-s3Z"/>
+                                    <barButtonItem systemItem="add" id="Sjh-yH-xwu">
+                                        <connections>
+                                            <action selector="addPerson:" destination="5jE-Mr-6nk" id="ng1-bI-hMj"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="S5j-9i-a6c" firstAttribute="top" secondItem="YCr-5l-k1k" secondAttribute="bottom" id="4qU-YK-xWJ"/>
+                            <constraint firstItem="S5j-9i-a6c" firstAttribute="trailing" secondItem="6TW-ZO-KCW" secondAttribute="trailing" id="8WT-iS-w9N"/>
+                            <constraint firstItem="6TW-ZO-KCW" firstAttribute="bottom" secondItem="oMF-6p-AxW" secondAttribute="top" id="GlU-cz-nFO"/>
+                            <constraint firstItem="S5j-9i-a6c" firstAttribute="leading" secondItem="Fd9-UG-Fhb" secondAttribute="leading" id="X7Q-f3-B27"/>
+                            <constraint firstItem="S5j-9i-a6c" firstAttribute="leading" secondItem="6TW-ZO-KCW" secondAttribute="leading" id="ZiA-HO-8TC"/>
+                            <constraint firstItem="6TW-ZO-KCW" firstAttribute="top" secondItem="S5j-9i-a6c" secondAttribute="bottom" id="cqq-Y0-0cv"/>
+                            <constraint firstAttribute="trailing" secondItem="S5j-9i-a6c" secondAttribute="trailing" id="kNq-zL-0rB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="$0.00" prompt="Your Bill" id="f28-47-vfI">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="B9B-9F-RDe"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="NcL-YJ-cw9"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="billTableView" destination="S5j-9i-a6c" id="k74-Dn-Lts"/>
+                        <outlet property="txtFieldToolBar" destination="hTx-7w-FP0" id="Brt-5k-XRT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A8c-AH-Y3C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="hTx-7w-FP0">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem image="back" id="1iF-fk-rgJ">
+                            <connections>
+                                <action selector="btnBack:" destination="5jE-Mr-6nk" id="9XP-WC-r1Z"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="forward" id="En4-GN-Yee">
+                            <connections>
+                                <action selector="btnForward:" destination="5jE-Mr-6nk" id="WVl-Oz-xpi"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="bvU-LP-9kJ"/>
+                        <barButtonItem systemItem="done" id="w92-3V-KLL">
+                            <connections>
+                                <action selector="btnDone:" destination="5jE-Mr-6nk" id="jJ2-l9-tNL"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </objects>
+            <point key="canvasLocation" x="3504.8000000000002" y="1.3493253373313345"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="smv-yi-Y3e">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="paW-dc-2d6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NVr-Hq-5lW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5jE-Mr-6nk" kind="relationship" relationship="rootViewController" id="IkS-Wd-SXm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kr6-Ur-QFC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2679.5" y="8.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back" width="25" height="25"/>
+        <image name="forward" width="25" height="25"/>
+    </resources>
+</document>

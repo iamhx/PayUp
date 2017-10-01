@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BillTableSection" customModule="PayUp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ej6-XX-Eo5">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHE-P1-vmn">
+                            <rect key="frame" x="345" y="11" width="22" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="22" id="3gi-Ai-IF4"/>
+                            </constraints>
+                        </button>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="TBQ-2i-7af">
+                            <rect key="frame" x="8" y="12" width="150" height="21"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            <connections>
+                                <action selector="updatePersonName:" destination="iN0-l3-epB" eventType="editingDidEnd" id="W5m-dv-IVj"/>
+                            </connections>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISb-4W-doC">
+                            <rect key="frame" x="187" y="12" width="150" height="21"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="TBQ-2i-7af" firstAttribute="width" secondItem="ISb-4W-doC" secondAttribute="width" id="Ewe-zu-V55"/>
+                        <constraint firstItem="TBQ-2i-7af" firstAttribute="leading" secondItem="Ej6-XX-Eo5" secondAttribute="leadingMargin" id="K9T-OF-SxB"/>
+                        <constraint firstItem="rHE-P1-vmn" firstAttribute="leading" secondItem="ISb-4W-doC" secondAttribute="trailing" constant="8" symbolic="YES" id="VaC-jU-RyA"/>
+                        <constraint firstItem="rHE-P1-vmn" firstAttribute="trailing" secondItem="Ej6-XX-Eo5" secondAttribute="trailingMargin" id="ai8-Bi-RWP"/>
+                        <constraint firstItem="ISb-4W-doC" firstAttribute="leading" secondItem="TBQ-2i-7af" secondAttribute="trailing" constant="29" id="d8R-dR-4rs"/>
+                        <constraint firstItem="TBQ-2i-7af" firstAttribute="centerY" secondItem="Ej6-XX-Eo5" secondAttribute="centerY" id="deW-Vb-CRL"/>
+                        <constraint firstItem="TBQ-2i-7af" firstAttribute="height" secondItem="ISb-4W-doC" secondAttribute="height" id="gjO-fb-fj3"/>
+                        <constraint firstItem="TBQ-2i-7af" firstAttribute="baseline" secondItem="ISb-4W-doC" secondAttribute="baseline" id="jU7-r3-RkY"/>
+                        <constraint firstItem="ISb-4W-doC" firstAttribute="bottom" secondItem="rHE-P1-vmn" secondAttribute="bottom" id="kjK-Mt-3RO"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmh-Of-0Qc">
+                    <rect key="frame" x="0.0" y="43" width="375" height="1"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="TEv-bX-2Jw"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Ej6-XX-Eo5" firstAttribute="leading" secondItem="bmh-Of-0Qc" secondAttribute="leading" id="Lzv-cX-cds"/>
+                <constraint firstAttribute="trailing" secondItem="Ej6-XX-Eo5" secondAttribute="trailing" id="Pr0-qJ-XPm"/>
+                <constraint firstItem="Ej6-XX-Eo5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RZE-mV-waU"/>
+                <constraint firstItem="Ej6-XX-Eo5" firstAttribute="trailing" secondItem="bmh-Of-0Qc" secondAttribute="trailing" id="UKV-r4-Mfd"/>
+                <constraint firstItem="bmh-Of-0Qc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="43" id="at9-mT-Sum"/>
+                <constraint firstItem="Ej6-XX-Eo5" firstAttribute="bottom" secondItem="bmh-Of-0Qc" secondAttribute="bottom" id="wrW-Q0-DTG"/>
+                <constraint firstItem="Ej6-XX-Eo5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="x9h-2Q-Cn3"/>
+            </constraints>
+            <connections>
+                <outlet property="btnAddItem" destination="rHE-P1-vmn" id="TE8-Fa-yBl"/>
+                <outlet property="lblPrice" destination="ISb-4W-doC" id="CjH-Ai-Z4X"/>
+                <outlet property="txtName" destination="TBQ-2i-7af" id="S3N-L7-wY7"/>
+            </connections>
+            <point key="canvasLocation" x="-7.5" y="-989.5"/>
+        </view>
+    </objects>
+</document>

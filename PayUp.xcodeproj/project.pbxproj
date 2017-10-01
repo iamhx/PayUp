@@ -1,0 +1,375 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E56D00E91F7BBBA100867C35 /* BillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D00E81F7BBBA100867C35 /* BillViewController.swift */; };
+		E56D00EB1F7BBCC900867C35 /* BillTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D00EA1F7BBCC900867C35 /* BillTableCell.swift */; };
+		E56D00ED1F7BBE3300867C35 /* BillTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D00EC1F7BBE3300867C35 /* BillTableSection.swift */; };
+		E56D00EF1F7BC98100867C35 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D00EE1F7BC98100867C35 /* Person.swift */; };
+		E56D00F11F7BC9C000867C35 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D00F01F7BC9C000867C35 /* Item.swift */; };
+		E5B38A191F7BA232007BD655 /* BillTableSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B38A181F7BA232007BD655 /* BillTableSection.xib */; };
+		E5D691301F7B9B4500A52971 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6912F1F7B9B4500A52971 /* AppDelegate.swift */; };
+		E5D691351F7B9B4500A52971 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5D691331F7B9B4500A52971 /* Main.storyboard */; };
+		E5D691381F7B9B4500A52971 /* PayUp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5D691361F7B9B4500A52971 /* PayUp.xcdatamodeld */; };
+		E5D6913A1F7B9B4500A52971 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5D691391F7B9B4500A52971 /* Assets.xcassets */; };
+		E5D6913D1F7B9B4500A52971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5D6913B1F7B9B4500A52971 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E56D00E81F7BBBA100867C35 /* BillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillViewController.swift; sourceTree = "<group>"; };
+		E56D00EA1F7BBCC900867C35 /* BillTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillTableCell.swift; sourceTree = "<group>"; };
+		E56D00EC1F7BBE3300867C35 /* BillTableSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillTableSection.swift; sourceTree = "<group>"; };
+		E56D00EE1F7BC98100867C35 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		E56D00F01F7BC9C000867C35 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		E5B38A181F7BA232007BD655 /* BillTableSection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillTableSection.xib; sourceTree = "<group>"; };
+		E5D6912C1F7B9B4500A52971 /* PayUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5D6912F1F7B9B4500A52971 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E5D691341F7B9B4500A52971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E5D691371F7B9B4500A52971 /* PayUp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PayUp.xcdatamodel; sourceTree = "<group>"; };
+		E5D691391F7B9B4500A52971 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E5D6913C1F7B9B4500A52971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E5D6913E1F7B9B4500A52971 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E5D691291F7B9B4500A52971 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E5D691231F7B9B4500A52971 = {
+			isa = PBXGroup;
+			children = (
+				E5D6912E1F7B9B4500A52971 /* PayUp */,
+				E5D6912D1F7B9B4500A52971 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E5D6912D1F7B9B4500A52971 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E5D6912C1F7B9B4500A52971 /* PayUp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E5D6912E1F7B9B4500A52971 /* PayUp */ = {
+			isa = PBXGroup;
+			children = (
+				E5D691461F7B9BC100A52971 /* Controller */,
+				E5D691451F7B9BBD00A52971 /* View */,
+				E5D691441F7B9BB800A52971 /* Model */,
+				E5D691391F7B9B4500A52971 /* Assets.xcassets */,
+				E5D6913E1F7B9B4500A52971 /* Info.plist */,
+				E5D691361F7B9B4500A52971 /* PayUp.xcdatamodeld */,
+			);
+			path = PayUp;
+			sourceTree = "<group>";
+		};
+		E5D691441F7B9BB800A52971 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E56D00EE1F7BC98100867C35 /* Person.swift */,
+				E56D00F01F7BC9C000867C35 /* Item.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E5D691451F7B9BBD00A52971 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E5B38A181F7BA232007BD655 /* BillTableSection.xib */,
+				E5D6913B1F7B9B4500A52971 /* LaunchScreen.storyboard */,
+				E5D691331F7B9B4500A52971 /* Main.storyboard */,
+				E56D00EA1F7BBCC900867C35 /* BillTableCell.swift */,
+				E56D00EC1F7BBE3300867C35 /* BillTableSection.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E5D691461F7B9BC100A52971 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E5D6912F1F7B9B4500A52971 /* AppDelegate.swift */,
+				E56D00E81F7BBBA100867C35 /* BillViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E5D6912B1F7B9B4500A52971 /* PayUp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5D691411F7B9B4500A52971 /* Build configuration list for PBXNativeTarget "PayUp" */;
+			buildPhases = (
+				E5D691281F7B9B4500A52971 /* Sources */,
+				E5D691291F7B9B4500A52971 /* Frameworks */,
+				E5D6912A1F7B9B4500A52971 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PayUp;
+			productName = PayUp;
+			productReference = E5D6912C1F7B9B4500A52971 /* PayUp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E5D691241F7B9B4500A52971 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Hongxuan;
+				TargetAttributes = {
+					E5D6912B1F7B9B4500A52971 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = EVC7K5F9LC;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E5D691271F7B9B4500A52971 /* Build configuration list for PBXProject "PayUp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E5D691231F7B9B4500A52971;
+			productRefGroup = E5D6912D1F7B9B4500A52971 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E5D6912B1F7B9B4500A52971 /* PayUp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E5D6912A1F7B9B4500A52971 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5D6913D1F7B9B4500A52971 /* LaunchScreen.storyboard in Resources */,
+				E5B38A191F7BA232007BD655 /* BillTableSection.xib in Resources */,
+				E5D6913A1F7B9B4500A52971 /* Assets.xcassets in Resources */,
+				E5D691351F7B9B4500A52971 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E5D691281F7B9B4500A52971 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E56D00EF1F7BC98100867C35 /* Person.swift in Sources */,
+				E5D691301F7B9B4500A52971 /* AppDelegate.swift in Sources */,
+				E56D00EB1F7BBCC900867C35 /* BillTableCell.swift in Sources */,
+				E56D00ED1F7BBE3300867C35 /* BillTableSection.swift in Sources */,
+				E56D00F11F7BC9C000867C35 /* Item.swift in Sources */,
+				E5D691381F7B9B4500A52971 /* PayUp.xcdatamodeld in Sources */,
+				E56D00E91F7BBBA100867C35 /* BillViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E5D691331F7B9B4500A52971 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E5D691341F7B9B4500A52971 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E5D6913B1F7B9B4500A52971 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E5D6913C1F7B9B4500A52971 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E5D6913F1F7B9B4500A52971 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E5D691401F7B9B4500A52971 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E5D691421F7B9B4500A52971 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = EVC7K5F9LC;
+				INFOPLIST_FILE = PayUp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hx.PayUp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E5D691431F7B9B4500A52971 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = EVC7K5F9LC;
+				INFOPLIST_FILE = PayUp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hx.PayUp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E5D691271F7B9B4500A52971 /* Build configuration list for PBXProject "PayUp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5D6913F1F7B9B4500A52971 /* Debug */,
+				E5D691401F7B9B4500A52971 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5D691411F7B9B4500A52971 /* Build configuration list for PBXNativeTarget "PayUp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5D691421F7B9B4500A52971 /* Debug */,
+				E5D691431F7B9B4500A52971 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E5D691361F7B9B4500A52971 /* PayUp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E5D691371F7B9B4500A52971 /* PayUp.xcdatamodel */,
+			);
+			currentVersion = E5D691371F7B9B4500A52971 /* PayUp.xcdatamodel */;
+			path = PayUp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E5D691241F7B9B4500A52971 /* Project object */;
+}
