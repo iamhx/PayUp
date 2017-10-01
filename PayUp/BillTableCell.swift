@@ -11,6 +11,7 @@ import UIKit
 protocol BillTableCellDelegate {
 	
 	func updateItemName(_ cell: BillTableCell)
+	func updateItemPrice(_ cell: BillTableCell)
 }
 
 class BillTableCell: UITableViewCell {
@@ -33,6 +34,11 @@ class BillTableCell: UITableViewCell {
 		delegate?.updateItemName(self)
 	}
 	
+	@IBAction func updateItemPrice(_ sender: Any) {
+		
+		delegate?.updateItemPrice(self)
+
+	}
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

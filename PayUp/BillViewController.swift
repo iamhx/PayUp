@@ -18,11 +18,6 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	@IBOutlet var txtFieldToolBar: UIToolbar!
 	
-	@IBAction func btnBack(_ sender: Any) {
-	}
-	
-	@IBAction func btnForward(_ sender: Any) {
-	}
 	
 	@IBAction func btnDone(_ sender: Any) {
 		
@@ -78,7 +73,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		cell.indexPath = indexPath
 		
 		cell.txtName.text = bill[indexPath.section].items[indexPath.row].itemName
-		//cell.txtPrice.text = bill[indexPath.section].items[indexPath.row].itemPrice
+		cell.txtPrice.text = formatCurrency(bill[indexPath.section].items[indexPath.row].itemPrice)
 		
 		return cell
 	}
@@ -121,6 +116,31 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		let indexPath = cell.indexPath!
 		bill[indexPath.section].items[indexPath.row].itemName = cell.txtName.text!
+	}
+	
+	func updateItemPrice(_ cell: BillTableCell) {
+		
+		if (cell.txtPrice.text!.isEmpty) {
+			
+			cell.txtPrice.text! = "0.00"
+		}
+		
+		guard let price = Decimal(string: cell.txtPrice.text!) else {
+			
+			cell.txtPrice.text = "$0.00"
+
+			let errorAlert = UIAlertController(title: "Error", message: "Please enter a valid price.", preferredStyle: .alert)
+			errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+			
+			self.present(errorAlert, animated: true, completion: nil)
+			
+			return
+		}
+		
+		let indexPath = cell.indexPath!
+		bill[indexPath.section].items[indexPath.row].itemPrice = price
+		cell.txtPrice.text = formatCurrency(price)
+		print(bill[indexPath.section].items[indexPath.row].itemPrice)
 	}
 	
 	func toggleSection(_ header: BillTableSection, section: Int) {
@@ -179,6 +199,21 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		billTableView.endUpdates()
 	}
 	
+	func formatCurrency(_ amount: Decimal) -> String {
+		
+		var string = ""
+		
+		let formatter = NumberFormatter()
+		let usLocale = Locale.init(identifier: "en_US")
+		formatter.minimumIntegerDigits = 1
+		formatter.minimumFractionDigits = 2
+		formatter.maximumFractionDigits = 3
+		formatter.roundingMode = .down
+		formatter.locale = usLocale
+		
+		string = String(format: "$%@", formatter.string(from: NSDecimalNumber(decimal: amount))!)
+		return string
+	}
 	
 	// MARK: - TextField Delegates
 	
