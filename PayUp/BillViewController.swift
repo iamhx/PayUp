@@ -44,12 +44,20 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		//Instantiate initial person
 		bill.append(Person(name: ""))
 		
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardDidShow, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardDidHide, object: nil)
+		
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+	
+	deinit {
+		
+		NotificationCenter.default.removeObserver(self)
+	}
 	
 	// MARK: - TableView delegates
 	
@@ -265,6 +273,25 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		textField.resignFirstResponder()
 
 		return true
+	}
+	
+	
+	// MARK: - NotificationCenter Observers
+	
+	func keyboardWillShow(notification: Notification) {
+		
+		if let keyboardHeight = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
+			billTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardHeight, 0)
+		}
+	}
+	
+	func keyboardWillHide(notification: Notification) {
+		
+		UIView.animate(withDuration: 0.2, animations: {
+			
+			// For some reason adding inset in keyboardWillShow is animated by itself but removing is not, that's why we have to use animateWithDuration here
+			self.billTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+		})
 	}
 
     /*
