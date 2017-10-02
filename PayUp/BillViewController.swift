@@ -72,10 +72,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	// MARK: - TableView delegates
 	
-	func numberOfSections(in tableView: UITableView) -> Int {
-		
-		return bill.count
-	}
+	
+	// MARK: Required delegate functions
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
@@ -98,6 +96,29 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		resetPriceFieldIfZero(cell.txtPrice)
 		
 		return cell
+	}
+
+	
+	// MARK: Editing style
+	
+	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		
+		return true
+	}
+	
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+		
+		if (editingStyle == .delete) {
+			
+			//delete
+		}
+	}
+	
+	// MARK: Header properties
+	
+	func numberOfSections(in tableView: UITableView) -> Int {
+		
+		return bill.count
 	}
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
