@@ -28,6 +28,7 @@ class BillTableSection: UITableViewHeaderFooterView {
 	@IBOutlet weak var txtName: UITextField!
 	@IBOutlet weak var lblPrice: UILabel!
 	@IBOutlet weak var btnAddItem: UIButton!
+	@IBOutlet weak var expandOrCollapse: UIImageView!
 	
 	
 	var delegate: BillTableSectionDelegate?

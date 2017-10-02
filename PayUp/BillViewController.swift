@@ -27,6 +27,15 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	//MARK: - View Controller properties
 	@IBOutlet weak var billTableView: UITableView!
+	@IBOutlet weak var bottomToolbar: UIToolbar!
+	
+	let btnEdit = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.edit, target: self, action: #selector(toolBarEditingMode))
+	let btnDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(toolBarNotEditingMode))
+	let btnAdd = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addPerson))
+	let btnRemovePerson = UIBarButtonItem(title: "Remove Person", style: UIBarButtonItemStyle.plain, target: self, action: nil)
+	let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+
+	
 	var bill = [Person]()
 	
 	
@@ -46,6 +55,9 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: .UIKeyboardDidShow, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardDidHide, object: nil)
+		
+		btnRemovePerson.tintColor = .red
+		toolBarNotEditingMode()
     }
 
     override func didReceiveMemoryWarning() {
@@ -168,6 +180,15 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		//Toggle collapse
 		bill[section].collapsed = collapsed
 		
+		if (collapsed) {
+			
+			header.expandOrCollapse.image = #imageLiteral(resourceName: "expand")
+		}
+		else {
+			
+			header.expandOrCollapse.image = #imageLiteral(resourceName: "collapse")
+		}
+		
 		// Adjust the height of the rows inside the section
 		reloadRows(section)
 	}
@@ -181,6 +202,21 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	// MARK: - Actions
 	
+	func toolBarEditingMode() {
+		
+		let isEditing = [btnDone, flexibleSpace, btnRemovePerson]
+		bottomToolbar.setItems(isEditing, animated: true)
+		
+		billTableView.setEditing(true, animated: true)
+	}
+	
+	func toolBarNotEditingMode() {
+		
+		let notEditing = [btnEdit, flexibleSpace, btnAdd]
+		bottomToolbar.setItems(notEditing, animated: true)
+		
+		billTableView.setEditing(false, animated: true)
+	}
 	
 	func resetPriceFieldIfZero(_ cell: UITextField) {
 		
@@ -190,7 +226,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		}
 	}
 	
-	@IBAction func addPerson(_ sender: Any) {
+	func addPerson() {
 		
 		let person = Person(name: "")
 		bill.append(person)

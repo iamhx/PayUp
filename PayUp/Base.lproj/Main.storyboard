@@ -90,15 +90,7 @@
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6TW-ZO-KCW">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem systemItem="edit" id="z84-BU-aWY"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="qrP-Wj-s3Z"/>
-                                    <barButtonItem systemItem="add" id="Sjh-yH-xwu">
-                                        <connections>
-                                            <action selector="addPerson:" destination="5jE-Mr-6nk" id="ng1-bI-hMj"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
+                                <items/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -118,6 +110,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="billTableView" destination="S5j-9i-a6c" id="k74-Dn-Lts"/>
+                        <outlet property="bottomToolbar" destination="6TW-ZO-KCW" id="wW1-ky-eK1"/>
                         <outlet property="txtFieldToolBar" destination="hTx-7w-FP0" id="Brt-5k-XRT"/>
                     </connections>
                 </viewController>
