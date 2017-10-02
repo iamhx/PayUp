@@ -257,6 +257,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		if (bill[section].collapsed) {
 			
 			bill[section].collapsed = false
+			let header = billTableView.headerView(forSection: section) as! BillTableSection
+			animateImage(header.expandOrCollapse, imageName: "collapse")
 			reloadRows(section)
 		}
 	}

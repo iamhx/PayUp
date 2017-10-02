@@ -25,7 +25,7 @@
                                 <constraint firstAttribute="width" constant="22" id="po8-nh-urI"/>
                             </constraints>
                         </button>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="collapse" translatesAutoresizingMaskIntoConstraints="NO" id="JdQ-x2-tlm">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="expand" translatesAutoresizingMaskIntoConstraints="NO" id="JdQ-x2-tlm">
                             <rect key="frame" x="345" y="11" width="22" height="22"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="22" id="YIt-QZ-Trh"/>
@@ -93,6 +93,6 @@
         </view>
     </objects>
     <resources>
-        <image name="collapse" width="24" height="24"/>
+        <image name="expand" width="24" height="24"/>
     </resources>
 </document>

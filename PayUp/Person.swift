@@ -14,7 +14,7 @@ class Person: NSObject {
 	var items : [Item] = []
 	var collapsed : Bool!
 	
-	init(name: String, collapsed: Bool = false) {
+	init(name: String, collapsed: Bool = true) {
 		
 		self.name = name
 		self.collapsed = collapsed
