@@ -114,6 +114,22 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		}
 	}
 	
+	func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+		
+		let rowToMove = bill[sourceIndexPath.section].items[sourceIndexPath.row]
+		bill[sourceIndexPath.section].items.remove(at: sourceIndexPath.row)
+		
+		if (bill[destinationIndexPath.section].collapsed) {
+			
+			bill[destinationIndexPath.section].items.append(rowToMove)
+		}
+		else {
+			
+			bill[destinationIndexPath.section].items.insert(rowToMove, at: destinationIndexPath.row)
+		}
+	}
+	
+	
 	// MARK: Header properties
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
