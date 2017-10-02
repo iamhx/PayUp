@@ -182,11 +182,11 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		if (collapsed) {
 			
-			header.expandOrCollapse.image = #imageLiteral(resourceName: "expand")
+			animateImage(header.expandOrCollapse, imageName: "expand")
 		}
 		else {
 			
-			header.expandOrCollapse.image = #imageLiteral(resourceName: "collapse")
+			animateImage(header.expandOrCollapse, imageName: "collapse")
 		}
 		
 		// Adjust the height of the rows inside the section
@@ -201,6 +201,16 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	}
 	
 	// MARK: - Actions
+	
+	func animateImage(_ imageView: UIImageView, imageName: String)  {
+		
+		UIView.transition(with: imageView,
+		                  duration: 0.2,
+		                  options: .transitionFlipFromTop,
+		                  animations: { imageView.image = UIImage(named: imageName)},
+		                  completion: nil)
+		
+	}
 	
 	func toolBarEditingMode() {
 		
