@@ -350,7 +350,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			header.btnAddItem.tag = i * 100
 			header.txtName.tag = i * 100
 			header.gestureRecognizers?.removeAll()
-			animateImage(header.expandOrCollapse, imageName: "collapse")
+			header.expandOrCollapse.image = UIImage(named: "collapse")
 			
 			for j in 0 ..< bill[i].items.count {
 				
