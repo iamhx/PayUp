@@ -91,6 +91,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		cell.txtName.delegate = self
 		cell.txtPrice.delegate = self
 		cell.txtPrice.tag = 2
+		cell.txtName.isEnabled = true
+		cell.txtPrice.isEnabled = true
 		
 		cell.delegate = self
 		cell.indexPath = indexPath
@@ -224,7 +226,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		if (name.isEmpty) {
 			
-			name = "Person"
+			name = "Person \(row + 1)"
 		}
 		let header = billTableView.headerView(forSection: row) as! BillTableSection
 		
@@ -344,6 +346,11 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		for i in 0 ..< bill.count {
 			
 			let header = billTableView.headerView(forSection: i) as! BillTableSection
+			header.section = i
+			header.btnAddItem.tag = i * 100
+			header.txtName.tag = i * 100
+			header.gestureRecognizers?.removeAll()
+			animateImage(header.expandOrCollapse, imageName: "collapse")
 			
 			for j in 0 ..< bill[i].items.count {
 				
