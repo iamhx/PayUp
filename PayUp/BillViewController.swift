@@ -23,7 +23,6 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		view.endEditing(true)
 	}
 	
-	
 	//MARK: - View Controller properties
 	@IBOutlet weak var billTableView: UITableView!
 	@IBOutlet weak var bottomToolbar: UIToolbar!
@@ -37,7 +36,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	let pickerViewToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 375, height: 44))
 	let personPickerView = UIPickerView()
 	let btnCancel = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(btnDone(_:)))
-	let btnChoose = UIBarButtonItem(title: "Remove", style: UIBarButtonItemStyle.done, target: self, action: nil)
+	let btnChoose = UIBarButtonItem(title: "Remove", style: UIBarButtonItemStyle.done, target: self, action: #selector(choose))
 	
 	var bill = [Person]()
 	
@@ -227,7 +226,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			name = "Person"
 		}
-		let header = billTableView.headerView(forSection: component) as! BillTableSection
+		let header = billTableView.headerView(forSection: row) as! BillTableSection
 		
 		return  "(\(header.lblPrice.text!)) \(name)"
 	}
@@ -325,16 +324,64 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	// MARK: - Actions
 	
+	func choose() {
+		
+		view.endEditing(true)
+		
+		for i in (0 ..< bill[personPickerView.selectedRow(inComponent: 0)].items.count).reversed() {
+			
+			let rowIndex = IndexPath(row: i, section: personPickerView.selectedRow(inComponent: 0))
+			bill[personPickerView.selectedRow(inComponent: 0)].items.remove(at: i)
+			billTableView.deleteRows(at: [rowIndex], with: .right)
+		}
+		
+		bill.remove(at: personPickerView.selectedRow(inComponent: 0))
+		billTableView.deleteSections(IndexSet(integer: personPickerView.selectedRow(inComponent: 0)), with: .right)
+		
+		let indexSet = IndexSet(integer: bill.count - 1)
+		billTableView.reloadSections(indexSet, with: .automatic)
+		
+		for i in 0 ..< bill.count {
+			
+			let header = billTableView.headerView(forSection: i) as! BillTableSection
+			
+			for j in 0 ..< bill[i].items.count {
+				
+				let indexPath = IndexPath(row: j, section: i)
+				let cell = billTableView.cellForRow(at: indexPath) as! BillTableCell
+				
+				cell.indexPath = indexPath
+			}
+			
+			header.lblPrice.text = formatCurrency(displayIndividualTotal(section: i))
+		}
+		
+		self.title = formatCurrency(displayTotalPrice())
+		personPickerView.reloadAllComponents()
+	}
+	
 	func removePerson() {
 		
-		let textField = UITextField(frame: .zero)
-		self.view.addSubview(textField)
-		
-		textField.inputView = personPickerView;
-		pickerViewToolBar.setItems([btnCancel, flexibleSpace, btnChoose], animated: false)
-		textField.inputAccessoryView = pickerViewToolBar
-		
-		textField.becomeFirstResponder()
+		if (billTableView.numberOfSections == 1) {
+			
+			let alertController = UIAlertController(title: "Unable to Remove Person", message: "You must have at least 1 person in the bill.", preferredStyle: .alert)
+			
+			alertController.addAction(.init(title: "OK", style: .default, handler: nil))
+			
+			present(alertController, animated: true, completion: nil)
+		}
+		else {
+			
+			let textField = UITextField(frame: .zero)
+			self.view.addSubview(textField)
+			
+			textField.inputView = personPickerView;
+			personPickerView.selectRow(0, inComponent: 0, animated: false)
+			pickerViewToolBar.setItems([btnCancel, flexibleSpace, btnChoose], animated: false)
+			textField.inputAccessoryView = pickerViewToolBar
+			
+			textField.becomeFirstResponder()
+		}
 	}
 	
 	func animateImage(_ imageView: UIImageView, imageName: String)  {
