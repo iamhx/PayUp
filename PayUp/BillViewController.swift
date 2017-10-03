@@ -116,17 +116,15 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
 		
+		var header = tableView.headerView(forSection: sourceIndexPath.section) as! BillTableSection
 		let rowToMove = bill[sourceIndexPath.section].items[sourceIndexPath.row]
-		bill[sourceIndexPath.section].items.remove(at: sourceIndexPath.row)
 		
-		if (bill[destinationIndexPath.section].collapsed) {
-			
-			bill[destinationIndexPath.section].items.append(rowToMove)
-		}
-		else {
-			
-			bill[destinationIndexPath.section].items.insert(rowToMove, at: destinationIndexPath.row)
-		}
+		bill[sourceIndexPath.section].items.remove(at: sourceIndexPath.row)
+		bill[destinationIndexPath.section].items.insert(rowToMove, at: destinationIndexPath.row)
+		
+		header.lblPrice.text = formatCurrency(displayIndividualTotal(section: sourceIndexPath.section))
+		header = tableView.headerView(forSection: destinationIndexPath.section) as! BillTableSection
+		header.lblPrice.text = formatCurrency(displayIndividualTotal(section: destinationIndexPath.section))
 	}
 	
 	
@@ -227,7 +225,9 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		}
 		
 		// Adjust the height of the rows inside the section
+		billTableView.beginUpdates()
 		reloadRows(section)
+		billTableView.endUpdates()
 	}
 	
 	func updatePersonName (_ header: BillTableSection) {
@@ -255,9 +255,54 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		bottomToolbar.setItems(isEditing, animated: true)
 		
 		billTableView.setEditing(true, animated: true)
+		
+		billTableView.beginUpdates()
+		
+		for i in 0 ..< bill.count {
+			
+			let header = billTableView.headerView(forSection: i) as! BillTableSection
+			header.gestureRecognizers?.removeAll()
+			
+			for j in 0 ..< bill[i].items.count {
+				
+				let cell = billTableView.cellForRow(at: IndexPath(row: j, section: i)) as! BillTableCell
+				
+				cell.txtPrice.isEnabled = false
+				cell.txtName.isEnabled = false
+			}
+			
+			if (bill[i].collapsed) {
+				
+				bill[i].collapsed = false
+				animateImage(header.expandOrCollapse, imageName: "collapse")
+				reloadRows(i)
+			}
+		}
+		
+		billTableView.endUpdates()
 	}
 	
 	func toolBarNotEditingMode() {
+		
+		if (billTableView.isEditing) {
+			
+			for i in 0 ..< bill.count {
+				
+				for j in 0 ..< bill[i].items.count {
+					
+					let indexPath = IndexPath(row: j, section: i)
+					let cell = billTableView.cellForRow(at: indexPath) as! BillTableCell
+					
+					cell.txtPrice.isEnabled = true
+					cell.txtName.isEnabled = true
+					cell.indexPath = indexPath
+				}
+				
+				let header = billTableView.headerView(forSection: i) as! BillTableSection
+				header.addGestureRecognizer(UITapGestureRecognizer(target: header.self, action: #selector(header.tapHeader(_:))))
+				
+			}
+		}
 		
 		let notEditing = [btnEdit, flexibleSpace, btnAdd]
 		bottomToolbar.setItems(notEditing, animated: true)
@@ -296,19 +341,19 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			bill[section].collapsed = false
 			let header = billTableView.headerView(forSection: section) as! BillTableSection
 			animateImage(header.expandOrCollapse, imageName: "collapse")
+			
+			billTableView.beginUpdates()
 			reloadRows(section)
+			billTableView.endUpdates()
 		}
 	}
 	
 	func reloadRows(_ section: Int) {
 		
-		billTableView.beginUpdates()
 		for i in 0 ..< bill[section].items.count {
 			
 			billTableView.reloadRows(at: [IndexPath(row: i, section: section)], with: .automatic)
 		}
-		
-		billTableView.endUpdates()
 	}
 	
 	func formatCurrency(_ amount: Decimal) -> String {
