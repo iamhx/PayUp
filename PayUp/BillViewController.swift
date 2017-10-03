@@ -11,13 +11,12 @@ import UIKit
 
 // MARK: - BillViewController Class
 
-class BillViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, BillTableCellDelegate, BillTableSectionDelegate {
+class BillViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, BillTableCellDelegate, BillTableSectionDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
 	
 	//MARK: - TextField Toolbar properties
 	
 	@IBOutlet var txtFieldToolBar: UIToolbar!
-	
 	
 	@IBAction func btnDone(_ sender: Any) {
 		
@@ -32,12 +31,15 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	let btnEdit = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.edit, target: self, action: #selector(toolBarEditingMode))
 	let btnDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(toolBarNotEditingMode))
 	let btnAdd = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addPerson))
-	let btnRemovePerson = UIBarButtonItem(title: "Remove Person", style: UIBarButtonItemStyle.plain, target: self, action: nil)
+	let btnRemovePerson = UIBarButtonItem(title: "Remove Person", style: UIBarButtonItemStyle.plain, target: self, action: #selector(removePerson))
 	let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-
+	
+	let pickerViewToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 375, height: 44))
+	let personPickerView = UIPickerView()
+	let btnCancel = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(btnDone(_:)))
+	let btnChoose = UIBarButtonItem(title: "Remove", style: UIBarButtonItemStyle.done, target: self, action: nil)
 	
 	var bill = [Person]()
-	
 	
 	//MARK: - viewDidLoad Implementation
 	
@@ -49,6 +51,9 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		self.hideKeyboardWhenTappedAround()
 		let nib = UINib(nibName: "BillTableSection", bundle: nil)
 		billTableView.register(nib, forHeaderFooterViewReuseIdentifier: "BillTableSection")
+		personPickerView.dataSource = self
+		personPickerView.delegate = self
+		personPickerView.showsSelectionIndicator = true
 		
 		//Instantiate initial person
 		bill.append(Person(name: ""))
@@ -57,6 +62,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: .UIKeyboardDidHide, object: nil)
 		
 		btnRemovePerson.tintColor = .red
+		btnChoose.tintColor = .red
 		toolBarNotEditingMode()
     }
 
@@ -90,6 +96,12 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		cell.delegate = self
 		cell.indexPath = indexPath
 		
+		if (billTableView.isEditing) {
+			
+			cell.txtName.isEnabled = false
+			cell.txtPrice.isEnabled = false
+		}
+		
 		cell.txtName.text = bill[indexPath.section].items[indexPath.row].itemName
 		cell.txtPrice.text = formatCurrency(bill[indexPath.section].items[indexPath.row].itemPrice)
 		
@@ -110,7 +122,31 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		if (editingStyle == .delete) {
 			
-			//delete
+			// Delete the row from the data source
+			
+			let rowIndex = IndexPath(row: indexPath.row, section: indexPath.section)
+			bill[indexPath.section].items.remove(at: indexPath.row)
+			billTableView.deleteRows(at: [rowIndex], with: .fade)
+			
+			let header = billTableView.headerView(forSection: indexPath.section) as! BillTableSection
+			header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
+			self.title = formatCurrency(displayTotalPrice())
+			
+			if (!billTableView.isEditing) {
+				
+				for i in 0 ..< bill.count {
+					
+					for j in 0 ..< bill[i].items.count {
+						
+						let indexPath = IndexPath(row: j, section: i)
+						let cell = billTableView.cellForRow(at: indexPath) as! BillTableCell
+						
+						cell.txtPrice.isEnabled = true
+						cell.txtName.isEnabled = true
+						cell.indexPath = indexPath
+					}
+				}
+			}
 		}
 	}
 	
@@ -145,6 +181,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		header.delegate = self
 		header.txtName.delegate = self
 		header.txtName.text = bill[section].name
+		header.lblPrice.adjustsFontSizeToFitWidth = true
+		header.lblPrice.minimumScaleFactor = 14.0 / UIFont.labelFontSize
 		
 		//Encrypt section into tag by multiplying 100
 		header.btnAddItem.tag = section * 100
@@ -165,6 +203,54 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		
 		return 44.0
+	}
+	
+	//MARK: - PickerView Delegates
+	
+	//MARK: Required delegate functions
+	
+	func numberOfComponents(in pickerView: UIPickerView) -> Int {
+		
+		return 1
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+		
+		return bill.count
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+		
+		var name = bill[component].name
+		
+		if (name.isEmpty) {
+			
+			name = "Person"
+		}
+		let header = billTableView.headerView(forSection: component) as! BillTableSection
+		
+		return  "(\(header.lblPrice.text!)) \(name)"
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+		
+		var textUIView = view as? UILabel
+		
+		if (textUIView == nil) {
+			
+			textUIView = UILabel()
+			textUIView?.textAlignment = .center
+			textUIView?.adjustsFontSizeToFitWidth = true
+			textUIView?.minimumScaleFactor = 17.0 / UIFont.labelFontSize
+			
+			// Setup label properties - frame, font, colors etc
+		}
+		
+		textUIView?.text = self.pickerView(pickerView, titleForRow: row, forComponent: component)
+		
+		//Add any logic you want here
+		
+		return textUIView!
 	}
 	
 	//MARK: - Custom Delegates
@@ -238,6 +324,18 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	}
 	
 	// MARK: - Actions
+	
+	func removePerson() {
+		
+		let textField = UITextField(frame: .zero)
+		self.view.addSubview(textField)
+		
+		textField.inputView = personPickerView;
+		pickerViewToolBar.setItems([btnCancel, flexibleSpace, btnChoose], animated: false)
+		textField.inputAccessoryView = pickerViewToolBar
+		
+		textField.becomeFirstResponder()
+	}
 	
 	func animateImage(_ imageView: UIImageView, imageName: String)  {
 		
