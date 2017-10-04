@@ -206,6 +206,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		header.txtName.text = bill[section].name
 		header.lblPrice.adjustsFontSizeToFitWidth = true
 		header.lblPrice.minimumScaleFactor = 14.0 / UIFont.labelFontSize
+		header.lblPrice.text = formatCurrency(displayIndividualTotal(section: section))
 		
 		if (bill[section].collapsed) {
 			
@@ -313,7 +314,6 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	func updateItemPrice(_ cell: BillTableCell) {
 		
 		let indexPath = cell.indexPath!
-		let header = billTableView.headerView(forSection: indexPath.section) as! BillTableSection
 		
 		if (cell.txtPrice.text!.isEmpty) {
 			
@@ -324,7 +324,11 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			cell.txtPrice.text = ""
 			bill[indexPath.section].items[indexPath.row].itemPrice = 0.00
-			header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
+			if let header = billTableView.headerView(forSection: indexPath.section) as? BillTableSection {
+				
+				header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
+			}
+
 			self.title = formatCurrency(displayTotalPrice())
 
 			let errorAlert = UIAlertController(title: "Error", message: "Please enter a valid price.", preferredStyle: .alert)
@@ -336,7 +340,10 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		}
 		
 		bill[indexPath.section].items[indexPath.row].itemPrice = price
-		header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
+		if let header = billTableView.headerView(forSection: indexPath.section) as? BillTableSection {
+			
+			header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
+		}
 		self.title = formatCurrency(displayTotalPrice())
 		cell.txtPrice.text = formatCurrency(price)
 		
