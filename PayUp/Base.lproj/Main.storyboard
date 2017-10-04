@@ -105,12 +105,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="$0.00" prompt="Your Bill" id="f28-47-vfI">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="B9B-9F-RDe"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="NcL-YJ-cw9"/>
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="B9B-9F-RDe"/>
+                        <barButtonItem key="rightBarButtonItem" title="Split" id="NcL-YJ-cw9"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="backOutlet" destination="eE8-NI-6z8" id="NNh-TH-LXq"/>
                         <outlet property="billTableView" destination="S5j-9i-a6c" id="k74-Dn-Lts"/>
                         <outlet property="bottomToolbar" destination="6TW-ZO-KCW" id="wW1-ky-eK1"/>
+                        <outlet property="forwardOutlet" destination="BRC-My-v8M" id="MxO-iC-u4G"/>
                         <outlet property="txtFieldToolBar" destination="hTx-7w-FP0" id="Brt-5k-XRT"/>
                     </connections>
                 </viewController>
@@ -119,6 +121,16 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
+                        <barButtonItem enabled="NO" image="back" id="eE8-NI-6z8">
+                            <connections>
+                                <action selector="btnBack:" destination="5jE-Mr-6nk" id="Rrw-f2-7jn"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem enabled="NO" image="forward" id="BRC-My-v8M">
+                            <connections>
+                                <action selector="btnForward:" destination="5jE-Mr-6nk" id="2KV-6R-9ub"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="bvU-LP-9kJ"/>
                         <barButtonItem systemItem="done" id="w92-3V-KLL">
                             <connections>
@@ -149,4 +161,8 @@
             <point key="canvasLocation" x="2679.5" y="8.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back" width="25" height="25"/>
+        <image name="forward" width="25" height="25"/>
+    </resources>
 </document>

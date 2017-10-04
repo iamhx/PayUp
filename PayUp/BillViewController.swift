@@ -14,19 +14,38 @@ import UIKit
 class BillViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, BillTableCellDelegate, BillTableSectionDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
 
 	
-	//MARK: - TextField Toolbar properties
+	//MARK: - IBOutlets
 	
 	@IBOutlet var txtFieldToolBar: UIToolbar!
+	@IBOutlet weak var backOutlet: UIBarButtonItem!
+	@IBOutlet weak var forwardOutlet: UIBarButtonItem!
+	@IBOutlet weak var billTableView: UITableView!
+	@IBOutlet weak var bottomToolbar: UIToolbar!
+	
+	
+	//MARK: - IBActions
 	
 	@IBAction func btnDone(_ sender: Any) {
 		
 		view.endEditing(true)
 	}
 	
-	//MARK: - View Controller properties
-	@IBOutlet weak var billTableView: UITableView!
-	@IBOutlet weak var bottomToolbar: UIToolbar!
+	@IBAction func btnBack(_ sender: Any) {
+		
+		let cell = billTableView.cellForRow(at: toolBarIndexPath!) as! BillTableCell
+		
+		cell.txtName.becomeFirstResponder()
+	}
+	@IBAction func btnForward(_ sender: Any) {
+		
+		let cell = billTableView.cellForRow(at: toolBarIndexPath!) as! BillTableCell
+		
+		cell.txtPrice.becomeFirstResponder()
+	}
 	
+	//MARK: - View Controller properties
+	
+
 	let btnEdit = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.edit, target: self, action: #selector(toolBarEditingMode))
 	let btnDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(toolBarNotEditingMode))
 	let btnAdd = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addPerson))
@@ -39,6 +58,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	let btnChoose = UIBarButtonItem(title: "Remove", style: UIBarButtonItemStyle.done, target: self, action: #selector(choose))
 	
 	var bill = [Person]()
+	var toolBarIndexPath : IndexPath?
 	
 	//MARK: - viewDidLoad Implementation
 	
@@ -78,7 +98,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	// MARK: - TableView delegates
 	
 	
-	// MARK: Required delegate functions
+		// MARK: Required delegate functions
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
@@ -90,6 +110,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! BillTableCell
 		cell.txtName.delegate = self
 		cell.txtPrice.delegate = self
+		cell.txtName.tag = 1
 		cell.txtPrice.tag = 2
 		cell.txtName.isEnabled = true
 		cell.txtPrice.isEnabled = true
@@ -112,7 +133,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	}
 
 	
-	// MARK: Editing style
+		// MARK: Editing style
 	
 	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 		
@@ -165,7 +186,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	}
 	
 	
-	// MARK: Header properties
+		// MARK: Header properties
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		
@@ -206,9 +227,22 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		return 44.0
 	}
 	
+		// MARK: Visible cells properties
+	
+	func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+		
+		
+	}
+	
+	func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		
+		
+		
+	}
+	
 	//MARK: - PickerView Delegates
 	
-	//MARK: Required delegate functions
+		//MARK: Required delegate functions
 	
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
 		
@@ -220,9 +254,11 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		return bill.count
 	}
 	
+		//MARK: Title properties
+	
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
 		
-		var name = bill[component].name
+		var name = bill[row].name
 		
 		if (name.isEmpty) {
 			
@@ -255,6 +291,15 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	}
 	
 	//MARK: - Custom Delegates
+	
+		//MARK: Updating object array properties
+	
+	func updatePersonName (_ header: BillTableSection) {
+		
+		let section = header.txtName.tag / 100
+		
+		bill[section].name = header.txtName.text!
+	}
 	
 	func updateItemName(_ cell: BillTableCell) {
 		
@@ -295,6 +340,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		resetPriceFieldIfZero(cell.txtPrice)
 	}
 	
+		//MARK: Collapsible Table Header Section
+	
 	func toggleSection(_ header: BillTableSection, section: Int) {
 		
 		let collapsed = !bill[section].collapsed
@@ -317,14 +364,9 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		billTableView.endUpdates()
 	}
 	
-	func updatePersonName (_ header: BillTableSection) {
-		
-		let section = header.txtName.tag / 100
-		
-		bill[section].name = header.txtName.text!
-	}
+	// MARK: - Functions
 	
-	// MARK: - Actions
+		// MARK: Removing a Person
 	
 	func choose() {
 		
@@ -391,16 +433,6 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		}
 	}
 	
-	func animateImage(_ imageView: UIImageView, imageName: String)  {
-		
-		UIView.transition(with: imageView,
-		                  duration: 0.2,
-		                  options: .transitionFlipFromTop,
-		                  animations: { imageView.image = UIImage(named: imageName)},
-		                  completion: nil)
-		
-	}
-	
 	func toolBarEditingMode() {
 		
 		let isEditing = [btnDone, flexibleSpace, btnRemovePerson]
@@ -412,22 +444,25 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		for i in 0 ..< bill.count {
 			
-			let header = billTableView.headerView(forSection: i) as! BillTableSection
-			header.gestureRecognizers?.removeAll()
+			if let header = billTableView.headerView(forSection: i) as? BillTableSection {
+				
+				header.gestureRecognizers?.removeAll()
+				
+				if (bill[i].collapsed) {
+					
+					bill[i].collapsed = false
+					animateImage(header.expandOrCollapse, imageName: "collapse")
+					reloadRows(i)
+				}
+			}
 			
 			for j in 0 ..< bill[i].items.count {
 				
-				let cell = billTableView.cellForRow(at: IndexPath(row: j, section: i)) as! BillTableCell
+				if let cell = billTableView.cellForRow(at: IndexPath(row: j, section: i)) as? BillTableCell {
 				
-				cell.txtPrice.isEnabled = false
-				cell.txtName.isEnabled = false
-			}
-			
-			if (bill[i].collapsed) {
-				
-				bill[i].collapsed = false
-				animateImage(header.expandOrCollapse, imageName: "collapse")
-				reloadRows(i)
+					cell.txtPrice.isEnabled = false
+					cell.txtName.isEnabled = false
+				}
 			}
 		}
 		
@@ -461,42 +496,25 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		billTableView.setEditing(false, animated: true)
 	}
+
+	
+		// MARK: UI Updates
+	
+	func animateImage(_ imageView: UIImageView, imageName: String)  {
+		
+		UIView.transition(with: imageView,
+		                  duration: 0.2,
+		                  options: .transitionFlipFromTop,
+		                  animations: { imageView.image = UIImage(named: imageName)},
+		                  completion: nil)
+		
+	}
 	
 	func resetPriceFieldIfZero(_ cell: UITextField) {
 		
 		if (cell.text == "$0.00") {
 			
 			cell.text = ""
-		}
-	}
-	
-	func addPerson() {
-		
-		let person = Person(name: "")
-		bill.append(person)
-		
-		billTableView.insertSections(IndexSet(integer: (bill.count - 1)), with: .automatic)
-	}
-	
-	func addItemToRow(_ sender: UIButton) {
-		
-		//Decrypt tag to get section
-		let section = sender.tag / 100
-		
-		let item = Item(itemName: "", itemPrice: 0.00)
-		bill[section].items.append(item)
-		
-		billTableView.insertRows(at: [IndexPath(row: bill[section].items.count - 1, section: section)], with: .automatic)
-		
-		if (bill[section].collapsed) {
-			
-			bill[section].collapsed = false
-			let header = billTableView.headerView(forSection: section) as! BillTableSection
-			animateImage(header.expandOrCollapse, imageName: "collapse")
-			
-			billTableView.beginUpdates()
-			reloadRows(section)
-			billTableView.endUpdates()
 		}
 	}
 	
@@ -547,12 +565,66 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		return total
 	}
-
+	
+		//MARK: Adding object array properties
+	
+	func addPerson() {
+		
+		let person = Person(name: "")
+		bill.append(person)
+		
+		billTableView.insertSections(IndexSet(integer: (bill.count - 1)), with: .automatic)
+	}
+	
+	func addItemToRow(_ sender: UIButton) {
+		
+		//Decrypt tag to get section
+		let section = sender.tag / 100
+		
+		let item = Item(itemName: "", itemPrice: 0.00)
+		bill[section].items.append(item)
+		
+		billTableView.insertRows(at: [IndexPath(row: bill[section].items.count - 1, section: section)], with: .automatic)
+		
+		if (bill[section].collapsed) {
+			
+			bill[section].collapsed = false
+			let header = billTableView.headerView(forSection: section) as! BillTableSection
+			animateImage(header.expandOrCollapse, imageName: "collapse")
+			
+			billTableView.beginUpdates()
+			reloadRows(section)
+			billTableView.endUpdates()
+		}
+	}
+	
 	// MARK: - TextField Delegates
 	
 	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
 		
 		textField.inputAccessoryView = txtFieldToolBar
+		
+		if (textField.superview?.superview?.isKind(of: BillTableCell.self))! {
+		
+			let cell = textField.superview?.superview as! BillTableCell
+			toolBarIndexPath = cell.indexPath
+			
+			if (textField.tag == cell.txtName.tag) {
+				
+				forwardOutlet.isEnabled = true
+				backOutlet.isEnabled = false
+			}
+			else {
+				
+				backOutlet.isEnabled = true
+				forwardOutlet.isEnabled = false
+			}
+		}
+		else if (textField.superview?.superview?.isKind(of: BillTableSection.self))! {
+			
+			forwardOutlet.isEnabled = false
+			backOutlet.isEnabled = false
+		}
 		
 		if (textField.tag == 2 && !textField.text!.isEmpty) {
 			
