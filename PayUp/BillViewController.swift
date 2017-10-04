@@ -112,8 +112,6 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		cell.txtPrice.delegate = self
 		cell.txtName.tag = 1
 		cell.txtPrice.tag = 2
-		cell.txtName.isEnabled = true
-		cell.txtPrice.isEnabled = true
 		
 		cell.delegate = self
 		cell.indexPath = indexPath
@@ -122,6 +120,11 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			cell.txtName.isEnabled = false
 			cell.txtPrice.isEnabled = false
+		}
+		else {
+			
+			cell.txtName.isEnabled = true
+			cell.txtPrice.isEnabled = true
 		}
 		
 		cell.txtName.text = bill[indexPath.section].items[indexPath.row].itemName
@@ -195,16 +198,23 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		
+		let header = billTableView.dequeueReusableHeaderFooterView(withIdentifier: "BillTableSection") as! BillTableSection
 		
-		let cell = billTableView.dequeueReusableHeaderFooterView(withIdentifier: "BillTableSection")
-		
-		let header = cell as! BillTableSection
 		header.section = section
 		header.delegate = self
 		header.txtName.delegate = self
 		header.txtName.text = bill[section].name
 		header.lblPrice.adjustsFontSizeToFitWidth = true
 		header.lblPrice.minimumScaleFactor = 14.0 / UIFont.labelFontSize
+		
+		if (bill[section].collapsed) {
+			
+			header.expandOrCollapse.image = UIImage(named: "expand")
+		}
+		else {
+			
+			header.expandOrCollapse.image = UIImage(named: "collapse")
+		}
 		
 		//Encrypt section into tag by multiplying 100
 		header.btnAddItem.tag = section * 100
@@ -213,31 +223,25 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		//Add gesture for toggle collapse
 		header.addGestureRecognizer(UITapGestureRecognizer(target: header.self, action: #selector(header.tapHeader(_:))))
+
+		if (billTableView.isEditing) {
+			
+			header.gestureRecognizers?.removeAll()
+		}
 		
-		return cell
+
+		
+		return header
 	}
 	
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		
-		return bill[indexPath.section].collapsed! ? 0 : 44.0
+		return (bill[indexPath.section].collapsed!) ? 0 : 44.0
 	}
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		
 		return 44.0
-	}
-	
-		// MARK: Visible cells properties
-	
-	func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-		
-		
-	}
-	
-	func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-		
-		
-		
 	}
 	
 	//MARK: - PickerView Delegates
@@ -264,9 +268,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			name = "Person \(row + 1)"
 		}
-		let header = billTableView.headerView(forSection: row) as! BillTableSection
 		
-		return  "(\(header.lblPrice.text!)) \(name)"
+		return  "(\(formatCurrency(displayIndividualTotal(section: row)))) \(name)"
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -349,7 +352,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		//Toggle collapse
 		bill[section].collapsed = collapsed
 		
-		if (collapsed) {
+		if (bill[section].collapsed) {
 			
 			animateImage(header.expandOrCollapse, imageName: "expand")
 		}
@@ -387,22 +390,27 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		for i in 0 ..< bill.count {
 			
-			let header = billTableView.headerView(forSection: i) as! BillTableSection
-			header.section = i
-			header.btnAddItem.tag = i * 100
-			header.txtName.tag = i * 100
-			header.gestureRecognizers?.removeAll()
-			header.expandOrCollapse.image = UIImage(named: "collapse")
+			if let header = billTableView.headerView(forSection: i) as? BillTableSection {
+				
+				header.section = i
+				header.btnAddItem.tag = i * 100
+				header.txtName.tag = i * 100
+				header.gestureRecognizers?.removeAll()
+				header.expandOrCollapse.image = UIImage(named: "collapse")
+				header.lblPrice.text = formatCurrency(displayIndividualTotal(section: i))
+
+			}
 			
 			for j in 0 ..< bill[i].items.count {
 				
 				let indexPath = IndexPath(row: j, section: i)
-				let cell = billTableView.cellForRow(at: indexPath) as! BillTableCell
 				
-				cell.indexPath = indexPath
+				if let cell = billTableView.cellForRow(at: indexPath) as? BillTableCell {
+					
+					cell.indexPath = indexPath
+				}
 			}
 			
-			header.lblPrice.text = formatCurrency(displayIndividualTotal(section: i))
 		}
 		
 		self.title = formatCurrency(displayTotalPrice())
@@ -435,22 +443,16 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	func toolBarEditingMode() {
 		
-		let isEditing = [btnDone, flexibleSpace, btnRemovePerson]
-		bottomToolbar.setItems(isEditing, animated: true)
-		
-		billTableView.setEditing(true, animated: true)
-		
 		billTableView.beginUpdates()
 		
 		for i in 0 ..< bill.count {
 			
 			if let header = billTableView.headerView(forSection: i) as? BillTableSection {
 				
-				header.gestureRecognizers?.removeAll()
-				
 				if (bill[i].collapsed) {
-					
+				
 					bill[i].collapsed = false
+					header.gestureRecognizers?.removeAll()
 					animateImage(header.expandOrCollapse, imageName: "collapse")
 					reloadRows(i)
 				}
@@ -464,9 +466,15 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 					cell.txtName.isEnabled = false
 				}
 			}
+			
+			bill[i].collapsed = false
 		}
 		
 		billTableView.endUpdates()
+		
+		let isEditing = [btnDone, flexibleSpace, btnRemovePerson]
+		bottomToolbar.setItems(isEditing, animated: true)
+		billTableView.setEditing(true, animated: true)
 	}
 	
 	func toolBarNotEditingMode() {
@@ -475,28 +483,29 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			for i in 0 ..< bill.count {
 				
+				if let header = billTableView.headerView(forSection: i) as? BillTableSection {
+					
+					header.addGestureRecognizer(UITapGestureRecognizer(target: header.self, action: #selector(header.tapHeader(_:))))
+				}
+				
 				for j in 0 ..< bill[i].items.count {
 					
 					let indexPath = IndexPath(row: j, section: i)
-					let cell = billTableView.cellForRow(at: indexPath) as! BillTableCell
 					
-					cell.txtPrice.isEnabled = true
-					cell.txtName.isEnabled = true
-					cell.indexPath = indexPath
+					if let cell = billTableView.cellForRow(at: indexPath) as? BillTableCell {
+						
+						cell.txtPrice.isEnabled = true
+						cell.txtName.isEnabled = true
+						cell.indexPath = indexPath
+					}
 				}
-				
-				let header = billTableView.headerView(forSection: i) as! BillTableSection
-				header.addGestureRecognizer(UITapGestureRecognizer(target: header.self, action: #selector(header.tapHeader(_:))))
-				
 			}
 		}
 		
 		let notEditing = [btnEdit, flexibleSpace, btnAdd]
 		bottomToolbar.setItems(notEditing, animated: true)
-		
 		billTableView.setEditing(false, animated: true)
 	}
-
 	
 		// MARK: UI Updates
 	
@@ -589,8 +598,10 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		if (bill[section].collapsed) {
 			
 			bill[section].collapsed = false
-			let header = billTableView.headerView(forSection: section) as! BillTableSection
-			animateImage(header.expandOrCollapse, imageName: "collapse")
+			if let header = billTableView.headerView(forSection: section) as? BillTableSection {
+				
+				animateImage(header.expandOrCollapse, imageName: "collapse")
+			}
 			
 			billTableView.beginUpdates()
 			reloadRows(section)
