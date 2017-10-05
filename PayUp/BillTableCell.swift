@@ -14,6 +14,7 @@ protocol BillTableCellDelegate {
 	func updateItemPrice(_ cell: BillTableCell)
 }
 
+
 class BillTableCell: UITableViewCell {
 	
 
@@ -40,6 +41,7 @@ class BillTableCell: UITableViewCell {
 		delegate?.updateItemPrice(self)
 
 	}
+	
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

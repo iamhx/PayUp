@@ -123,12 +123,12 @@
                     <items>
                         <barButtonItem enabled="NO" image="back" id="eE8-NI-6z8">
                             <connections>
-                                <action selector="btnBack:" destination="5jE-Mr-6nk" id="Rrw-f2-7jn"/>
+                                <action selector="btnBack:" destination="5jE-Mr-6nk" id="atR-1h-FOd"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem enabled="NO" image="forward" id="BRC-My-v8M">
                             <connections>
-                                <action selector="btnForward:" destination="5jE-Mr-6nk" id="2KV-6R-9ub"/>
+                                <action selector="btnForward:" destination="5jE-Mr-6nk" id="t9I-5k-NzZ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="bvU-LP-9kJ"/>

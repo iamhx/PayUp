@@ -32,20 +32,32 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	@IBAction func btnBack(_ sender: Any) {
 		
-		let cell = billTableView.cellForRow(at: toolBarIndexPath!) as! BillTableCell
+		guard let cell = billTableView.cellForRow(at: toolBarIndexPath!) as? BillTableCell else {
+			
+			billTableView.scrollToRow(at: toolBarIndexPath!, at: .none, animated: false)
+			let cell = billTableView.cellForRow(at: toolBarIndexPath!) as! BillTableCell
+			cell.txtName.becomeFirstResponder()
+			return
+		}
 		
 		cell.txtName.becomeFirstResponder()
 	}
+	
 	@IBAction func btnForward(_ sender: Any) {
 		
-		let cell = billTableView.cellForRow(at: toolBarIndexPath!) as! BillTableCell
+		guard let cell = billTableView.cellForRow(at: toolBarIndexPath!) as? BillTableCell else {
+			
+			billTableView.scrollToRow(at: toolBarIndexPath!, at: .none, animated: false)
+			let cell = billTableView.cellForRow(at: toolBarIndexPath!) as! BillTableCell
+			cell.txtPrice.becomeFirstResponder()
+			return
+		}
 		
 		cell.txtPrice.becomeFirstResponder()
 	}
 	
 	//MARK: - View Controller properties
 	
-
 	let btnEdit = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.edit, target: self, action: #selector(toolBarEditingMode))
 	let btnDone = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(toolBarNotEditingMode))
 	let btnAdd = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(addPerson))
@@ -153,8 +165,11 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			bill[indexPath.section].items.remove(at: indexPath.row)
 			billTableView.deleteRows(at: [rowIndex], with: .fade)
 			
-			let header = billTableView.headerView(forSection: indexPath.section) as! BillTableSection
-			header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
+			if let header = billTableView.headerView(forSection: indexPath.section) as? BillTableSection {
+				
+				header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
+			}
+			
 			self.title = formatCurrency(displayTotalPrice())
 			
 			if (!billTableView.isEditing) {
@@ -164,11 +179,13 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 					for j in 0 ..< bill[i].items.count {
 						
 						let indexPath = IndexPath(row: j, section: i)
-						let cell = billTableView.cellForRow(at: indexPath) as! BillTableCell
 						
-						cell.txtPrice.isEnabled = true
-						cell.txtName.isEnabled = true
-						cell.indexPath = indexPath
+						if let cell = billTableView.cellForRow(at: indexPath) as? BillTableCell {
+							
+							cell.txtPrice.isEnabled = true
+							cell.txtName.isEnabled = true
+							cell.indexPath = indexPath
+						}
 					}
 				}
 			}
@@ -177,15 +194,20 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
 		
-		var header = tableView.headerView(forSection: sourceIndexPath.section) as! BillTableSection
 		let rowToMove = bill[sourceIndexPath.section].items[sourceIndexPath.row]
 		
 		bill[sourceIndexPath.section].items.remove(at: sourceIndexPath.row)
 		bill[destinationIndexPath.section].items.insert(rowToMove, at: destinationIndexPath.row)
 		
-		header.lblPrice.text = formatCurrency(displayIndividualTotal(section: sourceIndexPath.section))
-		header = tableView.headerView(forSection: destinationIndexPath.section) as! BillTableSection
-		header.lblPrice.text = formatCurrency(displayIndividualTotal(section: destinationIndexPath.section))
+		if let header = tableView.headerView(forSection: sourceIndexPath.section) as? BillTableSection {
+			
+			header.lblPrice.text = formatCurrency(displayIndividualTotal(section: sourceIndexPath.section))
+		}
+
+		if let header = tableView.headerView(forSection: destinationIndexPath.section) as? BillTableSection {
+			
+			header.lblPrice.text = formatCurrency(displayIndividualTotal(section: destinationIndexPath.section))
+		}
 	}
 	
 	
@@ -590,6 +612,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		bill.append(person)
 		
 		billTableView.insertSections(IndexSet(integer: (bill.count - 1)), with: .automatic)
+		let indexPath = IndexPath(row: NSNotFound, section: bill.count - 1)
+		billTableView.scrollToRow(at: indexPath, at: .none, animated: true)
 	}
 	
 	func addItemToRow(_ sender: UIButton) {
@@ -614,6 +638,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			reloadRows(section)
 			billTableView.endUpdates()
 		}
+		
+		billTableView.scrollToRow(at: IndexPath(row: bill[section].items.count - 1, section: section), at: .none, animated: true)
 	}
 	
 	// MARK: - TextField Delegates
