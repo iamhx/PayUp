@@ -71,6 +71,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	var bill = [Person]()
 	var toolBarIndexPath : IndexPath?
+	var keyboardIsShowing : Bool = false
 	
 	//MARK: - viewDidLoad Implementation
 	
@@ -613,7 +614,10 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		billTableView.insertSections(IndexSet(integer: (bill.count - 1)), with: .automatic)
 		let indexPath = IndexPath(row: NSNotFound, section: bill.count - 1)
-		billTableView.scrollToRow(at: indexPath, at: .none, animated: true)
+		if (!keyboardIsShowing) {
+			
+			billTableView.scrollToRow(at: indexPath, at: .none, animated: true)
+		}
 	}
 	
 	func addItemToRow(_ sender: UIButton) {
@@ -639,7 +643,10 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			billTableView.endUpdates()
 		}
 		
-		billTableView.scrollToRow(at: IndexPath(row: bill[section].items.count - 1, section: section), at: .none, animated: true)
+		if (!keyboardIsShowing) {
+			
+			billTableView.scrollToRow(at: IndexPath(row: bill[section].items.count - 1, section: section), at: .none, animated: true)
+		}
 	}
 	
 	// MARK: - TextField Delegates
@@ -685,6 +692,24 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		return true
 	}
 	
+	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+		
+		if (textField.superview?.superview?.isKind(of: BillTableCell.self))! {
+			
+			let cell = textField.superview?.superview as! BillTableCell
+			
+			billTableView.scrollToRow(at: cell.indexPath!, at: .none, animated: false)
+		}
+		else if (textField.superview?.superview?.isKind(of: BillTableSection.self))! {
+			
+			let header = textField.superview?.superview as! BillTableSection
+
+			billTableView.scrollToRow(at: IndexPath(row: NSNotFound, section: header.section), at: .none, animated: false)
+		}
+		
+		return true
+	}
+	
 	// MARK: - NotificationCenter Observers
 	
 	func keyboardWillShow(notification: Notification) {
@@ -692,6 +717,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		if let keyboardHeight = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height {
 			billTableView.contentInset = UIEdgeInsetsMake(0, 0, keyboardHeight, 0)
 		}
+		
+		keyboardIsShowing = true
 	}
 	
 	func keyboardWillHide(notification: Notification) {
@@ -701,6 +728,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			// For some reason adding inset in keyboardWillShow is animated by itself but removing is not, that's why we have to use animateWithDuration here
 			self.billTableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
 		})
+		
+		keyboardIsShowing = false
 	}
 
     /*
