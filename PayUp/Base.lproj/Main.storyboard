@@ -105,8 +105,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="$0.00" prompt="Your Bill" id="f28-47-vfI">
-                        <barButtonItem key="leftBarButtonItem" title="Home" id="B9B-9F-RDe"/>
-                        <barButtonItem key="rightBarButtonItem" title="Split" id="NcL-YJ-cw9"/>
+                        <barButtonItem key="leftBarButtonItem" image="home" id="B9B-9F-RDe"/>
+                        <barButtonItem key="rightBarButtonItem" image="nextpage" id="NcL-YJ-cw9"/>
                     </navigationItem>
                     <connections>
                         <outlet property="backOutlet" destination="eE8-NI-6z8" id="NNh-TH-LXq"/>
@@ -164,5 +164,7 @@
     <resources>
         <image name="back" width="25" height="25"/>
         <image name="forward" width="25" height="25"/>
+        <image name="home" width="22" height="22"/>
+        <image name="nextpage" width="25" height="25"/>
     </resources>
 </document>
