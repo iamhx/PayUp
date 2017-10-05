@@ -34,6 +34,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		guard let cell = billTableView.cellForRow(at: toolBarIndexPath!) as? BillTableCell else {
 			
+			//Scroll to row if cell is not visible
 			billTableView.scrollToRow(at: toolBarIndexPath!, at: .none, animated: false)
 			let cell = billTableView.cellForRow(at: toolBarIndexPath!) as! BillTableCell
 			cell.txtName.becomeFirstResponder()
@@ -47,6 +48,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		guard let cell = billTableView.cellForRow(at: toolBarIndexPath!) as? BillTableCell else {
 			
+			//Scroll to row if cell is not visible
 			billTableView.scrollToRow(at: toolBarIndexPath!, at: .none, animated: false)
 			let cell = billTableView.cellForRow(at: toolBarIndexPath!) as! BillTableCell
 			cell.txtPrice.becomeFirstResponder()
@@ -123,12 +125,13 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell") as! BillTableCell
 		cell.txtName.delegate = self
 		cell.txtPrice.delegate = self
-		cell.txtName.tag = 1
+		//cell.txtName.tag = 1
 		cell.txtPrice.tag = 2
 		
 		cell.delegate = self
 		cell.indexPath = indexPath
 		
+		//Disable editing of textfields if billTableView is in editing state
 		if (billTableView.isEditing) {
 			
 			cell.txtName.isEnabled = false
@@ -160,9 +163,9 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		if (editingStyle == .delete) {
 			
-			// Delete the row from the data source
-			
 			let rowIndex = IndexPath(row: indexPath.row, section: indexPath.section)
+
+			//Remove selected item from data, then delete row from tableView
 			bill[indexPath.section].items.remove(at: indexPath.row)
 			billTableView.deleteRows(at: [rowIndex], with: .fade)
 			
@@ -173,6 +176,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			self.title = formatCurrency(displayTotalPrice())
 			
+			//Reset indexPath only if tableView is not editing
 			if (!billTableView.isEditing) {
 				
 				for i in 0 ..< bill.count {
@@ -183,8 +187,6 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 						
 						if let cell = billTableView.cellForRow(at: indexPath) as? BillTableCell {
 							
-							cell.txtPrice.isEnabled = true
-							cell.txtName.isEnabled = true
 							cell.indexPath = indexPath
 						}
 					}
@@ -197,6 +199,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		let rowToMove = bill[sourceIndexPath.section].items[sourceIndexPath.row]
 		
+		//Remove selected item from data and insert to chosen path (No need to reset indexPath)
 		bill[sourceIndexPath.section].items.remove(at: sourceIndexPath.row)
 		bill[destinationIndexPath.section].items.insert(rowToMove, at: destinationIndexPath.row)
 		
@@ -242,8 +245,9 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		//Encrypt section into tag by multiplying 100
 		header.btnAddItem.tag = section * 100
-		header.btnAddItem.addTarget(self, action: #selector(addItemToRow(_:)), for: .touchUpInside)
 		header.txtName.tag = section * 100
+		
+		header.btnAddItem.addTarget(self, action: #selector(addItemToRow(_:)), for: .touchUpInside)
 		
 		//Add gesture for toggle collapse
 		header.addGestureRecognizer(UITapGestureRecognizer(target: header.self, action: #selector(header.tapHeader(_:))))
@@ -252,8 +256,6 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			header.gestureRecognizers?.removeAll()
 		}
-		
-
 		
 		return header
 	}
@@ -323,6 +325,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	func updatePersonName (_ header: BillTableSection) {
 		
+		//Decrypt tag to get section
 		let section = header.txtName.tag / 100
 		
 		bill[section].name = header.txtName.text!
@@ -405,6 +408,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		view.endEditing(true)
 		
+		//Remove all items in selected person
 		for i in (0 ..< bill[personPickerView.selectedRow(inComponent: 0)].items.count).reversed() {
 			
 			let rowIndex = IndexPath(row: i, section: personPickerView.selectedRow(inComponent: 0))
@@ -412,12 +416,16 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			billTableView.deleteRows(at: [rowIndex], with: .right)
 		}
 		
+		//Remove person and delete section from tableView
 		bill.remove(at: personPickerView.selectedRow(inComponent: 0))
 		billTableView.deleteSections(IndexSet(integer: personPickerView.selectedRow(inComponent: 0)), with: .right)
 		
+		//Reload sections
 		let indexSet = IndexSet(integer: bill.count - 1)
 		billTableView.reloadSections(indexSet, with: .automatic)
 		
+		
+		//Reset tableView and their properties
 		for i in 0 ..< bill.count {
 			
 			if let header = billTableView.headerView(forSection: i) as? BillTableSection {
@@ -440,7 +448,6 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 					cell.indexPath = indexPath
 				}
 			}
-			
 		}
 		
 		self.title = formatCurrency(displayTotalPrice())
@@ -475,6 +482,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		billTableView.beginUpdates()
 		
+		//Expand all sections and disable toggle section
 		for i in 0 ..< bill.count {
 			
 			if let header = billTableView.headerView(forSection: i) as? BillTableSection {
@@ -488,6 +496,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 				}
 			}
 			
+			//Disable all cell textFields
 			for j in 0 ..< bill[i].items.count {
 				
 				if let cell = billTableView.cellForRow(at: IndexPath(row: j, section: i)) as? BillTableCell {
@@ -509,8 +518,10 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	func toolBarNotEditingMode() {
 		
+		//If not viewDidLoad
 		if (billTableView.isEditing) {
 			
+			//Enable toggle section again and all disabled textFields
 			for i in 0 ..< bill.count {
 				
 				if let header = billTableView.headerView(forSection: i) as? BillTableSection {
@@ -526,6 +537,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 						
 						cell.txtPrice.isEnabled = true
 						cell.txtName.isEnabled = true
+						
+						//Reset indexPath if rows were reordered
 						cell.indexPath = indexPath
 					}
 				}
@@ -614,6 +627,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		billTableView.insertSections(IndexSet(integer: (bill.count - 1)), with: .automatic)
 		let indexPath = IndexPath(row: NSNotFound, section: bill.count - 1)
+		
+		//Don't scroll to row if keyboard is showing (Scroll fix when done editing)
 		if (!keyboardIsShowing) {
 			
 			billTableView.scrollToRow(at: indexPath, at: .none, animated: true)
@@ -643,6 +658,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			billTableView.endUpdates()
 		}
 		
+		//Don't scroll to row if keyboard is showing (Scroll fix when done editing)
 		if (!keyboardIsShowing) {
 			
 			billTableView.scrollToRow(at: IndexPath(row: bill[section].items.count - 1, section: section), at: .none, animated: true)
@@ -658,6 +674,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		if (textField.superview?.superview?.isKind(of: BillTableCell.self))! {
 		
 			let cell = textField.superview?.superview as! BillTableCell
+			//Set indexPath to toolbarIndexPath to capture next or previous textField
 			toolBarIndexPath = cell.indexPath
 			
 			if (textField.tag == cell.txtName.tag) {
@@ -677,6 +694,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			backOutlet.isEnabled = false
 		}
 		
+		//Remove the $ sign to prevent invalid updatePriceItem
 		if (textField.tag == 2 && !textField.text!.isEmpty) {
 			
 			textField.text?.remove(at: (textField.text?.startIndex)!)
@@ -694,6 +712,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		
+		//Scroll to current field if not visible
 		if (textField.superview?.superview?.isKind(of: BillTableCell.self))! {
 			
 			let cell = textField.superview?.superview as! BillTableCell
