@@ -38,9 +38,9 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="TBQ-2i-7af">
-                            <rect key="frame" x="38" y="7" width="135.5" height="30"/>
+                            <rect key="frame" x="38" y="0.0" width="136" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="KvO-Cp-ftj"/>
+                                <constraint firstAttribute="height" constant="44" id="KvO-Cp-ftj"/>
                             </constraints>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
@@ -89,7 +89,7 @@
                 <outlet property="lblPrice" destination="ISb-4W-doC" id="CjH-Ai-Z4X"/>
                 <outlet property="txtName" destination="TBQ-2i-7af" id="S3N-L7-wY7"/>
             </connections>
-            <point key="canvasLocation" x="30" y="-1027"/>
+            <point key="canvasLocation" x="29.5" y="-1027.5"/>
         </view>
     </objects>
     <resources>
