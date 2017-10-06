@@ -33,7 +33,7 @@ extension UIViewController {
 		self.present(alert, animated: true, completion: nil)
 	}
 	
-	func formatCurrency(_ amount: Decimal) -> String {
+	func formatCurrency(_ amount: Decimal,_ fractionDigits: Int) -> String {
 		
 		var string = ""
 		
@@ -41,12 +41,21 @@ extension UIViewController {
 		let usLocale = Locale.init(identifier: "en_US")
 		formatter.minimumIntegerDigits = 1
 		formatter.minimumFractionDigits = 2
-		formatter.maximumFractionDigits = 3
+		formatter.maximumFractionDigits = fractionDigits
 		formatter.roundingMode = .down
 		formatter.locale = usLocale
 		
 		string = String(format: "$%@", formatter.string(from: NSDecimalNumber(decimal: amount))!)
 		return string
+	}
+	
+	func animateTitle(_ duration: Double) {
+		
+		let fadeTextAnimation = CATransition()
+		fadeTextAnimation.duration = duration
+		fadeTextAnimation.type = kCATransitionFade
+		
+		navigationController?.navigationBar.layer.add(fadeTextAnimation, forKey: "fadeText")
 	}
 }
 

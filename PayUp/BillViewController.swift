@@ -146,7 +146,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		}
 		
 		cell.txtName.text = bill[indexPath.section].items[indexPath.row].itemName
-		cell.txtPrice.text = formatCurrency(bill[indexPath.section].items[indexPath.row].itemPrice)
+		cell.txtPrice.text = formatCurrency(bill[indexPath.section].items[indexPath.row].itemPrice, 3)
 		
 		resetPriceFieldIfZero(cell.txtPrice)
 		
@@ -173,10 +173,10 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			if let header = billTableView.headerView(forSection: indexPath.section) as? BillTableSection {
 				
-				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, indexPath.section))
+				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, indexPath.section), 3)
 			}
 			
-			self.title = formatCurrency(Bill.getTotalPrice(bill))
+			self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
 			
 			//Reset indexPath only if tableView is not editing
 			if (!billTableView.isEditing) {
@@ -207,12 +207,12 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		if let header = tableView.headerView(forSection: sourceIndexPath.section) as? BillTableSection {
 			
-			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, sourceIndexPath.section))
+			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, sourceIndexPath.section), 3)
 		}
 
 		if let header = tableView.headerView(forSection: destinationIndexPath.section) as? BillTableSection {
 			
-			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, destinationIndexPath.section))
+			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, destinationIndexPath.section), 3)
 		}
 	}
 	
@@ -234,7 +234,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		header.txtName.text = bill[section].name
 		header.lblPrice.adjustsFontSizeToFitWidth = true
 		header.lblPrice.minimumScaleFactor = 14.0 / UIFont.labelFontSize
-		header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, section))
+		header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, section), 3)
 		
 		if (bill[section].collapsed) {
 			
@@ -297,7 +297,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			name = "Person \(row + 1)"
 		}
 		
-		return "(\(formatCurrency(Bill.getIndividualTotalPrice(bill, row)))) \(name)"
+		return "(\(formatCurrency(Bill.getIndividualTotalPrice(bill, row), 3))) \(name)"
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -354,10 +354,10 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			bill[indexPath.section].items[indexPath.row].itemPrice = 0.00
 			if let header = billTableView.headerView(forSection: indexPath.section) as? BillTableSection {
 				
-				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, indexPath.section))
+				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, indexPath.section), 3)
 			}
 
-			self.title = formatCurrency(Bill.getTotalPrice(bill))
+			self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
 
 			let errorAlert = UIAlertController(title: "Error", message: "Please enter a valid price.", preferredStyle: .alert)
 			errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -370,10 +370,10 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		bill[indexPath.section].items[indexPath.row].itemPrice = price
 		if let header = billTableView.headerView(forSection: indexPath.section) as? BillTableSection {
 			
-			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, indexPath.section))
+			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, indexPath.section), 3)
 		}
-		self.title = formatCurrency(Bill.getTotalPrice(bill))
-		cell.txtPrice.text = formatCurrency(price)
+		self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
+		cell.txtPrice.text = formatCurrency(price, 3)
 		
 		resetPriceFieldIfZero(cell.txtPrice)
 	}
@@ -437,7 +437,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 				header.txtName.tag = i * 100
 				header.gestureRecognizers?.removeAll()
 				header.expandOrCollapse.image = UIImage(named: "collapse")
-				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, i))
+				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, i), 3)
 
 			}
 			
@@ -452,7 +452,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			}
 		}
 		
-		self.title = formatCurrency(Bill.getTotalPrice(bill))
+		self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
 		personPickerView.reloadAllComponents()
 	}
 	

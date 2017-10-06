@@ -44,14 +44,10 @@ class GSTViewController: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		let fadeTextAnimation = CATransition()
-		fadeTextAnimation.duration = 0.25
-		fadeTextAnimation.type = kCATransitionFade
-		
-		navigationController?.navigationBar.layer.add(fadeTextAnimation, forKey: "fadeText")
+		animateTitle(0.3)
 		self.title = totalTitle!
 		
-		UIView.animate(withDuration: 0.5, delay: 0.25, options: .transitionCrossDissolve, animations: {
+		UIView.animate(withDuration: 0.3, delay: 0, options: .transitionCrossDissolve, animations: {
 			self.lblGST.alpha = 1.0
 			self.switchGST.alpha = 1.0
 			self.lblServiceCharge.alpha = 1.0
@@ -108,6 +104,7 @@ class GSTViewController: UIViewController {
 			self.renameEmptyNameFields()
 			self.finalBill = self.bill!
 			Bill.calculateBill(self.finalBill, self.switchServiceCharge.isOn, self.switchGST.isOn)
+			self.performSegue(withIdentifier: "showSummary", sender: self)
 		})
 	}
 	
@@ -119,6 +116,14 @@ class GSTViewController: UIViewController {
 				
 				bill![i].name = "Person \(i + 1)"
 			}
+			
+			for j in 0 ..< bill![i].items.count {
+				
+				if (bill![i].items[j].itemName.isEmpty) {
+					
+					bill![i].items[j].itemName = "Item \(j + 1)"
+				}
+			}
 		}
 	}
 	
@@ -129,7 +134,13 @@ class GSTViewController: UIViewController {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
 		
-		
+		if (segue.identifier == "showSummary") {
+			
+			let vc = segue.destination as! SummaryViewController
+			
+			vc.billBeforeGST = bill
+			vc.bill = finalBill
+		}
     }
 
 }
