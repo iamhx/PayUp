@@ -176,7 +176,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 				header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
 			}
 			
-			self.title = formatCurrency(displayTotalPrice())
+			self.title = formatCurrency(Bill.getTotalPrice(bill))
 			
 			//Reset indexPath only if tableView is not editing
 			if (!billTableView.isEditing) {
@@ -357,7 +357,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 				header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
 			}
 
-			self.title = formatCurrency(displayTotalPrice())
+			self.title = formatCurrency(Bill.getTotalPrice(bill))
 
 			let errorAlert = UIAlertController(title: "Error", message: "Please enter a valid price.", preferredStyle: .alert)
 			errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -372,7 +372,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
 		}
-		self.title = formatCurrency(displayTotalPrice())
+		self.title = formatCurrency(Bill.getTotalPrice(bill))
 		cell.txtPrice.text = formatCurrency(price)
 		
 		resetPriceFieldIfZero(cell.txtPrice)
@@ -452,7 +452,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			}
 		}
 		
-		self.title = formatCurrency(displayTotalPrice())
+		self.title = formatCurrency(Bill.getTotalPrice(bill))
 		personPickerView.reloadAllComponents()
 	}
 	
@@ -603,18 +603,6 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		for i in 0 ..< bill[section].items.count {
 			
 			total += bill[section].items[i].itemPrice
-		}
-		
-		return total
-	}
-	
-	func displayTotalPrice() -> Decimal {
-		
-		var total : Decimal = 0.00
-		
-		for i in 0 ..< bill.count {
-			
-			total += displayIndividualTotal(section: i)
 		}
 		
 		return total
