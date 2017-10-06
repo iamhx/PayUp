@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E51AB4EE1F8741F1008D2058 /* GSTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4ED1F8741F1008D2058 /* GSTViewController.swift */; };
 		E51AB4F01F878403008D2058 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4EF1F878403008D2058 /* Bill.swift */; };
+		E51AB4F21F87AEB2008D2058 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4F11F87AEB2008D2058 /* SummaryViewController.swift */; };
 		E56D00E91F7BBBA100867C35 /* BillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D00E81F7BBBA100867C35 /* BillViewController.swift */; };
 		E56D00EB1F7BBCC900867C35 /* BillTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D00EA1F7BBCC900867C35 /* BillTableCell.swift */; };
 		E56D00ED1F7BBE3300867C35 /* BillTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D00EC1F7BBE3300867C35 /* BillTableSection.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		E51AB4ED1F8741F1008D2058 /* GSTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSTViewController.swift; sourceTree = "<group>"; };
 		E51AB4EF1F878403008D2058 /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
+		E51AB4F11F87AEB2008D2058 /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		E56D00E81F7BBBA100867C35 /* BillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillViewController.swift; sourceTree = "<group>"; };
 		E56D00EA1F7BBCC900867C35 /* BillTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillTableCell.swift; sourceTree = "<group>"; };
 		E56D00EC1F7BBE3300867C35 /* BillTableSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillTableSection.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				E5D6912F1F7B9B4500A52971 /* AppDelegate.swift */,
 				E56D00E81F7BBBA100867C35 /* BillViewController.swift */,
 				E51AB4ED1F8741F1008D2058 /* GSTViewController.swift */,
+				E51AB4F11F87AEB2008D2058 /* SummaryViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				E56D00E91F7BBBA100867C35 /* BillViewController.swift in Sources */,
 				E51AB4F01F878403008D2058 /* Bill.swift in Sources */,
 				E51AB4EE1F8741F1008D2058 /* GSTViewController.swift in Sources */,
+				E51AB4F21F87AEB2008D2058 /* SummaryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

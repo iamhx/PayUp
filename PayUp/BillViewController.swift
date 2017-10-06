@@ -297,7 +297,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			name = "Person \(row + 1)"
 		}
 		
-		return  "(\(formatCurrency(Bill.getIndividualTotalPrice(bill, row)))) \(name)"
+		return "(\(formatCurrency(Bill.getIndividualTotalPrice(bill, row)))) \(name)"
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
