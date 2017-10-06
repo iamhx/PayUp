@@ -16,6 +16,27 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 	var bill : [Person]?
 	@IBOutlet weak var summaryTableView: UITableView!
 	
+	//MARK - IBActions
+	
+	@IBAction func btnStartOver(_ sender: Any) {
+		
+		let promptAlert = UIAlertController(title: "", message: "Do you want to start over?", preferredStyle: .actionSheet)
+		let yesAction = UIAlertAction(title: "Start Over", style: .destructive) { action in
+			
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let vc = storyboard.instantiateViewController(withIdentifier: "billVC")
+			self.present(vc, animated: true, completion: nil)
+		}
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		
+		promptAlert.addAction(yesAction)
+		promptAlert.addAction(cancelAction)
+		
+		self.present(promptAlert, animated: true, completion: nil)
+	}
+	
+	
 	//MARK: - viewDidLoad Implementation
 	
     override func viewDidLoad() {

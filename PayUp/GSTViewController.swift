@@ -48,9 +48,7 @@ class GSTViewController: UIViewController {
 		self.title = totalTitle!
 		
 		UIView.animate(withDuration: 0.3, delay: 0, options: .transitionCrossDissolve, animations: {
-			self.lblGST.alpha = 1.0
 			self.switchGST.alpha = 1.0
-			self.lblServiceCharge.alpha = 1.0
 			self.switchServiceCharge.alpha = 1.0
 		}, completion: nil)
 	}

@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qgn-M3-xnQ" id="r70-Qs-YNg">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Item Name" textAlignment="natural" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="RNW-at-J8b">
@@ -158,35 +158,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7% GST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Rd-JU-6Jo">
-                                <rect key="frame" x="141" y="202" width="92" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7% GST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Rd-JU-6Jo">
+                                <rect key="frame" x="141" y="235" width="92" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MUt-zc-c8V">
-                                <rect key="frame" x="163" y="279" width="51" height="31"/>
+                                <rect key="frame" x="163" y="283" width="51" height="31"/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10% SERVICE CHARGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HS9-gs-6zM">
-                                <rect key="frame" x="52" y="357" width="270" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10% Service Charge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HS9-gs-6zM">
+                                <rect key="frame" x="68.5" y="362" width="238" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lZ3-4C-iDE">
-                                <rect key="frame" x="163" y="434" width="51" height="31"/>
+                                <rect key="frame" x="163" y="410" width="51" height="31"/>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lZ3-4C-iDE" firstAttribute="centerX" secondItem="zMv-yb-StL" secondAttribute="centerX" id="TJl-I7-Eny"/>
                             <constraint firstItem="HS9-gs-6zM" firstAttribute="centerX" secondItem="zMv-yb-StL" secondAttribute="centerX" id="Tqu-zt-m6p"/>
-                            <constraint firstItem="lZ3-4C-iDE" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="116" id="a1h-Uc-C7b"/>
+                            <constraint firstItem="lZ3-4C-iDE" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="92" id="a1h-Uc-C7b"/>
                             <constraint firstItem="MUt-zc-c8V" firstAttribute="centerX" secondItem="zMv-yb-StL" secondAttribute="centerX" id="nSC-Vn-AcU"/>
                             <constraint firstItem="1Rd-JU-6Jo" firstAttribute="centerX" secondItem="zMv-yb-StL" secondAttribute="centerX" id="nZ1-yr-3lI"/>
-                            <constraint firstItem="MUt-zc-c8V" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="-39" id="qct-QQ-3Wq"/>
-                            <constraint firstItem="HS9-gs-6zM" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="38.5" id="qqz-cc-YLz"/>
-                            <constraint firstItem="1Rd-JU-6Jo" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="-116.5" id="r4f-wL-syo"/>
+                            <constraint firstItem="MUt-zc-c8V" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="-35" id="qct-QQ-3Wq"/>
+                            <constraint firstItem="HS9-gs-6zM" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="43.5" id="qqz-cc-YLz"/>
+                            <constraint firstItem="1Rd-JU-6Jo" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="-83.5" id="r4f-wL-syo"/>
                         </constraints>
                     </view>
                     <connections>
@@ -252,7 +252,11 @@
                                 <items>
                                     <barButtonItem image="home" id="ewR-zO-hlv"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="egr-6x-XuO"/>
-                                    <barButtonItem title="Start Over" id="vR4-cS-lbb"/>
+                                    <barButtonItem title="Start Over" id="vR4-cS-lbb">
+                                        <connections>
+                                            <action selector="btnStartOver:" destination="zGc-Y4-9NO" id="cbO-c6-VgY"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -279,7 +283,7 @@
         <!--Navigation Controller-->
         <scene sceneID="smv-yi-Y3e">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="paW-dc-2d6" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="billVC" automaticallyAdjustsScrollViewInsets="NO" id="paW-dc-2d6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NVr-Hq-5lW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
