@@ -16,7 +16,6 @@ class PersonViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	
 	var person : Person!
 	var gst : (svcCharge: Bool, GST: Bool)?
-	var row: Int!
 	
 	//MARK: - viewDidLoad Implementation
 	

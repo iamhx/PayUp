@@ -15,7 +15,7 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 	var billBeforeGST : [Person] = []
 	var finalBill : [Person] = []
 	var gst : (svcCharge: Bool, GST: Bool)?
-	var row : Int!
+	var row : Int?
 	@IBOutlet weak var summaryTableView: UITableView!
 	
 	//MARK - IBActions
@@ -101,8 +101,7 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 		if (segue.identifier == "showPerson") {
 			
 			let vc = segue.destination as! PersonViewController
-			vc.person = billBeforeGST[row]
-			vc.row = self.row
+			vc.person = billBeforeGST[row!]
 			vc.gst = gst!
 		}
     }
