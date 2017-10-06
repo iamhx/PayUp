@@ -104,9 +104,13 @@
                             <constraint firstAttribute="trailing" secondItem="S5j-9i-a6c" secondAttribute="trailing" id="kNq-zL-0rB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="$0.00" prompt="Your Bill" id="f28-47-vfI">
+                    <navigationItem key="navigationItem" title="$0.00" prompt="Your BIll" id="f28-47-vfI">
                         <barButtonItem key="leftBarButtonItem" image="home" id="B9B-9F-RDe"/>
-                        <barButtonItem key="rightBarButtonItem" image="nextpage" id="NcL-YJ-cw9"/>
+                        <barButtonItem key="rightBarButtonItem" image="nextpage" id="NcL-YJ-cw9">
+                            <connections>
+                                <segue destination="SHq-jC-ufJ" kind="show" identifier="nextPage" id="ude-fT-gx3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backOutlet" destination="eE8-NI-6z8" id="NNh-TH-LXq"/>
@@ -142,6 +146,24 @@
             </objects>
             <point key="canvasLocation" x="3504.8000000000002" y="1.3493253373313345"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Roz-nx-pJb">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="SHq-jC-ufJ" customClass="GSTViewController" customModule="PayUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oFK-Cs-I8D"/>
+                        <viewControllerLayoutGuide type="bottom" id="8d7-kh-2xo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zMv-yb-StL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ur-zi-u46" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4348" y="1"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="smv-yi-Y3e">
             <objects>
@@ -152,6 +174,11 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="view.backgroundColor">
+                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="5jE-Mr-6nk" kind="relationship" relationship="rootViewController" id="IkS-Wd-SXm"/>
                     </connections>

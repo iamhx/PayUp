@@ -98,6 +98,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		btnRemovePerson.tintColor = .red
 		btnChoose.tintColor = .red
 		toolBarNotEditingMode()
+		
     }
 
     override func didReceiveMemoryWarning() {
@@ -598,7 +599,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		var total: Decimal = 0.00
 		
-		for i in 0..<bill[section].items.count {
+		for i in 0 ..< bill[section].items.count {
 			
 			total += bill[section].items[i].itemPrice
 		}
@@ -610,7 +611,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		var total : Decimal = 0.00
 		
-		for i in 0..<bill.count {
+		for i in 0 ..< bill.count {
 			
 			total += displayIndividualTotal(section: i)
 		}
@@ -751,14 +752,20 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		keyboardIsShowing = false
 	}
 
-    /*
+	
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+		
+		if (segue.identifier == "nextPage") {
+			
+			let vc = segue.destination as! GSTViewController
+			vc.bill = bill
+		}
     }
-    */
+	
 
 }
