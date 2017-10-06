@@ -133,8 +133,7 @@ class GSTViewController: UIViewController {
 		if (segue.identifier == "showSummary") {
 			
 			let vc = segue.destination as! SummaryViewController
-			vc.billBeforeGST = bill
-			vc.finalBill = Bill.calculateBill(bill, switchServiceCharge.isOn, switchGST.isOn)
+			vc.bill = bill
 			vc.gst = (switchServiceCharge.isOn, switchGST.isOn)
 		}
     }

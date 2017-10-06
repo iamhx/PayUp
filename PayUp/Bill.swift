@@ -10,20 +10,12 @@ import UIKit
 
 class Bill: NSObject {
 	
-	class func calculateBill(_ bill: [Person],_ svcCharge: Bool,_ GST: Bool) -> [Person] {
+	class func calculateBill(_ person: Person, _ svcCharge: Bool,_ GST: Bool) -> Decimal {
 		
-		var mutableBill = bill
+		let totalPriceBeforeGST = Bill.getIndividualTotalPrice(person)
+		let GST = Bill.getGSTForIndividual(totalPriceBeforeGST, svcCharge, GST)
 		
-		for i in 0 ..< mutableBill.count {
-			
-			for j in 0 ..< mutableBill[i].items.count {
-				
-				let tax = Bill.getGSTForIndividual(mutableBill[i].items[j].itemPrice, svcCharge, GST)
-				mutableBill[i].items[j].itemPrice += tax
-			}
-		}
-		
-		return mutableBill
+		return totalPriceBeforeGST + GST
 	}
 	
 	class func getGSTForIndividual(_ individualAmt: Decimal,_ svcCharge: Bool,_ GST: Bool) -> Decimal {

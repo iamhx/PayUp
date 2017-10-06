@@ -12,8 +12,7 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 
 	//MARK: - View Controller properties
 	
-	var billBeforeGST : [Person] = []
-	var finalBill : [Person] = []
+	var bill : [Person] = []
 	var gst : (svcCharge: Bool, GST: Bool)?
 	var row : Int?
 	@IBOutlet weak var summaryTableView: UITableView!
@@ -46,9 +45,6 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 
         // Do any additional setup after loading the view.
 		self.navigationItem.setHidesBackButton(true, animated: false)
-		
-		print(billBeforeGST[0].items[0].itemPrice)
-		print(finalBill[0].items[0].itemPrice)
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,14 +63,14 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return finalBill.count
+		return bill.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "summaryCell")
-		cell!.textLabel!.text = "\(formatCurrency(Bill.getIndividualTotalPrice(finalBill[indexPath.row]), 2))"
-		cell!.detailTextLabel!.text = finalBill[indexPath.row].name
+		cell!.textLabel!.text = "\(formatCurrency(Bill.calculateBill(bill[indexPath.row], gst!.svcCharge, gst!.GST), 2))"
+		cell!.detailTextLabel!.text = bill[indexPath.row].name
 		
 		return cell!
 	}
@@ -82,6 +78,15 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 	//MARK: - TableView accessory tapped delegate
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		tableView.deselectRow(at: indexPath, animated: true)
+		
+		row = indexPath.row
+		
+		performSegue(withIdentifier: "showPerson", sender: self)
+	}
+	
+	func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
 		
 		tableView.deselectRow(at: indexPath, animated: true)
 		
@@ -101,8 +106,9 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 		if (segue.identifier == "showPerson") {
 			
 			let vc = segue.destination as! PersonViewController
-			vc.person = billBeforeGST[row!]
+			vc.person = bill[row!]
 			vc.gst = gst!
+			vc.vc = self
 		}
     }
 }

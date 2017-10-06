@@ -14,8 +14,9 @@ class PersonViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	
 	@IBOutlet weak var itemTableView: UITableView!
 	
-	var person : Person!
+	var person : Person?
 	var gst : (svcCharge: Bool, GST: Bool)?
+	var vc : SummaryViewController?
 	
 	//MARK: - viewDidLoad Implementation
 	
@@ -23,6 +24,11 @@ class PersonViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
+		title = "(\(formatCurrency(Bill.calculateBill(person!, gst!.svcCharge, gst!.GST), 2))) \(person!.name)"
+		
+		let backButton = UIBarButtonItem(image: UIImage(named: "previouspage"), style: .plain, target: self, action: #selector(back))
+		navigationItem.setLeftBarButton(backButton, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,24 +40,31 @@ class PersonViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return person.items.count
+		return person!.items.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "detailedItemCell") as! ItemTableCell
 		
-		let itemPrice = person.items[indexPath.row].itemPrice
+		let itemPrice = person!.items[indexPath.row].itemPrice
 		let GST = Bill.getGSTForIndividual(itemPrice, gst!.svcCharge, gst!.GST)
 		let total = itemPrice + GST
 		
-		cell.lblItemName.text = person.items[indexPath.row].itemName
+		cell.lblItemName.text = person!.items[indexPath.row].itemName
 		cell.lblPrice.text = "\(formatCurrency(itemPrice, 2))"
 		cell.lblGST.text = "(+\(formatCurrency(GST, 2)))"
 		
 		cell.lblTotalPrice.text = "Total: \(formatCurrency(total, 2))"
 		
 		return cell
+	}
+	
+	//MARK: - Actions
+	
+	func back() {
+		
+		navigationController?.popToViewController(vc!, animated: true)
 	}
     
 
