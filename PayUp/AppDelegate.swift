@@ -19,6 +19,35 @@ extension UIViewController {
 	func dismissKeyboard() {
 		view.endEditing(true)
 	}
+	
+	func showOverlayOnTask(message: String) {
+		
+		let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+		
+		let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+		loadingIndicator.hidesWhenStopped = true
+		loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+		loadingIndicator.startAnimating();
+		
+		alert.view.addSubview(loadingIndicator)
+		self.present(alert, animated: true, completion: nil)
+	}
+	
+	func formatCurrency(_ amount: Decimal) -> String {
+		
+		var string = ""
+		
+		let formatter = NumberFormatter()
+		let usLocale = Locale.init(identifier: "en_US")
+		formatter.minimumIntegerDigits = 1
+		formatter.minimumFractionDigits = 2
+		formatter.maximumFractionDigits = 3
+		formatter.roundingMode = .down
+		formatter.locale = usLocale
+		
+		string = String(format: "$%@", formatter.string(from: NSDecimalNumber(decimal: amount))!)
+		return string
+	}
 }
 
 @UIApplicationMain

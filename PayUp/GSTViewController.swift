@@ -13,6 +13,7 @@ class GSTViewController: UIViewController {
 	//MARK: - View Controller properties
 	
 	var bill : [Person]?
+	var finalBill = [Person]()
 	var totalTitle : String?
 	
 	@IBOutlet weak var lblGST: UILabel!
@@ -70,7 +71,11 @@ class GSTViewController: UIViewController {
 	
 		let confirmation = UIAlertController(title: "Split Bill", message: "You have selected:\n\(selectedOptions())\n\nDo you want to split the bill?", preferredStyle: .alert)
 		
-		confirmation.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+		confirmation.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+			
+			self.showOverlayOnTask(message: "Splitting bill...")
+			Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.calculate), userInfo: nil, repeats: false)
+		}))
 		confirmation.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 		
 		present(confirmation, animated: true, completion: nil)
@@ -96,7 +101,26 @@ class GSTViewController: UIViewController {
 		return string
 	}
 	
-
+	func calculate() {
+		
+		dismiss(animated: true, completion: { action in
+			
+			self.renameEmptyNameFields()
+			self.finalBill = self.bill!
+			Bill.calculateBill(self.finalBill, self.switchServiceCharge.isOn, self.switchGST.isOn)
+		})
+	}
+	
+	func renameEmptyNameFields() {
+		
+		for i in 0 ..< bill!.count {
+			
+			if (bill![i].name.isEmpty) {
+				
+				bill![i].name = "Person \(i + 1)"
+			}
+		}
+	}
 	
     // MARK: - Navigation
 
@@ -104,6 +128,8 @@ class GSTViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+		
+		
     }
 
 }

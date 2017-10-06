@@ -10,7 +10,7 @@ import UIKit
 
 class Bill: NSObject {
 	
-	class func calculateBill(_ bill: [Person], svcCharge: Bool, GST: Bool) {
+	class func calculateBill(_ bill: [Person],_ svcCharge: Bool,_ GST: Bool) {
 		
 		for i in 0..<bill.count {
 			
@@ -37,7 +37,19 @@ class Bill: NSObject {
 		return totalCost
 	}
 	
-	 class func getGSTForIndividual(_ individualAmt: Decimal, _ svcCharge: Bool, _ GST: Bool) -> Decimal {
+	class func getIndividualTotalPrice(_ bill: [Person],_ section: Int) -> Decimal {
+		
+		var total: Decimal = 0.00
+		
+		for i in 0 ..< bill[section].items.count {
+			
+			total += bill[section].items[i].itemPrice
+		}
+		
+		return total
+	}
+	
+	 class func getGSTForIndividual(_ individualAmt: Decimal,_ svcCharge: Bool,_ GST: Bool) -> Decimal {
 		
 		var taxCost : Decimal = 0.00
 		let SERVICE_CHARGE = getServiceCharge()

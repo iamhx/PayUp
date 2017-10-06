@@ -173,7 +173,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			if let header = billTableView.headerView(forSection: indexPath.section) as? BillTableSection {
 				
-				header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
+				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, indexPath.section))
 			}
 			
 			self.title = formatCurrency(Bill.getTotalPrice(bill))
@@ -207,12 +207,12 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		if let header = tableView.headerView(forSection: sourceIndexPath.section) as? BillTableSection {
 			
-			header.lblPrice.text = formatCurrency(displayIndividualTotal(section: sourceIndexPath.section))
+			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, sourceIndexPath.section))
 		}
 
 		if let header = tableView.headerView(forSection: destinationIndexPath.section) as? BillTableSection {
 			
-			header.lblPrice.text = formatCurrency(displayIndividualTotal(section: destinationIndexPath.section))
+			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, destinationIndexPath.section))
 		}
 	}
 	
@@ -234,7 +234,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		header.txtName.text = bill[section].name
 		header.lblPrice.adjustsFontSizeToFitWidth = true
 		header.lblPrice.minimumScaleFactor = 14.0 / UIFont.labelFontSize
-		header.lblPrice.text = formatCurrency(displayIndividualTotal(section: section))
+		header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, section))
 		
 		if (bill[section].collapsed) {
 			
@@ -297,7 +297,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			name = "Person \(row + 1)"
 		}
 		
-		return  "(\(formatCurrency(displayIndividualTotal(section: row)))) \(name)"
+		return  "(\(formatCurrency(Bill.getIndividualTotalPrice(bill, row)))) \(name)"
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -354,7 +354,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			bill[indexPath.section].items[indexPath.row].itemPrice = 0.00
 			if let header = billTableView.headerView(forSection: indexPath.section) as? BillTableSection {
 				
-				header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
+				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, indexPath.section))
 			}
 
 			self.title = formatCurrency(Bill.getTotalPrice(bill))
@@ -370,7 +370,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		bill[indexPath.section].items[indexPath.row].itemPrice = price
 		if let header = billTableView.headerView(forSection: indexPath.section) as? BillTableSection {
 			
-			header.lblPrice.text = formatCurrency(displayIndividualTotal(section: indexPath.section))
+			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, indexPath.section))
 		}
 		self.title = formatCurrency(Bill.getTotalPrice(bill))
 		cell.txtPrice.text = formatCurrency(price)
@@ -437,7 +437,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 				header.txtName.tag = i * 100
 				header.gestureRecognizers?.removeAll()
 				header.expandOrCollapse.image = UIImage(named: "collapse")
-				header.lblPrice.text = formatCurrency(displayIndividualTotal(section: i))
+				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, i))
 
 			}
 			
@@ -578,34 +578,6 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			billTableView.reloadRows(at: [IndexPath(row: i, section: section)], with: .automatic)
 		}
-	}
-	
-	func formatCurrency(_ amount: Decimal) -> String {
-		
-		var string = ""
-		
-		let formatter = NumberFormatter()
-		let usLocale = Locale.init(identifier: "en_US")
-		formatter.minimumIntegerDigits = 1
-		formatter.minimumFractionDigits = 2
-		formatter.maximumFractionDigits = 3
-		formatter.roundingMode = .down
-		formatter.locale = usLocale
-		
-		string = String(format: "$%@", formatter.string(from: NSDecimalNumber(decimal: amount))!)
-		return string
-	}
-	
-	func displayIndividualTotal(section: Int) -> Decimal {
-		
-		var total: Decimal = 0.00
-		
-		for i in 0 ..< bill[section].items.count {
-			
-			total += bill[section].items[i].itemPrice
-		}
-		
-		return total
 	}
 	
 		//MARK: Adding object array properties
