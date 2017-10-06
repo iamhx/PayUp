@@ -10,50 +10,27 @@ import UIKit
 
 class Bill: NSObject {
 	
-	class func calculateBill(_ bill: [Person],_ svcCharge: Bool,_ GST: Bool) {
+	class func calculateBill(_ bill: [Person],_ svcCharge: Bool,_ GST: Bool) -> [Person] {
 		
-		for i in 0..<bill.count {
+		var mutableBill = bill
+		
+		for i in 0 ..< mutableBill.count {
 			
-			for j in 0..<bill[i].items.count {
+			for j in 0 ..< mutableBill[i].items.count {
 				
-				let tax = getGSTForIndividual(bill[i].items[j].itemPrice, svcCharge, GST)
-				bill[i].items[j].itemPrice += tax
-			}
-		}
-	}
-	
-	class func getTotalPrice(_ bill: [Person]) -> Decimal {
-		
-		var totalCost : Decimal = 0.00
-		
-		for i in 0..<bill.count {
-			
-			for j in 0..<bill[i].items.count {
-				
-				totalCost += bill[i].items[j].itemPrice
+				let tax = Bill.getGSTForIndividual(mutableBill[i].items[j].itemPrice, svcCharge, GST)
+				mutableBill[i].items[j].itemPrice += tax
 			}
 		}
 		
-		return totalCost
+		return mutableBill
 	}
 	
-	class func getIndividualTotalPrice(_ bill: [Person],_ section: Int) -> Decimal {
-		
-		var total: Decimal = 0.00
-		
-		for i in 0 ..< bill[section].items.count {
-			
-			total += bill[section].items[i].itemPrice
-		}
-		
-		return total
-	}
-	
-	 class func getGSTForIndividual(_ individualAmt: Decimal,_ svcCharge: Bool,_ GST: Bool) -> Decimal {
+	class func getGSTForIndividual(_ individualAmt: Decimal,_ svcCharge: Bool,_ GST: Bool) -> Decimal {
 		
 		var taxCost : Decimal = 0.00
-		let SERVICE_CHARGE = getServiceCharge()
-		let GOODS_SERVICE_TAX = getGST()
+		let SERVICE_CHARGE = Bill.getServiceCharge()
+		let GOODS_SERVICE_TAX = Bill.getGST()
 		
 		if (svcCharge && GST) {
 			
@@ -74,6 +51,34 @@ class Bill: NSObject {
 		}
 		
 		return taxCost
+	}
+
+	
+	class func getTotalPrice(_ bill: [Person]) -> Decimal {
+		
+		var totalCost : Decimal = 0.00
+		
+		for i in 0..<bill.count {
+			
+			for j in 0..<bill[i].items.count {
+				
+				totalCost += bill[i].items[j].itemPrice
+			}
+		}
+		
+		return totalCost
+	}
+	
+	class func getIndividualTotalPrice(_ person: Person) -> Decimal {
+		
+		var total: Decimal = 0.00
+		
+		for i in 0 ..< person.items.count {
+			
+			total += person.items[i].itemPrice
+		}
+		
+		return total
 	}
 	
 	class func getServiceCharge() -> Decimal {

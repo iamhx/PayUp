@@ -10,6 +10,8 @@
 		E51AB4EE1F8741F1008D2058 /* GSTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4ED1F8741F1008D2058 /* GSTViewController.swift */; };
 		E51AB4F01F878403008D2058 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4EF1F878403008D2058 /* Bill.swift */; };
 		E51AB4F21F87AEB2008D2058 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4F11F87AEB2008D2058 /* SummaryViewController.swift */; };
+		E51AB4F41F87C5C2008D2058 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4F31F87C5C2008D2058 /* PersonViewController.swift */; };
+		E51AB4F81F87C6B0008D2058 /* ItemTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4F71F87C6B0008D2058 /* ItemTableCell.swift */; };
 		E56D00E91F7BBBA100867C35 /* BillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D00E81F7BBBA100867C35 /* BillViewController.swift */; };
 		E56D00EB1F7BBCC900867C35 /* BillTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D00EA1F7BBCC900867C35 /* BillTableCell.swift */; };
 		E56D00ED1F7BBE3300867C35 /* BillTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D00EC1F7BBE3300867C35 /* BillTableSection.swift */; };
@@ -27,6 +29,8 @@
 		E51AB4ED1F8741F1008D2058 /* GSTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSTViewController.swift; sourceTree = "<group>"; };
 		E51AB4EF1F878403008D2058 /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		E51AB4F11F87AEB2008D2058 /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
+		E51AB4F31F87C5C2008D2058 /* PersonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
+		E51AB4F71F87C6B0008D2058 /* ItemTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableCell.swift; sourceTree = "<group>"; };
 		E56D00E81F7BBBA100867C35 /* BillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillViewController.swift; sourceTree = "<group>"; };
 		E56D00EA1F7BBCC900867C35 /* BillTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillTableCell.swift; sourceTree = "<group>"; };
 		E56D00EC1F7BBE3300867C35 /* BillTableSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillTableSection.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				E5D691331F7B9B4500A52971 /* Main.storyboard */,
 				E56D00EA1F7BBCC900867C35 /* BillTableCell.swift */,
 				E56D00EC1F7BBE3300867C35 /* BillTableSection.swift */,
+				E51AB4F71F87C6B0008D2058 /* ItemTableCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -111,6 +116,7 @@
 				E56D00E81F7BBBA100867C35 /* BillViewController.swift */,
 				E51AB4ED1F8741F1008D2058 /* GSTViewController.swift */,
 				E51AB4F11F87AEB2008D2058 /* SummaryViewController.swift */,
+				E51AB4F31F87C5C2008D2058 /* PersonViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -190,12 +196,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E56D00EF1F7BC98100867C35 /* Person.swift in Sources */,
+				E51AB4F81F87C6B0008D2058 /* ItemTableCell.swift in Sources */,
 				E5D691301F7B9B4500A52971 /* AppDelegate.swift in Sources */,
 				E56D00EB1F7BBCC900867C35 /* BillTableCell.swift in Sources */,
 				E56D00ED1F7BBE3300867C35 /* BillTableSection.swift in Sources */,
 				E56D00F11F7BC9C000867C35 /* Item.swift in Sources */,
 				E5D691381F7B9B4500A52971 /* PayUp.xcdatamodeld in Sources */,
 				E56D00E91F7BBBA100867C35 /* BillViewController.swift in Sources */,
+				E51AB4F41F87C5C2008D2058 /* PersonViewController.swift in Sources */,
 				E51AB4F01F878403008D2058 /* Bill.swift in Sources */,
 				E51AB4EE1F8741F1008D2058 /* GSTViewController.swift in Sources */,
 				E51AB4F21F87AEB2008D2058 /* SummaryViewController.swift in Sources */,

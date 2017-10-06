@@ -12,8 +12,10 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 
 	//MARK: - View Controller properties
 	
-	var billBeforeGST : [Person]?
-	var bill : [Person]?
+	var billBeforeGST : [Person] = []
+	var finalBill : [Person] = []
+	var gst : (svcCharge: Bool, GST: Bool)?
+	var row : Int!
 	@IBOutlet weak var summaryTableView: UITableView!
 	
 	//MARK - IBActions
@@ -44,7 +46,9 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 
         // Do any additional setup after loading the view.
 		self.navigationItem.setHidesBackButton(true, animated: false)
-
+		
+		print(billBeforeGST[0].items[0].itemPrice)
+		print(finalBill[0].items[0].itemPrice)
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,26 +67,43 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return bill!.count
+		return finalBill.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "summaryCell")
-		cell!.textLabel!.text = "\(formatCurrency(Bill.getIndividualTotalPrice(bill!, indexPath.row), 2))"
-		cell!.detailTextLabel!.text = bill![indexPath.row].name
+		cell!.textLabel!.text = "\(formatCurrency(Bill.getIndividualTotalPrice(finalBill[indexPath.row]), 2))"
+		cell!.detailTextLabel!.text = finalBill[indexPath.row].name
 		
 		return cell!
 	}
+	
+	//MARK: - TableView accessory tapped delegate
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		tableView.deselectRow(at: indexPath, animated: true)
+		
+		row = indexPath.row
+		
+		performSegue(withIdentifier: "showPerson", sender: self)
+	}
 
-    /*
+	
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+		
+		if (segue.identifier == "showPerson") {
+			
+			let vc = segue.destination as! PersonViewController
+			vc.person = billBeforeGST[row]
+			vc.row = self.row
+			vc.gst = gst!
+		}
     }
-    */
-
 }

@@ -12,8 +12,7 @@ class GSTViewController: UIViewController {
 
 	//MARK: - View Controller properties
 	
-	var bill : [Person]?
-	var finalBill = [Person]()
+	var bill : [Person] = []
 	var totalTitle : String?
 	
 	@IBOutlet weak var lblGST: UILabel!
@@ -34,7 +33,7 @@ class GSTViewController: UIViewController {
 		navigationItem.setRightBarButton(nextButton, animated: true)
 		navigationItem.setLeftBarButton(backButton, animated: true)
 		navigationItem.prompt = "Select GST"
-    }
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -97,29 +96,28 @@ class GSTViewController: UIViewController {
 	
 	func calculate() {
 		
+		renameEmptyNameFields()
+		
 		dismiss(animated: true, completion: { action in
 			
-			self.renameEmptyNameFields()
-			self.finalBill = self.bill!
-			Bill.calculateBill(self.finalBill, self.switchServiceCharge.isOn, self.switchGST.isOn)
 			self.performSegue(withIdentifier: "showSummary", sender: self)
 		})
 	}
 	
 	func renameEmptyNameFields() {
 		
-		for i in 0 ..< bill!.count {
+		for i in 0 ..< bill.count {
 			
-			if (bill![i].name.isEmpty) {
+			if (bill[i].name.isEmpty) {
 				
-				bill![i].name = "Person \(i + 1)"
+				bill[i].name = "Person \(i + 1)"
 			}
 			
-			for j in 0 ..< bill![i].items.count {
+			for j in 0 ..< bill[i].items.count {
 				
-				if (bill![i].items[j].itemName.isEmpty) {
+				if (bill[i].items[j].itemName.isEmpty) {
 					
-					bill![i].items[j].itemName = "Item \(j + 1)"
+					bill[i].items[j].itemName = "Item \(j + 1)"
 				}
 			}
 		}
@@ -135,10 +133,9 @@ class GSTViewController: UIViewController {
 		if (segue.identifier == "showSummary") {
 			
 			let vc = segue.destination as! SummaryViewController
-			
 			vc.billBeforeGST = bill
-			vc.bill = finalBill
+			vc.finalBill = Bill.calculateBill(bill, switchServiceCharge.isOn, switchGST.isOn)
+			vc.gst = (switchServiceCharge.isOn, switchGST.isOn)
 		}
     }
-
 }

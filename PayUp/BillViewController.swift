@@ -173,7 +173,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			if let header = billTableView.headerView(forSection: indexPath.section) as? BillTableSection {
 				
-				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, indexPath.section), 3)
+				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill[indexPath.section]), 3)
 			}
 			
 			self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
@@ -207,12 +207,12 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		if let header = tableView.headerView(forSection: sourceIndexPath.section) as? BillTableSection {
 			
-			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, sourceIndexPath.section), 3)
+			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill[sourceIndexPath.section]), 3)
 		}
 
 		if let header = tableView.headerView(forSection: destinationIndexPath.section) as? BillTableSection {
 			
-			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, destinationIndexPath.section), 3)
+			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill[destinationIndexPath.section]), 3)
 		}
 	}
 	
@@ -234,7 +234,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		header.txtName.text = bill[section].name
 		header.lblPrice.adjustsFontSizeToFitWidth = true
 		header.lblPrice.minimumScaleFactor = 14.0 / UIFont.labelFontSize
-		header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, section), 3)
+		header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill[section]), 3)
 		
 		if (bill[section].collapsed) {
 			
@@ -297,7 +297,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			name = "Person \(row + 1)"
 		}
 		
-		return "(\(formatCurrency(Bill.getIndividualTotalPrice(bill, row), 3))) \(name)"
+		return "(\(formatCurrency(Bill.getIndividualTotalPrice(bill[row]), 3))) \(name)"
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -354,7 +354,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			bill[indexPath.section].items[indexPath.row].itemPrice = 0.00
 			if let header = billTableView.headerView(forSection: indexPath.section) as? BillTableSection {
 				
-				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, indexPath.section), 3)
+				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill[indexPath.section]), 3)
 			}
 
 			self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
@@ -370,7 +370,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		bill[indexPath.section].items[indexPath.row].itemPrice = price
 		if let header = billTableView.headerView(forSection: indexPath.section) as? BillTableSection {
 			
-			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, indexPath.section), 3)
+			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill[indexPath.section]), 3)
 		}
 		self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
 		cell.txtPrice.text = formatCurrency(price, 3)
@@ -437,7 +437,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 				header.txtName.tag = i * 100
 				header.gestureRecognizers?.removeAll()
 				header.expandOrCollapse.image = UIImage(named: "collapse")
-				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill, i), 3)
+				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill[i]), 3)
 
 			}
 			
