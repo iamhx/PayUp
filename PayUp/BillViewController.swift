@@ -98,6 +98,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		btnRemovePerson.tintColor = .red
 		btnChoose.tintColor = .red
 		toolBarNotEditingMode()
+		self.title = "$0.00"
 		
     }
 
@@ -764,6 +765,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			let vc = segue.destination as! GSTViewController
 			vc.bill = bill
+			vc.totalTitle = self.title
 		}
     }
 	

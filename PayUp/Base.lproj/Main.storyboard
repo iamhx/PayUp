@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--$0.00-->
+        <!--Bill View Controller-->
         <scene sceneID="6U8-bz-giq">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="5jE-Mr-6nk" customClass="BillViewController" customModule="PayUp" customModuleProvider="target" sceneMemberID="viewController">
@@ -104,7 +104,7 @@
                             <constraint firstAttribute="trailing" secondItem="S5j-9i-a6c" secondAttribute="trailing" id="kNq-zL-0rB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="$0.00" prompt="Your BIll" id="f28-47-vfI">
+                    <navigationItem key="navigationItem" prompt="Your BIll" id="f28-47-vfI">
                         <barButtonItem key="leftBarButtonItem" image="home" id="B9B-9F-RDe"/>
                         <barButtonItem key="rightBarButtonItem" image="nextpage" id="NcL-YJ-cw9">
                             <connections>
@@ -157,8 +157,44 @@
                     <view key="view" contentMode="scaleToFill" id="zMv-yb-StL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7% GST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Rd-JU-6Jo">
+                                <rect key="frame" x="141" y="202" width="92" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MUt-zc-c8V">
+                                <rect key="frame" x="163" y="279" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10% SERVICE CHARGE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HS9-gs-6zM">
+                                <rect key="frame" x="52" y="357" width="270" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lZ3-4C-iDE">
+                                <rect key="frame" x="163" y="434" width="51" height="31"/>
+                            </switch>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lZ3-4C-iDE" firstAttribute="centerX" secondItem="zMv-yb-StL" secondAttribute="centerX" id="TJl-I7-Eny"/>
+                            <constraint firstItem="HS9-gs-6zM" firstAttribute="centerX" secondItem="zMv-yb-StL" secondAttribute="centerX" id="Tqu-zt-m6p"/>
+                            <constraint firstItem="lZ3-4C-iDE" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="116" id="a1h-Uc-C7b"/>
+                            <constraint firstItem="MUt-zc-c8V" firstAttribute="centerX" secondItem="zMv-yb-StL" secondAttribute="centerX" id="nSC-Vn-AcU"/>
+                            <constraint firstItem="1Rd-JU-6Jo" firstAttribute="centerX" secondItem="zMv-yb-StL" secondAttribute="centerX" id="nZ1-yr-3lI"/>
+                            <constraint firstItem="MUt-zc-c8V" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="-39" id="qct-QQ-3Wq"/>
+                            <constraint firstItem="HS9-gs-6zM" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="38.5" id="qqz-cc-YLz"/>
+                            <constraint firstItem="1Rd-JU-6Jo" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="-116.5" id="r4f-wL-syo"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lblGST" destination="1Rd-JU-6Jo" id="1qp-Fp-Vff"/>
+                        <outlet property="lblServiceCharge" destination="HS9-gs-6zM" id="wwQ-Lk-ct5"/>
+                        <outlet property="switchGST" destination="MUt-zc-c8V" id="ESN-uP-FtO"/>
+                        <outlet property="switchServiceCharge" destination="lZ3-4C-iDE" id="Vfh-5a-ibd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ur-zi-u46" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
