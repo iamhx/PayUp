@@ -317,13 +317,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Daa-82-Ox4">
-                                                    <rect key="frame" x="197" y="8" width="170" height="21"/>
+                                                    <rect key="frame" x="8" y="8" width="359" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: $0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="jYd-p3-kij">
-                                                    <rect key="frame" x="197" y="81" width="170" height="21"/>
+                                                    <rect key="frame" x="8" y="81" width="359" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -336,17 +336,17 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Cag-1r-f7R" firstAttribute="width" secondItem="jYd-p3-kij" secondAttribute="width" id="0ia-tG-cCW"/>
-                                                <constraint firstItem="Cag-1r-f7R" firstAttribute="width" secondItem="Daa-82-Ox4" secondAttribute="width" id="3Pu-vz-cpc"/>
                                                 <constraint firstItem="jYd-p3-kij" firstAttribute="top" secondItem="ZtN-KS-aVg" secondAttribute="bottom" constant="17" id="8Me-da-KdO"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="Cag-1r-f7R" secondAttribute="leading" id="9Xz-ky-gyx"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="jYd-p3-kij" secondAttribute="trailing" id="Cxz-0K-hlA"/>
                                                 <constraint firstItem="ZtN-KS-aVg" firstAttribute="leading" secondItem="Cag-1r-f7R" secondAttribute="trailing" constant="19" id="Ecj-9U-qd9"/>
                                                 <constraint firstItem="Cag-1r-f7R" firstAttribute="width" secondItem="ZtN-KS-aVg" secondAttribute="width" id="H32-XG-haA"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ZtN-KS-aVg" secondAttribute="trailing" id="Hga-Cj-1IH"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="Daa-82-Ox4" secondAttribute="leading" id="Igd-pl-uVB"/>
                                                 <constraint firstItem="ZtN-KS-aVg" firstAttribute="centerY" secondItem="dXX-Im-9ne" secondAttribute="centerY" id="Nom-0x-Cm3"/>
                                                 <constraint firstItem="Daa-82-Ox4" firstAttribute="top" secondItem="dXX-Im-9ne" secondAttribute="topMargin" id="Tig-4W-QCt"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Daa-82-Ox4" secondAttribute="trailing" id="WEX-RN-FiF"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="jYd-p3-kij" secondAttribute="leading" id="s13-6F-vkA"/>
                                                 <constraint firstItem="Cag-1r-f7R" firstAttribute="centerY" secondItem="dXX-Im-9ne" secondAttribute="centerY" id="vwl-lv-UNs"/>
                                             </constraints>
                                         </tableViewCellContentView>
