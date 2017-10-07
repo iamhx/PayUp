@@ -16,26 +16,7 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 	var gst : (svcCharge: Bool, GST: Bool)?
 	var row : Int?
 	@IBOutlet weak var summaryTableView: UITableView!
-	
-	//MARK - IBActions
-	
-	@IBAction func btnStartOver(_ sender: Any) {
-		
-		let promptAlert = UIAlertController(title: "", message: "Do you want to start over?", preferredStyle: .actionSheet)
-		let yesAction = UIAlertAction(title: "Start Over", style: .destructive) { action in
-			
-			let storyboard = UIStoryboard(name: "Main", bundle: nil)
-			let vc = storyboard.instantiateViewController(withIdentifier: "billVC")
-			self.present(vc, animated: true, completion: nil)
-		}
-		
-		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-		
-		promptAlert.addAction(yesAction)
-		promptAlert.addAction(cancelAction)
-		
-		self.present(promptAlert, animated: true, completion: nil)
-	}
+	@IBOutlet weak var lblTotal: UILabel!
 	
 	
 	//MARK: - viewDidLoad Implementation
@@ -44,7 +25,15 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-		self.navigationItem.setHidesBackButton(true, animated: false)
+		navigationItem.setHidesBackButton(true, animated: false)
+		
+		let btnStartOver = UIBarButtonItem(title: "Start Over", style: .plain, target: self, action: #selector(startOver))
+		navigationItem.setRightBarButton(btnStartOver, animated: true)
+		
+		let total = Bill.getTotalPrice(bill)
+		let GST = Bill.getGSTForIndividual(total, gst!.svcCharge, gst!.GST)
+		
+		lblTotal.text = "Total: $\(formatCurrency(total + GST, 2))"
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,6 +82,27 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 		row = indexPath.row
 		
 		performSegue(withIdentifier: "showPerson", sender: self)
+	}
+	
+	// MARK: - Actions
+	
+	func startOver() {
+		
+		let promptAlert = UIAlertController(title: "", message: "Do you want to start over?", preferredStyle: .actionSheet)
+		let yesAction = UIAlertAction(title: "Start Over", style: .destructive) { action in
+			
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let vc = storyboard.instantiateViewController(withIdentifier: "billVC")
+			self.present(vc, animated: true, completion: nil)
+		}
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+		
+		promptAlert.addAction(yesAction)
+		promptAlert.addAction(cancelAction)
+		
+		self.present(promptAlert, animated: true, completion: nil)
+		
 	}
 
 	

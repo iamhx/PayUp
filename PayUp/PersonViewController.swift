@@ -25,7 +25,7 @@ class PersonViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         // Do any additional setup after loading the view.
 
-		title = "(\(formatCurrency(Bill.calculateBill(person!, gst!.svcCharge, gst!.GST), 2))) \(person!.name)"
+		title = person!.name
 		
 		let backButton = UIBarButtonItem(image: UIImage(named: "previouspage"), style: .plain, target: self, action: #selector(back))
 		navigationItem.setLeftBarButton(backButton, animated: true)
@@ -40,22 +40,33 @@ class PersonViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		return person!.items.count
+		return (person!.items.isEmpty) ? 1 : person!.items.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "detailedItemCell") as! ItemTableCell
 		
-		let itemPrice = person!.items[indexPath.row].itemPrice
-		let GST = Bill.getGSTForIndividual(itemPrice, gst!.svcCharge, gst!.GST)
-		let total = itemPrice + GST
-		
-		cell.lblItemName.text = person!.items[indexPath.row].itemName
-		cell.lblPrice.text = "\(formatCurrency(itemPrice, 2))"
-		cell.lblGST.text = "(+\(formatCurrency(GST, 2)))"
-		
-		cell.lblTotalPrice.text = "Total: \(formatCurrency(total, 2))"
+		if (person!.items.isEmpty) {
+			
+			cell.lblItemName.text = "No Item"
+			cell.lblPrice.text = "$0.00"
+			cell.lblGST.text = "(+$0.00)"
+			
+			cell.lblTotalPrice.text = "Total: $0.00"
+		}
+		else {
+			
+			let itemPrice = person!.items[indexPath.row].itemPrice
+			let GST = Bill.getGSTForIndividual(itemPrice, gst!.svcCharge, gst!.GST)
+			let total = itemPrice + GST
+			
+			cell.lblItemName.text = person!.items[indexPath.row].itemName
+			cell.lblPrice.text = "\(formatCurrency(itemPrice, 2))"
+			cell.lblGST.text = "(+\(formatCurrency(GST, 2)))"
+			
+			cell.lblTotalPrice.text = "Total: \(formatCurrency(total, 2))"
+		}
 		
 		return cell
 	}
