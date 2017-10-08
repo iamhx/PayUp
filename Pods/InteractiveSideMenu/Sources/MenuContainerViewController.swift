@@ -98,13 +98,14 @@ open class MenuContainerViewController: UIViewController {
             dismissAction: { [weak self] in self?.dismiss(animated: true, completion: nil) }
         )
 
-        let screenEdgePanRecognizer = UIScreenEdgePanGestureRecognizer(
+		//This will swipe to open menu
+        /*let screenEdgePanRecognizer = UIScreenEdgePanGestureRecognizer(
             target: navigationMenuTransitionDelegate.interactiveTransition,
             action: #selector(MenuInteractiveTransition.handlePanPresentation(recognizer:))
         )
 
         screenEdgePanRecognizer.edges = .left
-        self.view.addGestureRecognizer(screenEdgePanRecognizer)
+        self.view.addGestureRecognizer(screenEdgePanRecognizer)*/
     }
 
     override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

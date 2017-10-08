@@ -355,7 +355,7 @@ class MenuInteractiveTransition: NSObject, UIViewControllerInteractiveTransition
     
     private func finishTransition(currentPercentComplete : CGFloat) {
         transitionStarted = false
-
+		
         let animation : () -> Void = { [weak self] in self?.updateTransition(percentComplete: 1.0) }
         let completion : (Bool) -> Void = { [weak self] _ in
             if let transition = self {
@@ -376,9 +376,10 @@ class MenuInteractiveTransition: NSObject, UIViewControllerInteractiveTransition
                     fromViewController.view.isHidden = false
                     contentSnapshotView.removeFromSuperview()
 
-                    if let panRecognizer = transition.panRecognizer {
+					//This will enable swiping to close menu
+                    /*if let panRecognizer = transition.panRecognizer {
                         contentSnapshotView.addGestureRecognizer(panRecognizer)
-                    }
+                    }*/
                     if let tapRecognizer = transition.tapRecognizer {
                         contentSnapshotView.addGestureRecognizer(tapRecognizer)
                     }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import InteractiveSideMenu
 
 // MARK: - BillViewController Class
 
@@ -21,9 +21,17 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	@IBOutlet weak var forwardOutlet: UIBarButtonItem!
 	@IBOutlet weak var billTableView: UITableView!
 	@IBOutlet weak var bottomToolbar: UIToolbar!
+	@IBOutlet weak var btnMenuOutlet: UIButton!
 	
 	
 	//MARK: - IBActions
+	
+	@IBAction func btnMenu(_ sender: Any) {
+		
+		if let navigationViewController = self.navigationController as? SideMenuItemContent {
+			navigationViewController.showSideMenu()
+		}
+	}
 	
 	@IBAction func btnDone(_ sender: Any) {
 		
@@ -82,7 +90,11 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         // Do any additional setup after loading the view.
 		
-		self.hideKeyboardWhenTappedAround()
+		hideKeyboardWhenTappedAround()
+		
+		btnMenuOutlet.showsTouchWhenHighlighted = false
+		btnMenuOutlet.tintColor = UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0)
+		
 		let nib = UINib(nibName: "BillTableSection", bundle: nil)
 		billTableView.register(nib, forHeaderFooterViewReuseIdentifier: "BillTableSection")
 		personPickerView.dataSource = self
@@ -98,8 +110,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		btnRemovePerson.tintColor = .red
 		btnChoose.tintColor = .red
 		toolBarNotEditingMode()
-		self.title = "$0.00"
-		
+		title = "$0.00"
     }
 
     override func didReceiveMemoryWarning() {
@@ -176,7 +187,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill[indexPath.section]), 3)
 			}
 			
-			self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
+			title = formatCurrency(Bill.getTotalPrice(bill), 3)
 			
 			//Reset indexPath only if tableView is not editing
 			if (!billTableView.isEditing) {
@@ -357,7 +368,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill[indexPath.section]), 3)
 			}
 
-			self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
+			title = formatCurrency(Bill.getTotalPrice(bill), 3)
 
 			let errorAlert = UIAlertController(title: "Error", message: "Please enter a valid price.", preferredStyle: .alert)
 			errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -372,7 +383,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill[indexPath.section]), 3)
 		}
-		self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
+		title = formatCurrency(Bill.getTotalPrice(bill), 3)
 		cell.txtPrice.text = formatCurrency(price, 3)
 		
 		resetPriceFieldIfZero(cell.txtPrice)
@@ -452,7 +463,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			}
 		}
 		
-		self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
+		title = formatCurrency(Bill.getTotalPrice(bill), 3)
 		personPickerView.reloadAllComponents()
 	}
 	
@@ -725,7 +736,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			let vc = segue.destination as! GSTViewController
 			vc.bill = bill
-			vc.totalTitle = self.title
+			vc.totalTitle = title
 		}
     }
 	

@@ -15,13 +15,43 @@ class HostViewController: MenuContainerViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		
+		let screenSize: CGRect = UIScreen.main.bounds
+		transitionOptions = TransitionOptions(duration: 0.4, visibleContentWidth: screenSize.width / 6)
+		
+		// Instantiate menu view controller by identifier
+		menuViewController = self.storyboard!.instantiateViewController(withIdentifier: "menuVC") as! MenuViewController
+		
+		// Gather content items controllers
+		contentViewControllers = contentControllers()
+		
+		// Select initial content controller. It's needed even if the first view controller should be selected.
+		selectContentViewController(contentViewControllers.first!)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+	
+	private func contentControllers() -> [UIViewController] {
+		
+		let controllersIdentifiers = ["billVC"]
+		var contentList = [UIViewController]()
+		
+		/*
+		Instantiate items controllers from storyboard.
+		*/
+		for identifier in controllersIdentifiers {
+			
+			if let viewController = self.storyboard?.instantiateViewController(withIdentifier: identifier) {
+				
+				contentList.append(viewController)
+			}
+		}
+		
+		return contentList
+	}
 
     /*
     // MARK: - Navigation

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="paW-dc-2d6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ls8-VS-rIX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -105,7 +106,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" prompt="Your BIll" id="f28-47-vfI">
-                        <barButtonItem key="leftBarButtonItem" image="home" id="B9B-9F-RDe"/>
+                        <barButtonItem key="leftBarButtonItem" id="xm2-Gx-yPq">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="YnX-kV-tm7">
+                                <rect key="frame" x="16" y="39" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="menu"/>
+                                <connections>
+                                    <action selector="btnMenu:" destination="5jE-Mr-6nk" eventType="touchUpInside" id="6mo-Xs-hRy"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="nextpage" id="NcL-YJ-cw9">
                             <connections>
                                 <segue destination="SHq-jC-ufJ" kind="show" identifier="nextPage" id="ude-fT-gx3"/>
@@ -116,6 +126,7 @@
                         <outlet property="backOutlet" destination="eE8-NI-6z8" id="NNh-TH-LXq"/>
                         <outlet property="billTableView" destination="S5j-9i-a6c" id="k74-Dn-Lts"/>
                         <outlet property="bottomToolbar" destination="6TW-ZO-KCW" id="wW1-ky-eK1"/>
+                        <outlet property="btnMenuOutlet" destination="YnX-kV-tm7" id="dpu-Fr-BGO"/>
                         <outlet property="forwardOutlet" destination="BRC-My-v8M" id="MxO-iC-u4G"/>
                         <outlet property="txtFieldToolBar" destination="hTx-7w-FP0" id="Brt-5k-XRT"/>
                     </connections>
@@ -310,7 +321,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hc2-ei-LFS" id="dXX-Im-9ne">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Cag-1r-f7R">
@@ -387,10 +398,10 @@
             </objects>
             <point key="canvasLocation" x="5816.8000000000002" y="7.6461769115442282"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Bill Navigation Controller-->
         <scene sceneID="smv-yi-Y3e">
             <objects>
-                <navigationController storyboardIdentifier="billVC" automaticallyAdjustsScrollViewInsets="NO" id="paW-dc-2d6" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="billVC" automaticallyAdjustsScrollViewInsets="NO" id="paW-dc-2d6" customClass="BillNavigationController" customModule="PayUp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NVr-Hq-5lW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -410,10 +421,10 @@
             </objects>
             <point key="canvasLocation" x="2679.5" y="8.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Host View Controller-->
         <scene sceneID="h4W-vr-5rz">
             <objects>
-                <viewController id="Ls8-VS-rIX" sceneMemberID="viewController">
+                <viewController id="Ls8-VS-rIX" customClass="HostViewController" customModule="PayUp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BmJ-bj-sJz"/>
                         <viewControllerLayoutGuide type="bottom" id="0Eb-EY-rKS"/>
@@ -426,13 +437,84 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6V-tw-WDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2558" y="693"/>
+            <point key="canvasLocation" x="2538" y="898"/>
+        </scene>
+        <!--Side Bar Menu View Controller-->
+        <scene sceneID="cxX-7c-JUI">
+            <objects>
+                <viewController storyboardIdentifier="menuVC" id="kxR-bm-UKZ" customClass="SideBarMenuViewController" customModule="PayUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WZK-T5-YZI"/>
+                        <viewControllerLayoutGuide type="bottom" id="XSl-dD-j8m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lcs-K0-G4Y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ver. 0.7.3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4i-7t-gmq">
+                                <rect key="frame" x="298" y="641" width="61" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="AZO-rI-z6C">
+                                <rect key="frame" x="0.0" y="20" width="375" height="262"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="AZO-rI-z6C" secondAttribute="height" multiplier="375:262" id="FdT-id-k9r"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LBd-h0-X8x">
+                                <rect key="frame" x="0.0" y="290" width="375" height="55"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NIz-Ad-aQP">
+                                        <rect key="frame" x="0.0" y="0.0" width="8" height="55"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="8" id="xts-BS-KCf"/>
+                                            <constraint firstAttribute="height" constant="55" id="zCM-3k-zN1"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Split a Bill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEc-iI-Ril">
+                                        <rect key="frame" x="24" y="17" width="87" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="NIz-Ad-aQP" firstAttribute="leading" secondItem="LBd-h0-X8x" secondAttribute="leading" id="6vc-3q-no5"/>
+                                    <constraint firstItem="NIz-Ad-aQP" firstAttribute="top" secondItem="LBd-h0-X8x" secondAttribute="top" id="bEI-3M-ZnC"/>
+                                    <constraint firstItem="dEc-iI-Ril" firstAttribute="top" secondItem="LBd-h0-X8x" secondAttribute="top" constant="17" id="dhZ-gl-m8X"/>
+                                    <constraint firstAttribute="height" constant="55" id="uj5-rJ-6kf"/>
+                                    <constraint firstItem="dEc-iI-Ril" firstAttribute="leading" secondItem="NIz-Ad-aQP" secondAttribute="trailing" constant="16" id="upv-LA-7KY"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="AZO-rI-z6C" firstAttribute="top" secondItem="WZK-T5-YZI" secondAttribute="bottom" id="1MZ-Eo-Ahx"/>
+                            <constraint firstItem="LBd-h0-X8x" firstAttribute="centerX" secondItem="lcs-K0-G4Y" secondAttribute="centerX" id="7l1-Zo-Dlj"/>
+                            <constraint firstItem="LBd-h0-X8x" firstAttribute="centerY" secondItem="lcs-K0-G4Y" secondAttribute="centerY" constant="-16" id="Dof-iO-jWV"/>
+                            <constraint firstItem="AZO-rI-z6C" firstAttribute="leading" secondItem="lcs-K0-G4Y" secondAttribute="leading" id="P8w-Vp-Fu9"/>
+                            <constraint firstItem="XSl-dD-j8m" firstAttribute="top" secondItem="Y4i-7t-gmq" secondAttribute="bottom" constant="8" id="WPI-FJ-7Xg"/>
+                            <constraint firstItem="LBd-h0-X8x" firstAttribute="leading" secondItem="lcs-K0-G4Y" secondAttribute="leading" id="bOz-e0-CGw"/>
+                            <constraint firstAttribute="trailing" secondItem="LBd-h0-X8x" secondAttribute="trailing" id="jLb-8l-Ags"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Y4i-7t-gmq" secondAttribute="trailing" id="mX9-M1-0bO"/>
+                            <constraint firstAttribute="trailing" secondItem="AZO-rI-z6C" secondAttribute="trailing" id="vAG-uL-uVE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sIS-Sf-aZd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3351.1999999999998" y="692.20389805097454"/>
         </scene>
     </scenes>
     <resources>
         <image name="back" width="25" height="25"/>
         <image name="forward" width="25" height="25"/>
-        <image name="home" width="22" height="22"/>
+        <image name="logo_transparent" width="1500" height="1048"/>
+        <image name="menu" width="25" height="25"/>
         <image name="nextpage" width="25" height="25"/>
     </resources>
 </document>
