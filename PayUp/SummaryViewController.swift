@@ -104,7 +104,6 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 		self.present(promptAlert, animated: true, completion: nil)
 		
 	}
-
 	
     // MARK: - Navigation
 

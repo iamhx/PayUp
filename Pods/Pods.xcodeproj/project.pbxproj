@@ -1,0 +1,546 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03197F936CEC5388561301A723E28195 /* MenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A0426CB367762947588C6D1FDD6E69 /* MenuAnimator.swift */; };
+		034D7401019C393F3F6CD09B5B9F5F66 /* MenuItemContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECB08E4C4D50DB071E3E5D2185D019 /* MenuItemContentViewController.swift */; };
+		0F78F9C9279423F0AA4B26A263A505A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		2B07BDF5F73AD2CABB1558195F6F4563 /* Pods-PayUp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E6229F075798C83CF5DA633CB5A90F41 /* Pods-PayUp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75D69E83534D04B71CF31C6E781879C2 /* InteractiveSideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D81D037918B07CC6840B236A6C0ED902 /* InteractiveSideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FC1C00D2225B898D664257479D68EBF /* MenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C25A8EA558FB8E17185633EFEE875 /* MenuContainerViewController.swift */; };
+		938F268AA50D1FC71963D5EC098AE17F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		9D96B3249C9DB2B61A805F91BAD402F7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EF1D20ECE6B554D83225B5DE7B504B /* MenuViewController.swift */; };
+		CA99D8C212CF95DB59DFF099F5831EB5 /* InteractiveSideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BD35B3CE4AB55EF4164315DBE61F7237 /* InteractiveSideMenu-dummy.m */; };
+		E34E0BA664787C8E03ECF465846B575F /* Pods-PayUp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D393AA6C9999C321F1176463E8CFE /* Pods-PayUp-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6F4AE1AE0769796CA039D7D938F6D312 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DA4CFEBC7883D4CE7E6AE34914B98587;
+			remoteInfo = InteractiveSideMenu;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		22A0426CB367762947588C6D1FDD6E69 /* MenuAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuAnimator.swift; path = Sources/MenuAnimator.swift; sourceTree = "<group>"; };
+		2C0ABD126D0DE3310FAFE7B0B5C137B3 /* Pods-PayUp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PayUp-acknowledgements.plist"; sourceTree = "<group>"; };
+		31A5D2BEAADD96108C6D44A7F542ECAB /* Pods-PayUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PayUp.debug.xcconfig"; sourceTree = "<group>"; };
+		35ECB08E4C4D50DB071E3E5D2185D019 /* MenuItemContentViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuItemContentViewController.swift; path = Sources/MenuItemContentViewController.swift; sourceTree = "<group>"; };
+		3D4AF339EAAFC7154E7280A004085D61 /* InteractiveSideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InteractiveSideMenu-prefix.pch"; sourceTree = "<group>"; };
+		3D7AB3774CD0396E612B2C3202D613F5 /* InteractiveSideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = InteractiveSideMenu.framework; path = InteractiveSideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F2BC0E2B084A817C11FA6B0C9375954 /* Pods-PayUp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-PayUp.modulemap"; sourceTree = "<group>"; };
+		762D1F0E6C31379130BB4AE0E19BF21D /* Pods-PayUp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PayUp-frameworks.sh"; sourceTree = "<group>"; };
+		7A1D393AA6C9999C321F1176463E8CFE /* Pods-PayUp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PayUp-dummy.m"; sourceTree = "<group>"; };
+		8CFCB6BFA4DF1B0890BBCFC8FA4A0E74 /* InteractiveSideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = InteractiveSideMenu.xcconfig; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A0F453A06781172ACC28A5A4B1CF2040 /* Pods-PayUp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PayUp-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A2B8EF65D06C3E7DE39EA1B9DEDE5EDA /* Pods-PayUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PayUp.release.xcconfig"; sourceTree = "<group>"; };
+		BD35B3CE4AB55EF4164315DBE61F7237 /* InteractiveSideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "InteractiveSideMenu-dummy.m"; sourceTree = "<group>"; };
+		C3EF1D20ECE6B554D83225B5DE7B504B /* MenuViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Sources/MenuViewController.swift; sourceTree = "<group>"; };
+		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D06283E4837AF9AD8806EFF95A30CEFC /* Pods-PayUp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PayUp-resources.sh"; sourceTree = "<group>"; };
+		D51C25A8EA558FB8E17185633EFEE875 /* MenuContainerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuContainerViewController.swift; path = Sources/MenuContainerViewController.swift; sourceTree = "<group>"; };
+		D81D037918B07CC6840B236A6C0ED902 /* InteractiveSideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InteractiveSideMenu-umbrella.h"; sourceTree = "<group>"; };
+		D8BD4CCB8F247D001B37A13725B64902 /* InteractiveSideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = InteractiveSideMenu.modulemap; sourceTree = "<group>"; };
+		E5B642A64414CA644A33FCA69877F126 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6229F075798C83CF5DA633CB5A90F41 /* Pods-PayUp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PayUp-umbrella.h"; sourceTree = "<group>"; };
+		F22755C8FE0192843992B2900C91F2A3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FED532CB5C2E77B67CF7CAAD31439AC0 /* Pods_PayUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PayUp.framework; path = "Pods-PayUp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3217B7B9B099A06FA829A867ADC907EA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F78F9C9279423F0AA4B26A263A505A2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		647BF82C4549E07FBEC8ACABB630F7CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				938F268AA50D1FC71963D5EC098AE17F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		169EE6C9B5CA62DF2C7B2F12C473683E /* Pods-PayUp */ = {
+			isa = PBXGroup;
+			children = (
+				F22755C8FE0192843992B2900C91F2A3 /* Info.plist */,
+				6F2BC0E2B084A817C11FA6B0C9375954 /* Pods-PayUp.modulemap */,
+				A0F453A06781172ACC28A5A4B1CF2040 /* Pods-PayUp-acknowledgements.markdown */,
+				2C0ABD126D0DE3310FAFE7B0B5C137B3 /* Pods-PayUp-acknowledgements.plist */,
+				7A1D393AA6C9999C321F1176463E8CFE /* Pods-PayUp-dummy.m */,
+				762D1F0E6C31379130BB4AE0E19BF21D /* Pods-PayUp-frameworks.sh */,
+				D06283E4837AF9AD8806EFF95A30CEFC /* Pods-PayUp-resources.sh */,
+				E6229F075798C83CF5DA633CB5A90F41 /* Pods-PayUp-umbrella.h */,
+				31A5D2BEAADD96108C6D44A7F542ECAB /* Pods-PayUp.debug.xcconfig */,
+				A2B8EF65D06C3E7DE39EA1B9DEDE5EDA /* Pods-PayUp.release.xcconfig */,
+			);
+			name = "Pods-PayUp";
+			path = "Target Support Files/Pods-PayUp";
+			sourceTree = "<group>";
+		};
+		457893251CFAAD3B1A056B9BFF081821 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D7AB3774CD0396E612B2C3202D613F5 /* InteractiveSideMenu.framework */,
+				FED532CB5C2E77B67CF7CAAD31439AC0 /* Pods_PayUp.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6028E0C6F9BA98AC06433A8583DD1EF0 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E5B642A64414CA644A33FCA69877F126 /* Info.plist */,
+				D8BD4CCB8F247D001B37A13725B64902 /* InteractiveSideMenu.modulemap */,
+				8CFCB6BFA4DF1B0890BBCFC8FA4A0E74 /* InteractiveSideMenu.xcconfig */,
+				BD35B3CE4AB55EF4164315DBE61F7237 /* InteractiveSideMenu-dummy.m */,
+				3D4AF339EAAFC7154E7280A004085D61 /* InteractiveSideMenu-prefix.pch */,
+				D81D037918B07CC6840B236A6C0ED902 /* InteractiveSideMenu-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/InteractiveSideMenu";
+			sourceTree = "<group>";
+		};
+		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		78BE0C66A56B84DE8132E666B62CD5BC /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				169EE6C9B5CA62DF2C7B2F12C473683E /* Pods-PayUp */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				CDC9ACF68105D2EA2223A27AF261DE72 /* Pods */,
+				457893251CFAAD3B1A056B9BFF081821 /* Products */,
+				78BE0C66A56B84DE8132E666B62CD5BC /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		99A07E880A07C295B3B96401EE16163F /* InteractiveSideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				22A0426CB367762947588C6D1FDD6E69 /* MenuAnimator.swift */,
+				D51C25A8EA558FB8E17185633EFEE875 /* MenuContainerViewController.swift */,
+				35ECB08E4C4D50DB071E3E5D2185D019 /* MenuItemContentViewController.swift */,
+				C3EF1D20ECE6B554D83225B5DE7B504B /* MenuViewController.swift */,
+				6028E0C6F9BA98AC06433A8583DD1EF0 /* Support Files */,
+			);
+			name = InteractiveSideMenu;
+			path = InteractiveSideMenu;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CDC9ACF68105D2EA2223A27AF261DE72 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				99A07E880A07C295B3B96401EE16163F /* InteractiveSideMenu */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7658FB035A36F02C282C0D6276A6E158 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B07BDF5F73AD2CABB1558195F6F4563 /* Pods-PayUp-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97EDFA83A5F86488528185AAA2CF65ED /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75D69E83534D04B71CF31C6E781879C2 /* InteractiveSideMenu-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		DA4CFEBC7883D4CE7E6AE34914B98587 /* InteractiveSideMenu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85B97FE3BFC393E3B5E3D5D02A973F68 /* Build configuration list for PBXNativeTarget "InteractiveSideMenu" */;
+			buildPhases = (
+				D9A22F82DF0B84B1DD2EA1C6414A0269 /* Sources */,
+				3217B7B9B099A06FA829A867ADC907EA /* Frameworks */,
+				97EDFA83A5F86488528185AAA2CF65ED /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InteractiveSideMenu;
+			productName = InteractiveSideMenu;
+			productReference = 3D7AB3774CD0396E612B2C3202D613F5 /* InteractiveSideMenu.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FAA608F8CF65172C2D594ECF86D981F2 /* Pods-PayUp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93A70FD475C6FF512DB01B8AEB51A9F6 /* Build configuration list for PBXNativeTarget "Pods-PayUp" */;
+			buildPhases = (
+				C8696D31D53C05E632230FBFEBD3CD94 /* Sources */,
+				647BF82C4549E07FBEC8ACABB630F7CA /* Frameworks */,
+				7658FB035A36F02C282C0D6276A6E158 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				31E70EDC92293C23E9DCF99B69AD3145 /* PBXTargetDependency */,
+			);
+			name = "Pods-PayUp";
+			productName = "Pods-PayUp";
+			productReference = FED532CB5C2E77B67CF7CAAD31439AC0 /* Pods_PayUp.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 457893251CFAAD3B1A056B9BFF081821 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DA4CFEBC7883D4CE7E6AE34914B98587 /* InteractiveSideMenu */,
+				FAA608F8CF65172C2D594ECF86D981F2 /* Pods-PayUp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C8696D31D53C05E632230FBFEBD3CD94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E34E0BA664787C8E03ECF465846B575F /* Pods-PayUp-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9A22F82DF0B84B1DD2EA1C6414A0269 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA99D8C212CF95DB59DFF099F5831EB5 /* InteractiveSideMenu-dummy.m in Sources */,
+				03197F936CEC5388561301A723E28195 /* MenuAnimator.swift in Sources */,
+				8FC1C00D2225B898D664257479D68EBF /* MenuContainerViewController.swift in Sources */,
+				034D7401019C393F3F6CD09B5B9F5F66 /* MenuItemContentViewController.swift in Sources */,
+				9D96B3249C9DB2B61A805F91BAD402F7 /* MenuViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		31E70EDC92293C23E9DCF99B69AD3145 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = InteractiveSideMenu;
+			target = DA4CFEBC7883D4CE7E6AE34914B98587 /* InteractiveSideMenu */;
+			targetProxy = 6F4AE1AE0769796CA039D7D938F6D312 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		06647A276B30F028B2A802ED1CFEE3B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2B8EF65D06C3E7DE39EA1B9DEDE5EDA /* Pods-PayUp.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-PayUp/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PayUp/Pods-PayUp.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_PayUp;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		12914D756594D15C6F2CA12FE5F89F1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		877B6F86522C1B514C05015BA3786180 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CFCB6BFA4DF1B0890BBCFC8FA4A0E74 /* InteractiveSideMenu.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/InteractiveSideMenu/InteractiveSideMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/InteractiveSideMenu/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/InteractiveSideMenu/InteractiveSideMenu.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = InteractiveSideMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C0AD22268A5B9FF4620FC2574375405A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CFCB6BFA4DF1B0890BBCFC8FA4A0E74 /* InteractiveSideMenu.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/InteractiveSideMenu/InteractiveSideMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/InteractiveSideMenu/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/InteractiveSideMenu/InteractiveSideMenu.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = InteractiveSideMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D5CFB8A060EF1713DDB331D34872598F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31A5D2BEAADD96108C6D44A7F542ECAB /* Pods-PayUp.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-PayUp/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PayUp/Pods-PayUp.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_PayUp;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E72E7977875C2D251FC62736BBDDC389 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12914D756594D15C6F2CA12FE5F89F1B /* Debug */,
+				E72E7977875C2D251FC62736BBDDC389 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		85B97FE3BFC393E3B5E3D5D02A973F68 /* Build configuration list for PBXNativeTarget "InteractiveSideMenu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				877B6F86522C1B514C05015BA3786180 /* Debug */,
+				C0AD22268A5B9FF4620FC2574375405A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93A70FD475C6FF512DB01B8AEB51A9F6 /* Build configuration list for PBXNativeTarget "Pods-PayUp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5CFB8A060EF1713DDB331D34872598F /* Debug */,
+				06647A276B30F028B2A802ED1CFEE3B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

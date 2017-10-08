@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48BD83DAF26EA3D2BF69D752 /* Pods_PayUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FD68BDEC72FB11CC6AAFA0 /* Pods_PayUp.framework */; };
 		E51AB4EE1F8741F1008D2058 /* GSTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4ED1F8741F1008D2058 /* GSTViewController.swift */; };
 		E51AB4F01F878403008D2058 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4EF1F878403008D2058 /* Bill.swift */; };
 		E51AB4F21F87AEB2008D2058 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4F11F87AEB2008D2058 /* SummaryViewController.swift */; };
@@ -23,9 +24,13 @@
 		E5D691381F7B9B4500A52971 /* PayUp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5D691361F7B9B4500A52971 /* PayUp.xcdatamodeld */; };
 		E5D6913A1F7B9B4500A52971 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5D691391F7B9B4500A52971 /* Assets.xcassets */; };
 		E5D6913D1F7B9B4500A52971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5D6913B1F7B9B4500A52971 /* LaunchScreen.storyboard */; };
+		E5F1EEE21F89F56D00CB1921 /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F1EEE11F89F56D00CB1921 /* HostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E3956AB9D6491412E4B2885 /* Pods-PayUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayUp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PayUp/Pods-PayUp.debug.xcconfig"; sourceTree = "<group>"; };
+		81676302CF547174763EBA95 /* Pods-PayUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayUp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PayUp/Pods-PayUp.release.xcconfig"; sourceTree = "<group>"; };
+		A5FD68BDEC72FB11CC6AAFA0 /* Pods_PayUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PayUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51AB4ED1F8741F1008D2058 /* GSTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSTViewController.swift; sourceTree = "<group>"; };
 		E51AB4EF1F878403008D2058 /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		E51AB4F11F87AEB2008D2058 /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +49,8 @@
 		E5D691391F7B9B4500A52971 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5D6913C1F7B9B4500A52971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5D6913E1F7B9B4500A52971 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5F1EEE11F89F56D00CB1921 /* HostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
+		E5F1EEE31F89FA3B00CB1921 /* InteractiveSideMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InteractiveSideMenu.framework; path = "../../Library/Developer/Xcode/DerivedData/PayUp-dotruulhwjawndfgcbrqaoivbxqo/Build/Products/Debug-iphonesimulator/InteractiveSideMenu/InteractiveSideMenu.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,17 +58,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48BD83DAF26EA3D2BF69D752 /* Pods_PayUp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A25182100E9CF3A7EF992D71 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5F1EEE31F89FA3B00CB1921 /* InteractiveSideMenu.framework */,
+				A5FD68BDEC72FB11CC6AAFA0 /* Pods_PayUp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CFCE0B02FE55C4E28C74C726 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3E3956AB9D6491412E4B2885 /* Pods-PayUp.debug.xcconfig */,
+				81676302CF547174763EBA95 /* Pods-PayUp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E5D691231F7B9B4500A52971 = {
 			isa = PBXGroup;
 			children = (
 				E5D6912E1F7B9B4500A52971 /* PayUp */,
 				E5D6912D1F7B9B4500A52971 /* Products */,
+				CFCE0B02FE55C4E28C74C726 /* Pods */,
+				A25182100E9CF3A7EF992D71 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +145,7 @@
 				E51AB4ED1F8741F1008D2058 /* GSTViewController.swift */,
 				E51AB4F11F87AEB2008D2058 /* SummaryViewController.swift */,
 				E51AB4F31F87C5C2008D2058 /* PersonViewController.swift */,
+				E5F1EEE11F89F56D00CB1921 /* HostViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -128,9 +157,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5D691411F7B9B4500A52971 /* Build configuration list for PBXNativeTarget "PayUp" */;
 			buildPhases = (
+				3D4158397AAB450658DD69BB /* [CP] Check Pods Manifest.lock */,
 				E5D691281F7B9B4500A52971 /* Sources */,
 				E5D691291F7B9B4500A52971 /* Frameworks */,
 				E5D6912A1F7B9B4500A52971 /* Resources */,
+				92ED45FC7C09645F0C4C04CF /* [CP] Embed Pods Frameworks */,
+				A61DC40591CCE60B08417907 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -190,6 +222,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3D4158397AAB450658DD69BB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		92ED45FC7C09645F0C4C04CF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PayUp/Pods-PayUp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A61DC40591CCE60B08417907 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PayUp/Pods-PayUp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E5D691281F7B9B4500A52971 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -204,6 +284,7 @@
 				E5D691381F7B9B4500A52971 /* PayUp.xcdatamodeld in Sources */,
 				E56D00E91F7BBBA100867C35 /* BillViewController.swift in Sources */,
 				E51AB4F41F87C5C2008D2058 /* PersonViewController.swift in Sources */,
+				E5F1EEE21F89F56D00CB1921 /* HostViewController.swift in Sources */,
 				E51AB4F01F878403008D2058 /* Bill.swift in Sources */,
 				E51AB4EE1F8741F1008D2058 /* GSTViewController.swift in Sources */,
 				E51AB4F21F87AEB2008D2058 /* SummaryViewController.swift in Sources */,
@@ -327,6 +408,7 @@
 		};
 		E5D691421F7B9B4500A52971 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E3956AB9D6491412E4B2885 /* Pods-PayUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EVC7K5F9LC;
@@ -342,6 +424,7 @@
 		};
 		E5D691431F7B9B4500A52971 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81676302CF547174763EBA95 /* Pods-PayUp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EVC7K5F9LC;
