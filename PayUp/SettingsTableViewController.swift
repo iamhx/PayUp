@@ -28,6 +28,8 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
 		btnMenu.setImage(menuImage, for: .normal)
 		btnMenu.frame =  CGRect(x: 0, y: 0, width: 25, height: 25)
 		btnMenu.showsTouchWhenHighlighted = false
+		btnMenu.adjustsImageWhenDisabled = false
+		btnMenu.adjustsImageWhenHighlighted = false
 		btnMenu.tintColor = .white
 		btnMenu.addTarget(self, action: #selector(menu), for: .touchUpInside)
 		

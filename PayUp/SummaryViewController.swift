@@ -33,6 +33,8 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 		btnMenu.setImage(menuImage, for: .normal)
 		btnMenu.frame =  CGRect(x: 0, y: 0, width: 25, height: 25)
 		btnMenu.showsTouchWhenHighlighted = false
+		btnMenu.adjustsImageWhenHighlighted = false
+		btnMenu.adjustsImageWhenDisabled = false
 		btnMenu.tintColor = .white
 		btnMenu.addTarget(self, action: #selector(menu), for: .touchUpInside)
 		
@@ -45,7 +47,7 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 		let total = Bill.getTotalPrice(bill)
 		let GST = Bill.getGSTForIndividual(total, gst!.svcCharge, gst!.GST)
 		
-		lblTotal.text = "Total: $\(formatCurrency(total + GST, 2))"
+		lblTotal.text = "Total: \(formatCurrency(total + GST, 2))"
 		
 		navigationController?.setNavigationBarHidden(true, animated: false)
 		navigationController?.setNavigationBarHidden(false, animated: true)

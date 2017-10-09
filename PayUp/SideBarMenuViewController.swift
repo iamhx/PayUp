@@ -98,6 +98,10 @@ class SideBarMenuViewController: MenuViewController {
 			
 			present(alertController, animated: true, completion: nil)
 		}
+		else {
+			
+			menuContainerViewController.hideSideMenu()
+		}
 	}
 	
 	func setSelectedFor(_ itemView: UIView,_ selectedView: UIView,_ label: UILabel, _ selected: Bool) {
