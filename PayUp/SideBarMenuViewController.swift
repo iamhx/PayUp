@@ -15,14 +15,26 @@ class SideBarMenuViewController: MenuViewController {
 		return .lightContent
 	}*/
 	
+	@IBOutlet weak var splitABill: UIView!
+	@IBOutlet weak var splitABillSelected: UIView!
+	@IBOutlet weak var splitABillLabel: UILabel!
+	@IBOutlet weak var settings: UIView!
+	@IBOutlet weak var settingsSelected: UIView!
+	@IBOutlet weak var settingsLabel: UILabel!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 		
-		let splitABill = view.viewWithTag(5)
-		splitABill?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(chooseSplitABill)))
+		splitABill.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(chooseSplitABill)))
+		settings.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(chooseSettings)))
 		
+    }
+	
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 	
 	func chooseSplitABill() {
@@ -30,7 +42,7 @@ class SideBarMenuViewController: MenuViewController {
 		guard let menuContainerViewController = self.menuContainerViewController else {
 			return
 		}
-
+		
 		if (menuContainerViewController.selectedContentViewController.isKind(of: BillViewController.self) || menuContainerViewController.selectedContentViewController.isKind(of: SummaryViewController.self)) {
 			
 			let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -45,29 +57,63 @@ class SideBarMenuViewController: MenuViewController {
 		}
 		else {
 			
+			setSelectedFor(splitABill, splitABillSelected, splitABillLabel, true)
+			setSelectedFor(settings, settingsSelected, settingsLabel, false)
 			menuContainerViewController.selectContentViewController(menuContainerViewController.contentViewControllers[1])
 			menuContainerViewController.hideSideMenu()
 		}
-		/*else {
+	}
+	
+	func chooseSettings() {
+		
+		guard let menuContainerViewController = self.menuContainerViewController else {
+			return
+		}
+		
+		if (menuContainerViewController.selectedContentViewController.isKind(of: BillViewController.self)) {
 			
-			let alertController = UIAlertController(title: "", message: "Changes made in this bill will not be saved!", preferredStyle: .actionSheet)
-			alertController.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { action in
+			let alertController = UIAlertController(title: "", message: "Changes made to the current bill will not be saved.", preferredStyle: .actionSheet)
+			alertController.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: {action in
 				
-				menuContainerViewController.selectContentViewController(menuContainerViewController.contentViewControllers[1])
+				self.setSelectedFor(self.settings, self.settingsSelected, self.settingsLabel, true)
+				self.setSelectedFor(self.splitABill, self.splitABillSelected, self.splitABillLabel, false)
 				menuContainerViewController.hideSideMenu()
 			}))
-			
 			alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 			
 			present(alertController, animated: true, completion: nil)
-		}*/
+		}
+		else if (menuContainerViewController.selectedContentViewController.isKind(of: SummaryViewController.self)) {
+			
+			let alertController = UIAlertController(title: "", message: "Leave current bill summary?", preferredStyle: .actionSheet)
+			alertController.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: {action in
+				
+				self.setSelectedFor(self.settings, self.settingsSelected, self.settingsLabel, true)
+				self.setSelectedFor(self.splitABill, self.splitABillSelected, self.splitABillLabel, false)
+				menuContainerViewController.hideSideMenu()
+			}))
+			alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+			
+			present(alertController, animated: true, completion: nil)
+		}
 	}
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+	
+	func setSelectedFor(_ itemView: UIView,_ selectedView: UIView,_ label: UILabel, _ selected: Bool) {
+		
+		if (selected) {
+			
+			itemView.backgroundColor = .white
+			selectedView.backgroundColor = .lightGray
+			label.textColor = .darkGray
+		}
+		else {
+			
+			itemView.backgroundColor = UIColor(red: 239.0/255.0, green: 51.0/255.0, blue: 64.0/255.0, alpha: 1.0)
+			selectedView.backgroundColor = .white
+			label.textColor = .white
+		}
+	}
+	
 
     /*
     // MARK: - Navigation
