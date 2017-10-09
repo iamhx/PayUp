@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import InteractiveSideMenu
 
 class SummaryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -27,26 +28,39 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
         // Do any additional setup after loading the view.
 		navigationItem.setHidesBackButton(true, animated: false)
 		
-		let btnStartOver = UIBarButtonItem(title: "Start Over", style: .plain, target: self, action: #selector(startOver))
-		navigationItem.setRightBarButton(btnStartOver, animated: true)
+		let btnMenu = UIButton(type: .custom)
+		let menuImage = UIImage(named: "menu")
+		btnMenu.setImage(menuImage, for: .normal)
+		btnMenu.frame =  CGRect(x: 0, y: 0, width: 25, height: 25)
+		btnMenu.showsTouchWhenHighlighted = false
+		btnMenu.tintColor = UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0)
+		btnMenu.addTarget(self, action: #selector(menu), for: .touchUpInside)
+		
+		let btnMenuBarItem = UIBarButtonItem(customView: btnMenu)
+		//let btnStartOver = UIBarButtonItem(title: "Start Over", style: .plain, target: self, action: #selector(startOver))
+		
+		navigationItem.setLeftBarButton(btnMenuBarItem, animated: true)
+		//navigationItem.setRightBarButton(btnStartOver, animated: true)
 		
 		let total = Bill.getTotalPrice(bill)
 		let GST = Bill.getGSTForIndividual(total, gst!.svcCharge, gst!.GST)
 		
 		lblTotal.text = "Total: $\(formatCurrency(total + GST, 2))"
+		
+		navigationController?.setNavigationBarHidden(true, animated: false)
+		navigationController?.setNavigationBarHidden(false, animated: true)
+		
+		
+		if let navigationViewController = self.navigationController as? SideMenuItemContent {
+			
+			navigationViewController.setSelectedContentViewController(controller: self)
+		}
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		
-		navigationController?.setNavigationBarHidden(true, animated: false)
-		navigationController?.setNavigationBarHidden(false, animated: true)
-	}
 	
     //MARK: - TableView required delegates
 	
@@ -86,13 +100,13 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 	
 	// MARK: - Actions
 	
-	func startOver() {
+	/*func startOver() {
 		
 		let promptAlert = UIAlertController(title: "", message: "Do you want to start over?", preferredStyle: .actionSheet)
 		let yesAction = UIAlertAction(title: "Start Over", style: .destructive) { action in
 			
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
-			let vc = storyboard.instantiateViewController(withIdentifier: "billVC")
+			let vc = storyboard.instantiateViewController(withIdentifier: "hostVC")
 			self.present(vc, animated: true, completion: nil)
 		}
 		
@@ -103,6 +117,14 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 		
 		self.present(promptAlert, animated: true, completion: nil)
 		
+	}*/
+	
+	func menu() {
+		
+		if let navigationViewController = self.navigationController as? SideMenuItemContent {
+			
+			navigationViewController.showSideMenu()
+		}
 	}
 	
     // MARK: - Navigation

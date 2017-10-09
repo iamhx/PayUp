@@ -10,7 +10,7 @@ import UIKit
 import InteractiveSideMenu
 
 class BillNavigationController: UINavigationController, SideMenuItemContent {
-
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 

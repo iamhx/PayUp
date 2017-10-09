@@ -36,12 +36,14 @@ class HostViewController: MenuContainerViewController {
 	
 	private func contentControllers() -> [UIViewController] {
 		
-		let controllersIdentifiers = ["billVC"]
+		let controllersIdentifiers = ["navVC", "hostVC"]
 		var contentList = [UIViewController]()
 		
 		/*
 		Instantiate items controllers from storyboard.
 		*/
+
+		
 		for identifier in controllersIdentifiers {
 			
 			if let viewController = self.storyboard?.instantiateViewController(withIdentifier: identifier) {

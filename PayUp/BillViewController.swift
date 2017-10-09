@@ -29,6 +29,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	@IBAction func btnMenu(_ sender: Any) {
 		
 		if let navigationViewController = self.navigationController as? SideMenuItemContent {
+			
 			navigationViewController.showSideMenu()
 		}
 	}
@@ -111,6 +112,11 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		btnChoose.tintColor = .red
 		toolBarNotEditingMode()
 		title = "$0.00"
+		
+		if let navigationViewController = self.navigationController as? SideMenuItemContent {
+			
+			navigationViewController.setSelectedContentViewController(controller: self)
+		}
     }
 
     override func didReceiveMemoryWarning() {

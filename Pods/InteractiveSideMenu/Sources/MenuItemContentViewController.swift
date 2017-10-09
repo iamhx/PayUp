@@ -27,6 +27,7 @@ public protocol SideMenuItemContent {
      Shows left side menu.
      */
     func showSideMenu()
+	func setSelectedContentViewController(controller: UIViewController)
 }
 
 /**
@@ -34,8 +35,17 @@ public protocol SideMenuItemContent {
  */
 extension SideMenuItemContent where Self: UIViewController {
 
+	public func setSelectedContentViewController(controller: UIViewController) {
+		
+		if let menuContainerViewController = self.parent as? MenuContainerViewController {
+			
+			menuContainerViewController.selectedContentViewController = controller
+		}
+	}
+	
     public func showSideMenu() {
         if let menuContainerViewController = self.parent as? MenuContainerViewController {
+			
             menuContainerViewController.showSideMenu()
         }
     }

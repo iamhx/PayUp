@@ -54,7 +54,8 @@ open class MenuContainerViewController: UIViewController {
      The list of all content view controllers corresponding to side menu items.
      */
     public var contentViewControllers: [UIViewController]!
-
+	public var selectedContentViewController : UIViewController! //Selected VC
+	
     /**
      Shows left side menu.
      */
