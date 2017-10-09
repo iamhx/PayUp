@@ -18,6 +18,33 @@ class PersonViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	var gst : (svcCharge: Bool, GST: Bool)?
 	var vc : SummaryViewController?
 	
+	@IBAction func btnShare(_ sender: Any) {
+		
+		var gstString = ""
+		
+		let total = Bill.getTotalPrice([person!])
+		
+		if (gst!.svcCharge && gst!.GST) {
+			
+			gstString = " including service charge and GST (\(formatCurrency(Bill.getGSTForIndividual(total, gst!.svcCharge, gst!.GST), 2)))"
+		}
+		else if (gst!.svcCharge && !gst!.GST) {
+			
+			gstString = " including service charge (\(formatCurrency(Bill.getGSTForIndividual(total, gst!.svcCharge, gst!.GST), 2)))"
+		}
+		else if (!gst!.svcCharge && gst!.GST) {
+			
+			gstString = " including GST (\(formatCurrency(Bill.getGSTForIndividual(total, gst!.svcCharge, gst!.GST), 2)))"
+		}
+		
+		let message = "Hey! Your bill is \(formatCurrency(Bill.calculateBill(person!, gst!.svcCharge, gst!.GST), 2))\(gstString). Pay Up! – https://appsto.re/sg/pfTsjb.i"
+		
+		let activityViewController = UIActivityViewController(activityItems: [message as NSString], applicationActivities: nil)
+		activityViewController.excludedActivityTypes = [.postToFacebook, .airDrop]
+		present(activityViewController, animated: true, completion: nil)
+	}
+	
+	
 	//MARK: - viewDidLoad Implementation
 	
     override func viewDidLoad() {
@@ -78,7 +105,7 @@ class PersonViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		
 		navigationController?.popToViewController(vc!, animated: true)
 	}
-    
+	
 
     /*
     // MARK: - Navigation
