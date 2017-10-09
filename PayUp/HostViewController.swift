@@ -40,7 +40,7 @@ class HostViewController: MenuContainerViewController {
 	
 	private func contentControllers() -> [UIViewController] {
 		
-		let controllersIdentifiers = ["navVC", "hostVC"]
+		let controllersIdentifiers = ["navVC", "hostVC", "settingsVC"]
 		var contentList = [UIViewController]()
 		
 		/*

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		48BD83DAF26EA3D2BF69D752 /* Pods_PayUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FD68BDEC72FB11CC6AAFA0 /* Pods_PayUp.framework */; };
+		E50BBE451F8C0FB2000574EC /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50BBE441F8C0FB2000574EC /* SettingsTableViewController.swift */; };
+		E50BBE471F8C1091000574EC /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50BBE461F8C1091000574EC /* SettingsNavigationController.swift */; };
+		E50BBE491F8C1890000574EC /* CreditsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50BBE481F8C1890000574EC /* CreditsTableViewController.swift */; };
+		E50BBE4B1F8C1B25000574EC /* IconsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50BBE4A1F8C1B25000574EC /* IconsTableViewController.swift */; };
+		E50BBE4D1F8C2175000574EC /* OpenSLTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50BBE4C1F8C2175000574EC /* OpenSLTableViewController.swift */; };
 		E51AB4EE1F8741F1008D2058 /* GSTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4ED1F8741F1008D2058 /* GSTViewController.swift */; };
 		E51AB4F01F878403008D2058 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4EF1F878403008D2058 /* Bill.swift */; };
 		E51AB4F21F87AEB2008D2058 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4F11F87AEB2008D2058 /* SummaryViewController.swift */; };
@@ -33,6 +38,11 @@
 		3E3956AB9D6491412E4B2885 /* Pods-PayUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayUp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PayUp/Pods-PayUp.debug.xcconfig"; sourceTree = "<group>"; };
 		81676302CF547174763EBA95 /* Pods-PayUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayUp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PayUp/Pods-PayUp.release.xcconfig"; sourceTree = "<group>"; };
 		A5FD68BDEC72FB11CC6AAFA0 /* Pods_PayUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PayUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E50BBE441F8C0FB2000574EC /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		E50BBE461F8C1091000574EC /* SettingsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
+		E50BBE481F8C1890000574EC /* CreditsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsTableViewController.swift; sourceTree = "<group>"; };
+		E50BBE4A1F8C1B25000574EC /* IconsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconsTableViewController.swift; sourceTree = "<group>"; };
+		E50BBE4C1F8C2175000574EC /* OpenSLTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenSLTableViewController.swift; sourceTree = "<group>"; };
 		E51AB4ED1F8741F1008D2058 /* GSTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSTViewController.swift; sourceTree = "<group>"; };
 		E51AB4EF1F878403008D2058 /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		E51AB4F11F87AEB2008D2058 /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +162,11 @@
 				E5F1EEE11F89F56D00CB1921 /* HostViewController.swift */,
 				E5AECDD31F8A4AE5003606F4 /* SideBarMenuViewController.swift */,
 				E5AECDD51F8A5529003606F4 /* BillNavigationController.swift */,
+				E50BBE441F8C0FB2000574EC /* SettingsTableViewController.swift */,
+				E50BBE461F8C1091000574EC /* SettingsNavigationController.swift */,
+				E50BBE481F8C1890000574EC /* CreditsTableViewController.swift */,
+				E50BBE4A1F8C1B25000574EC /* IconsTableViewController.swift */,
+				E50BBE4C1F8C2175000574EC /* OpenSLTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -282,17 +297,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				E56D00EF1F7BC98100867C35 /* Person.swift in Sources */,
+				E50BBE4B1F8C1B25000574EC /* IconsTableViewController.swift in Sources */,
+				E50BBE4D1F8C2175000574EC /* OpenSLTableViewController.swift in Sources */,
 				E51AB4F81F87C6B0008D2058 /* ItemTableCell.swift in Sources */,
 				E5D691301F7B9B4500A52971 /* AppDelegate.swift in Sources */,
 				E56D00EB1F7BBCC900867C35 /* BillTableCell.swift in Sources */,
 				E5AECDD41F8A4AE5003606F4 /* SideBarMenuViewController.swift in Sources */,
 				E5AECDD61F8A5529003606F4 /* BillNavigationController.swift in Sources */,
+				E50BBE491F8C1890000574EC /* CreditsTableViewController.swift in Sources */,
 				E56D00ED1F7BBE3300867C35 /* BillTableSection.swift in Sources */,
 				E56D00F11F7BC9C000867C35 /* Item.swift in Sources */,
 				E5D691381F7B9B4500A52971 /* PayUp.xcdatamodeld in Sources */,
+				E50BBE471F8C1091000574EC /* SettingsNavigationController.swift in Sources */,
 				E56D00E91F7BBBA100867C35 /* BillViewController.swift in Sources */,
 				E51AB4F41F87C5C2008D2058 /* PersonViewController.swift in Sources */,
 				E5F1EEE21F89F56D00CB1921 /* HostViewController.swift in Sources */,
+				E50BBE451F8C0FB2000574EC /* SettingsTableViewController.swift in Sources */,
 				E51AB4F01F878403008D2058 /* Bill.swift in Sources */,
 				E51AB4EE1F8741F1008D2058 /* GSTViewController.swift in Sources */,
 				E51AB4F21F87AEB2008D2058 /* SummaryViewController.swift in Sources */,

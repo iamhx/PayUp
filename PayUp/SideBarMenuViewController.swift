@@ -77,6 +77,7 @@ class SideBarMenuViewController: MenuViewController {
 				
 				self.setSelectedFor(self.settings, self.settingsSelected, self.settingsLabel, true)
 				self.setSelectedFor(self.splitABill, self.splitABillSelected, self.splitABillLabel, false)
+				menuContainerViewController.selectContentViewController(menuContainerViewController.contentViewControllers[2])
 				menuContainerViewController.hideSideMenu()
 			}))
 			alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -90,6 +91,7 @@ class SideBarMenuViewController: MenuViewController {
 				
 				self.setSelectedFor(self.settings, self.settingsSelected, self.settingsLabel, true)
 				self.setSelectedFor(self.splitABill, self.splitABillSelected, self.splitABillLabel, false)
+				menuContainerViewController.selectContentViewController(menuContainerViewController.contentViewControllers[2])
 				menuContainerViewController.hideSideMenu()
 			}))
 			alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
