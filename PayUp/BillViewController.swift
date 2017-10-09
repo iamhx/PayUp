@@ -94,7 +94,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		hideKeyboardWhenTappedAround()
 		
 		btnMenuOutlet.showsTouchWhenHighlighted = false
-		btnMenuOutlet.tintColor = UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0)
+		btnMenuOutlet.tintColor = .white
 		
 		let nib = UINib(nibName: "BillTableSection", bundle: nil)
 		billTableView.register(nib, forHeaderFooterViewReuseIdentifier: "BillTableSection")

@@ -33,7 +33,7 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 		btnMenu.setImage(menuImage, for: .normal)
 		btnMenu.frame =  CGRect(x: 0, y: 0, width: 25, height: 25)
 		btnMenu.showsTouchWhenHighlighted = false
-		btnMenu.tintColor = UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0)
+		btnMenu.tintColor = .white
 		btnMenu.addTarget(self, action: #selector(menu), for: .touchUpInside)
 		
 		let btnMenuBarItem = UIBarButtonItem(customView: btnMenu)

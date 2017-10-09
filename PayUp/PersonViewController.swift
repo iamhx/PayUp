@@ -28,6 +28,7 @@ class PersonViewController: UIViewController, UITableViewDelegate, UITableViewDa
 		title = person!.name
 		
 		let backButton = UIBarButtonItem(image: UIImage(named: "previouspage"), style: .plain, target: self, action: #selector(back))
+		backButton.tintColor = .white
 		navigationItem.setLeftBarButton(backButton, animated: true)
     }
 

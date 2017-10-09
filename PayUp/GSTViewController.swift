@@ -29,7 +29,9 @@ class GSTViewController: UIViewController {
 		// Do any additional setup after loading the view.
 		
 		let backButton = UIBarButtonItem(image: UIImage(named: "previouspage"), style: .plain, target: self, action: #selector(back))
+		backButton.tintColor = .white
 		let nextButton = UIBarButtonItem(title: "Split", style: .done, target: self, action: #selector(split))
+		nextButton.tintColor = .white
 		navigationItem.setRightBarButton(nextButton, animated: true)
 		navigationItem.setLeftBarButton(backButton, animated: true)
 		navigationItem.prompt = "Select GST"

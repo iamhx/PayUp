@@ -117,6 +117,7 @@
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="nextpage" id="NcL-YJ-cw9">
+                            <color key="tintColor" red="0.9999127984046936" green="1" blue="0.99988144636154175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="SHq-jC-ufJ" kind="show" identifier="nextPage" id="ude-fT-gx3"/>
                             </connections>
@@ -170,34 +171,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7% GST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Rd-JU-6Jo">
-                                <rect key="frame" x="141" y="235" width="92" height="30"/>
+                                <rect key="frame" x="141" y="188" width="92" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MUt-zc-c8V">
-                                <rect key="frame" x="163" y="283" width="51" height="31"/>
+                                <rect key="frame" x="163" y="236" width="51" height="31"/>
+                                <color key="onTintColor" red="0.93725490196078431" green="0.20000000000000001" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10% Service Charge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HS9-gs-6zM">
-                                <rect key="frame" x="68.5" y="362" width="238" height="30"/>
+                                <rect key="frame" x="68" y="315" width="238" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lZ3-4C-iDE">
-                                <rect key="frame" x="163" y="410" width="51" height="31"/>
+                                <rect key="frame" x="163" y="363" width="51" height="31"/>
+                                <color key="onTintColor" red="0.93725490199999995" green="0.20000000000000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lZ3-4C-iDE" firstAttribute="centerX" secondItem="zMv-yb-StL" secondAttribute="centerX" id="TJl-I7-Eny"/>
-                            <constraint firstItem="HS9-gs-6zM" firstAttribute="centerX" secondItem="zMv-yb-StL" secondAttribute="centerX" id="Tqu-zt-m6p"/>
-                            <constraint firstItem="lZ3-4C-iDE" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="92" id="a1h-Uc-C7b"/>
-                            <constraint firstItem="MUt-zc-c8V" firstAttribute="centerX" secondItem="zMv-yb-StL" secondAttribute="centerX" id="nSC-Vn-AcU"/>
-                            <constraint firstItem="1Rd-JU-6Jo" firstAttribute="centerX" secondItem="zMv-yb-StL" secondAttribute="centerX" id="nZ1-yr-3lI"/>
-                            <constraint firstItem="MUt-zc-c8V" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="-35" id="qct-QQ-3Wq"/>
-                            <constraint firstItem="HS9-gs-6zM" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="43.5" id="qqz-cc-YLz"/>
-                            <constraint firstItem="1Rd-JU-6Jo" firstAttribute="centerY" secondItem="zMv-yb-StL" secondAttribute="centerY" constant="-83.5" id="r4f-wL-syo"/>
+                            <constraint firstItem="MUt-zc-c8V" firstAttribute="leading" secondItem="lZ3-4C-iDE" secondAttribute="leading" id="73S-D0-KBL"/>
+                            <constraint firstItem="HS9-gs-6zM" firstAttribute="centerX" secondItem="lZ3-4C-iDE" secondAttribute="centerX" id="7rH-SL-lhc"/>
+                            <constraint firstItem="1Rd-JU-6Jo" firstAttribute="centerX" secondItem="zMv-yb-StL" secondAttribute="centerX" id="Aof-TT-Nxl"/>
+                            <constraint firstItem="1Rd-JU-6Jo" firstAttribute="centerX" secondItem="MUt-zc-c8V" secondAttribute="centerX" id="KUd-PR-8Mv"/>
+                            <constraint firstItem="MUt-zc-c8V" firstAttribute="top" secondItem="1Rd-JU-6Jo" secondAttribute="bottom" constant="18" id="afQ-Rz-ecc"/>
+                            <constraint firstItem="HS9-gs-6zM" firstAttribute="top" secondItem="MUt-zc-c8V" secondAttribute="bottom" constant="48" id="d9S-tL-pAm"/>
+                            <constraint firstItem="lZ3-4C-iDE" firstAttribute="top" secondItem="HS9-gs-6zM" secondAttribute="bottom" constant="18" id="ewL-RP-1rG"/>
+                            <constraint firstItem="1Rd-JU-6Jo" firstAttribute="top" secondItem="oFK-Cs-I8D" secondAttribute="bottom" constant="94" id="oTB-Dt-lLY"/>
                         </constraints>
                     </view>
                     <connections>
@@ -454,7 +457,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ver. 0.7.3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4i-7t-gmq">
                                 <rect key="frame" x="298" y="641" width="61" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LBd-h0-X8x">
@@ -491,7 +494,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.20000000000000001" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AZO-rI-z6C" firstAttribute="top" secondItem="WZK-T5-YZI" secondAttribute="bottom" id="1MZ-Eo-Ahx"/>
                             <constraint firstItem="LBd-h0-X8x" firstAttribute="centerX" secondItem="lcs-K0-G4Y" secondAttribute="centerX" id="7l1-Zo-Dlj"/>
