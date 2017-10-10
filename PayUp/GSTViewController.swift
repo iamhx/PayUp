@@ -19,7 +19,21 @@ class GSTViewController: UIViewController {
 	@IBOutlet weak var switchGST: UISwitch!
 	@IBOutlet weak var lblServiceCharge: UILabel!
 	@IBOutlet weak var switchServiceCharge: UISwitch!
+	@IBOutlet weak var btnSplitOutlet: UIButton!
 	
+	@IBAction func btnSplit(_ sender: Any) {
+		
+		let confirmation = UIAlertController(title: "", message: "You have selected:\n\(selectedOptions())\n\nDo you want to split the bill?", preferredStyle: .alert)
+		
+		confirmation.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { action in
+			
+			self.showOverlayOnTask(message: "Splitting bill...")
+			Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.calculate), userInfo: nil, repeats: false)
+		}))
+		confirmation.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		
+		present(confirmation, animated: true, completion: nil)
+	}
 	
 	//MARK: - viewDidLoad Implementation
 	
@@ -29,10 +43,12 @@ class GSTViewController: UIViewController {
 		// Do any additional setup after loading the view.
 		
 		let backButton = UIBarButtonItem(image: UIImage(named: "previouspage"), style: .plain, target: self, action: #selector(back))
-		let nextButton = UIBarButtonItem(title: "Split", style: .done, target: self, action: #selector(split))
-		navigationItem.setRightBarButton(nextButton, animated: true)
+		backButton.tintColor = .white
+		//let nextButton = UIBarButtonItem(title: "Split", style: .done, target: self, action: #selector(split))
+		//nextButton.tintColor = .white
+		//navigationItem.setRightBarButton(nextButton, animated: true)
 		navigationItem.setLeftBarButton(backButton, animated: true)
-		navigationItem.prompt = "Select GST"
+		navigationItem.prompt = "Select GST"		
 	}
 
     override func didReceiveMemoryWarning() {
@@ -43,12 +59,16 @@ class GSTViewController: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		animateTitle(0.3)
 		self.title = totalTitle!
 		
-		UIView.animate(withDuration: 0.3, delay: 0, options: .transitionCrossDissolve, animations: {
+		animateTitle(0.3)
+		
+		UIView.animate(withDuration: 0.3, delay: 0.0, options: .transitionCrossDissolve, animations: {
 			self.switchGST.alpha = 1.0
 			self.switchServiceCharge.alpha = 1.0
+			self.lblGST.alpha = 1.0
+			self.lblServiceCharge.alpha = 1.0
+			self.btnSplitOutlet.alpha = 1.0
 		}, completion: nil)
 	}
 
@@ -60,7 +80,7 @@ class GSTViewController: UIViewController {
 		navigationController?.popViewController(animated: true)
 	}
 	
-	func split() {
+	/*func split() {
 	
 		let confirmation = UIAlertController(title: "Split Bill", message: "You have selected:\n\(selectedOptions())\n\nDo you want to split the bill?", preferredStyle: .alert)
 		
@@ -72,7 +92,7 @@ class GSTViewController: UIViewController {
 		confirmation.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 		
 		present(confirmation, animated: true, completion: nil)
-	}
+	}*/
 	
 	func selectedOptions() -> String {
 		

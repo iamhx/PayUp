@@ -61,7 +61,7 @@ extension UIViewController {
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+	
 	var window: UIWindow?
 
 
@@ -91,6 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func applicationWillTerminate(_ application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 		// Saves changes in the application's managed object context before the application terminates.
+		
+		UserDefaults.standard.set(false, forKey: "animatedLogo")
 		self.saveContext()
 	}
 

@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import InteractiveSideMenu
+import RevealingSplashView
 
 // MARK: - BillViewController Class
 
@@ -21,9 +22,18 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	@IBOutlet weak var forwardOutlet: UIBarButtonItem!
 	@IBOutlet weak var billTableView: UITableView!
 	@IBOutlet weak var bottomToolbar: UIToolbar!
+	@IBOutlet weak var btnMenuOutlet: UIButton!
 	
 	
 	//MARK: - IBActions
+	
+	@IBAction func btnMenu(_ sender: Any) {
+		
+		if let navigationViewController = self.navigationController as? SideMenuItemContent {
+			
+			navigationViewController.showSideMenu()
+		}
+	}
 	
 	@IBAction func btnDone(_ sender: Any) {
 		
@@ -82,7 +92,59 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         // Do any additional setup after loading the view.
 		
-		self.hideKeyboardWhenTappedAround()
+		if (UserDefaults.standard.bool(forKey: "animatedLogo") != true) {
+			
+			var iconSize = CGSize()
+			
+			if (UIScreen.main.bounds.size.height == 568.0) {
+				
+				//iPhone SE
+				iconSize.width = 320.0
+				iconSize.height = 224.0
+			}
+			else if (UIScreen.main.bounds.size.height == 736.0) {
+				
+				//iPhone 7 Plus
+				iconSize.width = 414.0
+				iconSize.height = 289.33
+			}
+			else if (UIScreen.main.bounds.size.height == 667.0) {
+				
+				//iPhone 7
+				iconSize.width = 375.0
+				iconSize.height = 262.0
+			}
+			else {
+				
+				//Default
+				iconSize.width = 375.0
+				iconSize.height = 262.0
+			}
+			
+			self.navigationController?.setNavigationBarHidden(true, animated: false)
+			
+			let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "logo_transparent")!,iconInitialSize: iconSize, backgroundColor: UIColor(red: 239.0/255.0, green: 51.0/255.0, blue: 64.0/255.0, alpha: 1.0))
+			
+			revealingSplashView.animationType = SplashAnimationType.woobleAndZoomOut
+			revealingSplashView.delay = 3.0
+			
+			//Adds the revealing splash view as a sub view
+			self.view.addSubview(revealingSplashView)
+			
+			//Starts animation
+			revealingSplashView.startAnimation(){
+				
+				self.navigationController?.setNavigationBarHidden(false, animated: true)
+				UserDefaults.standard.set(true, forKey: "animatedLogo")
+				UserDefaults.standard.synchronize()
+			}
+		}
+		
+		hideKeyboardWhenTappedAround()
+		
+		btnMenuOutlet.showsTouchWhenHighlighted = false
+		btnMenuOutlet.tintColor = .white
+		
 		let nib = UINib(nibName: "BillTableSection", bundle: nil)
 		billTableView.register(nib, forHeaderFooterViewReuseIdentifier: "BillTableSection")
 		personPickerView.dataSource = self
@@ -98,8 +160,12 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		btnRemovePerson.tintColor = .red
 		btnChoose.tintColor = .red
 		toolBarNotEditingMode()
-		self.title = "$0.00"
+		title = "$0.00"
 		
+		if let navigationViewController = self.navigationController as? SideMenuItemContent {
+			
+			navigationViewController.setSelectedContentViewController(controller: self)
+		}
     }
 
     override func didReceiveMemoryWarning() {
@@ -176,7 +242,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill[indexPath.section]), 3)
 			}
 			
-			self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
+			title = formatCurrency(Bill.getTotalPrice(bill), 3)
 			
 			//Reset indexPath only if tableView is not editing
 			if (!billTableView.isEditing) {
@@ -357,7 +423,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 				header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill[indexPath.section]), 3)
 			}
 
-			self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
+			title = formatCurrency(Bill.getTotalPrice(bill), 3)
 
 			let errorAlert = UIAlertController(title: "Error", message: "Please enter a valid price.", preferredStyle: .alert)
 			errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -372,7 +438,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			header.lblPrice.text = formatCurrency(Bill.getIndividualTotalPrice(bill[indexPath.section]), 3)
 		}
-		self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
+		title = formatCurrency(Bill.getTotalPrice(bill), 3)
 		cell.txtPrice.text = formatCurrency(price, 3)
 		
 		resetPriceFieldIfZero(cell.txtPrice)
@@ -452,7 +518,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			}
 		}
 		
-		self.title = formatCurrency(Bill.getTotalPrice(bill), 3)
+		title = formatCurrency(Bill.getTotalPrice(bill), 3)
 		personPickerView.reloadAllComponents()
 	}
 	
@@ -725,7 +791,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			let vc = segue.destination as! GSTViewController
 			vc.bill = bill
-			vc.totalTitle = self.title
+			vc.totalTitle = title
 		}
     }
 	

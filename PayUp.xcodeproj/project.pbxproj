@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48BD83DAF26EA3D2BF69D752 /* Pods_PayUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FD68BDEC72FB11CC6AAFA0 /* Pods_PayUp.framework */; };
+		E50BBE451F8C0FB2000574EC /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50BBE441F8C0FB2000574EC /* SettingsTableViewController.swift */; };
+		E50BBE471F8C1091000574EC /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50BBE461F8C1091000574EC /* SettingsNavigationController.swift */; };
+		E50BBE491F8C1890000574EC /* CreditsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50BBE481F8C1890000574EC /* CreditsTableViewController.swift */; };
+		E50BBE4B1F8C1B25000574EC /* IconsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50BBE4A1F8C1B25000574EC /* IconsTableViewController.swift */; };
+		E50BBE4D1F8C2175000574EC /* OpenSLTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50BBE4C1F8C2175000574EC /* OpenSLTableViewController.swift */; };
 		E51AB4EE1F8741F1008D2058 /* GSTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4ED1F8741F1008D2058 /* GSTViewController.swift */; };
 		E51AB4F01F878403008D2058 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4EF1F878403008D2058 /* Bill.swift */; };
 		E51AB4F21F87AEB2008D2058 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51AB4F11F87AEB2008D2058 /* SummaryViewController.swift */; };
@@ -17,15 +23,26 @@
 		E56D00ED1F7BBE3300867C35 /* BillTableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D00EC1F7BBE3300867C35 /* BillTableSection.swift */; };
 		E56D00EF1F7BC98100867C35 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D00EE1F7BC98100867C35 /* Person.swift */; };
 		E56D00F11F7BC9C000867C35 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E56D00F01F7BC9C000867C35 /* Item.swift */; };
+		E5AECDD41F8A4AE5003606F4 /* SideBarMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AECDD31F8A4AE5003606F4 /* SideBarMenuViewController.swift */; };
+		E5AECDD61F8A5529003606F4 /* BillNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AECDD51F8A5529003606F4 /* BillNavigationController.swift */; };
 		E5B38A191F7BA232007BD655 /* BillTableSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B38A181F7BA232007BD655 /* BillTableSection.xib */; };
 		E5D691301F7B9B4500A52971 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6912F1F7B9B4500A52971 /* AppDelegate.swift */; };
 		E5D691351F7B9B4500A52971 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5D691331F7B9B4500A52971 /* Main.storyboard */; };
 		E5D691381F7B9B4500A52971 /* PayUp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5D691361F7B9B4500A52971 /* PayUp.xcdatamodeld */; };
 		E5D6913A1F7B9B4500A52971 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5D691391F7B9B4500A52971 /* Assets.xcassets */; };
 		E5D6913D1F7B9B4500A52971 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5D6913B1F7B9B4500A52971 /* LaunchScreen.storyboard */; };
+		E5F1EEE21F89F56D00CB1921 /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F1EEE11F89F56D00CB1921 /* HostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E3956AB9D6491412E4B2885 /* Pods-PayUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayUp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PayUp/Pods-PayUp.debug.xcconfig"; sourceTree = "<group>"; };
+		81676302CF547174763EBA95 /* Pods-PayUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PayUp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PayUp/Pods-PayUp.release.xcconfig"; sourceTree = "<group>"; };
+		A5FD68BDEC72FB11CC6AAFA0 /* Pods_PayUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PayUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E50BBE441F8C0FB2000574EC /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		E50BBE461F8C1091000574EC /* SettingsNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
+		E50BBE481F8C1890000574EC /* CreditsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsTableViewController.swift; sourceTree = "<group>"; };
+		E50BBE4A1F8C1B25000574EC /* IconsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconsTableViewController.swift; sourceTree = "<group>"; };
+		E50BBE4C1F8C2175000574EC /* OpenSLTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenSLTableViewController.swift; sourceTree = "<group>"; };
 		E51AB4ED1F8741F1008D2058 /* GSTViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSTViewController.swift; sourceTree = "<group>"; };
 		E51AB4EF1F878403008D2058 /* Bill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		E51AB4F11F87AEB2008D2058 /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +53,8 @@
 		E56D00EC1F7BBE3300867C35 /* BillTableSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillTableSection.swift; sourceTree = "<group>"; };
 		E56D00EE1F7BC98100867C35 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		E56D00F01F7BC9C000867C35 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		E5AECDD31F8A4AE5003606F4 /* SideBarMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarMenuViewController.swift; sourceTree = "<group>"; };
+		E5AECDD51F8A5529003606F4 /* BillNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillNavigationController.swift; sourceTree = "<group>"; };
 		E5B38A181F7BA232007BD655 /* BillTableSection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillTableSection.xib; sourceTree = "<group>"; };
 		E5D6912C1F7B9B4500A52971 /* PayUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D6912F1F7B9B4500A52971 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +63,8 @@
 		E5D691391F7B9B4500A52971 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5D6913C1F7B9B4500A52971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5D6913E1F7B9B4500A52971 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5F1EEE11F89F56D00CB1921 /* HostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
+		E5F1EEE31F89FA3B00CB1921 /* InteractiveSideMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InteractiveSideMenu.framework; path = "../../Library/Developer/Xcode/DerivedData/PayUp-dotruulhwjawndfgcbrqaoivbxqo/Build/Products/Debug-iphonesimulator/InteractiveSideMenu/InteractiveSideMenu.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,17 +72,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48BD83DAF26EA3D2BF69D752 /* Pods_PayUp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A25182100E9CF3A7EF992D71 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5F1EEE31F89FA3B00CB1921 /* InteractiveSideMenu.framework */,
+				A5FD68BDEC72FB11CC6AAFA0 /* Pods_PayUp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CFCE0B02FE55C4E28C74C726 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3E3956AB9D6491412E4B2885 /* Pods-PayUp.debug.xcconfig */,
+				81676302CF547174763EBA95 /* Pods-PayUp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E5D691231F7B9B4500A52971 = {
 			isa = PBXGroup;
 			children = (
 				E5D6912E1F7B9B4500A52971 /* PayUp */,
 				E5D6912D1F7B9B4500A52971 /* Products */,
+				CFCE0B02FE55C4E28C74C726 /* Pods */,
+				A25182100E9CF3A7EF992D71 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +159,14 @@
 				E51AB4ED1F8741F1008D2058 /* GSTViewController.swift */,
 				E51AB4F11F87AEB2008D2058 /* SummaryViewController.swift */,
 				E51AB4F31F87C5C2008D2058 /* PersonViewController.swift */,
+				E5F1EEE11F89F56D00CB1921 /* HostViewController.swift */,
+				E5AECDD31F8A4AE5003606F4 /* SideBarMenuViewController.swift */,
+				E5AECDD51F8A5529003606F4 /* BillNavigationController.swift */,
+				E50BBE441F8C0FB2000574EC /* SettingsTableViewController.swift */,
+				E50BBE461F8C1091000574EC /* SettingsNavigationController.swift */,
+				E50BBE481F8C1890000574EC /* CreditsTableViewController.swift */,
+				E50BBE4A1F8C1B25000574EC /* IconsTableViewController.swift */,
+				E50BBE4C1F8C2175000574EC /* OpenSLTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -128,9 +178,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5D691411F7B9B4500A52971 /* Build configuration list for PBXNativeTarget "PayUp" */;
 			buildPhases = (
+				3D4158397AAB450658DD69BB /* [CP] Check Pods Manifest.lock */,
 				E5D691281F7B9B4500A52971 /* Sources */,
 				E5D691291F7B9B4500A52971 /* Frameworks */,
 				E5D6912A1F7B9B4500A52971 /* Resources */,
+				92ED45FC7C09645F0C4C04CF /* [CP] Embed Pods Frameworks */,
+				A61DC40591CCE60B08417907 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -190,20 +243,76 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3D4158397AAB450658DD69BB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		92ED45FC7C09645F0C4C04CF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PayUp/Pods-PayUp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A61DC40591CCE60B08417907 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PayUp/Pods-PayUp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E5D691281F7B9B4500A52971 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E56D00EF1F7BC98100867C35 /* Person.swift in Sources */,
+				E50BBE4B1F8C1B25000574EC /* IconsTableViewController.swift in Sources */,
+				E50BBE4D1F8C2175000574EC /* OpenSLTableViewController.swift in Sources */,
 				E51AB4F81F87C6B0008D2058 /* ItemTableCell.swift in Sources */,
 				E5D691301F7B9B4500A52971 /* AppDelegate.swift in Sources */,
 				E56D00EB1F7BBCC900867C35 /* BillTableCell.swift in Sources */,
+				E5AECDD41F8A4AE5003606F4 /* SideBarMenuViewController.swift in Sources */,
+				E5AECDD61F8A5529003606F4 /* BillNavigationController.swift in Sources */,
+				E50BBE491F8C1890000574EC /* CreditsTableViewController.swift in Sources */,
 				E56D00ED1F7BBE3300867C35 /* BillTableSection.swift in Sources */,
 				E56D00F11F7BC9C000867C35 /* Item.swift in Sources */,
 				E5D691381F7B9B4500A52971 /* PayUp.xcdatamodeld in Sources */,
+				E50BBE471F8C1091000574EC /* SettingsNavigationController.swift in Sources */,
 				E56D00E91F7BBBA100867C35 /* BillViewController.swift in Sources */,
 				E51AB4F41F87C5C2008D2058 /* PersonViewController.swift in Sources */,
+				E5F1EEE21F89F56D00CB1921 /* HostViewController.swift in Sources */,
+				E50BBE451F8C0FB2000574EC /* SettingsTableViewController.swift in Sources */,
 				E51AB4F01F878403008D2058 /* Bill.swift in Sources */,
 				E51AB4EE1F8741F1008D2058 /* GSTViewController.swift in Sources */,
 				E51AB4F21F87AEB2008D2058 /* SummaryViewController.swift in Sources */,
@@ -327,6 +436,7 @@
 		};
 		E5D691421F7B9B4500A52971 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E3956AB9D6491412E4B2885 /* Pods-PayUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EVC7K5F9LC;
@@ -342,6 +452,7 @@
 		};
 		E5D691431F7B9B4500A52971 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81676302CF547174763EBA95 /* Pods-PayUp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = EVC7K5F9LC;

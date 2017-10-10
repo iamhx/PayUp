@@ -1,0 +1,15 @@
+PODS:
+  - InteractiveSideMenu (2.0)
+  - RevealingSplashView (0.4.0)
+
+DEPENDENCIES:
+  - InteractiveSideMenu
+  - RevealingSplashView
+
+SPEC CHECKSUMS:
+  InteractiveSideMenu: 337f6d95a3f6543c517a888893531430e18553b3
+  RevealingSplashView: 72be158ad5e1bc72713e8f78383dc3e1803ce4d1
+
+PODFILE CHECKSUM: c9b64777bb4b83b34f52911e77e7dbea4eb9f9d5
+
+COCOAPODS: 1.1.1
