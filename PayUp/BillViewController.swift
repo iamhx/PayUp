@@ -126,7 +126,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "logo_transparent")!,iconInitialSize: iconSize, backgroundColor: UIColor(red: 239.0/255.0, green: 51.0/255.0, blue: 64.0/255.0, alpha: 1.0))
 			
 			revealingSplashView.animationType = SplashAnimationType.woobleAndZoomOut
-			revealingSplashView.delay = 3.0
+			revealingSplashView.delay = 2.0
 			
 			//Adds the revealing splash view as a sub view
 			self.view.addSubview(revealingSplashView)
