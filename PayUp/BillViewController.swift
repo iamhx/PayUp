@@ -8,6 +8,7 @@
 
 import UIKit
 import InteractiveSideMenu
+import RevealingSplashView
 
 // MARK: - BillViewController Class
 
@@ -90,6 +91,54 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		
+		if (UserDefaults.standard.bool(forKey: "animatedLogo") != true) {
+			
+			var iconSize = CGSize()
+			
+			if (UIScreen.main.bounds.size.height == 568.0) {
+				
+				//iPhone SE
+				iconSize.width = 320.0
+				iconSize.height = 224.0
+			}
+			else if (UIScreen.main.bounds.size.height == 736.0) {
+				
+				//iPhone 7 Plus
+				iconSize.width = 414.0
+				iconSize.height = 289.33
+			}
+			else if (UIScreen.main.bounds.size.height == 667.0) {
+				
+				//iPhone 7
+				iconSize.width = 375.0
+				iconSize.height = 262.0
+			}
+			else {
+				
+				//Default
+				iconSize.width = 375.0
+				iconSize.height = 262.0
+			}
+			
+			self.navigationController?.setNavigationBarHidden(true, animated: false)
+			
+			let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "logo_transparent")!,iconInitialSize: iconSize, backgroundColor: UIColor(red: 239.0/255.0, green: 51.0/255.0, blue: 64.0/255.0, alpha: 1.0))
+			
+			revealingSplashView.animationType = SplashAnimationType.woobleAndZoomOut
+			revealingSplashView.delay = 3.0
+			
+			//Adds the revealing splash view as a sub view
+			self.view.addSubview(revealingSplashView)
+			
+			//Starts animation
+			revealingSplashView.startAnimation(){
+				
+				self.navigationController?.setNavigationBarHidden(false, animated: true)
+				UserDefaults.standard.set(true, forKey: "animatedLogo")
+				UserDefaults.standard.synchronize()
+			}
+		}
 		
 		hideKeyboardWhenTappedAround()
 		

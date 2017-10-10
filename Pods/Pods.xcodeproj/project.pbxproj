@@ -7,20 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03197F936CEC5388561301A723E28195 /* MenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A0426CB367762947588C6D1FDD6E69 /* MenuAnimator.swift */; };
-		034D7401019C393F3F6CD09B5B9F5F66 /* MenuItemContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ECB08E4C4D50DB071E3E5D2185D019 /* MenuItemContentViewController.swift */; };
+		0289B98BC7F3A24E63DCE6599B6710DA /* Pods-PayUp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E6229F075798C83CF5DA633CB5A90F41 /* Pods-PayUp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03197F936CEC5388561301A723E28195 /* MenuAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EB6B91185B47A8D04127571D7CE46B /* MenuAnimator.swift */; };
+		034D7401019C393F3F6CD09B5B9F5F66 /* MenuItemContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62841856055B0B680708E313D9CF4ACB /* MenuItemContentViewController.swift */; };
+		0A5FFB55312A7AFF9F2599F96BA3879B /* RevealingSplashView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F29706D99216D834130D6EE3273EE4 /* RevealingSplashView-dummy.m */; };
 		0F78F9C9279423F0AA4B26A263A505A2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		2B07BDF5F73AD2CABB1558195F6F4563 /* Pods-PayUp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E6229F075798C83CF5DA633CB5A90F41 /* Pods-PayUp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		75D69E83534D04B71CF31C6E781879C2 /* InteractiveSideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D81D037918B07CC6840B236A6C0ED902 /* InteractiveSideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FC1C00D2225B898D664257479D68EBF /* MenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51C25A8EA558FB8E17185633EFEE875 /* MenuContainerViewController.swift */; };
-		938F268AA50D1FC71963D5EC098AE17F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		9D96B3249C9DB2B61A805F91BAD402F7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EF1D20ECE6B554D83225B5DE7B504B /* MenuViewController.swift */; };
-		CA99D8C212CF95DB59DFF099F5831EB5 /* InteractiveSideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BD35B3CE4AB55EF4164315DBE61F7237 /* InteractiveSideMenu-dummy.m */; };
-		E34E0BA664787C8E03ECF465846B575F /* Pods-PayUp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D393AA6C9999C321F1176463E8CFE /* Pods-PayUp-dummy.m */; };
+		17AC87A366885F4A20BE45BC736F2634 /* SplashAnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9C471A5A4173AB86D17FBF31FCD0B2 /* SplashAnimationType.swift */; };
+		1FDDD75439748E2F6775A37453A8A67A /* Pods-PayUp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1D393AA6C9999C321F1176463E8CFE /* Pods-PayUp-dummy.m */; };
+		41D0B7ACC5D5E42BC80B60B3972E38A3 /* RevealingSplashView.h in Headers */ = {isa = PBXBuildFile; fileRef = CC1337510E003ACB231E2DB08C37479D /* RevealingSplashView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		527C1B99D943857839306B0B91D2ABFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		54DD3B26E0EAC125AE1AE83BFB454B9C /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30406FC95DC4EFD7DDE7DBA23542DF10 /* Animations.swift */; };
+		75D69E83534D04B71CF31C6E781879C2 /* InteractiveSideMenu-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 82CBA6272E5D52AA1453C40477C1C4D7 /* InteractiveSideMenu-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		82246E1FCFC142E5162D01EDA58D4391 /* RevealingSplashView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 135CA29AC6C973C4A9BFE669380A6CD7 /* RevealingSplashView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E43B66F7E104B9D5E410CF972FB601D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		8FC1C00D2225B898D664257479D68EBF /* MenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FBA38883701725AB98CDFB937EC859 /* MenuContainerViewController.swift */; };
+		9D96B3249C9DB2B61A805F91BAD402F7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6D3EAB06E8277197C2C18B826A8584 /* MenuViewController.swift */; };
+		9E78CBBBDD93D93A49E1DC36327DF356 /* SplashAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA743EC0F646DA694BB57EB507BD797 /* SplashAnimatable.swift */; };
+		9F88C4998BF81EE70B4AE87D8AB7E1DE /* RevealingSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A51B30C2E7CFA4606BA43168AF968 /* RevealingSplashView.swift */; };
+		CA99D8C212CF95DB59DFF099F5831EB5 /* InteractiveSideMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E43266570C94C0F19EEDBAD662840B1 /* InteractiveSideMenu-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6F4AE1AE0769796CA039D7D938F6D312 /* PBXContainerItemProxy */ = {
+		805E611AB3CFD2E2E48E6AD554DA4E83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D43B05C0851513EF3A2C0D494F0E1B0B;
+			remoteInfo = RevealingSplashView;
+		};
+		9B9B37312E62E55A620108275B3FCC94 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -30,30 +45,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		22A0426CB367762947588C6D1FDD6E69 /* MenuAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuAnimator.swift; path = Sources/MenuAnimator.swift; sourceTree = "<group>"; };
+		019A51B30C2E7CFA4606BA43168AF968 /* RevealingSplashView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RevealingSplashView.swift; path = RevealingSplashView/RevealingSplashView.swift; sourceTree = "<group>"; };
+		11FBA38883701725AB98CDFB937EC859 /* MenuContainerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuContainerViewController.swift; path = Sources/MenuContainerViewController.swift; sourceTree = "<group>"; };
+		135CA29AC6C973C4A9BFE669380A6CD7 /* RevealingSplashView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RevealingSplashView-umbrella.h"; sourceTree = "<group>"; };
+		27B8CD34B57C6AFEE4F2F1666E0B861C /* InteractiveSideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = InteractiveSideMenu.modulemap; sourceTree = "<group>"; };
+		2895C1CC15F18D8B590E9B31A17E3431 /* RevealingSplashView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RevealingSplashView.framework; path = RevealingSplashView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C0ABD126D0DE3310FAFE7B0B5C137B3 /* Pods-PayUp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PayUp-acknowledgements.plist"; sourceTree = "<group>"; };
+		30406FC95DC4EFD7DDE7DBA23542DF10 /* Animations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Animations.swift; path = RevealingSplashView/Animations.swift; sourceTree = "<group>"; };
 		31A5D2BEAADD96108C6D44A7F542ECAB /* Pods-PayUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PayUp.debug.xcconfig"; sourceTree = "<group>"; };
-		35ECB08E4C4D50DB071E3E5D2185D019 /* MenuItemContentViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuItemContentViewController.swift; path = Sources/MenuItemContentViewController.swift; sourceTree = "<group>"; };
-		3D4AF339EAAFC7154E7280A004085D61 /* InteractiveSideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InteractiveSideMenu-prefix.pch"; sourceTree = "<group>"; };
-		3D7AB3774CD0396E612B2C3202D613F5 /* InteractiveSideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = InteractiveSideMenu.framework; path = InteractiveSideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		37F29706D99216D834130D6EE3273EE4 /* RevealingSplashView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RevealingSplashView-dummy.m"; sourceTree = "<group>"; };
+		5E43266570C94C0F19EEDBAD662840B1 /* InteractiveSideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "InteractiveSideMenu-dummy.m"; sourceTree = "<group>"; };
+		5F30E0180E0E81AB161203A97E656E4D /* RevealingSplashView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = RevealingSplashView.modulemap; sourceTree = "<group>"; };
+		62841856055B0B680708E313D9CF4ACB /* MenuItemContentViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuItemContentViewController.swift; path = Sources/MenuItemContentViewController.swift; sourceTree = "<group>"; };
+		6B8AF7941EF86417D00017D9CC3FB031 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F2BC0E2B084A817C11FA6B0C9375954 /* Pods-PayUp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-PayUp.modulemap"; sourceTree = "<group>"; };
+		75EB6B91185B47A8D04127571D7CE46B /* MenuAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuAnimator.swift; path = Sources/MenuAnimator.swift; sourceTree = "<group>"; };
 		762D1F0E6C31379130BB4AE0E19BF21D /* Pods-PayUp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PayUp-frameworks.sh"; sourceTree = "<group>"; };
 		7A1D393AA6C9999C321F1176463E8CFE /* Pods-PayUp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PayUp-dummy.m"; sourceTree = "<group>"; };
-		8CFCB6BFA4DF1B0890BBCFC8FA4A0E74 /* InteractiveSideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = InteractiveSideMenu.xcconfig; sourceTree = "<group>"; };
+		82CBA6272E5D52AA1453C40477C1C4D7 /* InteractiveSideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InteractiveSideMenu-umbrella.h"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9FA743EC0F646DA694BB57EB507BD797 /* SplashAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SplashAnimatable.swift; path = RevealingSplashView/SplashAnimatable.swift; sourceTree = "<group>"; };
 		A0F453A06781172ACC28A5A4B1CF2040 /* Pods-PayUp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PayUp-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A2B8EF65D06C3E7DE39EA1B9DEDE5EDA /* Pods-PayUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PayUp.release.xcconfig"; sourceTree = "<group>"; };
-		BD35B3CE4AB55EF4164315DBE61F7237 /* InteractiveSideMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "InteractiveSideMenu-dummy.m"; sourceTree = "<group>"; };
-		C3EF1D20ECE6B554D83225B5DE7B504B /* MenuViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Sources/MenuViewController.swift; sourceTree = "<group>"; };
+		B0B1F1D73A433687CD320ABAC7ABC80C /* InteractiveSideMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = InteractiveSideMenu.framework; path = InteractiveSideMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2D0CE76D3E71D0B0E5933F9588A1FBF /* RevealingSplashView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RevealingSplashView.xcconfig; sourceTree = "<group>"; };
+		BB9C471A5A4173AB86D17FBF31FCD0B2 /* SplashAnimationType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SplashAnimationType.swift; path = RevealingSplashView/SplashAnimationType.swift; sourceTree = "<group>"; };
+		BE6D3EAB06E8277197C2C18B826A8584 /* MenuViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = Sources/MenuViewController.swift; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CC1337510E003ACB231E2DB08C37479D /* RevealingSplashView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RevealingSplashView.h; path = RevealingSplashView/RevealingSplashView.h; sourceTree = "<group>"; };
 		D06283E4837AF9AD8806EFF95A30CEFC /* Pods-PayUp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PayUp-resources.sh"; sourceTree = "<group>"; };
-		D51C25A8EA558FB8E17185633EFEE875 /* MenuContainerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MenuContainerViewController.swift; path = Sources/MenuContainerViewController.swift; sourceTree = "<group>"; };
-		D81D037918B07CC6840B236A6C0ED902 /* InteractiveSideMenu-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InteractiveSideMenu-umbrella.h"; sourceTree = "<group>"; };
-		D8BD4CCB8F247D001B37A13725B64902 /* InteractiveSideMenu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = InteractiveSideMenu.modulemap; sourceTree = "<group>"; };
-		E5B642A64414CA644A33FCA69877F126 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D92F63EEB9EC9AF936CB8FA4ABE33D1D /* Pods_PayUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PayUp.framework; path = "Pods-PayUp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6229F075798C83CF5DA633CB5A90F41 /* Pods-PayUp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PayUp-umbrella.h"; sourceTree = "<group>"; };
+		E8C5EE70354A434F50EB1B16C17D5D9F /* InteractiveSideMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = InteractiveSideMenu.xcconfig; sourceTree = "<group>"; };
 		F22755C8FE0192843992B2900C91F2A3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FED532CB5C2E77B67CF7CAAD31439AC0 /* Pods_PayUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PayUp.framework; path = "Pods-PayUp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2C0E3A0C2633F5D18B6A7A82F3C83AF /* InteractiveSideMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "InteractiveSideMenu-prefix.pch"; sourceTree = "<group>"; };
+		F394471294FA609617D245B7470C5C17 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6311F221D04F5BBAACA90996C3538D9 /* RevealingSplashView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RevealingSplashView-prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,17 +92,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		647BF82C4549E07FBEC8ACABB630F7CA /* Frameworks */ = {
+		41ED4E622E1DD549F0A56EE883BEDBF9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				938F268AA50D1FC71963D5EC098AE17F /* Foundation.framework in Frameworks */,
+				8E43B66F7E104B9D5E410CF972FB601D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E838C5E7F5DA0BCF014D17284F5FA2FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				527C1B99D943857839306B0B91D2ABFC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D92ABE24FD38518E80D29037E1690BD /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6B8AF7941EF86417D00017D9CC3FB031 /* Info.plist */,
+				5F30E0180E0E81AB161203A97E656E4D /* RevealingSplashView.modulemap */,
+				B2D0CE76D3E71D0B0E5933F9588A1FBF /* RevealingSplashView.xcconfig */,
+				37F29706D99216D834130D6EE3273EE4 /* RevealingSplashView-dummy.m */,
+				F6311F221D04F5BBAACA90996C3538D9 /* RevealingSplashView-prefix.pch */,
+				135CA29AC6C973C4A9BFE669380A6CD7 /* RevealingSplashView-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/RevealingSplashView";
+			sourceTree = "<group>";
+		};
 		169EE6C9B5CA62DF2C7B2F12C473683E /* Pods-PayUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,27 +143,32 @@
 			path = "Target Support Files/Pods-PayUp";
 			sourceTree = "<group>";
 		};
-		457893251CFAAD3B1A056B9BFF081821 /* Products */ = {
+		295E537A610D45A4452D860845866333 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				3D7AB3774CD0396E612B2C3202D613F5 /* InteractiveSideMenu.framework */,
-				FED532CB5C2E77B67CF7CAAD31439AC0 /* Pods_PayUp.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		6028E0C6F9BA98AC06433A8583DD1EF0 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				E5B642A64414CA644A33FCA69877F126 /* Info.plist */,
-				D8BD4CCB8F247D001B37A13725B64902 /* InteractiveSideMenu.modulemap */,
-				8CFCB6BFA4DF1B0890BBCFC8FA4A0E74 /* InteractiveSideMenu.xcconfig */,
-				BD35B3CE4AB55EF4164315DBE61F7237 /* InteractiveSideMenu-dummy.m */,
-				3D4AF339EAAFC7154E7280A004085D61 /* InteractiveSideMenu-prefix.pch */,
-				D81D037918B07CC6840B236A6C0ED902 /* InteractiveSideMenu-umbrella.h */,
+				F394471294FA609617D245B7470C5C17 /* Info.plist */,
+				27B8CD34B57C6AFEE4F2F1666E0B861C /* InteractiveSideMenu.modulemap */,
+				E8C5EE70354A434F50EB1B16C17D5D9F /* InteractiveSideMenu.xcconfig */,
+				5E43266570C94C0F19EEDBAD662840B1 /* InteractiveSideMenu-dummy.m */,
+				F2C0E3A0C2633F5D18B6A7A82F3C83AF /* InteractiveSideMenu-prefix.pch */,
+				82CBA6272E5D52AA1453C40477C1C4D7 /* InteractiveSideMenu-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/InteractiveSideMenu";
+			sourceTree = "<group>";
+		};
+		3A4DC7D33F781A9A15A319F493CED641 /* RevealingSplashView */ = {
+			isa = PBXGroup;
+			children = (
+				30406FC95DC4EFD7DDE7DBA23542DF10 /* Animations.swift */,
+				CC1337510E003ACB231E2DB08C37479D /* RevealingSplashView.h */,
+				019A51B30C2E7CFA4606BA43168AF968 /* RevealingSplashView.swift */,
+				9FA743EC0F646DA694BB57EB507BD797 /* SplashAnimatable.swift */,
+				BB9C471A5A4173AB86D17FBF31FCD0B2 /* SplashAnimationType.swift */,
+				0D92ABE24FD38518E80D29037E1690BD /* Support Files */,
+			);
+			name = RevealingSplashView;
+			path = RevealingSplashView;
 			sourceTree = "<group>";
 		};
 		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
@@ -138,20 +192,39 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				CDC9ACF68105D2EA2223A27AF261DE72 /* Pods */,
-				457893251CFAAD3B1A056B9BFF081821 /* Products */,
+				95555ACD3CC459169072153EFE564CEE /* Pods */,
+				9DD4C73E0BCC6A152170E53912BF6BFC /* Products */,
 				78BE0C66A56B84DE8132E666B62CD5BC /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		99A07E880A07C295B3B96401EE16163F /* InteractiveSideMenu */ = {
+		95555ACD3CC459169072153EFE564CEE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				22A0426CB367762947588C6D1FDD6E69 /* MenuAnimator.swift */,
-				D51C25A8EA558FB8E17185633EFEE875 /* MenuContainerViewController.swift */,
-				35ECB08E4C4D50DB071E3E5D2185D019 /* MenuItemContentViewController.swift */,
-				C3EF1D20ECE6B554D83225B5DE7B504B /* MenuViewController.swift */,
-				6028E0C6F9BA98AC06433A8583DD1EF0 /* Support Files */,
+				B8A2739B71D2DC60879889F9E60EF8DB /* InteractiveSideMenu */,
+				3A4DC7D33F781A9A15A319F493CED641 /* RevealingSplashView */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9DD4C73E0BCC6A152170E53912BF6BFC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B0B1F1D73A433687CD320ABAC7ABC80C /* InteractiveSideMenu.framework */,
+				D92F63EEB9EC9AF936CB8FA4ABE33D1D /* Pods_PayUp.framework */,
+				2895C1CC15F18D8B590E9B31A17E3431 /* RevealingSplashView.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B8A2739B71D2DC60879889F9E60EF8DB /* InteractiveSideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				75EB6B91185B47A8D04127571D7CE46B /* MenuAnimator.swift */,
+				11FBA38883701725AB98CDFB937EC859 /* MenuContainerViewController.swift */,
+				62841856055B0B680708E313D9CF4ACB /* MenuItemContentViewController.swift */,
+				BE6D3EAB06E8277197C2C18B826A8584 /* MenuViewController.swift */,
+				295E537A610D45A4452D860845866333 /* Support Files */,
 			);
 			name = InteractiveSideMenu;
 			path = InteractiveSideMenu;
@@ -165,22 +238,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CDC9ACF68105D2EA2223A27AF261DE72 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				99A07E880A07C295B3B96401EE16163F /* InteractiveSideMenu */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		7658FB035A36F02C282C0D6276A6E158 /* Headers */ = {
+		3A3EDBE7B3DE682339E9448EFEE9F82A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B07BDF5F73AD2CABB1558195F6F4563 /* Pods-PayUp-umbrella.h in Headers */,
+				82246E1FCFC142E5162D01EDA58D4391 /* RevealingSplashView-umbrella.h in Headers */,
+				41D0B7ACC5D5E42BC80B60B3972E38A3 /* RevealingSplashView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		846956AD24E2DFC1728A5C10D9155EC1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0289B98BC7F3A24E63DCE6599B6710DA /* Pods-PayUp-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +269,42 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		9796641F1797346BAAF58164153873B4 /* Pods-PayUp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3FA32207970C7C7832F7FA14AA6C156 /* Build configuration list for PBXNativeTarget "Pods-PayUp" */;
+			buildPhases = (
+				58BCB85E51009BF3D81E669B9D04B3F4 /* Sources */,
+				41ED4E622E1DD549F0A56EE883BEDBF9 /* Frameworks */,
+				846956AD24E2DFC1728A5C10D9155EC1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EEC6D080AA143C39C39BBE9F7779AC01 /* PBXTargetDependency */,
+				7B45D50FB485AEE9AF04959153D39D0B /* PBXTargetDependency */,
+			);
+			name = "Pods-PayUp";
+			productName = "Pods-PayUp";
+			productReference = D92F63EEB9EC9AF936CB8FA4ABE33D1D /* Pods_PayUp.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D43B05C0851513EF3A2C0D494F0E1B0B /* RevealingSplashView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F94165B9A9F30683D41A800F455D2ECF /* Build configuration list for PBXNativeTarget "RevealingSplashView" */;
+			buildPhases = (
+				F6F4C2DB5CC327B35912995E2F27B77E /* Sources */,
+				E838C5E7F5DA0BCF014D17284F5FA2FC /* Frameworks */,
+				3A3EDBE7B3DE682339E9448EFEE9F82A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RevealingSplashView;
+			productName = RevealingSplashView;
+			productReference = 2895C1CC15F18D8B590E9B31A17E3431 /* RevealingSplashView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		DA4CFEBC7883D4CE7E6AE34914B98587 /* InteractiveSideMenu */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85B97FE3BFC393E3B5E3D5D02A973F68 /* Build configuration list for PBXNativeTarget "InteractiveSideMenu" */;
@@ -209,25 +319,7 @@
 			);
 			name = InteractiveSideMenu;
 			productName = InteractiveSideMenu;
-			productReference = 3D7AB3774CD0396E612B2C3202D613F5 /* InteractiveSideMenu.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		FAA608F8CF65172C2D594ECF86D981F2 /* Pods-PayUp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 93A70FD475C6FF512DB01B8AEB51A9F6 /* Build configuration list for PBXNativeTarget "Pods-PayUp" */;
-			buildPhases = (
-				C8696D31D53C05E632230FBFEBD3CD94 /* Sources */,
-				647BF82C4549E07FBEC8ACABB630F7CA /* Frameworks */,
-				7658FB035A36F02C282C0D6276A6E158 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				31E70EDC92293C23E9DCF99B69AD3145 /* PBXTargetDependency */,
-			);
-			name = "Pods-PayUp";
-			productName = "Pods-PayUp";
-			productReference = FED532CB5C2E77B67CF7CAAD31439AC0 /* Pods_PayUp.framework */;
+			productReference = B0B1F1D73A433687CD320ABAC7ABC80C /* InteractiveSideMenu.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -247,22 +339,23 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 457893251CFAAD3B1A056B9BFF081821 /* Products */;
+			productRefGroup = 9DD4C73E0BCC6A152170E53912BF6BFC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				DA4CFEBC7883D4CE7E6AE34914B98587 /* InteractiveSideMenu */,
-				FAA608F8CF65172C2D594ECF86D981F2 /* Pods-PayUp */,
+				9796641F1797346BAAF58164153873B4 /* Pods-PayUp */,
+				D43B05C0851513EF3A2C0D494F0E1B0B /* RevealingSplashView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C8696D31D53C05E632230FBFEBD3CD94 /* Sources */ = {
+		58BCB85E51009BF3D81E669B9D04B3F4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E34E0BA664787C8E03ECF465846B575F /* Pods-PayUp-dummy.m in Sources */,
+				1FDDD75439748E2F6775A37453A8A67A /* Pods-PayUp-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,53 +371,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F6F4C2DB5CC327B35912995E2F27B77E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54DD3B26E0EAC125AE1AE83BFB454B9C /* Animations.swift in Sources */,
+				0A5FFB55312A7AFF9F2599F96BA3879B /* RevealingSplashView-dummy.m in Sources */,
+				9F88C4998BF81EE70B4AE87D8AB7E1DE /* RevealingSplashView.swift in Sources */,
+				9E78CBBBDD93D93A49E1DC36327DF356 /* SplashAnimatable.swift in Sources */,
+				17AC87A366885F4A20BE45BC736F2634 /* SplashAnimationType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		31E70EDC92293C23E9DCF99B69AD3145 /* PBXTargetDependency */ = {
+		7B45D50FB485AEE9AF04959153D39D0B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RevealingSplashView;
+			target = D43B05C0851513EF3A2C0D494F0E1B0B /* RevealingSplashView */;
+			targetProxy = 805E611AB3CFD2E2E48E6AD554DA4E83 /* PBXContainerItemProxy */;
+		};
+		EEC6D080AA143C39C39BBE9F7779AC01 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = InteractiveSideMenu;
 			target = DA4CFEBC7883D4CE7E6AE34914B98587 /* InteractiveSideMenu */;
-			targetProxy = 6F4AE1AE0769796CA039D7D938F6D312 /* PBXContainerItemProxy */;
+			targetProxy = 9B9B37312E62E55A620108275B3FCC94 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		06647A276B30F028B2A802ED1CFEE3B1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2B8EF65D06C3E7DE39EA1B9DEDE5EDA /* Pods-PayUp.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-PayUp/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-PayUp/Pods-PayUp.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_PayUp;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		12914D756594D15C6F2CA12FE5F89F1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -369,9 +445,74 @@
 			};
 			name = Debug;
 		};
+		6CF82B055031F131DCD716219EF75E6A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2D0CE76D3E71D0B0E5933F9588A1FBF /* RevealingSplashView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RevealingSplashView/RevealingSplashView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RevealingSplashView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RevealingSplashView/RevealingSplashView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = RevealingSplashView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7C1C61699BD271E0EB3A021951085472 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2D0CE76D3E71D0B0E5933F9588A1FBF /* RevealingSplashView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RevealingSplashView/RevealingSplashView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RevealingSplashView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RevealingSplashView/RevealingSplashView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = RevealingSplashView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		877B6F86522C1B514C05015BA3786180 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CFCB6BFA4DF1B0890BBCFC8FA4A0E74 /* InteractiveSideMenu.xcconfig */;
+			baseConfigurationReference = E8C5EE70354A434F50EB1B16C17D5D9F /* InteractiveSideMenu.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -402,9 +543,9 @@
 			};
 			name = Debug;
 		};
-		C0AD22268A5B9FF4620FC2574375405A /* Release */ = {
+		8E56CECB8DC1B6EA8B57C16EF8E3D0B2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CFCB6BFA4DF1B0890BBCFC8FA4A0E74 /* InteractiveSideMenu.xcconfig */;
+			baseConfigurationReference = A2B8EF65D06C3E7DE39EA1B9DEDE5EDA /* Pods-PayUp.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -417,24 +558,27 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/InteractiveSideMenu/InteractiveSideMenu-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/InteractiveSideMenu/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-PayUp/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/InteractiveSideMenu/InteractiveSideMenu.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PayUp/Pods-PayUp.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = InteractiveSideMenu;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_PayUp;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		D5CFB8A060EF1713DDB331D34872598F /* Debug */ = {
+		ABFF25839F37B3C78512750A1E7CC237 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 31A5D2BEAADD96108C6D44A7F542ECAB /* Pods-PayUp.debug.xcconfig */;
 			buildSettings = {
@@ -469,6 +613,38 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		C0AD22268A5B9FF4620FC2574375405A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8C5EE70354A434F50EB1B16C17D5D9F /* InteractiveSideMenu.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/InteractiveSideMenu/InteractiveSideMenu-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/InteractiveSideMenu/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/InteractiveSideMenu/InteractiveSideMenu.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = InteractiveSideMenu;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		E72E7977875C2D251FC62736BBDDC389 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -531,11 +707,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		93A70FD475C6FF512DB01B8AEB51A9F6 /* Build configuration list for PBXNativeTarget "Pods-PayUp" */ = {
+		E3FA32207970C7C7832F7FA14AA6C156 /* Build configuration list for PBXNativeTarget "Pods-PayUp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D5CFB8A060EF1713DDB331D34872598F /* Debug */,
-				06647A276B30F028B2A802ED1CFEE3B1 /* Release */,
+				ABFF25839F37B3C78512750A1E7CC237 /* Debug */,
+				8E56CECB8DC1B6EA8B57C16EF8E3D0B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F94165B9A9F30683D41A800F455D2ECF /* Build configuration list for PBXNativeTarget "RevealingSplashView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C1C61699BD271E0EB3A021951085472 /* Debug */,
+				6CF82B055031F131DCD716219EF75E6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

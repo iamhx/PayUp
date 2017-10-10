@@ -24,9 +24,6 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_transparent" translatesAutoresizingMaskIntoConstraints="NO" id="q7h-iR-Tm3">
                                 <rect key="frame" x="0.0" y="202" width="375" height="262"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="q7h-iR-Tm3" secondAttribute="height" multiplier="375:262" id="Y3w-Hu-faH"/>
-                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.20000000000000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
