@@ -14,7 +14,7 @@ public typealias SplashAnimatableExecution = () -> Void
 
 // MARK: - Class extension to define the basic functionality for the RevealingSplashView class
 public extension RevealingSplashView {
-    
+
     /**
      Starts the animation depending on the type
      */

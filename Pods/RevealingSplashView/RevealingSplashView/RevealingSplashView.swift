@@ -13,7 +13,6 @@ import UIKit
 /// SplashView that reveals its content and animate, like twitter
 open class RevealingSplashView: UIView, SplashAnimatable{
     
-    
     /// The icon image to show and reveal with
     open var iconImage: UIImage? {
         

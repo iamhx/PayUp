@@ -17,7 +17,7 @@ public protocol SplashAnimatable: class{
     
     /// The image view that shows the icon
     var imageView: UIImageView? { get set }
-    
+
     /// The animation type
     var animationType: SplashAnimationType { get set }
     
