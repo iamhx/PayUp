@@ -9,5 +9,6 @@ target 'PayUp' do
 
   # Pods for PayUp
   pod 'InteractiveSideMenu'
+  pod 'RevealingSplashView'
 
 end

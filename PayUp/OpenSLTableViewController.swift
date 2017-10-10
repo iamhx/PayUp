@@ -39,6 +39,8 @@ class OpenSLTableViewController: UITableViewController {
 			case 0:
 				launchURL(string: "https://github.com/handsomecode/InteractiveSideMenu")
 				break
+			case 1:
+				launchURL(string: "https://github.com/PiXeL16/RevealingSplashView")
 			default:
 				break
 			}
