@@ -9,11 +9,11 @@
 import UIKit
 import InteractiveSideMenu
 import RevealingSplashView
+import Instructions
 
 // MARK: - BillViewController Class
 
-class BillViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, BillTableCellDelegate, BillTableSectionDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
-
+class BillViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, BillTableCellDelegate, BillTableSectionDelegate, UIPickerViewDataSource, UIPickerViewDelegate, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
 	
 	//MARK: - IBOutlets
 	
@@ -37,35 +37,49 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	@IBAction func btnDone(_ sender: Any) {
 		
-		view.endEditing(true)
+		if (isFirstLaunch) {
+			
+			coachMarksController.flow.showNext()
+			
+		}
+		else {
+			
+			view.endEditing(true)
+		}
 	}
 	
 	@IBAction func btnBack(_ sender: Any) {
 		
-		guard let cell = billTableView.cellForRow(at: toolBarIndexPath!) as? BillTableCell else {
+		if (!isFirstLaunch) {
 			
-			//Scroll to row if cell is not visible
-			billTableView.scrollToRow(at: toolBarIndexPath!, at: .none, animated: false)
-			let cell = billTableView.cellForRow(at: toolBarIndexPath!) as! BillTableCell
+			guard let cell = billTableView.cellForRow(at: toolBarIndexPath!) as? BillTableCell else {
+				
+				//Scroll to row if cell is not visible
+				billTableView.scrollToRow(at: toolBarIndexPath!, at: .none, animated: false)
+				let cell = billTableView.cellForRow(at: toolBarIndexPath!) as! BillTableCell
+				cell.txtName.becomeFirstResponder()
+				return
+			}
+			
 			cell.txtName.becomeFirstResponder()
-			return
 		}
-		
-		cell.txtName.becomeFirstResponder()
 	}
 	
 	@IBAction func btnForward(_ sender: Any) {
 		
-		guard let cell = billTableView.cellForRow(at: toolBarIndexPath!) as? BillTableCell else {
+		if (!isFirstLaunch) {
 			
-			//Scroll to row if cell is not visible
-			billTableView.scrollToRow(at: toolBarIndexPath!, at: .none, animated: false)
-			let cell = billTableView.cellForRow(at: toolBarIndexPath!) as! BillTableCell
+			guard let cell = billTableView.cellForRow(at: toolBarIndexPath!) as? BillTableCell else {
+				
+				//Scroll to row if cell is not visible
+				billTableView.scrollToRow(at: toolBarIndexPath!, at: .none, animated: false)
+				let cell = billTableView.cellForRow(at: toolBarIndexPath!) as! BillTableCell
+				cell.txtPrice.becomeFirstResponder()
+				return
+			}
+			
 			cell.txtPrice.becomeFirstResponder()
-			return
 		}
-		
-		cell.txtPrice.becomeFirstResponder()
 	}
 	
 	//MARK: - View Controller properties
@@ -84,6 +98,8 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	var bill = [Person]()
 	var toolBarIndexPath : IndexPath?
 	var keyboardIsShowing : Bool = false
+	let coachMarksController = CoachMarksController()
+	var isFirstLaunch = !UserDefaults.standard.bool(forKey: "firstLaunch")
 	
 	//MARK: - viewDidLoad Implementation
 	
@@ -107,7 +123,6 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			revealingSplashView.useCustomIconColor = true
 			revealingSplashView.iconColor = .white
 
-			
 			//Adds the revealing splash view as a sub view
 			self.view.addSubview(revealingSplashView)
 			
@@ -118,10 +133,22 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 				self.navigationController?.setNavigationBarHidden(false, animated: true)
 				UserDefaults.standard.set(true, forKey: "animatedLogo")
 				UserDefaults.standard.synchronize()
+				
+				if (self.isFirstLaunch) {
+					
+					let skipView = CoachMarkSkipDefaultView()
+					skipView.setTitle("Skip", for: .normal)
+					self.coachMarksController.skipView = skipView
+					self.coachMarksController.overlay.allowTap = true
+					self.coachMarksController.dataSource = self
+					self.coachMarksController.delegate = self
+					NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
+					self.coachMarksController.start(on: self)
+				}
 			}
 		}
 		
-		hideKeyboardWhenTappedAround()
+		self.hideKeyboardWhenTappedAround()
 		
 		btnMenuOutlet.showsTouchWhenHighlighted = false
 		btnMenuOutlet.tintColor = .white
@@ -157,6 +184,13 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	deinit {
 		
 		NotificationCenter.default.removeObserver(self)
+	}
+	
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		coachMarksController.stop(immediately: true)
 	}
 	
 	// MARK: - TableView delegates
@@ -449,6 +483,193 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		billTableView.endUpdates()
 	}
 	
+		// MARK: CoachMarksController Delegates
+	
+	func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+		
+		return 8
+	}
+	
+	func coachMarksController(_ coachMarksController: CoachMarksController,
+	                          coachMarkAt index: Int) -> CoachMark {
+
+		var coachMark = coachMarksController.helper.makeCoachMark()
+		let header = billTableView.headerView(forSection: 0) as! BillTableSection
+		
+		switch(index) {
+		case 0:
+			return coachMarksController.helper.makeCoachMark(for: navigationController?.navigationBar) { (frame: CGRect) -> UIBezierPath in
+				return UIBezierPath(rect: frame)
+			}
+		case 1:
+			coachMark = coachMarksController.helper.makeCoachMark(for: header.txtName)
+			coachMark.disableOverlayTap = true
+			return coachMark
+		case 2:
+			coachMark = coachMarksController.helper.makeCoachMark(for: header.btnAddItem)
+			coachMark.disableOverlayTap = true
+			coachMark.allowTouchInsideCutoutPath = true
+			return coachMark
+		case 3:
+			let cell = billTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! BillTableCell
+			coachMark = coachMarksController.helper.makeCoachMark(for: cell.txtName)
+			coachMark.disableOverlayTap = true
+			return coachMark
+		case 4:
+			let cell = billTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! BillTableCell
+			coachMark = coachMarksController.helper.makeCoachMark(for: cell.txtPrice)
+			coachMark.disableOverlayTap = true
+			return coachMark
+		case 5:
+			coachMark = coachMarksController.helper.makeCoachMark(for: header.expandOrCollapse)
+			return coachMark
+		case 6:
+			return coachMarksController.helper.makeCoachMark(for: bottomToolbar) { (frame: CGRect) -> UIBezierPath in
+			
+				return UIBezierPath(rect: frame)
+			}
+		default:
+			return coachMarksController.helper.makeCoachMark()
+		}
+	}
+	
+	func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+		
+		var coachView = coachMarksController.helper.makeDefaultCoachViews()
+		var hintText = ""
+		
+		switch(index) {
+		case 0:
+			hintText = "Hi! Let's get started on how to\ncreate your bill."
+			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation, hintText: hintText, nextText: nil)
+		case 1:
+			
+			hintText = "Enter the name of the person here."
+			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
+			coachView.bodyView.hintLabel.text = hintText
+			coachView.bodyView.isUserInteractionEnabled = false
+		case 2:
+			
+			hintText = "Tap on this button to add an item."
+			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: false, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
+			coachView.bodyView.hintLabel.text = hintText
+			coachView.bodyView.isUserInteractionEnabled = false
+		case 3:
+			hintText = "Enter the name of the item here."
+			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
+			coachView.bodyView.hintLabel.text = hintText
+			coachView.bodyView.isUserInteractionEnabled = false
+		case 4:
+			hintText = "Enter the price of the item here."
+			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
+			coachView.bodyView.hintLabel.text = hintText
+			coachView.bodyView.isUserInteractionEnabled = false
+		case 5:
+			hintText = "You can collapse and hide your items by\ntapping this button here."
+			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: false, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
+			coachView.bodyView.hintLabel.text = hintText
+		case 6:
+			
+			hintText = "You can add or remove people and reorder\n or delete items here."
+			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
+			coachView.bodyView.hintLabel.text = hintText
+		default:
+			break
+		}
+		
+		return (bodyView: coachView.bodyView, arrowView: coachView.arrowView)
+	}
+	
+	func coachMarksController(_ coachMarksController: CoachMarksController,
+	                          willShow coachMark: inout CoachMark,
+	                          afterSizeTransition: Bool,
+	                          at index: Int) {
+		if (index == 1) {
+			
+			if (!afterSizeTransition) {
+				let header = billTableView.headerView(forSection: 0) as! BillTableSection
+				header.txtName.becomeFirstResponder()
+				coachMarksController.flow.pause()
+			}
+		}
+		else if (index == 2) {
+			
+			if (!afterSizeTransition) {
+				let header = billTableView.headerView(forSection: 0) as! BillTableSection
+				header.txtName.resignFirstResponder()
+			}
+		}
+		else if (index == 3) {
+			
+			if (!afterSizeTransition) {
+				
+				let cell = billTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! BillTableCell
+				cell.txtName.becomeFirstResponder()
+				coachMarksController.flow.pause()
+			}
+		}
+		else if (index == 4) {
+			
+			if (!afterSizeTransition) {
+				
+				let cell = billTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! BillTableCell
+				cell.txtPrice.becomeFirstResponder()
+				coachMarksController.flow.pause()
+			}
+		}
+		else if (index == 5) {
+			
+			if (!afterSizeTransition) {
+				
+				let cell = billTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! BillTableCell
+				cell.txtPrice.resignFirstResponder()
+			}
+		}
+		else if (index == 6) {
+			
+			if (!afterSizeTransition) {
+				
+				billTableView.setEditing(true, animated: true)
+			}
+		}
+		else if (index == 7) {
+			
+			performSegue(withIdentifier: "nextPage", sender: self)
+		}
+	}
+	
+	
+	func coachMarksController(_ coachMarksController: CoachMarksController,
+	                          didEndShowingBySkipping skipped: Bool) {
+		
+		if let header = billTableView.headerView(forSection: 0) as? BillTableSection {
+			
+			if (header.txtName.isFirstResponder) {
+				
+				header.txtName.resignFirstResponder()
+			}
+		}
+		
+		
+		if let cell = billTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? BillTableCell {
+			
+			if (cell.txtName.isFirstResponder) {
+				
+				cell.txtName.resignFirstResponder()
+			}
+			else if (cell.txtPrice.isFirstResponder) {
+				
+				cell.txtPrice.resignFirstResponder()
+			}
+		}
+
+		UserDefaults.standard.set(true, forKey: "firstLaunch")
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let vc = storyboard.instantiateInitialViewController()
+		present(vc!, animated: true, completion: nil)
+	}
+
+	
 	// MARK: - Functions
 	
 		// MARK: Removing a Person
@@ -672,6 +893,11 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			
 			billTableView.scrollToRow(at: IndexPath(row: bill[section].items.count - 1, section: section), at: .none, animated: true)
 		}
+		
+		if (isFirstLaunch) {
+			
+			coachMarksController.flow.showNext()
+		}
 	}
 	
 	// MARK: - TextField Delegates
@@ -714,7 +940,14 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		
-		textField.resignFirstResponder()
+		if (isFirstLaunch) {
+			
+			coachMarksController.flow.showNext()
+		}
+		else {
+			
+			textField.resignFirstResponder()
+		}
 
 		return true
 	}
@@ -758,6 +991,11 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		})
 		
 		keyboardIsShowing = false
+	}
+	
+	func keyboardDidShow(notification: Notification) {
+		
+		coachMarksController.flow.resume()
 	}
 
 	

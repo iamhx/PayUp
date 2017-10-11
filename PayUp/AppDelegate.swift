@@ -72,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			
 			UserDefaults.standard.set(false, forKey: "animatedLogo")
 		}
+	
 		return true
 	}
 

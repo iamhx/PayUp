@@ -170,8 +170,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7% GST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Rd-JU-6Jo">
-                                <rect key="frame" x="141" y="188" width="92" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10% Service Charge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Rd-JU-6Jo">
+                                <rect key="frame" x="68.5" y="188" width="238" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -180,8 +180,8 @@
                                 <rect key="frame" x="163" y="236" width="51" height="31"/>
                                 <color key="onTintColor" red="0.93725490196078431" green="0.20000000000000001" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10% Service Charge" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HS9-gs-6zM">
-                                <rect key="frame" x="68" y="315" width="238" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7% GST" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HS9-gs-6zM">
+                                <rect key="frame" x="141.5" y="315" width="92" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -227,10 +227,10 @@
                     </view>
                     <connections>
                         <outlet property="btnSplitOutlet" destination="0gj-p7-DEl" id="8cl-ME-Gwy"/>
-                        <outlet property="lblGST" destination="1Rd-JU-6Jo" id="1qp-Fp-Vff"/>
-                        <outlet property="lblServiceCharge" destination="HS9-gs-6zM" id="wwQ-Lk-ct5"/>
-                        <outlet property="switchGST" destination="MUt-zc-c8V" id="ESN-uP-FtO"/>
-                        <outlet property="switchServiceCharge" destination="lZ3-4C-iDE" id="Vfh-5a-ibd"/>
+                        <outlet property="lblGST" destination="HS9-gs-6zM" id="nxe-v9-aL8"/>
+                        <outlet property="lblServiceCharge" destination="1Rd-JU-6Jo" id="ZT1-k2-eWl"/>
+                        <outlet property="switchGST" destination="lZ3-4C-iDE" id="4dr-Do-sIh"/>
+                        <outlet property="switchServiceCharge" destination="MUt-zc-c8V" id="pem-38-aot"/>
                         <segue destination="zGc-Y4-9NO" kind="show" identifier="showSummary" id="lMk-0z-spj"/>
                     </connections>
                 </viewController>
@@ -856,6 +856,27 @@
                                                 <constraint firstAttribute="leadingMargin" secondItem="GPy-cT-Iq6" secondAttribute="leading" id="5OG-6u-DYM"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="GPy-cT-Iq6" secondAttribute="trailing" constant="23" id="H4n-vn-UOD"/>
                                                 <constraint firstItem="GPy-cT-Iq6" firstAttribute="top" secondItem="AQl-k6-5VC" secondAttribute="topMargin" constant="3" id="enz-9s-ImY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="JlJ-hJ-ccB">
+                                        <rect key="frame" x="0.0" y="123" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JlJ-hJ-ccB" id="apg-OO-Bls">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instructions by ephread " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="bQl-eQ-Geb">
+                                                    <rect key="frame" x="8" y="11" width="303" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="leadingMargin" secondItem="bQl-eQ-Geb" secondAttribute="leading" id="OIF-0e-6mf"/>
+                                                <constraint firstItem="bQl-eQ-Geb" firstAttribute="top" secondItem="apg-OO-Bls" secondAttribute="topMargin" constant="3" id="kjF-Mb-zMR"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bQl-eQ-Geb" secondAttribute="trailing" constant="23" id="wnb-Hf-Zte"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

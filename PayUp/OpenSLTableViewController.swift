@@ -41,6 +41,8 @@ class OpenSLTableViewController: UITableViewController {
 				break
 			case 1:
 				launchURL(string: "https://github.com/PiXeL16/RevealingSplashView")
+			case 2:
+				launchURL(string: "https://github.com/ephread/Instructions")
 			default:
 				break
 			}

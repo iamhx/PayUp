@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Instructions
 
-class GSTViewController: UIViewController {
+class GSTViewController: UIViewController, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
 
 	//MARK: - View Controller properties
 	
@@ -20,6 +21,8 @@ class GSTViewController: UIViewController {
 	@IBOutlet weak var lblServiceCharge: UILabel!
 	@IBOutlet weak var switchServiceCharge: UISwitch!
 	@IBOutlet weak var btnSplitOutlet: UIButton!
+	
+	let coachMarksController = CoachMarksController()
 	
 	@IBAction func btnSplit(_ sender: Any) {
 		
@@ -48,7 +51,10 @@ class GSTViewController: UIViewController {
 		//nextButton.tintColor = .white
 		//navigationItem.setRightBarButton(nextButton, animated: true)
 		navigationItem.setLeftBarButton(backButton, animated: true)
-		navigationItem.prompt = "Select GST"		
+		navigationItem.prompt = "Select GST"
+		
+		coachMarksController.dataSource = self
+		coachMarksController.delegate = self
 	}
 
     override func didReceiveMemoryWarning() {
@@ -69,7 +75,114 @@ class GSTViewController: UIViewController {
 			self.lblGST.alpha = 1.0
 			self.lblServiceCharge.alpha = 1.0
 			self.btnSplitOutlet.alpha = 1.0
-		}, completion: nil)
+		}, completion: { action in
+		
+			if (!UserDefaults.standard.bool(forKey: "firstLaunch")) {
+			
+				let skipView = CoachMarkSkipDefaultView()
+				skipView.setTitle("Skip", for: .normal)
+				self.coachMarksController.skipView = skipView
+				self.coachMarksController.overlay.allowTap = true
+				self.coachMarksController.start(on: self)
+			}
+		})
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		coachMarksController.stop(immediately: true)
+	}
+	
+	// MARK: CoachMarksController Delegates
+	
+	func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+		
+		return 4
+	}
+	
+	func coachMarksController(_ coachMarksController: CoachMarksController,
+	                          coachMarkAt index: Int) -> CoachMark {
+		
+		var coachMark = coachMarksController.helper.makeCoachMark()
+		
+		switch(index) {
+		case 0:
+			coachMark = coachMarksController.helper.makeCoachMark(for: switchGST)
+			return coachMark
+		case 1:
+			coachMark = coachMarksController.helper.makeCoachMark(for: btnSplitOutlet)
+			return coachMark
+		case 2:
+			return coachMarksController.helper.makeCoachMark(for: navigationController?.navigationBar) { (frame: CGRect) -> UIBezierPath in
+				return UIBezierPath(rect: frame)
+			}
+		default:
+			return coachMarksController.helper.makeCoachMark()
+		}
+	}
+	
+	func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+		
+		
+		var coachView = coachMarksController.helper.makeDefaultCoachViews()
+		var hintText = ""
+		
+		switch(index) {
+		case 0:
+			hintText = "Select service charge and/or\nGST if required."
+			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation, hintText: hintText, nextText: nil)
+		case 1:
+			
+			hintText = "When you are ready, tap on the\nSplit Bill button."
+			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
+			coachView.bodyView.hintLabel.text = hintText
+		case 2:
+			
+			hintText = "Ready to split a bill?"
+			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: true, arrowOrientation: coachMark.arrowOrientation)
+			coachView.bodyView.hintLabel.text = hintText
+			coachView.bodyView.nextLabel.text = "Go!"
+		default:
+			break
+
+		}
+		
+		return (bodyView: coachView.bodyView, arrowView: coachView.arrowView)
+	}
+	
+	func coachMarksController(_ coachMarksController: CoachMarksController,
+	                          willShow coachMark: inout CoachMark,
+	                          afterSizeTransition: Bool,
+	                          at index: Int) {
+		if (index == 1) {
+			
+			if (!afterSizeTransition) {
+				
+				switchServiceCharge.setOn(true, animated: true)
+				switchGST.setOn(true, animated: true)
+			}
+		}
+		else if (index == 3) {
+
+			if (!afterSizeTransition) {
+				
+				UserDefaults.standard.set(true, forKey: "firstLaunch")
+				let storyboard = UIStoryboard(name: "Main", bundle: nil)
+				let vc = storyboard.instantiateInitialViewController()
+				present(vc!, animated: true, completion: nil)
+			}
+		}
+	}
+	
+	func coachMarksController(_ coachMarksController: CoachMarksController,
+	                          didEndShowingBySkipping skipped: Bool) {
+		
+		UserDefaults.standard.set(true, forKey: "firstLaunch")
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let vc = storyboard.instantiateInitialViewController()
+		present(vc!, animated: true, completion: nil)
+
 	}
 
 	
