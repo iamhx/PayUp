@@ -32,7 +32,23 @@ class IconsTableViewController: UITableViewController {
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
+		
 		if (indexPath.section == 0) {
+			
+			switch (indexPath.row) {
+				
+			case 0:
+				launchURL(string: "http://www.freepik.com/free-vector/payment-background-design_1059007.htm")
+				break
+			case 1:
+				launchURL(string: "https://www.dafont.com/pat-pacool.font")
+				break
+			default:
+				break
+			}
+		}
+		
+		else if (indexPath.section == 1) {
 			
 			switch (indexPath.row) {
 				

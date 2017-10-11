@@ -10,10 +10,11 @@ import UIKit
 import InteractiveSideMenu
 
 class HostViewController: MenuContainerViewController {
-
-	override var preferredStatusBarStyle: UIStatusBarStyle {
+	
+	/*override var preferredStatusBarStyle: UIStatusBarStyle {
+		
 		return .lightContent
-	}
+	}*/
 	
     override func viewDidLoad() {
         super.viewDidLoad()
