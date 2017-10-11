@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Instructions.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>InteractiveSideMenu.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -17,12 +22,27 @@
 		<key>RevealingSplashView.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>62E31196AEC6B067E09C20F15BA9C95B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6FFF9A0488BA9FA46CAC0F6F1BA0A397</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9796641F1797346BAAF58164153873B4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9D63ABE24929D0068287AB209670315C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

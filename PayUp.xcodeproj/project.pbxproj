@@ -64,7 +64,6 @@
 		E5D6913C1F7B9B4500A52971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5D6913E1F7B9B4500A52971 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5F1EEE11F89F56D00CB1921 /* HostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
-		E5F1EEE31F89FA3B00CB1921 /* InteractiveSideMenu.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InteractiveSideMenu.framework; path = "../../Library/Developer/Xcode/DerivedData/PayUp-dotruulhwjawndfgcbrqaoivbxqo/Build/Products/Debug-iphonesimulator/InteractiveSideMenu/InteractiveSideMenu.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +81,6 @@
 		A25182100E9CF3A7EF992D71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E5F1EEE31F89FA3B00CB1921 /* InteractiveSideMenu.framework */,
 				A5FD68BDEC72FB11CC6AAFA0 /* Pods_PayUp.framework */,
 			);
 			name = Frameworks;

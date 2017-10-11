@@ -89,10 +89,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/Instructions/Instructions.framework"
   install_framework "$BUILT_PRODUCTS_DIR/InteractiveSideMenu/InteractiveSideMenu.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RevealingSplashView/RevealingSplashView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/Instructions/Instructions.framework"
   install_framework "$BUILT_PRODUCTS_DIR/InteractiveSideMenu/InteractiveSideMenu.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RevealingSplashView/RevealingSplashView.framework"
 fi

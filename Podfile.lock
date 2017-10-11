@@ -1,15 +1,18 @@
 PODS:
+  - Instructions (1.1.0)
   - InteractiveSideMenu (2.0)
   - RevealingSplashView (0.4.0)
 
 DEPENDENCIES:
+  - Instructions
   - InteractiveSideMenu
   - RevealingSplashView
 
 SPEC CHECKSUMS:
+  Instructions: ff5738d6a637a46d1638a77d77261649f4da36a7
   InteractiveSideMenu: 337f6d95a3f6543c517a888893531430e18553b3
   RevealingSplashView: 72be158ad5e1bc72713e8f78383dc3e1803ce4d1
 
-PODFILE CHECKSUM: c9b64777bb4b83b34f52911e77e7dbea4eb9f9d5
+PODFILE CHECKSUM: 5a43858c83c3b127f53002832d6f16de22f50782
 
 COCOAPODS: 1.2.0
