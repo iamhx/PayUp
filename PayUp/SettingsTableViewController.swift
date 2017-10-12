@@ -9,9 +9,15 @@
 import UIKit
 import InteractiveSideMenu
 import MessageUI
+import StoreKit
 
-class SettingsTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
+class SettingsTableViewController: UITableViewController, MFMailComposeViewControllerDelegate, SKPaymentTransactionObserver, SKProductsRequestDelegate {
+
+	@IBOutlet weak var removeAds: UILabel!
+	
+	var productID = "com.Hongxuan.PayUp.removeAds"
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -39,6 +45,17 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
 		if let navigationViewController = self.navigationController as? SideMenuItemContent {
 			
 			navigationViewController.setSelectedContentViewController(controller: self)
+		}
+		
+		SKPaymentQueue.default().add(self)
+		
+		if (UserDefaults.standard.bool(forKey: "removeAds")){
+			
+			removeAds.text = "✅"
+		}
+		else {
+			
+			removeAds.text = "Buy"
 		}
     }
 
@@ -79,6 +96,31 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
 				promptReport.addAction(cancelAction)
 				
 				self.present(promptReport, animated: true, completion: nil)
+				break
+			default:
+				break
+			}
+		}
+		else if (indexPath.section == 1) {
+			
+			switch (indexPath.row) {
+				
+			case 0:
+				
+				if (!UserDefaults.standard.bool(forKey: "removeAds")){
+					
+					requestRemoveAds()
+				}
+				break
+			case 1:
+				let alertController = UIAlertController(title: "Restore Purchases", message: "Do you want to restore purchases for this device?", preferredStyle: .alert)
+				alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: {action in
+				
+					SKPaymentQueue.default().restoreCompletedTransactions()
+				}))
+				alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+				
+				present(alertController, animated: true, completion: nil)
 				break
 			default:
 				break
@@ -142,7 +184,106 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
 		
 		controller.dismiss(animated: true)
 	}
+	
+	
+	func requestRemoveAds() {
+		
+		showOverlayOnTask(message: "Please wait...")
+		
+		// We check that we are allow to make the purchase.
+		if (SKPaymentQueue.canMakePayments()) {
+			
+			let productID : NSSet = NSSet(object: self.productID)
+			let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+			
+			productsRequest.delegate = self
+	
+			productsRequest.start()
+		}
+		else {
+			
+			dismiss(animated: true, completion: {action in
+			
+				self.promptAlert(title: "Unable to authorize payment", message: "You do not have permission to authorize payment.")
+			})
+		}
+	}
+	
+	func buyProduct(product: SKProduct) {
+		
+		let payment = SKPayment(product: product)
+		SKPaymentQueue.default().add(payment)
+	}
+	
+	func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+		
+		if (response.products.count > 0) {
+			
+			let validProduct: SKProduct = response.products[0] as SKProduct
+			
+			if (validProduct.productIdentifier == self.productID) {
+				
+				dismiss(animated: true, completion: {action in
+				
+					self.buyProduct(product: validProduct)
+				})
+			}
+		}
+	}
+	
+	func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+		
+		for transaction:AnyObject in transactions {
+			
+			if let trans : SKPaymentTransaction = transaction as? SKPaymentTransaction {
+				
+				switch trans.transactionState {
+				case .purchased:
+					
+					UserDefaults.standard.set(true , forKey: "removeAds")
+					removeAds.text = "✅"
+					SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+					break
+				case .failed:
+					
+					if let transactionError = transaction.error as? NSError {
+						
+							if transactionError.code != SKError.paymentCancelled.rawValue {
+								
+								print("Transaction Error: \(transactionError.localizedDescription)")
+						}
+					}
+					
+					SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+					break
+				case .restored:
+					
+					UserDefaults.standard.set(true , forKey: "removeAds")
+					removeAds.text = "✅"
+					SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+				default:
+					break
+				}
+			}
+		}
+	}
+	
+	func request(_ request: SKRequest, didFailWithError error: Error) {
 
+		dismiss(animated: true, completion: {action in
+		
+			self.promptAlert(title: "Unable to request payment", message: "Please check that you have internet connection enabled.")
+		})
+	}
+	
+	func promptAlert(title: String, message: String) {
+		
+		let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		
+		present(alertController, animated: true, completion: nil)
+	}
+	
     /*
     // MARK: - Navigation
 

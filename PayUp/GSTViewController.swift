@@ -35,7 +35,14 @@ class GSTViewController: UIViewController, CoachMarksControllerDataSource, Coach
 			
 			self.showOverlayOnTask(message: "Splitting bill...")
 			
-			self.interstitial = self.createAndLoadInterstitial()
+			if (!UserDefaults.standard.bool(forKey: "removeAds")){
+				
+				self.interstitial = self.createAndLoadInterstitial()
+			}
+			else {
+				
+				Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.calculate), userInfo: nil, repeats: false)
+			}
 		}))
 		confirmation.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 		
@@ -262,6 +269,15 @@ class GSTViewController: UIViewController, CoachMarksControllerDataSource, Coach
 				}
 			}
 		}
+	}
+	
+	func calculate() {
+		
+		dismiss(animated: true, completion: { action in
+			
+			self.renameEmptyNameFields()
+			self.performSegue(withIdentifier: "showSummary", sender: self)
+		})
 	}
 	
     // MARK: - Navigation
