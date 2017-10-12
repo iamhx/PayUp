@@ -22,10 +22,20 @@ class SideBarMenuViewController: MenuViewController {
 	@IBOutlet weak var settingsSelected: UIView!
 	@IBOutlet weak var settingsLabel: UILabel!
 	
+	var controllerStyle : UIAlertControllerStyle?
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		
+		if ( UI_USER_INTERFACE_IDIOM() == .pad )
+		{
+			controllerStyle = .alert
+		}
+		else {
+			controllerStyle = .actionSheet
+		}
 		
 		splitABill.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(chooseSplitABill)))
 		settings.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(chooseSettings)))
@@ -45,7 +55,7 @@ class SideBarMenuViewController: MenuViewController {
 		
 		if (menuContainerViewController.selectedContentViewController.isKind(of: BillViewController.self) || menuContainerViewController.selectedContentViewController.isKind(of: SummaryViewController.self)) {
 			
-			let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+			let alertController = UIAlertController(title: nil, message: nil, preferredStyle: controllerStyle!)
 			alertController.addAction(UIAlertAction(title: "Start Over", style: .destructive, handler: {action in
 				
 				menuContainerViewController.selectContentViewController(menuContainerViewController.contentViewControllers[1])
@@ -72,7 +82,7 @@ class SideBarMenuViewController: MenuViewController {
 		
 		if (menuContainerViewController.selectedContentViewController.isKind(of: BillViewController.self)) {
 			
-			let alertController = UIAlertController(title: "", message: "Changes made to the current bill will not be saved.", preferredStyle: .actionSheet)
+			let alertController = UIAlertController(title: "", message: "Changes made to the current bill will not be saved.", preferredStyle: controllerStyle!)
 			alertController.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: {action in
 				
 				self.setSelectedFor(self.settings, self.settingsSelected, self.settingsLabel, true)
@@ -86,7 +96,7 @@ class SideBarMenuViewController: MenuViewController {
 		}
 		else if (menuContainerViewController.selectedContentViewController.isKind(of: SummaryViewController.self)) {
 			
-			let alertController = UIAlertController(title: "", message: "Leave current bill summary?", preferredStyle: .actionSheet)
+			let alertController = UIAlertController(title: "", message: "Leave current bill summary?", preferredStyle: controllerStyle!)
 			alertController.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: {action in
 				
 				self.setSelectedFor(self.settings, self.settingsSelected, self.settingsLabel, true)
@@ -126,7 +136,7 @@ class SideBarMenuViewController: MenuViewController {
 			return
 		}
 		
-		let alertController = UIAlertController(title: "", message: "Do you want to replay the tutorial?", preferredStyle: .actionSheet)
+		let alertController = UIAlertController(title: "", message: "Do you want to replay the tutorial?", preferredStyle: controllerStyle!)
 		alertController.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {action in
 			
 			UserDefaults.standard.set(false, forKey: "firstLaunch")
