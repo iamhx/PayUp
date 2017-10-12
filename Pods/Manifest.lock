@@ -1,18 +1,21 @@
 PODS:
+  - Google-Mobile-Ads-SDK (7.24.1)
   - Instructions (1.1.0)
   - InteractiveSideMenu (2.0)
   - RevealingSplashView (0.4.0)
 
 DEPENDENCIES:
+  - Google-Mobile-Ads-SDK
   - Instructions
   - InteractiveSideMenu
   - RevealingSplashView
 
 SPEC CHECKSUMS:
+  Google-Mobile-Ads-SDK: ed8004a7265b424568dc84f3d2bbe3ea3fff958f
   Instructions: ff5738d6a637a46d1638a77d77261649f4da36a7
   InteractiveSideMenu: 337f6d95a3f6543c517a888893531430e18553b3
   RevealingSplashView: 72be158ad5e1bc72713e8f78383dc3e1803ce4d1
 
-PODFILE CHECKSUM: 5a43858c83c3b127f53002832d6f16de22f50782
+PODFILE CHECKSUM: 8b356bf4ea6b7e86f9933120e65fbd2b925f3dcb
 
 COCOAPODS: 1.2.0

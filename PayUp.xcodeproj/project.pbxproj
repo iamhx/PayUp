@@ -26,6 +26,8 @@
 		E5AECDD41F8A4AE5003606F4 /* SideBarMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AECDD31F8A4AE5003606F4 /* SideBarMenuViewController.swift */; };
 		E5AECDD61F8A5529003606F4 /* BillNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AECDD51F8A5529003606F4 /* BillNavigationController.swift */; };
 		E5B38A191F7BA232007BD655 /* BillTableSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5B38A181F7BA232007BD655 /* BillTableSection.xib */; };
+		E5CF0D841F8F4EC5001AA1E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CF0D831F8F4EC5001AA1E2 /* GoogleService-Info.plist */; };
+		E5CF0D861F8F5F8D001AA1E2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CF0D851F8F5F8D001AA1E2 /* StoreKit.framework */; };
 		E5D691301F7B9B4500A52971 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D6912F1F7B9B4500A52971 /* AppDelegate.swift */; };
 		E5D691351F7B9B4500A52971 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5D691331F7B9B4500A52971 /* Main.storyboard */; };
 		E5D691381F7B9B4500A52971 /* PayUp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5D691361F7B9B4500A52971 /* PayUp.xcdatamodeld */; };
@@ -56,6 +58,8 @@
 		E5AECDD31F8A4AE5003606F4 /* SideBarMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarMenuViewController.swift; sourceTree = "<group>"; };
 		E5AECDD51F8A5529003606F4 /* BillNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillNavigationController.swift; sourceTree = "<group>"; };
 		E5B38A181F7BA232007BD655 /* BillTableSection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillTableSection.xib; sourceTree = "<group>"; };
+		E5CF0D831F8F4EC5001AA1E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E5CF0D851F8F5F8D001AA1E2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E5D6912C1F7B9B4500A52971 /* PayUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D6912F1F7B9B4500A52971 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5D691341F7B9B4500A52971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,6 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48BD83DAF26EA3D2BF69D752 /* Pods_PayUp.framework in Frameworks */,
+				E5CF0D861F8F5F8D001AA1E2 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +86,7 @@
 		A25182100E9CF3A7EF992D71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5CF0D851F8F5F8D001AA1E2 /* StoreKit.framework */,
 				A5FD68BDEC72FB11CC6AAFA0 /* Pods_PayUp.framework */,
 			);
 			name = Frameworks;
@@ -121,6 +127,7 @@
 				E5D691441F7B9BB800A52971 /* Model */,
 				E5D691391F7B9B4500A52971 /* Assets.xcassets */,
 				E5D6913E1F7B9B4500A52971 /* Info.plist */,
+				E5CF0D831F8F4EC5001AA1E2 /* GoogleService-Info.plist */,
 				E5D691361F7B9B4500A52971 /* PayUp.xcdatamodeld */,
 			);
 			path = PayUp;
@@ -204,8 +211,13 @@
 				TargetAttributes = {
 					E5D6912B1F7B9B4500A52971 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = EVC7K5F9LC;
+						DevelopmentTeam = 7K8D5V3EH8;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -234,6 +246,7 @@
 			files = (
 				E5D6913D1F7B9B4500A52971 /* LaunchScreen.storyboard in Resources */,
 				E5B38A191F7BA232007BD655 /* BillTableSection.xib in Resources */,
+				E5CF0D841F8F4EC5001AA1E2 /* GoogleService-Info.plist in Resources */,
 				E5D6913A1F7B9B4500A52971 /* Assets.xcassets in Resources */,
 				E5D691351F7B9B4500A52971 /* Main.storyboard in Resources */,
 			);
@@ -437,12 +450,12 @@
 			baseConfigurationReference = 3E3956AB9D6491412E4B2885 /* Pods-PayUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = EVC7K5F9LC;
+				DEVELOPMENT_TEAM = 7K8D5V3EH8;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = PayUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hx.PayUp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hongxuan.PayUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -454,12 +467,12 @@
 			baseConfigurationReference = 81676302CF547174763EBA95 /* Pods-PayUp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = EVC7K5F9LC;
+				DEVELOPMENT_TEAM = 7K8D5V3EH8;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = PayUp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hx.PayUp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hongxuan.PayUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

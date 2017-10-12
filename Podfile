@@ -11,5 +11,6 @@ target 'PayUp' do
   pod 'InteractiveSideMenu'
   pod 'RevealingSplashView'
   pod 'Instructions'
+  pod 'Google-Mobile-Ads-SDK'
 
 end

@@ -8,8 +8,9 @@
 
 import UIKit
 import Instructions
+import GoogleMobileAds
 
-class GSTViewController: UIViewController, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
+class GSTViewController: UIViewController, CoachMarksControllerDataSource, CoachMarksControllerDelegate, GADInterstitialDelegate {
 
 	//MARK: - View Controller properties
 	
@@ -24,6 +25,8 @@ class GSTViewController: UIViewController, CoachMarksControllerDataSource, Coach
 	
 	let coachMarksController = CoachMarksController()
 	
+	var interstitial: GADInterstitial!
+	
 	@IBAction func btnSplit(_ sender: Any) {
 		
 		let confirmation = UIAlertController(title: "", message: "You have selected:\n\(selectedOptions())\n\nDo you want to split the bill?", preferredStyle: .alert)
@@ -31,7 +34,8 @@ class GSTViewController: UIViewController, CoachMarksControllerDataSource, Coach
 		confirmation.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { action in
 			
 			self.showOverlayOnTask(message: "Splitting bill...")
-			Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.calculate), userInfo: nil, repeats: false)
+			
+			self.interstitial = self.createAndLoadInterstitial()
 		}))
 		confirmation.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 		
@@ -47,9 +51,7 @@ class GSTViewController: UIViewController, CoachMarksControllerDataSource, Coach
 		
 		let backButton = UIBarButtonItem(image: UIImage(named: "previouspage"), style: .plain, target: self, action: #selector(back))
 		backButton.tintColor = .white
-		//let nextButton = UIBarButtonItem(title: "Split", style: .done, target: self, action: #selector(split))
-		//nextButton.tintColor = .white
-		//navigationItem.setRightBarButton(nextButton, animated: true)
+		
 		navigationItem.setLeftBarButton(backButton, animated: true)
 		
 		if (!UserDefaults.standard.bool(forKey: "firstLaunch")) {
@@ -188,28 +190,40 @@ class GSTViewController: UIViewController, CoachMarksControllerDataSource, Coach
 		present(vc!, animated: true, completion: nil)
 
 	}
-
 	
-	//MARK - Actions
+	
+	//MARK: - GADInterstitial delegates
+	
+	func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+		
+		renameEmptyNameFields()
+		performSegue(withIdentifier: "showSummary", sender: self)
+	}
+	
+	func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+		
+		dismiss(animated: true, completion: { action in
+			
+			ad.present(fromRootViewController: self)
+		})
+	}
+	
+	//MARK: - Actions
 	
 	func back() {
 		
 		navigationController?.popViewController(animated: true)
 	}
 	
-	/*func split() {
-	
-		let confirmation = UIAlertController(title: "Split Bill", message: "You have selected:\n\(selectedOptions())\n\nDo you want to split the bill?", preferredStyle: .alert)
+	func createAndLoadInterstitial() -> GADInterstitial {
 		
-		confirmation.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-			
-			self.showOverlayOnTask(message: "Splitting bill...")
-			Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.calculate), userInfo: nil, repeats: false)
-		}))
-		confirmation.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-		
-		present(confirmation, animated: true, completion: nil)
-	}*/
+		interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/1033173712")
+		interstitial.delegate = self
+		let request = GADRequest()
+		request.testDevices = [kGADSimulatorID]
+		interstitial.load(request)
+		return interstitial
+	}
 	
 	func selectedOptions() -> String {
 		
@@ -229,16 +243,6 @@ class GSTViewController: UIViewController, CoachMarksControllerDataSource, Coach
 		}
 		
 		return string
-	}
-	
-	func calculate() {
-		
-		renameEmptyNameFields()
-		
-		dismiss(animated: true, completion: { action in
-			
-			self.performSegue(withIdentifier: "showSummary", sender: self)
-		})
 	}
 	
 	func renameEmptyNameFields() {
