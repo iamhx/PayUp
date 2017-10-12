@@ -561,7 +561,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation, hintText: hintText, nextText: nil)
 		case 1:
 			
-			hintText = "You can enter the name of the person here."
+			hintText = "You can enter the name of the\nperson here."
 			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
 			coachView.bodyView.hintLabel.text = hintText
 			//coachView.bodyView.isUserInteractionEnabled = false
@@ -582,12 +582,12 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			coachView.bodyView.hintLabel.text = hintText
 			//coachView.bodyView.isUserInteractionEnabled = false
 		case 5:
-			hintText = "You can collapse and hide your items by\ntapping this button here."
+			hintText = "You can collapse and hide your items by\ntapping on the arrow here."
 			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: false, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
 			coachView.bodyView.hintLabel.text = hintText
 		case 6:
 			
-			hintText = "You can add or remove people and reorder\n or delete items here."
+			hintText = "You can add and remove people, or\nreorder and delete items here."
 			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
 			coachView.bodyView.hintLabel.text = hintText
 		default:
