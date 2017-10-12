@@ -556,6 +556,17 @@
                                     <constraint firstAttribute="height" constant="55" id="Yts-Zh-XfK"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2P7-Kh-OIa">
+                                <rect key="frame" x="5" y="637" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="Gc0-rZ-i9p"/>
+                                    <constraint firstAttribute="height" constant="25" id="HeF-tt-VbP"/>
+                                </constraints>
+                                <state key="normal" image="info"/>
+                                <connections>
+                                    <action selector="btnInfo:" destination="kxR-bm-UKZ" eventType="touchUpInside" id="cqq-Sy-Plv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.20000000000000001" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -568,8 +579,10 @@
                             <constraint firstItem="AZO-rI-z6C" firstAttribute="leading" secondItem="lcs-K0-G4Y" secondAttribute="leading" id="P8w-Vp-Fu9"/>
                             <constraint firstAttribute="trailing" secondItem="LBd-h0-X8x" secondAttribute="trailing" id="WOn-k3-Ul0"/>
                             <constraint firstItem="XSl-dD-j8m" firstAttribute="top" secondItem="Y4i-7t-gmq" secondAttribute="bottom" constant="8" id="WPI-FJ-7Xg"/>
+                            <constraint firstItem="XSl-dD-j8m" firstAttribute="top" secondItem="2P7-Kh-OIa" secondAttribute="bottom" constant="5" id="ZcT-v1-gnP"/>
                             <constraint firstAttribute="trailing" secondItem="PZ2-vL-i29" secondAttribute="trailing" id="eZS-o5-SbE"/>
                             <constraint firstItem="vmY-QQ-RMh" firstAttribute="top" secondItem="LBd-h0-X8x" secondAttribute="bottom" id="gyn-0K-GFe"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="2P7-Kh-OIa" secondAttribute="leading" constant="11" id="h3l-mt-P1d"/>
                             <constraint firstItem="LBd-h0-X8x" firstAttribute="leading" secondItem="lcs-K0-G4Y" secondAttribute="leading" id="irs-tK-N7C"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Y4i-7t-gmq" secondAttribute="trailing" id="mX9-M1-0bO"/>
                             <constraint firstAttribute="trailing" secondItem="AZO-rI-z6C" secondAttribute="trailing" id="qvT-h1-Yrd"/>
@@ -589,7 +602,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sIS-Sf-aZd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3220" y="897"/>
+            <point key="canvasLocation" x="3220" y="896.40179910044981"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="6fE-9n-7mv">
@@ -1123,6 +1136,7 @@
     <resources>
         <image name="back" width="25" height="25"/>
         <image name="forward" width="25" height="25"/>
+        <image name="info" width="37" height="37"/>
         <image name="logo_transparent" width="750" height="524"/>
         <image name="menu" width="25" height="25"/>
         <image name="nextpage" width="25" height="25"/>

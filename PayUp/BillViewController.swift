@@ -142,7 +142,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 					self.coachMarksController.overlay.allowTap = true
 					self.coachMarksController.dataSource = self
 					self.coachMarksController.delegate = self
-					NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
+					//NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
 					self.coachMarksController.start(on: self)
 				}
 			}
@@ -186,11 +186,29 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		NotificationCenter.default.removeObserver(self)
 	}
 	
-	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		
 		coachMarksController.stop(immediately: true)
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		if (UserDefaults.standard.bool(forKey: "animatedLogo")) {
+			
+			if (isFirstLaunch) {
+				
+				let skipView = CoachMarkSkipDefaultView()
+				skipView.setTitle("Skip", for: .normal)
+				self.coachMarksController.skipView = skipView
+				self.coachMarksController.overlay.allowTap = true
+				self.coachMarksController.dataSource = self
+				self.coachMarksController.delegate = self
+				//NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
+				self.coachMarksController.start(on: self)
+			}
+		}
 	}
 	
 	// MARK: - TableView delegates
@@ -233,7 +251,6 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		
 		return cell
 	}
-
 	
 		// MARK: Editing style
 	
@@ -503,7 +520,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			}
 		case 1:
 			coachMark = coachMarksController.helper.makeCoachMark(for: header.txtName)
-			coachMark.disableOverlayTap = true
+			//coachMark.disableOverlayTap = true
 			return coachMark
 		case 2:
 			coachMark = coachMarksController.helper.makeCoachMark(for: header.btnAddItem)
@@ -513,12 +530,12 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		case 3:
 			let cell = billTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! BillTableCell
 			coachMark = coachMarksController.helper.makeCoachMark(for: cell.txtName)
-			coachMark.disableOverlayTap = true
+			//coachMark.disableOverlayTap = true
 			return coachMark
 		case 4:
 			let cell = billTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! BillTableCell
 			coachMark = coachMarksController.helper.makeCoachMark(for: cell.txtPrice)
-			coachMark.disableOverlayTap = true
+			//coachMark.disableOverlayTap = true
 			return coachMark
 		case 5:
 			coachMark = coachMarksController.helper.makeCoachMark(for: header.expandOrCollapse)
@@ -544,26 +561,26 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation, hintText: hintText, nextText: nil)
 		case 1:
 			
-			hintText = "Enter the name of the person here."
+			hintText = "You can enter the name of the person here."
 			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
 			coachView.bodyView.hintLabel.text = hintText
-			coachView.bodyView.isUserInteractionEnabled = false
+			//coachView.bodyView.isUserInteractionEnabled = false
 		case 2:
 			
-			hintText = "Tap on this button to add an item."
+			hintText = "Please tap on this button to add an item."
 			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: false, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
 			coachView.bodyView.hintLabel.text = hintText
 			coachView.bodyView.isUserInteractionEnabled = false
 		case 3:
-			hintText = "Enter the name of the item here."
+			hintText = "You can enter the name of the item here."
 			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
 			coachView.bodyView.hintLabel.text = hintText
-			coachView.bodyView.isUserInteractionEnabled = false
+			//coachView.bodyView.isUserInteractionEnabled = false
 		case 4:
-			hintText = "Enter the price of the item here."
+			hintText = "You can enter the price of the item here."
 			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
 			coachView.bodyView.hintLabel.text = hintText
-			coachView.bodyView.isUserInteractionEnabled = false
+			//coachView.bodyView.isUserInteractionEnabled = false
 		case 5:
 			hintText = "You can collapse and hide your items by\ntapping this button here."
 			coachView = coachMarksController.helper.makeDefaultCoachViews(withArrow: false, withNextText: false, arrowOrientation: coachMark.arrowOrientation)
@@ -586,44 +603,43 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	                          at index: Int) {
 		if (index == 1) {
 			
-			if (!afterSizeTransition) {
-				let header = billTableView.headerView(forSection: 0) as! BillTableSection
-				header.txtName.becomeFirstResponder()
-				coachMarksController.flow.pause()
-			}
+//			if (!afterSizeTransition) {
+//				let header = billTableView.headerView(forSection: 0) as! BillTableSection
+//				header.txtName.becomeFirstResponder()
+//				coachMarksController.flow.pause()
+//			}
 		}
 		else if (index == 2) {
 			
-			if (!afterSizeTransition) {
-				let header = billTableView.headerView(forSection: 0) as! BillTableSection
-				header.txtName.resignFirstResponder()
-			}
+//			if (!afterSizeTransition) {
+//				let header = billTableView.headerView(forSection: 0) as! BillTableSection
+//				header.txtName.resignFirstResponder()
+//			}
 		}
 		else if (index == 3) {
 			
-			if (!afterSizeTransition) {
-				
-				let cell = billTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! BillTableCell
-				cell.txtName.becomeFirstResponder()
-				coachMarksController.flow.pause()
-			}
+//			if (!afterSizeTransition) {
+//				
+//				let cell = billTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! BillTableCell
+//				cell.txtName.becomeFirstResponder()
+//				coachMarksController.flow.pause()
+//			}
 		}
 		else if (index == 4) {
 			
-			if (!afterSizeTransition) {
-				
-				let cell = billTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! BillTableCell
-				cell.txtPrice.becomeFirstResponder()
-				coachMarksController.flow.pause()
-			}
+//			if (!afterSizeTransition) {
+//				
+//				let cell = billTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! BillTableCell
+//				cell.txtPrice.becomeFirstResponder()
+//			}
 		}
 		else if (index == 5) {
 			
-			if (!afterSizeTransition) {
-				
-				let cell = billTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! BillTableCell
-				cell.txtPrice.resignFirstResponder()
-			}
+//			if (!afterSizeTransition) {
+//				
+//				let cell = billTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! BillTableCell
+//				cell.txtPrice.resignFirstResponder()
+//			}
 		}
 		else if (index == 6) {
 			
@@ -993,10 +1009,10 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		keyboardIsShowing = false
 	}
 	
-	func keyboardDidShow(notification: Notification) {
-		
-		coachMarksController.flow.resume()
-	}
+//	func keyboardDidShow(notification: Notification) {
+//		
+//		coachMarksController.flow.resume()
+//	}
 
 	
     // MARK: - Navigation

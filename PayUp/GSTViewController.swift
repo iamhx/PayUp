@@ -51,6 +51,10 @@ class GSTViewController: UIViewController, CoachMarksControllerDataSource, Coach
 		//nextButton.tintColor = .white
 		//navigationItem.setRightBarButton(nextButton, animated: true)
 		navigationItem.setLeftBarButton(backButton, animated: true)
+		
+		if (!UserDefaults.standard.bool(forKey: "firstLaunch")) {
+			navigationItem.leftBarButtonItem?.isEnabled = false
+		}
 		navigationItem.prompt = "Select GST"
 		
 		coachMarksController.dataSource = self
@@ -66,7 +70,6 @@ class GSTViewController: UIViewController, CoachMarksControllerDataSource, Coach
 		super.viewDidAppear(animated)
 		
 		self.title = totalTitle!
-		
 		animateTitle(0.3)
 		
 		UIView.animate(withDuration: 0.3, delay: 0.0, options: .transitionCrossDissolve, animations: {
@@ -83,6 +86,7 @@ class GSTViewController: UIViewController, CoachMarksControllerDataSource, Coach
 				skipView.setTitle("Skip", for: .normal)
 				self.coachMarksController.skipView = skipView
 				self.coachMarksController.overlay.allowTap = true
+				self.navigationItem.leftBarButtonItem?.isEnabled = true
 				self.coachMarksController.start(on: self)
 			}
 		})

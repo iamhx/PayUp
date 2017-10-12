@@ -120,6 +120,27 @@ class SideBarMenuViewController: MenuViewController {
 		}
 	}
 	
+	@IBAction func btnInfo(_ sender: Any) {
+		
+		guard let menuContainerViewController = self.menuContainerViewController else {
+			return
+		}
+		
+		let alertController = UIAlertController(title: "", message: "Do you want to replay the tutorial?", preferredStyle: .actionSheet)
+		alertController.addAction(UIAlertAction(title: "Confirm", style: .default, handler: {action in
+			
+			UserDefaults.standard.set(false, forKey: "firstLaunch")
+			self.setSelectedFor(self.splitABill, self.splitABillSelected, self.splitABillLabel, true)
+			self.setSelectedFor(self.settings, self.settingsSelected, self.settingsLabel, false)
+			menuContainerViewController.selectContentViewController(menuContainerViewController.contentViewControllers[1])
+			menuContainerViewController.hideSideMenu()
+		}))
+		
+		alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		
+		present(alertController, animated: true, completion: nil)
+	}
+	
 
     /*
     // MARK: - Navigation
