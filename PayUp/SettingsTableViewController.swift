@@ -97,6 +97,21 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
 				
 				self.present(promptReport, animated: true, completion: nil)
 				break
+			case 1:
+				
+				guard let facebookURL = URL(string: "fb://page/?id=1896250340630689") else {
+					return
+				}
+				
+				if (UIApplication.shared.canOpenURL(facebookURL)) {
+					
+					SettingsTableViewController.launchURL(string: "fb://page/?id=1896250340630689")
+				}
+				else {
+					
+					SettingsTableViewController.launchURL(string: "http://facebook.com/Neoville.SG/")
+				}
+				break
 			default:
 				break
 			}
@@ -282,6 +297,18 @@ class SettingsTableViewController: UITableViewController, MFMailComposeViewContr
 		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 		
 		present(alertController, animated: true, completion: nil)
+	}
+	
+	class func launchURL(string: String) {
+		
+		guard let url = URL(string: string) else {
+			return
+		}
+		
+		if (UIApplication.shared.canOpenURL(url)) {
+			
+			UIApplication.shared.open(url, options: [:], completionHandler: nil)
+		}
 	}
 	
     /*

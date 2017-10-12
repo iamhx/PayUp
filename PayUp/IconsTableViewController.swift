@@ -38,10 +38,10 @@ class IconsTableViewController: UITableViewController {
 			switch (indexPath.row) {
 				
 			case 0:
-				launchURL(string: "http://www.freepik.com/free-vector/payment-background-design_1059007.htm")
+				SettingsTableViewController.launchURL(string: "http://www.freepik.com/free-vector/payment-background-design_1059007.htm")
 				break
 			case 1:
-				launchURL(string: "https://www.dafont.com/pat-pacool.font")
+				SettingsTableViewController.launchURL(string: "https://www.dafont.com/pat-pacool.font")
 				break
 			default:
 				break
@@ -53,25 +53,25 @@ class IconsTableViewController: UITableViewController {
 			switch (indexPath.row) {
 				
 			case 0:
-				launchURL(string: "https://icons8.com/icon/61/Forward")
+				SettingsTableViewController.launchURL(string: "https://icons8.com/icon/61/Forward")
 				break
 			case 1:
-				launchURL(string: "https://icons8.com/icon/1806/Back")
+				SettingsTableViewController.launchURL(string: "https://icons8.com/icon/1806/Back")
 				break
 			case 2:
-				launchURL(string: "https://icons8.com/icon/10721/Collapse-Arrow")
+				SettingsTableViewController.launchURL(string: "https://icons8.com/icon/10721/Collapse-Arrow")
 				break
 			case 3:
-				launchURL(string: "https://icons8.com/icon/10720/Expand-Arrow")
+				SettingsTableViewController.launchURL(string: "https://icons8.com/icon/10720/Expand-Arrow")
 				break
 			case 4:
-				launchURL(string: "https://icons8.com/icon/26196/forward-button-filled")
+				SettingsTableViewController.launchURL(string: "https://icons8.com/icon/26196/forward-button-filled")
 				break
 			case 5:
-				launchURL(string: "https://icons8.com/icon/26191/back-arrow-filled")
+				SettingsTableViewController.launchURL(string: "https://icons8.com/icon/26191/back-arrow-filled")
 				break
 			case 6:
-				launchURL(string: "https://icons8.com/icon/3096/menu")
+				SettingsTableViewController.launchURL(string: "https://icons8.com/icon/3096/menu")
 				break
 			default:
 				break
@@ -94,17 +94,6 @@ class IconsTableViewController: UITableViewController {
 		navigationController?.popViewController(animated: true)
 	}
 	
-	func launchURL(string: String) {
-		
-		guard let url = URL(string: string) else {
-			return
-		}
-		
-		if (UIApplication.shared.canOpenURL(url)) {
-			
-			UIApplication.shared.open(url, options: [:], completionHandler: nil)
-		}
-	}
 
  
     /*

@@ -37,12 +37,12 @@ class OpenSLTableViewController: UITableViewController {
 			switch (indexPath.row) {
 				
 			case 0:
-				launchURL(string: "https://github.com/handsomecode/InteractiveSideMenu")
+				SettingsTableViewController.launchURL(string: "https://github.com/handsomecode/InteractiveSideMenu")
 				break
 			case 1:
-				launchURL(string: "https://github.com/PiXeL16/RevealingSplashView")
+				SettingsTableViewController.launchURL(string: "https://github.com/PiXeL16/RevealingSplashView")
 			case 2:
-				launchURL(string: "https://github.com/ephread/Instructions")
+				SettingsTableViewController.launchURL(string: "https://github.com/ephread/Instructions")
 			default:
 				break
 			}
@@ -64,17 +64,6 @@ class OpenSLTableViewController: UITableViewController {
 		navigationController?.popViewController(animated: true)
 	}
 	
-	func launchURL(string: String) {
-		
-		guard let url = URL(string: string) else {
-			return
-		}
-		
-		if (UIApplication.shared.canOpenURL(url)) {
-			
-			UIApplication.shared.open(url, options: [:], completionHandler: nil)
-		}
-	}
 
     /*
     // MARK: - Navigation

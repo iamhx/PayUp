@@ -224,10 +224,9 @@ class GSTViewController: UIViewController, CoachMarksControllerDataSource, Coach
 	
 	func createAndLoadInterstitial() -> GADInterstitial {
 		
-		interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/1033173712")
+		interstitial = GADInterstitial(adUnitID: "ca-app-pub-6031268230658463/3221489240")
 		interstitial.delegate = self
 		let request = GADRequest()
-		request.testDevices = [kGADSimulatorID]
 		interstitial.load(request)
 		return interstitial
 	}
