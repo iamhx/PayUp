@@ -209,10 +209,23 @@ class GSTViewController: UIViewController, CoachMarksControllerDataSource, Coach
 	
 	func interstitialDidReceiveAd(_ ad: GADInterstitial) {
 		
-		dismiss(animated: true, completion: { action in
+		if (ad.isReady) {
+		
+			dismiss(animated: true, completion: { action in
+				
+				ad.present(fromRootViewController: self)
+			})
+		}
+		else {
 			
-			ad.present(fromRootViewController: self)
-		})
+			calculate()
+		}
+	}
+	
+	func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+		print("interstitial:didFailToReceiveAdWithError: \(error.localizedDescription)")
+		
+		calculate()
 	}
 	
 	//MARK: - Actions
