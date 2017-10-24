@@ -19,6 +19,7 @@ class SettingsNavigationController: UINavigationController, SideMenuItemContent 
 		navigationBar.barTintColor = UIColor(red: 239.0/255.0, green: 51.0/255.0, blue: 64.0/255.0, alpha: 1.0)
 		navigationBar.isTranslucent = false
 		navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+		UILabel.appearance(whenContainedInInstancesOf: [UINavigationBar.self]).textColor = UIColor.white
  }
 
     override func didReceiveMemoryWarning() {

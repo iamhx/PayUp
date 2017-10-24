@@ -8,8 +8,9 @@
 
 import UIKit
 import InteractiveSideMenu
+import GoogleMobileAds
 
-class SummaryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SummaryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, GADBannerViewDelegate {
 
 	//MARK: - View Controller properties
 	
@@ -18,6 +19,7 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 	var row : Int?
 	@IBOutlet weak var summaryTableView: UITableView!
 	@IBOutlet weak var lblTotal: UILabel!
+	@IBOutlet var bannerView: GADBannerView!
 	
 	
 	//MARK: - viewDidLoad Implementation
@@ -56,6 +58,20 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 		if let navigationViewController = self.navigationController as? SideMenuItemContent {
 			
 			navigationViewController.setSelectedContentViewController(controller: self)
+		}
+		
+		if (!UserDefaults.standard.bool(forKey: "removeAds")){
+			
+			bannerView.adSize = kGADAdSizeBanner
+			bannerView.adUnitID = "ca-app-pub-6031268230658463/2046537165"
+			bannerView.rootViewController = self
+			bannerView.delegate = self
+			let request = GADRequest()
+			bannerView.load(request)
+		}
+		else {
+			
+			bannerView.isHidden = true
 		}
     }
 
@@ -100,6 +116,21 @@ class SummaryViewController: UIViewController, UITableViewDataSource, UITableVie
 		performSegue(withIdentifier: "showPerson", sender: self)
 	}
 	
+	func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+		
+		UIView.animate(withDuration: 1, animations: {
+			bannerView.alpha = 1
+		})
+	}
+	
+	func adView(_ bannerView: GADBannerView,
+	            didFailToReceiveAdWithError error: GADRequestError) {
+		
+		print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+		
+		bannerView.isHidden = true
+	}
+
 	// MARK: - Actions
 	
 	/*func startOver() {

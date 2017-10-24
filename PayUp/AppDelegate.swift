@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import GoogleMobileAds
 
 extension UIViewController {
 	func hideKeyboardWhenTappedAround() {
@@ -72,6 +73,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			
 			UserDefaults.standard.set(false, forKey: "animatedLogo")
 		}
+		
+		// Initialize the Google Mobile Ads SDK.
+		// Sample AdMob app ID: ca-app-pub-3940256099942544~1458002511
+		GADMobileAds.configure(withApplicationID: "ca-app-pub-6031268230658463~3616719844")
 		
 		return true
 	}

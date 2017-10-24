@@ -10,10 +10,11 @@ import UIKit
 import InteractiveSideMenu
 import RevealingSplashView
 import Instructions
+import GoogleMobileAds
 
 // MARK: - BillViewController Class
 
-class BillViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, BillTableCellDelegate, BillTableSectionDelegate, UIPickerViewDataSource, UIPickerViewDelegate, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
+class BillViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, BillTableCellDelegate, BillTableSectionDelegate, UIPickerViewDataSource, UIPickerViewDelegate, CoachMarksControllerDataSource, CoachMarksControllerDelegate, GADBannerViewDelegate {
 	
 	//MARK: - IBOutlets
 	
@@ -23,6 +24,7 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 	@IBOutlet weak var billTableView: UITableView!
 	@IBOutlet weak var bottomToolbar: UIToolbar!
 	@IBOutlet weak var btnMenuOutlet: UIButton!
+	@IBOutlet var bannerView: GADBannerView!
 	
 	
 	//MARK: - IBActions
@@ -173,6 +175,20 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		if let navigationViewController = self.navigationController as? SideMenuItemContent {
 			
 			navigationViewController.setSelectedContentViewController(controller: self)
+		}
+		
+		if (!UserDefaults.standard.bool(forKey: "removeAds")){
+			
+			bannerView.adSize = kGADAdSizeBanner
+			bannerView.adUnitID = "ca-app-pub-6031268230658463/8136468646"
+			bannerView.rootViewController = self
+			bannerView.delegate = self
+			let request = GADRequest()
+			bannerView.load(request)
+		}
+		else {
+			
+			bannerView.isHidden = true
 		}
     }
 
@@ -684,7 +700,23 @@ class BillViewController: UIViewController, UITableViewDelegate, UITableViewData
 		let vc = storyboard.instantiateInitialViewController()
 		present(vc!, animated: true, completion: nil)
 	}
-
+	
+	//MARK: GADBannerView Delegates
+	
+	func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+		
+		UIView.animate(withDuration: 1, animations: {
+			bannerView.alpha = 1
+		})
+	}
+	
+	func adView(_ bannerView: GADBannerView,
+	            didFailToReceiveAdWithError error: GADRequestError) {
+		
+		print("adView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+		
+		bannerView.isHidden = true
+	}
 	
 	// MARK: - Functions
 	
